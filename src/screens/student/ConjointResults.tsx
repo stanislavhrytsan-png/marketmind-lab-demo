@@ -200,7 +200,7 @@ function Simulator() {
               value={design[attr.id]}
               onChange={(v) => {
                 const level = Number(v)
-                if (!levelBlocked(design, attr.id, level)) setDesign({ ...design, [attr.id as AttrId]: level })
+                if (!levelBlocked(design, attr.id, level)) setDesign((old) => ({ ...old, [attr.id as AttrId]: level }))
               }}
               options={optionsFor(attr)}
             />

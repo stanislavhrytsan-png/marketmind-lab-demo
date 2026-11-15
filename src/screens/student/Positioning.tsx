@@ -105,7 +105,7 @@ export default function Positioning() {
                   <Switch
                     label={toggle.label}
                     on={layers[toggle.key]}
-                    onChange={(on) => setLayers({ ...layers, [toggle.key]: on })}
+                    onChange={(on) => setLayers((old) => ({ ...old, [toggle.key]: on }))}
                   />
                   <span>
                     <span className="font-semibold">{toggle.label}</span>

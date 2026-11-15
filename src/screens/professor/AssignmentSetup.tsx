@@ -136,7 +136,7 @@ export default function AssignmentSetup() {
                     type="button"
                     role="checkbox"
                     aria-checked={on}
-                    onClick={() => setTicked(on ? ticked.filter((id) => id !== m.id) : [...ticked, m.id])}
+                    onClick={() => setTicked((old) => (old.includes(m.id) ? old.filter((id) => id !== m.id) : [...old, m.id]))}
                     className="flex w-full items-center gap-3 border-t border-line2 py-2.5 text-left"
                   >
                     <CheckMark on={on} />
@@ -221,7 +221,7 @@ export default function AssignmentSetup() {
                   id="reason"
                   rows={2}
                   value={reasons[mode]}
-                  onChange={(e) => setReasons({ ...reasons, [mode]: e.target.value })}
+                  onChange={(e) => setReasons((old) => ({ ...old, [mode]: e.target.value }))}
                   className="mt-1 block w-full resize-none rounded-lg border border-ctl bg-white p-3 text-[14px] leading-[1.55] transition-colors duration-150 ease-std focus:border-primary focus:outline-none"
                 />
                 <p className="mt-1 text-[12.5px] text-ink3">{setup.reasonNote}</p>
@@ -235,7 +235,7 @@ export default function AssignmentSetup() {
                       <Button
                         aria-label="Fewer hints"
                         className="w-9 justify-center px-0"
-                        onClick={() => setHints(Math.max(1, hints - 1))}
+                        onClick={() => setHints((h) => Math.max(1, h - 1))}
                         disabled={hints <= 1}
                       >
                         −
@@ -249,7 +249,7 @@ export default function AssignmentSetup() {
                       <Button
                         aria-label="More hints"
                         className="w-9 justify-center px-0"
-                        onClick={() => setHints(Math.min(5, hints + 1))}
+                        onClick={() => setHints((h) => Math.min(5, h + 1))}
                         disabled={hints >= 5}
                       >
                         +

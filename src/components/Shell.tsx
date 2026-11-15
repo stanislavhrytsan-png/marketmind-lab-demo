@@ -31,7 +31,7 @@ function NavItem({
   const { notInDemo } = useDemo()
   const className = cx(
     'flex w-full items-center gap-2.5 rounded-md px-2.5 py-[7px] text-left text-[14px] text-side-ink',
-    'transition-colors duration-150 ease-std',
+    'transition-colors duration-150 ease-std focus-visible:outline-white',
     active ? 'bg-white/[.14] font-semibold shadow-[inset_3px_0_0_#fff]' : 'hover:bg-white/[.07]',
   )
   const content = (
@@ -136,7 +136,7 @@ function UserMenu({ isProfessor }: { isProfessor: boolean }) {
         aria-expanded={open}
         aria-label={`${me.name}, ${me.role}. Switch role`}
         onClick={() => setOpen((v) => !v)}
-        className="flex w-full items-center gap-2.5 rounded-md px-2 py-1 text-left transition-colors duration-150 ease-std hover:bg-white/[.07]"
+        className="flex w-full items-center gap-2.5 rounded-md px-2 py-1 text-left transition-colors duration-150 ease-std hover:bg-white/[.07] focus-visible:outline-white"
       >
         <span className="grid h-[30px] w-[30px] flex-none place-items-center rounded-full bg-white/[.16] text-[12px] font-bold">
           {me.initials}
@@ -159,7 +159,10 @@ export function Sidebar() {
 
   return (
     <aside className="sticky top-0 flex h-[var(--app-h)] flex-col bg-side px-3 pb-4 pt-5 text-side-ink">
-      <Link to={isProfessor ? '/professor/assignment' : '/'} className="flex items-center gap-2.5 px-2 pb-[18px]">
+      <Link
+        to={isProfessor ? '/professor/assignment' : '/'}
+        className="flex items-center gap-2.5 rounded-md px-2 pb-[18px] focus-visible:outline-white"
+      >
         <Logo light />
         <b className="font-serif text-[18px] font-semibold tracking-[.005em]">MarketMind Lab</b>
       </Link>

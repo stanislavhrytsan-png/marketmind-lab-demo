@@ -142,7 +142,7 @@ export default function Interpretation() {
         <h2 className="t-h3">{interpretation.checklistTitle}</h2>
         <div className="mt-2 flex flex-col gap-2">
           {interpretation.checklist.map((item, i) => (
-            <Checkbox key={item.text} on={checks[i]} onChange={(on) => setChecks(checks.map((c, k) => (k === i ? on : c)))}>
+            <Checkbox key={item.text} on={checks[i]} onChange={(on) => setChecks((old) => old.map((c, k) => (k === i ? on : c)))}>
               {item.text}
             </Checkbox>
           ))}

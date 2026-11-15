@@ -30,6 +30,12 @@ type Attribute = (typeof positioning.attributes)[number]
 type Preference = (typeof positioning.preferences)[number]
 
 const origin = { x: 0, y: 0 }
+/** Two invisible points in opposite corners. They keep the axes in place when every layer is hidden. */
+const corners = [
+  { x: -X_RANGE, y: -Y_RANGE },
+  { x: X_RANGE, y: Y_RANGE },
+]
+const nothing = () => <g />
 
 function BrandPoint(props: ScatterShapeProps) {
   const { cx = 0, cy = 0 } = props
@@ -114,6 +120,7 @@ export function PerceptualMap({ layers }: { layers: MapLayers }) {
     <ScatterChart width={WIDTH} height={HEIGHT} margin={MARGIN} accessibilityLayer={false}>
       <XAxis type="number" dataKey="x" domain={[-X_RANGE, X_RANGE]} hide />
       <YAxis type="number" dataKey="y" domain={[-Y_RANGE, Y_RANGE]} hide />
+      <Scatter data={corners} shape={nothing} isAnimationActive={false} />
 
       {grid.map((v) => (
         <ReferenceLine key={`x${v}`} x={v} stroke="#F0F1F4" zIndex={10} />
