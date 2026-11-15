@@ -100,9 +100,12 @@ export default function Interpretation() {
           options={(['off', 'coach', 'explain'] as Mode[]).map((m) => ({ value: m, label: modes[m].label }))}
         />
       </div>
-      <p className="mt-1.5 text-[12px] leading-[1.4] text-ink3">
-        Not part of the product: there the professor sets the mode and students cannot change it. All tutor messages
-        are scripted.
+      <p
+        className="mt-1.5 text-[12px] leading-[1.4] text-ink3"
+        tabIndex={0}
+        data-tip="In the product the professor sets the mode for the whole assignment, and students cannot change it."
+      >
+        Not part of the product. All tutor messages are scripted.
       </p>
     </div>
   )

@@ -112,6 +112,13 @@ function VisibleNote({ children }: { children: ReactNode }) {
 
 const wordCount = (text: string) => text.trim().split(/\s+/).filter(Boolean).length
 
+/**
+ * The last block of the panel: hint, reply field and the line that says the
+ * professor can read everything. In a low window the panel scrolls, and this
+ * block stays in view at the bottom.
+ */
+const FOOTER = 'sticky bottom-0 mt-3 border-t border-line2 bg-white px-5 pb-4 pt-3'
+
 // ---------------------------------------------------------------- coach
 
 function Coach({ onNewMessage }: { onNewMessage: () => void }) {
@@ -174,7 +181,7 @@ function Coach({ onNewMessage }: { onNewMessage: () => void }) {
         </div>
       </div>
 
-      <div className="px-5 pb-4 pt-3.5">
+      <div className={FOOTER}>
         <div className="flex items-center gap-3">
           <Button size="sm" icon="bulb" onClick={askHint} disabled={hints >= coach.hintLimit || thinking}>
             {hints >= coach.hintLimit ? 'No hints left' : 'Ask for a hint'}
@@ -257,7 +264,7 @@ function Explain({ submitted }: { submitted: boolean }) {
           </div>
         )}
       </div>
-      <div className="px-5 pb-4 pt-3.5">
+      <div className={FOOTER}>
         {submitted && (
           <button
             type="button"
@@ -356,7 +363,7 @@ export function TutorPanel({
               <p className="mt-1 text-[13px] text-ink2">{tutor.off.body}</p>
             </div>
           </div>
-          <div className="px-5 pb-4 pt-3.5">
+          <div className={FOOTER}>
             <VisibleNote>{professor.shortName} can read your interpretation.</VisibleNote>
           </div>
         </>

@@ -168,3 +168,6 @@ To change example data or a text, edit `src/data/alpineOat.ts`. If you change th
 - **Off and Explain modes.** The concept draws the tutor panel in Coach mode only. The other two modes follow the style guide's mode plate.
 - **Positioning.** The cards sit to the right of the map, as the concept report describes. In the concept image they are stacked below it.
 - **Hints.** The coach conversation starts with 0 of 3 hints used, so that every hint you ask for is visible.
+- **Small additions that make the path clickable.** "Open setup" next to a run's summary, "Reset to saved design" in the simulator, and "Back to defaults" on the conjoint setup.
+- **Case brief.** One extra line says that the case is fictional and all numbers are invented, because the demo names two real brands.
+- **Submissions.** The student list shows all students when the screen opens. The concept highlights "To review" but lists everyone.
