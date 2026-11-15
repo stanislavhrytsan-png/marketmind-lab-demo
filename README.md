@@ -36,6 +36,8 @@ The demo is published with GitHub Pages from the repository `stanislavhrytsan-pn
 
 - Every push to the `main` branch rebuilds the site and publishes it. The recipe is `.github/workflows/deploy.yml`. Publishing takes about a minute.
 - The page asks search engines not to list it, so people reach it only through the link.
+- The repository is public: anyone can read the code and the example data.
+- To take the site offline, open the repository on GitHub, go to Settings, then Pages, and choose "Unpublish site". Deleting the repository removes the site and the code.
 - To publish a change:
 
 ```bash

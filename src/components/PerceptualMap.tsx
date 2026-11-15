@@ -3,10 +3,11 @@
  * segment preference arrows. Drawn with Recharts (a scatter chart with
  * reference lines). Every point and arrow has a tooltip.
  */
+import { useLayoutEffect, useRef, useState } from 'react'
 import { ReferenceLine, Scatter, ScatterChart, XAxis, YAxis } from 'recharts'
 import type { ScatterShapeProps } from 'recharts'
 import { positioning, segments } from '../data/alpineOat'
-import { SegName } from './ui'
+import type { Segment } from '../data/alpineOat'
 
 const WIDTH = 780
 const HEIGHT = 600
@@ -88,6 +89,37 @@ function AttributePoint(props: ScatterShapeProps) {
   )
 }
 
+/**
+ * A segment's marker and name next to its arrow, as plain SVG. The text is
+ * measured once it is on screen, so the marker can sit in front of a
+ * right-aligned name too.
+ */
+function SegmentLabel({ segment, x, y, align }: { segment: Segment; x: number; y: number; align: 'start' | 'end' }) {
+  const text = useRef<SVGTextElement>(null)
+  // A first guess of about 6.6 px per letter, replaced by the measured width.
+  const [width, setWidth] = useState(segment.name.length * 6.6)
+  useLayoutEffect(() => {
+    const measured = text.current?.getComputedTextLength()
+    if (measured) setWidth(measured)
+  }, [segment.name])
+
+  // Centre of the marker: 12 px in front of the first letter, a little above the baseline.
+  const mx = (align === 'end' ? x - width : x) - 12
+  const my = y - 4.5
+  return (
+    <g>
+      {segment.shape === 'circle' && <circle cx={mx} cy={my} r={5} fill={segment.color} />}
+      {segment.shape === 'square' && <rect x={mx - 5} y={my - 5} width={10} height={10} rx={1.5} fill={segment.color} />}
+      {segment.shape === 'triangle' && (
+        <path d={`M${mx} ${my - 5.5}L${mx + 5.5} ${my + 5}H${mx - 5.5}Z`} fill={segment.color} />
+      )}
+      <text ref={text} x={x} y={y} textAnchor={align} fontSize={13} fontWeight={600} fill={INK}>
+        {segment.name}
+      </text>
+    </g>
+  )
+}
+
 /** Arrow head and label at the end of a segment's preference arrow. */
 function PreferenceEnd(props: ScatterShapeProps) {
   const { cx = 0, cy = 0 } = props
@@ -95,21 +127,17 @@ function PreferenceEnd(props: ScatterShapeProps) {
   const segment = segments.find((s) => s.id === preference.segment)!
   // Both axes share one scale, so the angle on screen follows from the data.
   const angle = (Math.atan2(-preference.y, preference.x) * 180) / Math.PI
-  // An HTML label keeps the segment's marker and name together, on either side of the arrow.
-  const box =
+  // Where the name starts (or ends), relative to the tip of the arrow.
+  const label =
     preference.label === 'left'
-      ? { x: cx - 18 - 160, y: cy - 12, align: 'right' as const }
+      ? { x: cx - 18, y: cy + 2, align: 'end' as const }
       : preference.label === 'below'
-        ? { x: cx - 5, y: cy + 14, align: 'left' as const }
-        : { x: cx + 10, y: cy - 6, align: 'left' as const }
+        ? { x: cx + 14, y: cy + 26, align: 'start' as const }
+        : { x: cx + 28, y: cy + 6, align: 'start' as const }
   return (
     <g>
       <path d="M3.5 0L-14 -8.75V8.75Z" fill={segment.color} transform={`translate(${cx} ${cy}) rotate(${angle})`} />
-      <foreignObject x={box.x} y={box.y} width={160} height={22}>
-        <div style={{ textAlign: box.align, fontSize: 13, lineHeight: '22px' }}>
-          <SegName segment={segment.id} />
-        </div>
-      </foreignObject>
+      <SegmentLabel segment={segment} x={label.x} y={label.y} align={label.align} />
     </g>
   )
 }
