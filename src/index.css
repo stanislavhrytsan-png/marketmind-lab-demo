@@ -1,0 +1,192 @@
+@import 'tailwindcss';
+
+/* ------------------------------------------------------------------
+   Design tokens, taken one to one from the concept's style guide.
+   One interface colour (aubergine), neutral greys, three data colours.
+   ------------------------------------------------------------------ */
+@theme {
+  --font-sans: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-serif: 'STIX Two Text', Georgia, serif;
+
+  /* interface */
+  --color-page: #f4f5f8;
+  --color-ink: #1b2230;
+  --color-ink2: #475066;
+  --color-ink3: #636b7d;
+  --color-line: #dde0e7;
+  --color-line2: #eceef2;
+  --color-fill: #eef0f4;
+  --color-primary: #5b2b6e;
+  --color-primary-d: #46205a;
+  --color-primary-t: #f4eef7;
+  --color-primary-l: #d8c6e1;
+  --color-side: #2f1b3a;
+  --color-side-ink: #f1eaf5;
+  --color-side-mut: #bca9c8;
+
+  /* controls */
+  --color-ctl: #b9beca;
+  --color-ctl2: #8a91a0;
+  --color-ctl3: #9aa1b0;
+
+  /* data */
+  --color-slate: #56607a;
+  --color-seg-h: #15996b;
+  --color-seg-t: #e2622f;
+  --color-seg-p: #2a78d6;
+
+  /* status */
+  --color-warn: #8a5a00;
+  --color-warn-t: #fff3d1;
+  --color-ok: #1f6f43;
+  --color-ok-t: #e3f1e8;
+  --color-danger: #b3261e;
+
+  /* motion: 150 ms hover and toggles, 200 ms details, 250 ms panels */
+  --ease-std: cubic-bezier(0.2, 0, 0, 1);
+}
+
+@layer base {
+  html {
+    background: var(--color-page);
+  }
+  body {
+    margin: 0;
+    /* Below 1440 px the app scales itself down (see useFitToWidth). This is the floor of that. */
+    min-width: 1008px;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--color-ink);
+    -webkit-font-smoothing: antialiased;
+  }
+  button:not(:disabled),
+  summary,
+  select,
+  label[for] {
+    cursor: pointer;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      transition: none !important;
+      animation: none !important;
+    }
+  }
+}
+
+/* Type styles from the style guide. They sit in the components layer,
+   so any Tailwind utility on the same element can still override them. */
+@layer components {
+  .t-h1 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 1.18;
+    letter-spacing: -0.005em;
+  }
+  .t-h2 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: 21px;
+    line-height: 1.25;
+  }
+  .t-h3 {
+    font-size: 14.5px;
+    font-weight: 700;
+    line-height: 1.35;
+  }
+  .t-lead {
+    font-size: 15.5px;
+    color: var(--color-ink2);
+    max-width: 72ch;
+  }
+  .t-lbl {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--color-ink3);
+  }
+  .t-sm {
+    font-size: 13px;
+  }
+  .t-xs {
+    font-size: 12.5px;
+  }
+  .num {
+    font-variant-numeric: tabular-nums;
+  }
+  .hatch {
+    background: repeating-linear-gradient(45deg, #8d94a3 0 4px, #c9ced8 4px 8px);
+  }
+
+  /* Table from the style guide: quiet header, 1 px row lines, no zebra. */
+  .tbl {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+  }
+  .tbl th {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--color-line);
+    text-align: left;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--color-ink3);
+    white-space: nowrap;
+  }
+  .tbl td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--color-line2);
+    vertical-align: middle;
+  }
+  .tbl tr:last-child td {
+    border-bottom: 0;
+  }
+  .tbl .r {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+  .tbl-tight th {
+    padding: 6px 12px;
+  }
+  .tbl-tight td {
+    padding: 7px 12px;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@utility fade-in {
+  animation: fade-in 200ms var(--ease-std) both;
+}
+
+/* Progress bar of a run: fills from left to right once. */
+@keyframes grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Recharts draws a focus ring around the whole chart surface. The bars
+   themselves carry the tooltip, so the surface outline is switched off. */
+.recharts-wrapper:focus,
+.recharts-surface:focus {
+  outline: none;
+}
