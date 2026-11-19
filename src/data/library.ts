@@ -6,6 +6,7 @@
  * file. A further module that is built is listed in `built` below. Until then
  * it stays in the navigation as "coming soon".
  */
+import { allocationModule, allocationRuns, allocationSetups } from './allocation'
 import { surveyModules, surveyRuns } from './alpineOat'
 import type { FurtherModuleId, ModuleId, Run, RunId } from './alpineOat'
 import { forecastingModule, forecastingRuns, forecastingSetups } from './forecasting'
@@ -20,6 +21,7 @@ const built: { module: FurtherModule; runs: Run[]; setups: SetupInfo[] }[] = [
   { module: pricingModule, runs: pricingRuns, setups: pricingSetups },
   { module: targetingModule, runs: targetingRuns, setups: targetingSetups },
   { module: lifetimeValueModule, runs: lifetimeValueRuns, setups: lifetimeValueSetups },
+  { module: allocationModule, runs: allocationRuns, setups: allocationSetups },
 ]
 
 /** The names of the further modules that are not built yet, in the order of the concept. */

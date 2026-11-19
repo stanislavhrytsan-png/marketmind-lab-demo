@@ -154,6 +154,14 @@ Start each path with a click on the module in the sidebar.
 - **Point at** the card "Watch out". **Say:** "A company that uses one retention rate for all subscribers would not see this. With one rate the same subscriber seems worth CHF 201. The disloyal leave first, so the average rate even seems to rise with age."
 - **In "What if",** the formula starts from the Price-sensitive subscriber. Drag "Retention rate per year" to the right until the value passes the acquisition cost. **Say:** "The retention rate moves the value far more than the discount rate."
 
+### Resource allocation
+
+- **Say:** "Nobody has data on what sales would be at every level of advertising. But a regional manager can answer four questions. The engine draws a response curve through the four answers and searches for the best split. Split differently, the same budget earns 9.6% more profit."
+- **Point at** the first card. **Say:** "Basel gets nothing. That is a result, not an error: its curve is flat, and its advertising costs more than the margin it brings in."
+- **Point at** the card "Watch out". **Say:** "The split is only as good as the answers. One answer that is 2% off can move a quarter of a region's budget."
+- **Point at** "Is the budget itself right?". **Say:** "Asked whether more money would pay, the engine stops at CHF 1,132,000 and leaves the rest."
+- **In "What if",** click "Best split (RA-01)", then drag one slider. **Say:** "At the best split, one more franc earns the same in every region. Any move away from it costs profit."
+
 ## Where the numbers come from
 
 The calculation engine is in the folder `engine`, next to this one. One command runs it on the Alpine Oat Co. data and writes everything the demo shows into `src/data/engine_results.json`:
@@ -162,7 +170,7 @@ The calculation engine is in the folder `engine`, next to this one. One command 
 cd ../engine && .venv/bin/python -m marketmind.export_demo
 ```
 
-- **Real runs only.** The file holds the eight runs of the assignment (SEG-01 to SEG-04, POS-01 and CJ-01 to CJ-03) and the runs of the further modules: FC-01 to FC-04 (forecasting), PR-01 to PR-04 (price optimization), TG-01 and TG-02 (predictive modeling) and LV-01 and LV-02 (customer lifetime value). Each one is a real run of the engine with the settings the demo names.
+- **Real runs only.** The file holds the eight runs of the assignment (SEG-01 to SEG-04, POS-01 and CJ-01 to CJ-03) and the runs of the further modules: FC-01 to FC-04 (forecasting), PR-01 to PR-04 (price optimization), TG-01 and TG-02 (predictive modeling), LV-01 and LV-02 (customer lifetime value) and RA-01 and RA-02 (resource allocation). Each one is a real run of the engine with the settings the demo names.
 - **The engine's own words.** The file also holds the engine's description of every setting of the further modules (what it does, when to choose it), and the warnings and reading notes of each result. The setup screens and the notes marked "The engine says" show them word for word.
 - **Texts follow the numbers.** Sentences that quote a number are built from the file: in `src/data/alpineOat.ts` for the assignment, and in one data file per further module (for example `src/data/forecasting.ts`). This covers the tutor scripts, Lea's texts and the feedback draft. A text cannot disagree with a chart.
 - **Do not edit the file by hand.** Change the engine or its data, then run the export again.
@@ -195,6 +203,7 @@ Three checks keep the demo and the engine together:
 | Price optimization | Real results of the engine, calculated before: three forms of demand curve fitted to the price tests of three products, the best price of each, and a demand curve from the conjoint study. The what-if view moves along the engine's curves in the browser: another unit cost, another form, another price. | Fitted when the student presses Run, on the data and with the settings the student picked. |
 | Predictive modeling | Real results of the engine, calculated before: a logistic regression and a decision tree, fitted on 3,500 customers of a past campaign and tested on 1,500 others, with the gains and lift table and the table of right and wrong predictions at four thresholds. The what-if view repeats only the arithmetic of the campaign in the browser: profit by depth for another cost, margin or list size. | Fitted when the student presses Run. New customers are scored with the stored model. |
 | Customer lifetime value | Real results of the engine, calculated before: the retention rate of each segment from six yearly cohorts, the value of 3,882 current subscribers per segment, and the same with one retention rate for everyone. The what-if view applies the engine's formula in the browser to another margin, retention rate, discount rate, acquisition cost or payment convention. | Calculated when the student presses Run, on the cohort data and the customers of the case. |
+| Resource allocation | Real results of the engine, calculated before: a response curve per region from four judgments, the best split of the budget, the best split for 17 other budgets, and the split again with one judgment changed by 2%. The what-if view values a split of your own in the browser, with the engine's curves. The search for the best split is not repeated in the browser. | The student enters the judgments, and the engine searches when Run is pressed. |
 | AI tutor in the further modules | One short scripted exchange per module, in Coach mode. Fixed text with the engine's numbers. | A language model, inside the limits of the mode the professor set. |
 | Modules marked "coming soon" | Names in the navigation. The engine already calculates them. | Built into the interface one by one. |
 

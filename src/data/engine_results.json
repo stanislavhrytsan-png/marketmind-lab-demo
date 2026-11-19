@@ -12370,6 +12370,1933 @@
      "The retention rate moves the value far more than the discount rate. Try both."
     ]
    }
+  },
+  "allocation": {
+   "data": {
+    "file": "allocation_judgments.csv",
+    "what_is_split": "the advertising budget of a year, across four sales regions",
+    "unit": "thousand CHF per year",
+    "budget": 1000.0,
+    "increase": 0.5,
+    "margin_meaning": "share of sales that is left as margin before advertising",
+    "questions": {
+     "sales_at_zero": "What would sales be next year without any advertising in the region?",
+     "sales_at_current": "What will sales be with the advertising of today?",
+     "sales_at_increase": "What would sales be with 50% more advertising?",
+     "sales_at_saturation": "What would sales be with as much advertising as you could wish for?"
+    },
+    "units": [
+     "Zurich",
+     "Bern",
+     "Basel",
+     "Romandie"
+    ],
+    "judgments": [
+     {
+      "name": "Zurich",
+      "current_spending": 400.0,
+      "sales_at_zero": 3881.0,
+      "sales_at_current": 5200.0,
+      "sales_at_increase": 5663.0,
+      "sales_at_saturation": 6444.0,
+      "margin": 0.45,
+      "min_spending": 150.0,
+      "max_spending": null
+     },
+     {
+      "name": "Bern",
+      "current_spending": 250.0,
+      "sales_at_zero": 1952.0,
+      "sales_at_current": 3000.0,
+      "sales_at_increase": 3216.0,
+      "sales_at_saturation": 4426.0,
+      "margin": 0.45,
+      "min_spending": null,
+      "max_spending": null
+     },
+     {
+      "name": "Basel",
+      "current_spending": 250.0,
+      "sales_at_zero": 2129.0,
+      "sales_at_current": 2400.0,
+      "sales_at_increase": 2461.0,
+      "sales_at_saturation": 2521.0,
+      "margin": 0.45,
+      "min_spending": null,
+      "max_spending": null
+     },
+     {
+      "name": "Romandie",
+      "current_spending": 100.0,
+      "sales_at_zero": 732.0,
+      "sales_at_current": 1400.0,
+      "sales_at_increase": 1746.0,
+      "sales_at_saturation": 3518.0,
+      "margin": 0.45,
+      "min_spending": null,
+      "max_spending": 400.0
+     }
+    ]
+   },
+   "runs": {
+    "RA-01": {
+     "function": "allocate_budget",
+     "settings": {
+      "increase": 0.5,
+      "budget_rule": "spend_all",
+      "steps": 1000
+     },
+     "budget": 1000.0,
+     "left_over": 0.0,
+     "money_moved_between_units": 307.192547,
+     "units": [
+      {
+       "name": "Zurich",
+       "shape": "S-shaped",
+       "current_spending": 400.0,
+       "spending": 456.175717,
+       "change": 56.1757174,
+       "change_share": 0.140439293,
+       "sales_at_current": 5200.0,
+       "sales": 5357.63476,
+       "margin": 0.45,
+       "profit_at_current": 1940.0,
+       "profit": 1954.75993,
+       "margin_of_one_more_unit_of_spending": 1.16699312,
+       "min_spending": 150.0,
+       "max_spending": null,
+       "at_limit": null
+      },
+      {
+       "name": "Bern",
+       "shape": "concave",
+       "current_spending": 250.0,
+       "spending": 192.807453,
+       "change": -57.1925467,
+       "change_share": -0.228770187,
+       "sales_at_current": 3000.0,
+       "sales": 2866.76616,
+       "margin": 0.45,
+       "profit_at_current": 1100.0,
+       "profit": 1097.23732,
+       "margin_of_one_more_unit_of_spending": 1.16699315,
+       "min_spending": 0.0,
+       "max_spending": null,
+       "at_limit": null
+      },
+      {
+       "name": "Basel",
+       "shape": "S-shaped",
+       "current_spending": 250.0,
+       "spending": 0.0,
+       "change": -250.0,
+       "change_share": -1.0,
+       "sales_at_current": 2400.0,
+       "sales": 2129.0,
+       "margin": 0.45,
+       "profit_at_current": 830.0,
+       "profit": 958.05,
+       "margin_of_one_more_unit_of_spending": 0.0,
+       "min_spending": 0.0,
+       "max_spending": null,
+       "at_limit": "zero"
+      },
+      {
+       "name": "Romandie",
+       "shape": "S-shaped",
+       "current_spending": 100.0,
+       "spending": 351.016829,
+       "change": 251.016829,
+       "change_share": 2.51016829,
+       "sales_at_current": 1400.0,
+       "sales": 2587.97669,
+       "margin": 0.45,
+       "profit_at_current": 530.0,
+       "profit": 813.572683,
+       "margin_of_one_more_unit_of_spending": 1.16699308,
+       "min_spending": 0.0,
+       "max_spending": 400.0,
+       "at_limit": null
+      }
+     ],
+     "totals": {
+      "spending_at_current": 1000.0,
+      "spending": 1000.0,
+      "sales_at_current": 12000.0,
+      "sales": 12941.3776,
+      "profit_at_current": 4400.0,
+      "profit": 4823.61993,
+      "profit_gain": 423.619928,
+      "profit_gain_share": 0.0962772564
+     },
+     "warnings": [],
+     "how_to_read": [
+      "Money moves towards units where one more franc still brings much, and away from units whose curve has gone flat.",
+      "At the best split, one more franc earns about the same margin in every unit that is not held at a limit.",
+      "The result is only as good as the four judgments behind each curve."
+     ]
+    },
+    "RA-02": {
+     "function": "allocate_budget",
+     "settings": {
+      "increase": 0.5,
+      "budget_rule": "up_to",
+      "steps": 1000
+     },
+     "budget": 1500.0,
+     "left_over": 368.409879,
+     "money_moved_between_units": 332.381406,
+     "units": [
+      {
+       "name": "Zurich",
+       "shape": "S-shaped",
+       "current_spending": 400.0,
+       "spending": 510.027425,
+       "change": 110.027425,
+       "change_share": 0.275068563,
+       "sales_at_current": 5200.0,
+       "sales": 5487.08429,
+       "margin": 0.45,
+       "profit_at_current": 1940.0,
+       "profit": 1959.16051,
+       "margin_of_one_more_unit_of_spending": 0.999999998,
+       "min_spending": 150.0,
+       "max_spending": null,
+       "at_limit": null
+      },
+      {
+       "name": "Bern",
+       "shape": "concave",
+       "current_spending": 250.0,
+       "spending": 233.413654,
+       "change": -16.5863456,
+       "change_share": -0.0663453825,
+       "sales_at_current": 3000.0,
+       "sales": 2964.20908,
+       "margin": 0.45,
+       "profit_at_current": 1100.0,
+       "profit": 1100.48043,
+       "margin_of_one_more_unit_of_spending": 1.00000003,
+       "min_spending": 0.0,
+       "max_spending": null,
+       "at_limit": null
+      },
+      {
+       "name": "Basel",
+       "shape": "S-shaped",
+       "current_spending": 250.0,
+       "spending": 0.0,
+       "change": -250.0,
+       "change_share": -1.0,
+       "sales_at_current": 2400.0,
+       "sales": 2129.0,
+       "margin": 0.45,
+       "profit_at_current": 830.0,
+       "profit": 958.05,
+       "margin_of_one_more_unit_of_spending": 0.0,
+       "min_spending": 0.0,
+       "max_spending": null,
+       "at_limit": "zero"
+      },
+      {
+       "name": "Romandie",
+       "shape": "S-shaped",
+       "current_spending": 100.0,
+       "spending": 388.149041,
+       "change": 288.149041,
+       "change_share": 2.88149041,
+       "sales_at_current": 1400.0,
+       "sales": 2677.16017,
+       "margin": 0.45,
+       "profit_at_current": 530.0,
+       "profit": 816.573035,
+       "margin_of_one_more_unit_of_spending": 0.999999988,
+       "min_spending": 0.0,
+       "max_spending": 400.0,
+       "at_limit": null
+      }
+     ],
+     "totals": {
+      "spending_at_current": 1000.0,
+      "spending": 1131.59012,
+      "sales_at_current": 12000.0,
+      "sales": 13257.4535,
+      "profit_at_current": 4400.0,
+      "profit": 4834.26397,
+      "profit_gain": 434.263974,
+      "profit_gain_share": 0.0986963576
+     },
+     "warnings": [
+      "368.41 of the budget is left over: spending it would earn less than it costs."
+     ],
+     "how_to_read": [
+      "Money moves towards units where one more franc still brings much, and away from units whose curve has gone flat.",
+      "At the best split, one more franc earns about the same margin in every unit that is not held at a limit.",
+      "The result is only as good as the four judgments behind each curve."
+     ]
+    }
+   },
+   "curves": [
+    {
+     "name": "Zurich",
+     "shape": "S-shaped",
+     "shape_meaning": "Small spending does little, then sales take off, then they level out.",
+     "parameters": {
+      "low": 0.746346154,
+      "high": 1.23923077,
+      "c": 1.89011228,
+      "d": 0.943138741
+     },
+     "current_spending": 400.0,
+     "sales_at_zero": 3881.0,
+     "sales_at_current": 5200.0,
+     "sales_at_increase": 5663.0,
+     "sales_at_saturation": 6444.0,
+     "increase": 0.5,
+     "steepest_at_spending": 207.97244,
+     "margin": 0.45,
+     "min_spending": 150.0,
+     "max_spending": null,
+     "curve": {
+      "spending": [
+       0.0,
+       30.0,
+       60.0,
+       90.0,
+       120.0,
+       150.0,
+       180.0,
+       210.0,
+       240.0,
+       270.0,
+       300.0,
+       330.0,
+       360.0,
+       390.0,
+       420.0,
+       450.0,
+       480.0,
+       510.0,
+       540.0,
+       570.0,
+       600.0,
+       630.0,
+       660.0,
+       690.0,
+       720.0,
+       750.0,
+       780.0,
+       810.0,
+       840.0,
+       870.0,
+       900.0,
+       930.0,
+       960.0,
+       990.0,
+       1020.0,
+       1050.0,
+       1080.0,
+       1110.0,
+       1140.0,
+       1170.0,
+       1200.0
+      ],
+      "sales": [
+       3881.0,
+       3901.15965,
+       3954.1669,
+       4033.43856,
+       4132.75121,
+       4246.02199,
+       4367.68719,
+       4492.99992,
+       4618.16765,
+       4740.34957,
+       4857.56125,
+       4968.53308,
+       5072.55782,
+       5169.34851,
+       5258.91741,
+       5341.47897,
+       5417.37566,
+       5487.02335,
+       5550.87253,
+       5609.38173,
+       5663.0,
+       5712.15599,
+       5757.25168,
+       5798.6593,
+       5836.72044,
+       5871.74647,
+       5904.0199,
+       5933.79618,
+       5961.30576,
+       5986.75624,
+       6010.33442,
+       6032.20836,
+       6052.52924,
+       6071.43311,
+       6089.04245,
+       6105.46761,
+       6120.80811,
+       6135.15377,
+       6148.58574,
+       6161.17747,
+       6172.99544
+      ],
+      "profit": [
+       1746.45,
+       1725.52184,
+       1719.3751,
+       1725.04735,
+       1739.73805,
+       1760.7099,
+       1785.45923,
+       1811.84996,
+       1838.17544,
+       1863.15731,
+       1885.90256,
+       1905.83989,
+       1922.65102,
+       1936.20683,
+       1946.51283,
+       1953.66554,
+       1957.81905,
+       1959.16051,
+       1957.89264,
+       1954.22178,
+       1948.35,
+       1940.4702,
+       1930.76326,
+       1919.39669,
+       1906.5242,
+       1892.28591,
+       1876.80895,
+       1860.20828,
+       1842.58759,
+       1824.04031,
+       1804.65049,
+       1784.49376,
+       1763.63816,
+       1742.1449,
+       1720.0691,
+       1697.46043,
+       1674.36365,
+       1650.8192,
+       1626.86359,
+       1602.52986,
+       1577.84795
+      ]
+     },
+     "how_to_read": [
+      "The curve goes exactly through the four judgments. It is only as good as they are.",
+      "Where the curve is steep, more spending brings many more sales. Where it is flat, more spending is wasted."
+     ]
+    },
+    {
+     "name": "Bern",
+     "shape": "concave",
+     "shape_meaning": "The first francs do the most. Every further franc adds less.",
+     "parameters": {
+      "low": 0.650666667,
+      "high": 1.47533333,
+      "c": 0.86727727,
+      "d": 1.36068702
+     },
+     "current_spending": 250.0,
+     "sales_at_zero": 1952.0,
+     "sales_at_current": 3000.0,
+     "sales_at_increase": 3216.0,
+     "sales_at_saturation": 4426.0,
+     "increase": 0.5,
+     "steepest_at_spending": null,
+     "margin": 0.45,
+     "min_spending": null,
+     "max_spending": null,
+     "curve": {
+      "spending": [
+       0.0,
+       18.75,
+       37.5,
+       56.25,
+       75.0,
+       93.75,
+       112.5,
+       131.25,
+       150.0,
+       168.75,
+       187.5,
+       206.25,
+       225.0,
+       243.75,
+       262.5,
+       281.25,
+       300.0,
+       318.75,
+       337.5,
+       356.25,
+       375.0,
+       393.75,
+       412.5,
+       431.25,
+       450.0,
+       468.75,
+       487.5,
+       506.25,
+       525.0,
+       543.75,
+       562.5,
+       581.25,
+       600.0,
+       618.75,
+       637.5,
+       656.25,
+       675.0,
+       693.75,
+       712.5,
+       731.25,
+       750.0
+      ],
+      "sales": [
+       1952.0,
+       2130.44168,
+       2259.25083,
+       2367.01004,
+       2460.44698,
+       2543.07416,
+       2617.10948,
+       2684.09418,
+       2745.16366,
+       2801.18809,
+       2852.8538,
+       2900.71419,
+       2945.2233,
+       2986.75903,
+       3025.63968,
+       3062.13608,
+       3096.48074,
+       3128.87476,
+       3159.49335,
+       3188.49,
+       3216.0,
+       3242.14314,
+       3267.02599,
+       3290.74376,
+       3313.38183,
+       3335.01703,
+       3355.71875,
+       3375.54983,
+       3394.56736,
+       3412.82331,
+       3430.36518,
+       3447.23641,
+       3463.47686,
+       3479.12318,
+       3494.20912,
+       3508.76585,
+       3522.82216,
+       3536.40474,
+       3549.53834,
+       3562.24596,
+       3574.54902
+      ],
+      "profit": [
+       878.4,
+       939.948754,
+       979.162876,
+       1008.90452,
+       1032.20114,
+       1050.63337,
+       1065.19926,
+       1076.59238,
+       1085.32365,
+       1091.78464,
+       1096.28421,
+       1099.07139,
+       1100.35048,
+       1100.29156,
+       1099.03785,
+       1096.71124,
+       1093.41633,
+       1089.24364,
+       1084.27201,
+       1078.5705,
+       1072.2,
+       1065.21441,
+       1057.6617,
+       1049.58469,
+       1041.02182,
+       1032.00766,
+       1022.57344,
+       1012.74742,
+       1002.55531,
+       992.020492,
+       981.164332,
+       970.006385,
+       958.564588,
+       946.855431,
+       934.894106,
+       922.694632,
+       910.269971,
+       897.632132,
+       884.792252,
+       871.760684,
+       858.547059
+      ]
+     },
+     "how_to_read": [
+      "The curve goes exactly through the four judgments. It is only as good as they are.",
+      "Where the curve is steep, more spending brings many more sales. Where it is flat, more spending is wasted."
+     ]
+    },
+    {
+     "name": "Basel",
+     "shape": "S-shaped",
+     "shape_meaning": "Small spending does little, then sales take off, then they level out.",
+     "parameters": {
+      "low": 0.887083333,
+      "high": 1.05041667,
+      "c": 2.23067809,
+      "d": 0.446494465
+     },
+     "current_spending": 250.0,
+     "sales_at_zero": 2129.0,
+     "sales_at_current": 2400.0,
+     "sales_at_increase": 2461.0,
+     "sales_at_saturation": 2521.0,
+     "increase": 0.5,
+     "steepest_at_spending": 112.993235,
+     "margin": 0.45,
+     "min_spending": null,
+     "max_spending": null,
+     "curve": {
+      "spending": [
+       0.0,
+       18.75,
+       37.5,
+       56.25,
+       75.0,
+       93.75,
+       112.5,
+       131.25,
+       150.0,
+       168.75,
+       187.5,
+       206.25,
+       225.0,
+       243.75,
+       262.5,
+       281.25,
+       300.0,
+       318.75,
+       337.5,
+       356.25,
+       375.0,
+       393.75,
+       412.5,
+       431.25,
+       450.0,
+       468.75,
+       487.5,
+       506.25,
+       525.0,
+       543.75,
+       562.5,
+       581.25,
+       600.0,
+       618.75,
+       637.5,
+       656.25,
+       675.0,
+       693.75,
+       712.5,
+       731.25,
+       750.0
+      ],
+      "sales": [
+       2129.0,
+       2131.69832,
+       2141.35069,
+       2158.16244,
+       2180.92583,
+       2207.69572,
+       2236.37187,
+       2265.13306,
+       2292.64907,
+       2318.10138,
+       2341.09469,
+       2361.53426,
+       2379.51299,
+       2395.22544,
+       2408.90979,
+       2420.81222,
+       2431.16711,
+       2440.18744,
+       2448.06137,
+       2454.95218,
+       2461.0,
+       2466.32431,
+       2471.02656,
+       2475.19279,
+       2478.89592,
+       2482.19782,
+       2485.15105,
+       2487.80036,
+       2490.18395,
+       2492.33449,
+       2494.28002,
+       2496.04467,
+       2497.64926,
+       2499.11183,
+       2500.44801,
+       2501.67143,
+       2502.79399,
+       2503.8261,
+       2504.77691,
+       2505.65445,
+       2506.46584
+      ],
+      "profit": [
+       958.05,
+       940.514246,
+       926.107812,
+       914.923099,
+       906.416622,
+       899.713075,
+       893.86734,
+       888.059875,
+       881.692083,
+       874.395619,
+       865.992611,
+       856.440419,
+       845.780846,
+       834.101449,
+       821.509407,
+       808.1155,
+       794.025197,
+       779.334347,
+       764.127615,
+       748.478479,
+       732.45,
+       716.095938,
+       699.461952,
+       682.586755,
+       665.503164,
+       648.239019,
+       630.817972,
+       613.260163,
+       595.582777,
+       577.800519,
+       559.926008,
+       541.970101,
+       523.942169,
+       505.850323,
+       487.701605,
+       469.502146,
+       451.257297,
+       432.971746,
+       414.649607,
+       396.294503,
+       377.90963
+      ]
+     },
+     "how_to_read": [
+      "The curve goes exactly through the four judgments. It is only as good as they are.",
+      "Where the curve is steep, more spending brings many more sales. Where it is flat, more spending is wasted."
+     ]
+    },
+    {
+     "name": "Romandie",
+     "shape": "S-shaped",
+     "shape_meaning": "Small spending does little, then sales take off, then they level out.",
+     "parameters": {
+      "low": 0.522857143,
+      "high": 2.51285714,
+      "c": 1.46925936,
+      "d": 3.17065868
+     },
+     "current_spending": 100.0,
+     "sales_at_zero": 732.0,
+     "sales_at_current": 1400.0,
+     "sales_at_increase": 1746.0,
+     "sales_at_saturation": 3518.0,
+     "increase": 0.5,
+     "steepest_at_spending": 70.8372654,
+     "margin": 0.45,
+     "min_spending": null,
+     "max_spending": 400.0,
+     "curve": {
+      "spending": [
+       0.0,
+       7.5,
+       15.0,
+       22.5,
+       30.0,
+       37.5,
+       45.0,
+       52.5,
+       60.0,
+       67.5,
+       75.0,
+       82.5,
+       90.0,
+       97.5,
+       105.0,
+       112.5,
+       120.0,
+       127.5,
+       135.0,
+       142.5,
+       150.0,
+       157.5,
+       165.0,
+       172.5,
+       180.0,
+       187.5,
+       195.0,
+       202.5,
+       210.0,
+       217.5,
+       225.0,
+       232.5,
+       240.0,
+       247.5,
+       255.0,
+       262.5,
+       270.0,
+       277.5,
+       285.0,
+       292.5,
+       300.0
+      ],
+      "sales": [
+       732.0,
+       751.407471,
+       785.081305,
+       826.837169,
+       874.17981,
+       925.512337,
+       979.672299,
+       1035.7632,
+       1093.07359,
+       1151.03091,
+       1209.17175,
+       1267.12084,
+       1324.57538,
+       1381.29264,
+       1437.08009,
+       1491.78709,
+       1545.2981,
+       1597.52689,
+       1648.41166,
+       1697.91093,
+       1746.0,
+       1792.66804,
+       1837.91551,
+       1881.7521,
+       1924.19486,
+       1965.26677,
+       2004.99538,
+       2043.41182,
+       2080.54986,
+       2116.4452,
+       2151.13481,
+       2184.65647,
+       2217.04834,
+       2248.3486,
+       2278.59518,
+       2307.82556,
+       2336.07657,
+       2363.38427,
+       2389.78382,
+       2415.30944,
+       2439.99433
+      ],
+      "profit": [
+       329.4,
+       330.633362,
+       338.286587,
+       349.576726,
+       363.380915,
+       378.980552,
+       395.852535,
+       413.593438,
+       431.883114,
+       450.463911,
+       469.127288,
+       487.70438,
+       506.058919,
+       524.081689,
+       541.686039,
+       558.804189,
+       575.384144,
+       591.3871,
+       606.785247,
+       621.559917,
+       635.7,
+       649.200617,
+       662.06198,
+       674.288444,
+       685.887689,
+       696.870046,
+       707.247922,
+       717.03532,
+       726.247439,
+       734.900339,
+       743.010664,
+       750.595413,
+       757.671754,
+       764.25687,
+       770.367832,
+       776.021503,
+       781.234458,
+       786.022921,
+       790.402721,
+       794.38925,
+       797.997446
+      ]
+     },
+     "how_to_read": [
+      "The curve goes exactly through the four judgments. It is only as good as they are.",
+      "Where the curve is steep, more spending brings many more sales. Where it is flat, more spending is wasted."
+     ]
+    }
+   ],
+   "by_budget": [
+    {
+     "budget": 400.0,
+     "spend_all": {
+      "spending": [
+       150.0,
+       57.6307863,
+       0.0,
+       192.369214
+      ],
+      "spent": 400.0,
+      "left_over": 0.0,
+      "profit": 4433.25112
+     },
+     "up_to": {
+      "spending": [
+       150.0,
+       57.6307863,
+       0.0,
+       192.369214
+      ],
+      "spent": 400.0,
+      "left_over": 0.0,
+      "profit": 4433.25112
+     }
+    },
+    {
+     "budget": 500.0,
+     "spend_all": {
+      "spending": [
+       150.0,
+       99.0110483,
+       0.0,
+       250.988952
+      ],
+      "spent": 500.0,
+      "left_over": 0.0,
+      "profit": 4540.99397
+     },
+     "up_to": {
+      "spending": [
+       150.0,
+       99.0110483,
+       0.0,
+       250.988952
+      ],
+      "spent": 500.0,
+      "left_over": 0.0,
+      "profit": 4540.99397
+     }
+    },
+    {
+     "budget": 600.0,
+     "spend_all": {
+      "spending": [
+       254.094142,
+       97.1915381,
+       0.0,
+       248.71432
+      ],
+      "spent": 600.0,
+      "left_over": 0.0,
+      "profit": 4627.04319
+     },
+     "up_to": {
+      "spending": [
+       254.094142,
+       97.1915381,
+       0.0,
+       248.71432
+      ],
+      "spent": 600.0,
+      "left_over": 0.0,
+      "profit": 4627.04319
+     }
+    },
+    {
+     "budget": 700.0,
+     "spend_all": {
+      "spending": [
+       314.908742,
+       114.946743,
+       0.0,
+       270.144515
+      ],
+      "spent": 700.0,
+      "left_over": 0.0,
+      "profit": 4702.42081
+     },
+     "up_to": {
+      "spending": [
+       314.908742,
+       114.946743,
+       0.0,
+       270.144515
+      ],
+      "spent": 700.0,
+      "left_over": 0.0,
+      "profit": 4702.42081
+     }
+    },
+    {
+     "budget": 800.0,
+     "spend_all": {
+      "spending": [
+       366.232855,
+       137.932382,
+       0.0,
+       295.834763
+      ],
+      "spent": 800.0,
+      "left_over": 0.0,
+      "profit": 4759.81326
+     },
+     "up_to": {
+      "spending": [
+       366.232855,
+       137.932382,
+       0.0,
+       295.834763
+      ],
+      "spent": 800.0,
+      "left_over": 0.0,
+      "profit": 4759.81326
+     }
+    },
+    {
+     "budget": 900.0,
+     "spend_all": {
+      "spending": [
+       412.747222,
+       164.160185,
+       0.0,
+       323.092593
+      ],
+      "spent": 900.0,
+      "left_over": 0.0,
+      "profit": 4799.64256
+     },
+     "up_to": {
+      "spending": [
+       412.747222,
+       164.160185,
+       0.0,
+       323.092593
+      ],
+      "spent": 900.0,
+      "left_over": 0.0,
+      "profit": 4799.64256
+     }
+    },
+    {
+     "budget": 1000.0,
+     "spend_all": {
+      "spending": [
+       456.175717,
+       192.807453,
+       0.0,
+       351.016829
+      ],
+      "spent": 1000.0,
+      "left_over": 0.0,
+      "profit": 4823.61993
+     },
+     "up_to": {
+      "spending": [
+       456.175717,
+       192.807453,
+       0.0,
+       351.016829
+      ],
+      "spent": 1000.0,
+      "left_over": 0.0,
+      "profit": 4823.61993
+     }
+    },
+    {
+     "budget": 1100.0,
+     "spend_all": {
+      "spending": [
+       497.383705,
+       223.399287,
+       0.0,
+       379.217008
+      ],
+      "spent": 1100.0,
+      "left_over": 0.0,
+      "profit": 4833.67978
+     },
+     "up_to": {
+      "spending": [
+       497.383705,
+       223.399287,
+       0.0,
+       379.217008
+      ],
+      "spent": 1100.0,
+      "left_over": 0.0,
+      "profit": 4833.67978
+     }
+    },
+    {
+     "budget": 1200.0,
+     "spend_all": {
+      "spending": [
+       540.927885,
+       259.072115,
+       0.0,
+       400.0
+      ],
+      "spent": 1200.0,
+      "left_over": 0.0,
+      "profit": 4831.5071
+     },
+     "up_to": {
+      "spending": [
+       510.027427,
+       233.413678,
+       0.0,
+       388.149059
+      ],
+      "spent": 1131.59016,
+      "left_over": 68.4098351,
+      "profit": 4834.26397
+     }
+    },
+    {
+     "budget": 1300.0,
+     "spend_all": {
+      "spending": [
+       593.551058,
+       306.448942,
+       0.0,
+       400.0
+      ],
+      "spent": 1300.0,
+      "left_over": 0.0,
+      "profit": 4816.20657
+     },
+     "up_to": {
+      "spending": [
+       510.027423,
+       233.41366,
+       0.0,
+       388.149047
+      ],
+      "spent": 1131.59013,
+      "left_over": 168.40987,
+      "profit": 4834.26397
+     }
+    },
+    {
+     "budget": 1400.0,
+     "spend_all": {
+      "spending": [
+       644.024041,
+       355.975959,
+       0.0,
+       400.0
+      ],
+      "spent": 1400.0,
+      "left_over": 0.0,
+      "profit": 4789.15071
+     },
+     "up_to": {
+      "spending": [
+       510.027416,
+       233.413651,
+       0.0,
+       388.149043
+      ],
+      "spent": 1131.59011,
+      "left_over": 268.40989,
+      "profit": 4834.26397
+     }
+    },
+    {
+     "budget": 1500.0,
+     "spend_all": {
+      "spending": [
+       692.707802,
+       407.292198,
+       0.0,
+       400.0
+      ],
+      "spent": 1500.0,
+      "left_over": 0.0,
+      "profit": 4752.45075
+     },
+     "up_to": {
+      "spending": [
+       510.027425,
+       233.413654,
+       0.0,
+       388.149041
+      ],
+      "spent": 1131.59012,
+      "left_over": 368.409879,
+      "profit": 4834.26397
+     }
+    },
+    {
+     "budget": 1600.0,
+     "spend_all": {
+      "spending": [
+       739.867912,
+       460.132088,
+       0.0,
+       400.0
+      ],
+      "spent": 1600.0,
+      "left_over": 0.0,
+      "profit": 4707.78656
+     },
+     "up_to": {
+      "spending": [
+       510.027425,
+       233.413661,
+       0.0,
+       388.149038
+      ],
+      "spent": 1131.59012,
+      "left_over": 468.409876,
+      "profit": 4834.26397
+     }
+    },
+    {
+     "budget": 1700.0,
+     "spend_all": {
+      "spending": [
+       785.706702,
+       514.293298,
+       0.0,
+       400.0
+      ],
+      "spent": 1700.0,
+      "left_over": 0.0,
+      "profit": 4656.49553
+     },
+     "up_to": {
+      "spending": [
+       510.027425,
+       233.413663,
+       0.0,
+       388.149037
+      ],
+      "spent": 1131.59013,
+      "left_over": 568.409875,
+      "profit": 4834.26397
+     }
+    },
+    {
+     "budget": 1800.0,
+     "spend_all": {
+      "spending": [
+       744.365769,
+       465.326545,
+       190.307685,
+       400.0
+      ],
+      "spent": 1800.0,
+      "left_over": 0.0,
+      "profit": 4609.67145
+     },
+     "up_to": {
+      "spending": [
+       510.027435,
+       233.413695,
+       0.0,
+       388.149028
+      ],
+      "spent": 1131.59016,
+      "left_over": 668.409842,
+      "profit": 4834.26397
+     }
+    },
+    {
+     "budget": 1900.0,
+     "spend_all": {
+      "spending": [
+       782.975426,
+       510.99114,
+       206.033434,
+       400.0
+      ],
+      "spent": 1900.0,
+      "left_over": 0.0,
+      "profit": 4558.26447
+     },
+     "up_to": {
+      "spending": [
+       510.027409,
+       233.413696,
+       0.0,
+       388.149043
+      ],
+      "spent": 1131.59015,
+      "left_over": 768.409852,
+      "profit": 4834.26397
+     }
+    },
+    {
+     "budget": 2000.0,
+     "spend_all": {
+      "spending": [
+       821.299078,
+       558.171106,
+       220.529817,
+       400.0
+      ],
+      "spent": 2000.0,
+      "left_over": 0.0,
+      "profit": 4502.09545
+     },
+     "up_to": {
+      "spending": [
+       510.027416,
+       233.41367,
+       0.0,
+       388.149037
+      ],
+      "spent": 1131.59012,
+      "left_over": 868.409877,
+      "profit": 4834.26397
+     }
+    }
+   ],
+   "changed_judgments": {
+    "judgment": "sales_at_increase",
+    "change": 0.02,
+    "units": [
+     {
+      "unit": "Zurich",
+      "judgment": 5663.0,
+      "own_spending": 456.175717,
+      "variants": [
+       {
+        "change": -0.02,
+        "judgment": 5550.0,
+        "spending": [
+         391.911464,
+         226.28437,
+         0.0,
+         381.804167
+        ],
+        "own_spending": 391.911464,
+        "profit": 4814.80157
+       },
+       {
+        "change": 0.02,
+        "judgment": 5776.0,
+        "spending": [
+         500.129686,
+         170.474992,
+         0.0,
+         329.395322
+        ],
+        "own_spending": 500.129686,
+        "profit": 4850.28182
+       }
+      ]
+     },
+     {
+      "unit": "Bern",
+      "judgment": 3216.0,
+      "own_spending": 192.807453,
+      "variants": [
+       {
+        "change": -0.02,
+        "judgment": 3152.0,
+        "spending": [
+         485.729613,
+         143.175805,
+         0.0,
+         371.094582
+        ],
+        "own_spending": 143.175805,
+        "profit": 4849.59447
+       },
+       {
+        "change": 0.02,
+        "judgment": 3280.0,
+        "spending": [
+         427.711856,
+         239.809727,
+         0.0,
+         332.478417
+        ],
+        "own_spending": 239.809727,
+        "profit": 4813.82846
+       }
+      ]
+     },
+     {
+      "unit": "Basel",
+      "judgment": 2461.0,
+      "own_spending": 0.0,
+      "variants": [
+       {
+        "change": -0.02,
+        "judgment": 2412.0,
+        "spending": [
+         450.531309,
+         188.86967,
+         13.3247533,
+         347.274268
+        ],
+        "own_spending": 13.3247533,
+        "profit": 4884.64978
+       },
+       {
+        "change": 0.02,
+        "judgment": 2510.0,
+        "spending": [
+         456.175717,
+         192.807453,
+         0.0,
+         351.016829
+        ],
+        "own_spending": 0.0,
+        "profit": 4823.61993
+       }
+      ]
+     },
+     {
+      "unit": "Romandie",
+      "judgment": 1746.0,
+      "own_spending": 351.016829,
+      "variants": [
+       {
+        "change": -0.02,
+        "judgment": 1711.0,
+        "spending": [
+         461.132269,
+         196.316625,
+         0.0,
+         342.551106
+        ],
+        "own_spending": 342.551106,
+        "profit": 4775.38081
+       },
+       {
+        "change": 0.02,
+        "judgment": 1781.0,
+        "spending": [
+         453.853593,
+         191.179883,
+         0.0,
+         354.966524
+        ],
+        "own_spending": 354.966524,
+        "profit": 4868.84488
+       }
+      ]
+     }
+    ]
+   },
+   "own_splits": [
+    {
+     "units": [
+      {
+       "name": "Zurich",
+       "shape": "S-shaped",
+       "current_spending": 400.0,
+       "spending": 400.0,
+       "change": 0.0,
+       "change_share": 0.0,
+       "sales_at_current": 5200.0,
+       "sales": 5200.0,
+       "margin": 0.45,
+       "profit_at_current": 1940.0,
+       "profit": 1940.0,
+       "margin_of_one_more_unit_of_spending": 1.36130894,
+       "min_spending": 150.0,
+       "max_spending": null
+      },
+      {
+       "name": "Bern",
+       "shape": "concave",
+       "current_spending": 250.0,
+       "spending": 250.0,
+       "change": 0.0,
+       "change_share": 0.0,
+       "sales_at_current": 3000.0,
+       "sales": 3000.0,
+       "margin": 0.45,
+       "profit_at_current": 1100.0,
+       "profit": 1100.0,
+       "margin_of_one_more_unit_of_spending": 0.942999761,
+       "min_spending": 0.0,
+       "max_spending": null
+      },
+      {
+       "name": "Basel",
+       "shape": "S-shaped",
+       "current_spending": 250.0,
+       "spending": 250.0,
+       "change": 0.0,
+       "change_share": 0.0,
+       "sales_at_current": 2400.0,
+       "sales": 2400.0,
+       "margin": 0.45,
+       "profit_at_current": 830.0,
+       "profit": 830.0,
+       "margin_of_one_more_unit_of_spending": 0.335875248,
+       "min_spending": 0.0,
+       "max_spending": null
+      },
+      {
+       "name": "Romandie",
+       "shape": "S-shaped",
+       "current_spending": 100.0,
+       "spending": 100.0,
+       "change": 0.0,
+       "change_share": 0.0,
+       "sales_at_current": 1400.0,
+       "sales": 1400.0,
+       "margin": 0.45,
+       "profit_at_current": 530.0,
+       "profit": 530.0,
+       "margin_of_one_more_unit_of_spending": 3.35762575,
+       "min_spending": 0.0,
+       "max_spending": 400.0
+      }
+     ],
+     "totals": {
+      "spending_at_current": 1000.0,
+      "spending": 1000.0,
+      "sales_at_current": 12000.0,
+      "sales": 12000.0,
+      "profit_at_current": 4400.0,
+      "profit": 4400.0,
+      "profit_gain": 0.0,
+      "profit_gain_share": 0.0
+     },
+     "warnings": []
+    },
+    {
+     "units": [
+      {
+       "name": "Zurich",
+       "shape": "S-shaped",
+       "current_spending": 400.0,
+       "spending": 456.175717,
+       "change": 56.1757174,
+       "change_share": 0.140439293,
+       "sales_at_current": 5200.0,
+       "sales": 5357.63476,
+       "margin": 0.45,
+       "profit_at_current": 1940.0,
+       "profit": 1954.75993,
+       "margin_of_one_more_unit_of_spending": 1.16699312,
+       "min_spending": 150.0,
+       "max_spending": null
+      },
+      {
+       "name": "Bern",
+       "shape": "concave",
+       "current_spending": 250.0,
+       "spending": 192.807453,
+       "change": -57.1925467,
+       "change_share": -0.228770187,
+       "sales_at_current": 3000.0,
+       "sales": 2866.76616,
+       "margin": 0.45,
+       "profit_at_current": 1100.0,
+       "profit": 1097.23732,
+       "margin_of_one_more_unit_of_spending": 1.16699315,
+       "min_spending": 0.0,
+       "max_spending": null
+      },
+      {
+       "name": "Basel",
+       "shape": "S-shaped",
+       "current_spending": 250.0,
+       "spending": 0.0,
+       "change": -250.0,
+       "change_share": -1.0,
+       "sales_at_current": 2400.0,
+       "sales": 2129.0,
+       "margin": 0.45,
+       "profit_at_current": 830.0,
+       "profit": 958.05,
+       "margin_of_one_more_unit_of_spending": 0.0,
+       "min_spending": 0.0,
+       "max_spending": null
+      },
+      {
+       "name": "Romandie",
+       "shape": "S-shaped",
+       "current_spending": 100.0,
+       "spending": 351.016829,
+       "change": 251.016829,
+       "change_share": 2.51016829,
+       "sales_at_current": 1400.0,
+       "sales": 2587.97669,
+       "margin": 0.45,
+       "profit_at_current": 530.0,
+       "profit": 813.572683,
+       "margin_of_one_more_unit_of_spending": 1.16699308,
+       "min_spending": 0.0,
+       "max_spending": 400.0
+      }
+     ],
+     "totals": {
+      "spending_at_current": 1000.0,
+      "spending": 1000.0,
+      "sales_at_current": 12000.0,
+      "sales": 12941.3776,
+      "profit_at_current": 4400.0,
+      "profit": 4823.61993,
+      "profit_gain": 423.619928,
+      "profit_gain_share": 0.0962772564
+     },
+     "warnings": []
+    },
+    {
+     "units": [
+      {
+       "name": "Zurich",
+       "shape": "S-shaped",
+       "current_spending": 400.0,
+       "spending": 250.0,
+       "change": -150.0,
+       "change_share": -0.375,
+       "sales_at_current": 5200.0,
+       "sales": 4659.34109,
+       "margin": 0.45,
+       "profit_at_current": 1940.0,
+       "profit": 1846.70349,
+       "margin_of_one_more_unit_of_spending": 1.84389711,
+       "min_spending": 150.0,
+       "max_spending": null
+      },
+      {
+       "name": "Bern",
+       "shape": "concave",
+       "current_spending": 250.0,
+       "spending": 250.0,
+       "change": 0.0,
+       "change_share": 0.0,
+       "sales_at_current": 3000.0,
+       "sales": 3000.0,
+       "margin": 0.45,
+       "profit_at_current": 1100.0,
+       "profit": 1100.0,
+       "margin_of_one_more_unit_of_spending": 0.942999761,
+       "min_spending": 0.0,
+       "max_spending": null
+      },
+      {
+       "name": "Basel",
+       "shape": "S-shaped",
+       "current_spending": 250.0,
+       "spending": 250.0,
+       "change": 0.0,
+       "change_share": 0.0,
+       "sales_at_current": 2400.0,
+       "sales": 2400.0,
+       "margin": 0.45,
+       "profit_at_current": 830.0,
+       "profit": 830.0,
+       "margin_of_one_more_unit_of_spending": 0.335875248,
+       "min_spending": 0.0,
+       "max_spending": null
+      },
+      {
+       "name": "Romandie",
+       "shape": "S-shaped",
+       "current_spending": 100.0,
+       "spending": 250.0,
+       "change": 150.0,
+       "change_share": 1.5,
+       "sales_at_current": 1400.0,
+       "sales": 2258.54601,
+       "margin": 0.45,
+       "profit_at_current": 530.0,
+       "profit": 766.345703,
+       "margin_of_one_more_unit_of_spending": 1.82508067,
+       "min_spending": 0.0,
+       "max_spending": 400.0
+      }
+     ],
+     "totals": {
+      "spending_at_current": 1000.0,
+      "spending": 1000.0,
+      "sales_at_current": 12000.0,
+      "sales": 12317.8871,
+      "profit_at_current": 4400.0,
+      "profit": 4543.04919,
+      "profit_gain": 143.049191,
+      "profit_gain_share": 0.0325111798
+     },
+     "warnings": []
+    },
+    {
+     "units": [
+      {
+       "name": "Zurich",
+       "shape": "S-shaped",
+       "current_spending": 400.0,
+       "spending": 400.0,
+       "change": 0.0,
+       "change_share": 0.0,
+       "sales_at_current": 5200.0,
+       "sales": 5200.0,
+       "margin": 0.45,
+       "profit_at_current": 1940.0,
+       "profit": 1940.0,
+       "margin_of_one_more_unit_of_spending": 1.36130894,
+       "min_spending": 150.0,
+       "max_spending": null
+      },
+      {
+       "name": "Bern",
+       "shape": "concave",
+       "current_spending": 250.0,
+       "spending": 250.0,
+       "change": 0.0,
+       "change_share": 0.0,
+       "sales_at_current": 3000.0,
+       "sales": 3000.0,
+       "margin": 0.45,
+       "profit_at_current": 1100.0,
+       "profit": 1100.0,
+       "margin_of_one_more_unit_of_spending": 0.942999761,
+       "min_spending": 0.0,
+       "max_spending": null
+      },
+      {
+       "name": "Basel",
+       "shape": "S-shaped",
+       "current_spending": 250.0,
+       "spending": 50.0,
+       "change": -200.0,
+       "change_share": -0.8,
+       "sales_at_current": 2400.0,
+       "sales": 2151.81651,
+       "margin": 0.45,
+       "profit_at_current": 830.0,
+       "profit": 918.317427,
+       "margin_of_one_more_unit_of_spending": 0.431404574,
+       "min_spending": 0.0,
+       "max_spending": null
+      },
+      {
+       "name": "Romandie",
+       "shape": "S-shaped",
+       "current_spending": 100.0,
+       "spending": 300.0,
+       "change": 200.0,
+       "change_share": 2.0,
+       "sales_at_current": 1400.0,
+       "sales": 2439.99433,
+       "margin": 0.45,
+       "profit_at_current": 530.0,
+       "profit": 797.997446,
+       "margin_of_one_more_unit_of_spending": 1.45651876,
+       "min_spending": 0.0,
+       "max_spending": 400.0
+      }
+     ],
+     "totals": {
+      "spending_at_current": 1000.0,
+      "spending": 1000.0,
+      "sales_at_current": 12000.0,
+      "sales": 12791.8108,
+      "profit_at_current": 4400.0,
+      "profit": 4756.31487,
+      "profit_gain": 356.314874,
+      "profit_gain_share": 0.0809806531
+     },
+     "warnings": []
+    },
+    {
+     "units": [
+      {
+       "name": "Zurich",
+       "shape": "S-shaped",
+       "current_spending": 400.0,
+       "spending": 100.0,
+       "change": -300.0,
+       "change_share": -0.75,
+       "sales_at_current": 5200.0,
+       "sales": 4064.62285,
+       "margin": 0.45,
+       "profit_at_current": 1940.0,
+       "profit": 1729.08028,
+       "margin_of_one_more_unit_of_spending": 1.44991158,
+       "min_spending": 150.0,
+       "max_spending": null
+      },
+      {
+       "name": "Bern",
+       "shape": "concave",
+       "current_spending": 250.0,
+       "spending": 600.0,
+       "change": 350.0,
+       "change_share": 1.4,
+       "sales_at_current": 3000.0,
+       "sales": 3463.47686,
+       "margin": 0.45,
+       "profit_at_current": 1100.0,
+       "profit": 958.564588,
+       "margin_of_one_more_unit_of_spending": 0.382500682,
+       "min_spending": 0.0,
+       "max_spending": null
+      },
+      {
+       "name": "Basel",
+       "shape": "S-shaped",
+       "current_spending": 250.0,
+       "spending": 200.0,
+       "change": -50.0,
+       "change_share": -0.2,
+       "sales_at_current": 2400.0,
+       "sales": 2355.00188,
+       "margin": 0.45,
+       "profit_at_current": 830.0,
+       "profit": 859.750846,
+       "margin_of_one_more_unit_of_spending": 0.480339801,
+       "min_spending": 0.0,
+       "max_spending": null
+      },
+      {
+       "name": "Romandie",
+       "shape": "S-shaped",
+       "current_spending": 100.0,
+       "spending": 100.0,
+       "change": 0.0,
+       "change_share": 0.0,
+       "sales_at_current": 1400.0,
+       "sales": 1400.0,
+       "margin": 0.45,
+       "profit_at_current": 530.0,
+       "profit": 530.0,
+       "margin_of_one_more_unit_of_spending": 3.35762575,
+       "min_spending": 0.0,
+       "max_spending": 400.0
+      }
+     ],
+     "totals": {
+      "spending_at_current": 1000.0,
+      "spending": 1000.0,
+      "sales_at_current": 12000.0,
+      "sales": 11283.1016,
+      "profit_at_current": 4400.0,
+      "profit": 4077.39572,
+      "profit_gain": -322.604285,
+      "profit_gain_share": -0.0733191556
+     },
+     "warnings": [
+      "The spending of 'Zurich' (100) is outside its limits."
+     ]
+    },
+    {
+     "units": [
+      {
+       "name": "Zurich",
+       "shape": "S-shaped",
+       "current_spending": 400.0,
+       "spending": 600.0,
+       "change": 200.0,
+       "change_share": 0.5,
+       "sales_at_current": 5200.0,
+       "sales": 5663.0,
+       "margin": 0.45,
+       "profit_at_current": 1940.0,
+       "profit": 1948.35,
+       "margin_of_one_more_unit_of_spending": 0.769766477,
+       "min_spending": 150.0,
+       "max_spending": null
+      },
+      {
+       "name": "Bern",
+       "shape": "concave",
+       "current_spending": 250.0,
+       "spending": 0.0,
+       "change": -250.0,
+       "change_share": -1.0,
+       "sales_at_current": 3000.0,
+       "sales": 1952.0,
+       "margin": 0.45,
+       "profit_at_current": 1100.0,
+       "profit": 878.4,
+       "margin_of_one_more_unit_of_spending": null,
+       "min_spending": 0.0,
+       "max_spending": null
+      },
+      {
+       "name": "Basel",
+       "shape": "S-shaped",
+       "current_spending": 250.0,
+       "spending": 0.0,
+       "change": -250.0,
+       "change_share": -1.0,
+       "sales_at_current": 2400.0,
+       "sales": 2129.0,
+       "margin": 0.45,
+       "profit_at_current": 830.0,
+       "profit": 958.05,
+       "margin_of_one_more_unit_of_spending": 0.0,
+       "min_spending": 0.0,
+       "max_spending": null
+      },
+      {
+       "name": "Romandie",
+       "shape": "S-shaped",
+       "current_spending": 100.0,
+       "spending": 250.0,
+       "change": 150.0,
+       "change_share": 1.5,
+       "sales_at_current": 1400.0,
+       "sales": 2258.54601,
+       "margin": 0.45,
+       "profit_at_current": 530.0,
+       "profit": 766.345703,
+       "margin_of_one_more_unit_of_spending": 1.82508067,
+       "min_spending": 0.0,
+       "max_spending": 400.0
+      }
+     ],
+     "totals": {
+      "spending_at_current": 1000.0,
+      "spending": 850.0,
+      "sales_at_current": 12000.0,
+      "sales": 12002.546,
+      "profit_at_current": 4400.0,
+      "profit": 4551.1457,
+      "profit_gain": 151.145703,
+      "profit_gain_share": 0.0343512961
+     },
+     "warnings": []
+    }
+   ]
   }
  },
  "settings_help": {
@@ -12819,6 +14746,50 @@
     "when_to_choose": "Keep 10 for a chart. It does not change the lifetime value.",
     "minimum": 1,
     "maximum": 200
+   }
+  ],
+  "allocation": [
+   {
+    "key": "increase",
+    "label": "Increase asked about in the third judgment",
+    "kind": "number",
+    "default": 0.5,
+    "what_it_does": "The third judgment is the sales expected when spending is raised by this share. 0.5 means 50% more than today.",
+    "when_to_choose": "Keep 0.5 unless the managers were asked about another increase, for example 0.2 for 20% more.",
+    "minimum": 0.01,
+    "maximum": 10.0
+   },
+   {
+    "key": "budget_rule",
+    "label": "What happens to the budget",
+    "kind": "choice",
+    "default": "spend_all",
+    "what_it_does": "Decides whether the whole budget must be spent.",
+    "when_to_choose": "Depends on who owns the budget: is it yours to split, or yours to justify?",
+    "options": [
+     {
+      "value": "spend_all",
+      "label": "Spend the whole budget",
+      "what_it_does": "Every franc of the budget is given to a unit, even if the last francs earn less than they cost.",
+      "when_to_choose": "Default. The budget is fixed and the question is only how to split it."
+     },
+     {
+      "value": "up_to",
+      "label": "Spend up to the budget",
+      "what_it_does": "Money is only spent as long as it earns more than it costs. The rest of the budget is left over.",
+      "when_to_choose": "You may hand money back, or you want to know whether the budget is too large."
+     }
+    ]
+   },
+   {
+    "key": "steps",
+    "label": "Fineness of the search",
+    "kind": "integer",
+    "default": 1000,
+    "what_it_does": "The search first tries splits on a grid, then fine-tunes the best one. The grid has this many steps across the money that can be moved (the budget minus the lowest spending of every unit). More steps make the first stage finer and slower.",
+    "when_to_choose": "Keep 1000. Raise it only if two runs with different values give clearly different splits.",
+    "minimum": 10,
+    "maximum": 5000
    }
   ]
  }

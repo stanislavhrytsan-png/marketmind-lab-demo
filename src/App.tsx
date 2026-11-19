@@ -5,6 +5,7 @@ import { Sidebar } from './components/Shell'
 import { TooltipLayer } from './components/Tooltip'
 import { useDemo } from './lib/demo'
 import { useFitToWidth } from './lib/useFitToWidth'
+import Allocation from './screens/modules/Allocation'
 import ForecastingExisting from './screens/modules/ForecastingExisting'
 import ForecastingNew from './screens/modules/ForecastingNew'
 import LifetimeValue from './screens/modules/LifetimeValue'
@@ -74,6 +75,7 @@ export default function App() {
             <Route path="/pricing/from-conjoint" element={<PricingConjoint />} />
             <Route path="/targeting" element={<Targeting />} />
             <Route path="/lifetime-value" element={<LifetimeValue />} />
+            <Route path="/allocation" element={<Allocation />} />
             <Route path="/:module/setup/:runId" element={<ModuleSetup />} />
             {/* Professor */}
             <Route path="/professor" element={<Navigate to="/professor/assignment" replace />} />
