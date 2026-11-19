@@ -7,7 +7,7 @@ Brief: `MarketMind Lab demo all modules prompt.md`. Session start: Thu 19 Nov 20
 ## Before the first module
 
 1. **I build on the published state.** My commits sit on top of the published commit `19be820`, so a normal `git push` will publish them when you decide to.
-2. **Nothing is pushed or deployed.** Both repositories are committed after every module, as the brief asks.
+2. **Nothing was pushed or deployed while I worked.** Both repositories were committed after every module, as the brief asks. Publishing was your decision: you gave the go-ahead on Thu 19 Nov 2026, after the closing report.
 3. **No independent reviews,** as the brief asks.
 
 ## How the nine modules fit into the demo
