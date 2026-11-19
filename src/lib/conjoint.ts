@@ -1,22 +1,27 @@
 /**
- * The only "model" in the demo: plain front-end arithmetic on the hard-coded
- * part-worths from the data file.
+ * The market simulator of the demo: plain front-end arithmetic on the
+ * part-worths the engine estimated (run CJ-02, read from the data file).
  *
  *   utility of a product   = sum of the part-worths of its levels
  *   share inside a segment = e^utility / sum of e^utility over all products (logit rule)
  *   share, all respondents = the segment shares, weighted by segment size
  *
- * Nothing here is estimated. The real product would estimate the part-worths
- * from the respondents' choices.
+ * This is the engine's own rule (share of preference with the part-worths of
+ * each segment), so the same product gets the same share here and in the
+ * engine. Nothing is estimated in the browser. `engineDisagreements` below
+ * compares the two, and `npm run check` fails if they differ.
  */
 import {
   attributes,
   competitors,
+  engine,
   partWorths,
+  partWorthsOneModel,
   priceValues,
   quotedNumbers,
   restriction,
   savedDesign,
+  segmentWeights,
   segments,
 } from '../data/alpineOat'
 import type { AttrId, Design, GroupId, SegmentId } from '../data/alpineOat'
@@ -47,7 +52,7 @@ export function marketShares(products: Design[]): Shares[] {
     const row: Shares = { all: 0, health: 0, taste: 0, price: 0 }
     segments.forEach((s, k) => {
       row[s.id] = bySegment[k][i]
-      row.all += (s.share / 100) * bySegment[k][i]
+      row.all += segmentWeights[s.id] * bySegment[k][i]
     })
     return row
   })
@@ -59,14 +64,19 @@ export function sharesAgainstCompetitors(design: Design): Shares[] {
 }
 
 /** Attribute importance: the range of an attribute's part-worths, as a share of all ranges. */
-export function importance(group: GroupId): Record<AttrId, number> {
-  const ranges = attrIds.map((id) => {
-    const values = partWorths[group][id]
-    return Math.max(...values) - Math.min(...values)
-  })
+function importanceFrom(worths: Record<AttrId, number[]>): Record<AttrId, number> {
+  const ranges = attrIds.map((id) => Math.max(...worths[id]) - Math.min(...worths[id]))
   const total = ranges.reduce((a, b) => a + b, 0)
   return Object.fromEntries(attrIds.map((id, i) => [id, ranges[i] / total])) as Record<AttrId, number>
 }
+
+/** Attribute importance of a group in run CJ-02. */
+export function importance(group: GroupId): Record<AttrId, number> {
+  return importanceFrom(partWorths[group])
+}
+
+/** Attribute importance in run CJ-01: one model for all respondents. */
+export const importanceOneModel = importanceFrom(partWorthsOneModel)
 
 /** Index of the level with the highest part-worth. */
 export function preferredLevel(group: GroupId, attr: AttrId): number {
@@ -143,33 +153,87 @@ export const signed = (value: number, digits = 2) =>
   `${value < 0 ? '−' : '+'}${Math.abs(value).toFixed(digits)}`
 
 // ---------------------------------------------------------------------------
-// Development check: the numbers quoted in running text (tutor scripts, the
-// interpretation, the professor's review) must match what the simulator
-// calculates. A mismatch is reported in the browser console.
+// Check against the engine. The engine wrote its own shares for a list of
+// products into engine_results.json. The simulator above must give the same
+// shares (within 0.1 percentage points), the same best products, and the
+// numbers quoted in running text. Used by `npm run check` and, while
+// developing, reported in the browser console.
 // ---------------------------------------------------------------------------
-if (import.meta.env.DEV) {
+
+/** Largest allowed difference between a share here and in the engine: 0.1 percentage points. */
+const TOLERANCE = 0.001
+
+/** Every place where the simulator in the browser and the engine disagree. Empty when all is well. */
+export function engineDisagreements(): string[] {
   const problems: string[] = []
-  const check = (what: string, calculated: number, quoted: number) => {
+  const groups: GroupId[] = ['all', 'health', 'taste', 'price']
+  const design = (levels: Record<string, string>) =>
+    Object.fromEntries(attributes.map((a) => [a.id, a.levels.indexOf(levels[a.name])])) as Design
+  const close = (what: string, here: number, there: number) => {
+    if (!(Math.abs(here - there) < TOLERANCE)) {
+      problems.push(`${what}: ${(here * 100).toFixed(2)}% here, ${(there * 100).toFixed(2)}% in the engine`)
+    }
+  }
+
+  // 1. Shares of single products against the competitors.
+  for (const product of engine.conjoint.simulator_checks) {
+    const here = sharesAgainstCompetitors(design(product.levels))[0]
+    groups.forEach((g) => close(`share of ${describe(design(product.levels))}, ${g}`, here[g], product[g]))
+  }
+
+  // 2. The whole market of run CJ-03: the saved design and every competitor.
+  const market = engine.runs['CJ-03'].shares
+  const here = marketShares(market.map((product) => design(product.levels)))
+  market.forEach((product, i) => groups.forEach((g) => close(`${product.name}, ${g}`, here[i][g], product[g])))
+
+  // 3. The best-product search.
+  for (const by of ['share', 'revenue'] as const) {
+    const wanted = engine.conjoint.best_products[by]
+    bestProducts(by, wanted.length).forEach((candidate, i) => {
+      if (!sameDesign(candidate.design, design(wanted[i].levels))) {
+        problems.push(`best product by ${by}, place ${i + 1}: ${describe(candidate.design)} here, ${describe(design(wanted[i].levels))} in the engine`)
+      }
+      close(`best product by ${by}, place ${i + 1}`, candidate.share, wanted[i].share)
+    })
+  }
+
+  // 4. The number of products.
+  if (productCount !== engine.conjoint.n_combinations || allowedCount !== engine.conjoint.n_allowed) {
+    problems.push(`products: ${allowedCount} of ${productCount} here, ${engine.conjoint.n_allowed} of ${engine.conjoint.n_combinations} in the engine`)
+  }
+
+  // 5. Importance, and the numbers quoted in running text (whole percent).
+  const quotedAs = (what: string, calculated: number, quoted: number) => {
     if (Math.round(calculated * 100) !== quoted) {
       problems.push(`${what}: text says ${quoted}%, calculated ${(calculated * 100).toFixed(1)}%`)
     }
   }
-  const groups: GroupId[] = ['all', 'health', 'taste', 'price']
   const saved = sharesAgainstCompetitors(savedDesign)[0]
   const cheap = sharesAgainstCompetitors({ ...savedDesign, price: 0 })[0]
   groups.forEach((g) => {
-    check(`saved design, ${g}`, saved[g], quotedNumbers.design[g])
-    check(`design at CHF 1.90, ${g}`, cheap[g], quotedNumbers.designAtLowPrice[g])
+    const engineImportance = engine.runs['CJ-02'][g].importance as Record<string, number>
+    attributes.forEach((a) => close(`importance of ${a.name}, ${g}`, importance(g)[a.id], engineImportance[a.name]))
+    quotedAs(`saved design, ${g}`, saved[g], quotedNumbers.design[g])
+    quotedAs(`design at the lowest price, ${g}`, cheap[g], quotedNumbers.designAtLowPrice[g])
     Object.entries(quotedNumbers.importance[g]).forEach(([attr, value]) =>
-      check(`importance of ${attr}, ${g}`, importance(g)[attr as AttrId], value),
+      quotedAs(`importance of ${attr}, ${g}`, importance(g)[attr as AttrId], value),
     )
   })
+  const engineOneModel = engine.runs['CJ-01'].all.importance as Record<string, number>
+  attributes.forEach((a) => close(`importance of ${a.name}, one model`, importanceOneModel[a.id], engineOneModel[a.name]))
+
+  // 6. "All respondents" is the average of the segments, weighted by their size.
   const averageHolds = attrIds.every((id) =>
     partWorths.all[id].every((value, level) => {
-      const weighted = segments.reduce((sum, s) => sum + (s.share / 100) * partWorths[s.id][id][level], 0)
-      return Math.abs(weighted - value) < 0.005
+      const weighted = segments.reduce((sum, s) => sum + segmentWeights[s.id] * partWorths[s.id][id][level], 0)
+      return Math.abs(weighted - value) < 0.00001
     }),
   )
   if (!averageHolds) problems.push('part-worths "all" are not the weighted segment average')
+  return problems
+}
+
+if (import.meta.env.DEV && typeof window !== 'undefined') {
+  const problems = engineDisagreements()
   if (problems.length) console.warn('[MarketMind demo data] ' + problems.join('\n'))
 }

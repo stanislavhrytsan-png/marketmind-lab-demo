@@ -24,6 +24,7 @@ import {
   course,
   ownColor,
   partWorths,
+  respondentCount,
   restriction,
   savedDesign,
   segments,
@@ -239,7 +240,7 @@ function Simulator() {
                   </td>
                   <td
                     tabIndex={0}
-                    data-tip={`${row.name}: ${pct1(shares[i].all)} predicted share of preference among all 300 respondents`}
+                    data-tip={`${row.name}: ${pct1(shares[i].all)} predicted share of preference among all ${respondentCount} respondents`}
                   >
                     <CellBar
                       fraction={shares[i].all / 0.6}

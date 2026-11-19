@@ -1,10 +1,16 @@
 /**
  * MarketMind Lab demo: the one data file.
  *
- * Everything the demo shows comes from here. All of it is invented example
- * data for the fictional case "Alpine Oat Co.". Nothing is estimated while
- * the demo runs: the part-worths below are hard-coded, and the market
- * simulator only adds them up (see src/lib/conjoint.ts).
+ * Everything the demo shows comes from here. The numbers are real results of
+ * the MarketMind Lab calculation engine on the fictional case "Alpine Oat
+ * Co.". They are read from engine_results.json, which the engine writes
+ * (`python -m marketmind.export_demo` in the engine folder). Nothing is
+ * estimated while the demo runs: the market simulator only adds up the
+ * engine's part-worths (see src/lib/conjoint.ts).
+ *
+ * Sentences that quote a number are built from the engine's results in this
+ * file, so a text cannot disagree with a chart. The AI tutor is still a
+ * script: its lines are fixed, only their numbers come from the engine.
  *
  * Contents
  *   1. Course, people and AI tutor modes
@@ -19,6 +25,34 @@
  *  10. Segmentation screens (Priority 2)
  *  11. Positioning screen (Priority 2)
  */
+
+import engineResults from './engine_results.json'
+
+// ---------------------------------------------------------------------------
+// The engine's results, and small helpers to quote them
+// ---------------------------------------------------------------------------
+
+/** Written by the engine. Do not edit engine_results.json by hand: run the export again. */
+export const engine = engineResults
+const engineRuns = engine.runs
+
+/** 0.449 -> 45 */
+const whole = (fraction: number) => Math.round(fraction * 100)
+/** 13.746 -> "13.7" */
+const oneDecimal = (value: number) => value.toFixed(1)
+/** 3000 -> "3,000" */
+const thousands = (value: number) => value.toLocaleString('en-US')
+/** 2 -> "two", for running text */
+const inWords = (count: number) =>
+  ['no', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'][count] ?? String(count)
+const capital = (text: string) => text.charAt(0).toUpperCase() + text.slice(1)
+/** "A", "A and B", "A, B and C" */
+const listed = (names: string[]) =>
+  names.length < 2 ? names.join('') : `${names.slice(0, -1).join(', ')} and ${names[names.length - 1]}`
+
+export const respondentCount = engine.case.n_respondents
+const basisCount = engine.case.basis_variables.length
+const descriptorCount = engine.case.descriptor_variables.length
 
 // ---------------------------------------------------------------------------
 // Types
@@ -40,7 +74,7 @@ export interface Segment {
   short: string
   color: string
   shape: 'circle' | 'square' | 'triangle'
-  /** Share of the 300 respondents, in percent. */
+  /** Share of all respondents, in percent. */
   share: number
   n: number
   /** Largest differences from the average respondent, in standard deviations. */
@@ -170,7 +204,7 @@ export const modules = {
 export const assignment = {
   title: 'Alpine Oat Co.: which product, for which segment?',
   kind: 'Individual assignment, 20% of the course grade',
-  summary: 'Segmentation, positioning and conjoint analysis on a survey of 300 Swiss oat-drink buyers.',
+  summary: `Segmentation, positioning and conjoint analysis on a survey of ${respondentCount} Swiss oat-drink buyers.`,
   due: 'Fri 27 Nov, 23:59',
   daysLeft: '12 days left',
   mode: 'coach' as Mode,
@@ -266,11 +300,19 @@ export const courseHome = {
 // 3. Case brief and datasets
 // ---------------------------------------------------------------------------
 
+/** What each descriptor variable of the engine's case records, in the words of the case brief. */
+const descriptorTexts: Record<string, { name: string; records: string }> = {
+  age_group: { name: 'Age group', records: 'Age group, from 18 to 24 up to 65 and older' },
+  income_group: { name: 'Household income', records: 'Household income: low, middle or high' },
+  sport_frequency: { name: 'Sport per week', records: 'How often the respondent exercises' },
+  weekly_consumption: { name: 'Weekly consumption', records: 'Litres of oat drink bought per week' },
+}
+
 export const caseBrief = {
   name: 'Alpine Oat Co.',
   question: 'Which new oat drink should Alpine Oat launch, and for which customer segment?',
   text: 'Alpine Oat is a Swiss oat-drink brand with one product, Original, sold in supermarkets. Growth has slowed as Valloat, Lumo and supermarket own brands widen their ranges. Management can fund one launch next year and wants to know which buyers to aim for and which product would win them.',
-  /** Shown on the case brief, because the demo names two real brands next to invented numbers. */
+  /** Shown on the case brief. */
   fictionNote:
     'Alpine Oat Co. is a fictional teaching case. All companies and brands in the case are fictional, and all numbers are invented example data.',
   steps: [
@@ -303,88 +345,43 @@ export const caseBrief = {
     },
   },
   datasets: [
-    { name: 'Segmentation survey', detail: '300 respondents, 14 variables' },
-    { name: 'Brand perceptions', detail: '4 brands rated on 6 attributes' },
-    { name: 'Conjoint choices', detail: '12 choice tasks per respondent' },
+    { name: 'Segmentation survey', detail: `${respondentCount} respondents, ${basisCount + descriptorCount} variables` },
+    {
+      name: 'Brand perceptions',
+      detail: `${engine.case.brands.length} brands rated on ${engine.case.n_brand_attributes} attributes`,
+    },
+    { name: 'Conjoint choices', detail: `${engine.case.choice_tasks_per_respondent} choice tasks per respondent` },
   ],
   summary: [
-    { value: '300', label: 'respondents', note: 'Online panel, September 2026' },
-    { value: '8', label: 'basis variables', note: 'Used to form the segments' },
-    { value: '6', label: 'descriptor variables', note: 'Used to describe them afterwards' },
-    { value: '0.4%', label: 'answers missing', note: '10 of 2,400 basis answers' },
-  ],
-  basisNote: 'Importance ratings from 1 (not important) to 7 (very important)',
-  /** shape: relative frequency of the answers 1 to 7, the most frequent answer = 1. */
-  basisVariables: [
+    { value: String(respondentCount), label: 'respondents', note: 'Online panel, September 2026' },
+    { value: String(basisCount), label: 'basis variables', note: 'Used to form the segments' },
+    { value: String(descriptorCount), label: 'descriptor variables', note: 'Used to describe them afterwards' },
     {
-      name: 'Low sugar',
-      asked: 'How important is it that the drink has little or no added sugar?',
-      shape: [0.33, 0.43, 0.47, 0.6, 0.79, 1, 0.93],
-      mean: 4.9,
-    },
-    {
-      name: 'High protein',
-      asked: 'How important is a high protein content?',
-      shape: [0.93, 1, 0.94, 0.88, 0.79, 0.69, 0.54],
-      mean: 3.7,
-    },
-    {
-      name: 'Natural ingredients',
-      asked: 'How important is a short, natural ingredient list?',
-      shape: [0.2, 0.31, 0.43, 0.63, 0.89, 1, 0.83],
-      mean: 5.0,
-    },
-    {
-      name: 'Taste',
-      asked: 'How important is the taste on its own, without coffee or cereal?',
-      shape: [0.1, 0.18, 0.33, 0.54, 0.82, 1, 0.87],
-      mean: 5.3,
-    },
-    {
-      name: 'Creaminess',
-      asked: 'How important is a creamy texture, for example in coffee?',
-      shape: [0.33, 0.5, 0.67, 0.87, 1, 0.93, 0.7],
-      mean: 4.5,
-    },
-    {
-      name: 'Low price',
-      asked: 'How important is paying as little as possible?',
-      shape: [0.5, 0.65, 0.81, 0.96, 1, 0.96, 0.88],
-      mean: 4.4,
-    },
-    {
-      name: 'Sustainability',
-      asked: 'How important are sustainable sourcing and packaging?',
-      shape: [0.29, 0.42, 0.58, 0.87, 1, 0.94, 0.74],
-      mean: 4.6,
-    },
-    {
-      name: 'Known brand',
-      asked: 'How important is buying a brand you already know?',
-      shape: [0.76, 0.93, 1, 0.9, 0.73, 0.52, 0.35],
-      mean: 3.6,
+      value: `${((engine.case.n_missing_answers / engine.case.n_basis_answers) * 100).toFixed(1)}%`,
+      label: 'answers missing',
+      note: `${engine.case.n_missing_answers} of ${thousands(engine.case.n_basis_answers)} basis answers`,
     },
   ],
+  /** The answers run from scale.minimum to scale.maximum. */
+  scale: engine.case.rating_scale,
+  basisNote: `Importance ratings from ${engine.case.rating_scale.minimum} (not important at all) to ${engine.case.rating_scale.maximum} (extremely important)`,
+  /** shape: relative frequency of each answer on the scale, the most frequent answer = 1. */
+  basisVariables: engine.case.basis_variables.map((variable) => ({
+    name: variable.label,
+    asked: variable.question,
+    shape: variable.shape,
+    mean: variable.mean,
+  })),
   descriptorNote: 'Not used to form segments. They tell you who is in each segment.',
-  descriptorVariables: [
-    { name: 'Age', records: 'Age group, from 18 to 24 up to 65 and older', type: '6 groups' },
-    { name: 'Household size', records: 'Number of people living in the household', type: 'Number' },
-    { name: 'Weekly consumption', records: 'Litres of oat drink bought per week', type: 'Number' },
-    { name: 'Main shop', records: 'Supermarket, discounter, organic shop or online', type: '4 categories' },
-    { name: 'Uses in coffee', records: 'Whether oat drink is mostly used in coffee', type: 'Yes or no' },
-    { name: 'Sport per week', records: 'How often the respondent exercises', type: '4 groups' },
-  ],
+  descriptorVariables: engine.case.descriptor_variables.map((variable) => ({
+    name: descriptorTexts[variable.key]?.name ?? variable.label,
+    records: descriptorTexts[variable.key]?.records ?? variable.label,
+    type: variable.categories ? `${variable.categories.length} groups` : 'Number',
+  })),
   rawTable: {
-    summary: '300 rows, 15 columns. Open only if you need to check single answers.',
-    rows: [
-      { id: 1001, answers: [3, 2, 4, 6, 1, 1, 7, 5] },
-      { id: 1002, answers: [1, 3, 5, 1, 5, 2, 1, 1] },
-      { id: 1003, answers: [4, 4, 1, 2, 1, 5, 4, 1] },
-      { id: 1004, answers: [7, 5, 1, 2, 6, 6, 5, 1] },
-      { id: 1005, answers: [5, 5, 4, 1, 2, 1, 5, 7] },
-      { id: 1006, answers: [2, 3, 4, 2, 5, 1, 5, 3] },
-    ],
-    note: 'Showing 6 of 300 rows and the 8 basis variables. Choose columns or download the full table as CSV.',
+    summary: `${respondentCount} rows, ${engine.case.n_columns} columns. Open only if you need to check single answers.`,
+    rows: engine.case.raw_rows as { id: number; answers: (number | null)[] }[],
+    note: `Showing ${engine.case.raw_rows.length} of ${respondentCount} rows and the ${basisCount} basis variables. Choose columns or download the full table as CSV.`,
   },
   glossary: [
     { term: 'Basis variable', text: 'An answer the model uses to decide who is similar to whom.' },
@@ -400,68 +397,61 @@ export const caseBrief = {
 //    every screen.
 // ---------------------------------------------------------------------------
 
-export const segments: Segment[] = [
-  {
-    id: 'health',
-    name: 'Health-focused',
-    short: 'Health',
-    color: '#15996B',
-    shape: 'circle',
-    share: 38,
-    n: 114,
-    profile: [
-      { variable: 'Low sugar', z: 1.1 },
-      { variable: 'High protein', z: 0.8 },
-      { variable: 'Natural ingredients', z: 0.7 },
-      { variable: 'Low price', z: -0.5 },
-    ],
-    who: [
-      'Median age 34',
-      '62% exercise 3 or more times a week',
-      'Shop mostly in supermarkets and organic shops',
-    ],
-  },
-  {
-    id: 'taste',
-    name: 'Taste-driven',
-    short: 'Taste',
-    color: '#E2622F',
-    shape: 'square',
-    share: 34,
-    n: 102,
-    profile: [
-      { variable: 'Taste', z: 1.0 },
-      { variable: 'Creaminess', z: 0.9 },
-      { variable: 'Known brand', z: 0.4 },
-      { variable: 'Low sugar', z: -0.6 },
-    ],
-    who: [
-      'Median age 29',
-      '71% use oat drink mostly in coffee',
-      'Smallest households, 1.8 people on average',
-    ],
-  },
-  {
-    id: 'price',
-    name: 'Price-sensitive',
-    short: 'Price-sens.',
-    color: '#2A78D6',
-    shape: 'triangle',
-    share: 28,
-    n: 84,
-    profile: [
-      { variable: 'Low price', z: 1.3 },
-      { variable: 'Known brand', z: -0.4 },
-      { variable: 'Sustainability', z: -0.5 },
-      { variable: 'Natural ingredients', z: -0.6 },
-    ],
-    who: [
-      'Median age 41',
-      'Largest households, 3.1 people on average',
-      '58% shop mainly at a discounter',
-    ],
-  },
-]
+/** How a segment looks on every screen. The numbers come from the engine. */
+const segmentLook: Record<SegmentId, Pick<Segment, 'short' | 'color' | 'shape'>> = {
+  health: { short: 'Health', color: '#15996B', shape: 'circle' },
+  taste: { short: 'Taste', color: '#E2622F', shape: 'square' },
+  price: { short: 'Price-sens.', color: '#2A78D6', shape: 'triangle' },
+}
+
+type EngineSegment = (typeof engine.segments)[number]
+
+/**
+ * Three lines on who is in a segment, from the descriptor tables of the engine:
+ * the age, the answer on income or sport that sets the segment furthest apart
+ * from all respondents, and how much oat drink it buys.
+ */
+function whoLines(segment: EngineSegment): string[] {
+  const { age_group: age, income_group: income, sport_frequency: sport, weekly_consumption: litres } = segment.descriptors
+  const young = age.shares['18-24'] + age.shares['25-34']
+  const older = age.shares['45-54'] + age.shares['55-64'] + age.shares['65+']
+  const ageLine =
+    young >= 0.5
+      ? `${whole(young)}% are younger than 35`
+      : older >= 0.5
+        ? `${whole(older)}% are 45 or older`
+        : `${whole(age.shares['25-34'] + age.shares['35-44'])}% are between 25 and 44`
+  const active = (shares: typeof sport.shares) => shares['3-4 times'] + shares['5+ times']
+  const facts = [
+    { gap: active(sport.shares) - active(sport.shares_all), text: `${whole(active(sport.shares))}% exercise 3 or more times a week` },
+    { gap: sport.shares.never - sport.shares_all.never, text: `${whole(sport.shares.never)}% never exercise` },
+    { gap: income.shares.high - income.shares_all.high, text: `${whole(income.shares.high)}% have a high household income` },
+    { gap: income.shares.low - income.shares_all.low, text: `${whole(income.shares.low)}% have a low household income` },
+  ].sort((a, b) => b.gap - a.gap)
+  const amounts = engine.segments.map((other) => other.descriptors.weekly_consumption.mean)
+  const amount = `${oneDecimal(litres.mean)} litres of oat drink a week`
+  const litresLine =
+    litres.mean === Math.max(...amounts)
+      ? `Buy most: ${amount}`
+      : litres.mean === Math.min(...amounts)
+        ? `Buy least: ${amount}`
+        : `Buy ${amount}, close to the average`
+  return [ageLine, facts[0].gap >= 0.05 ? facts[0].text : 'Income and sport close to the average', litresLine]
+}
+
+export const segments: Segment[] = engine.segments.map((segment) => ({
+  id: segment.id as SegmentId,
+  name: segment.name,
+  ...segmentLook[segment.id as SegmentId],
+  share: whole(segment.share),
+  n: segment.n,
+  profile: segment.largest_differences.map((row) => ({ variable: row.label, z: Math.round(row.z * 10) / 10 })),
+  who: whoLines(segment),
+}))
+
+const segmentOf = (id: SegmentId) => segments.find((segment) => segment.id === id)!
+/** The largest segment, for headlines. */
+const largestSegment = [...segments].sort((a, b) => b.n - a.n)[0]
 
 /** Neutral colour for "all respondents". */
 export const allColor = '#56607A'
@@ -472,73 +462,78 @@ export const ownColor = '#5B2B6E'
 // 5. Conjoint analysis
 // ---------------------------------------------------------------------------
 
-export const attributes: { id: AttrId; name: string; levels: string[] }[] = [
-  { id: 'flavor', name: 'Flavor', levels: ['Original', 'Vanilla', 'Chocolate'] },
-  { id: 'sugar', name: 'Sugar', levels: ['No added sugar', 'Low', 'Regular'] },
-  { id: 'protein', name: 'Protein', levels: ['Standard', 'High'] },
-  { id: 'pack', name: 'Pack size', levels: ['250 ml', '1 L'] },
-  { id: 'price', name: 'Price', levels: ['CHF 1.90', 'CHF 2.50', 'CHF 3.20'] },
-]
+const attrIdOf: Record<string, AttrId> = {
+  Flavor: 'flavor',
+  Sugar: 'sugar',
+  Protein: 'protein',
+  'Pack size': 'pack',
+  Price: 'price',
+}
+
+export const attributes: { id: AttrId; name: string; levels: string[] }[] = engine.conjoint.attributes.map((attribute) => ({
+  id: attrIdOf[attribute.name],
+  name: attribute.name,
+  levels: attribute.levels,
+}))
+const levelCount = attributes.reduce((sum, attribute) => sum + attribute.levels.length, 0)
+
+/** A product as the engine names it ({ Flavor: 'Vanilla', ... }) -> the index of each level. */
+const toDesign = (levels: Record<string, string>): Design =>
+  Object.fromEntries(attributes.map((a) => [a.id, a.levels.indexOf(levels[a.name])])) as Design
+const describeLevels = (levels: Record<string, string>) => attributes.map((a) => levels[a.name]).join(', ')
 
 /** Price of each price level in CHF, used for "best product by revenue". */
-export const priceValues = [1.9, 2.5, 3.2]
+export const priceValues = attributes
+  .find((a) => a.id === 'price')!
+  .levels.map((level) => (engine.conjoint.prices.amounts as Record<string, number>)[level])
 
-/** Chocolate cannot be combined with No added sugar. */
-export const restriction = {
-  a: { attr: 'flavor' as AttrId, level: 2 },
-  b: { attr: 'sugar' as AttrId, level: 0 },
-}
+/** The combination that cannot be produced (Chocolate with No added sugar). */
+export const restriction = (() => {
+  const [a, b] = Object.entries(engine.conjoint.restrictions[0]).map(([name, level]) => {
+    const attribute = attributes.find((item) => item.name === name)!
+    return { attr: attribute.id, level: attribute.levels.indexOf(level) }
+  })
+  return { a, b }
+})()
+
+/** The engine's part-worths of one group, one number per level, in the order of the levels above. */
+const worths = (group: { part_worths: Record<string, number[]> }) =>
+  Object.fromEntries(attributes.map((a) => [a.id, group.part_worths[a.name]])) as Record<AttrId, number[]>
 
 /**
- * Hard-coded part-worth utilities, one number per level, in the order of the
- * levels above. Within an attribute they add up to zero.
- *
- * "all" is the average of the three segments, weighted by segment size
- * (38%, 34%, 28%) and rounded to two decimals.
+ * Part-worth utilities from run CJ-02: one set per segment, estimated by the
+ * engine from the choice tasks. Within an attribute they add up to zero.
+ * "all" is what the same run reports for all respondents together: the
+ * average of the three segments, weighted by their size.
  */
 export const partWorths: Record<GroupId, Record<AttrId, number[]>> = {
-  all: {
-    flavor: [-0.06, 0.26, -0.2],
-    sugar: [0.34, 0.18, -0.51],
-    protein: [-0.14, 0.14],
-    pack: [-0.23, 0.23],
-    price: [0.7, 0.1, -0.8],
-  },
-  health: {
-    flavor: [0.15, 0.12, -0.27],
-    sugar: [0.95, 0.22, -1.17],
-    protein: [-0.45, 0.45],
-    pack: [-0.09, 0.09],
-    price: [0.41, 0.11, -0.52],
-  },
-  taste: {
-    flavor: [-0.51, 0.57, -0.06],
-    sugar: [-0.14, 0.23, -0.09],
-    protein: [0.05, -0.05],
-    pack: [-0.19, 0.19],
-    price: [0.44, 0.09, -0.53],
-  },
-  price: {
-    flavor: [0.2, 0.06, -0.26],
-    sugar: [0.08, 0.06, -0.14],
-    protein: [0.05, -0.05],
-    pack: [-0.46, 0.46],
-    price: [1.4, 0.11, -1.51],
-  },
+  all: worths(engineRuns['CJ-02'].all),
+  health: worths(engineRuns['CJ-02'].health),
+  taste: worths(engineRuns['CJ-02'].taste),
+  price: worths(engineRuns['CJ-02'].price),
 }
 
-/** Competitor products in the market simulator. Set by the professor. */
-export const competitors: { name: string; design: Design }[] = [
-  { name: 'Valloat', design: { flavor: 0, sugar: 1, protein: 0, pack: 1, price: 1 } },
-  { name: 'Lumo', design: { flavor: 1, sugar: 2, protein: 0, pack: 1, price: 1 } },
-  { name: 'Supermarket own brand', design: { flavor: 0, sugar: 2, protein: 0, pack: 1, price: 0 } },
-]
+/** Run CJ-01: one set of part-worths, estimated on all respondents at once. */
+export const partWorthsOneModel = worths(engineRuns['CJ-01'].all)
 
-/** The design the student saved as run CJ-03: Vanilla, No added sugar, High, 1 L, CHF 2.50. */
-export const savedDesign: Design = { flavor: 1, sugar: 0, protein: 1, pack: 1, price: 1 }
+/** The share of each segment among the respondents, as the simulator weights them. */
+export const segmentWeights = Object.fromEntries(
+  engine.segments.map((segment) => [segment.id, segment.n / respondentCount]),
+) as Record<SegmentId, number>
+
+/** Competitor products in the market simulator. Set by the professor. */
+export const competitors: { name: string; design: Design }[] = engine.conjoint.competitors.map((competitor) => ({
+  name: competitor.name,
+  design: toDesign(competitor.levels),
+}))
+
+/** The design the student saved as run CJ-03. */
+export const savedDesign: Design = toDesign(engine.conjoint.saved_design)
+const savedDesignText = describeLevels(engine.conjoint.saved_design)
+const lowPrice = engineRuns['CJ-03'].low_price
 
 export const conjointSetup = {
-  lead: 'An attribute is a product feature. A level is one of its options. In the survey, each respondent chose 12 times between three products built from these levels.',
+  lead: `An attribute is a product feature. A level is one of its options. In the survey, each respondent chose ${engine.case.choice_tasks_per_respondent} times between ${inWords(engine.case.alternatives_per_task)} products built from these levels.`,
   restrictions: {
     does: 'Removes product combinations that cannot exist from the simulator and from the best-product search.',
     when: 'A combination cannot be produced or sold. Keep the list short: every restriction makes it harder to separate the effect of the attributes involved.',
@@ -598,7 +593,7 @@ export const conjointSetup = {
 
 export const conjointResults = {
   runId: 'CJ-02' as RunId,
-  summary: 'Each segment from SEG-03, 5 attributes, 1 restriction. Run on Sun 15 Nov at 18:31.',
+  summary: `Each segment from SEG-03, ${attributes.length} attributes, ${engine.conjoint.restrictions.length} restriction. Run on Sun 15 Nov at 18:31.`,
   importanceNote:
     'Importance says how much an attribute matters, not which level people prefer. For that, read the part-worths.',
   simulatorNote:
@@ -607,13 +602,13 @@ export const conjointResults = {
     {
       id: 'segmentPartWorths',
       title: 'Part-worths for each segment',
-      note: 'Table, 13 levels by 3 segments',
+      note: `Table, ${levelCount} levels by ${segments.length} segments`,
     },
     {
       id: 'fit',
       title: 'How well the model fits',
-      note: 'Predicts 71% of held-out choices correctly, against 33% by chance',
-      body: 'Two of the 12 choice tasks per respondent were kept aside and not used for the estimate. The model then predicted which of the three products each respondent would pick in those tasks. It was right in 71% of the cases. Picking at random would be right in 33%.',
+      note: `Predicts ${whole(engineRuns['CJ-02'].hit_rate_held_out)}% of held-out choices correctly, against ${whole(engineRuns['CJ-02'].hit_rate_by_guessing)}% by chance`,
+      body: `${capital(inWords(engineRuns['CJ-02'].n_tasks_held_out_per_respondent))} of the ${engine.case.choice_tasks_per_respondent} choice tasks per respondent were kept aside and not used for the estimate. The model then predicted which of the ${inWords(engine.case.alternatives_per_task)} products each respondent would pick in those tasks. It was right in ${whole(engineRuns['CJ-02'].hit_rate_held_out)}% of the cases. Picking at random would be right in ${whole(engineRuns['CJ-02'].hit_rate_by_guessing)}%.`,
     },
     {
       id: 'export',
@@ -624,99 +619,147 @@ export const conjointResults = {
   ],
 }
 
+const groupIds: GroupId[] = ['all', 'health', 'taste', 'price']
+/** The engine's importance of an attribute in a group of run CJ-02, in whole percent. */
+const importanceOf = (group: GroupId, attribute: string) =>
+  whole((engineRuns['CJ-02'][group].importance as Record<string, number>)[attribute])
+/** The attribute that matters most in a group, in lower case: "price", "sugar", "flavor". */
+const topAttributeOf = (group: GroupId) => engineRuns['CJ-02'][group].importance_ranking[0].toLowerCase()
+const topImportanceOf = (group: GroupId) => importanceOf(group, engineRuns['CJ-02'][group].importance_ranking[0])
+
 /**
  * Numbers quoted in running text further down (interpretation draft, tutor
- * scripts, the professor's review). src/lib/conjoint.ts compares them with the
- * calculated values when the app starts in development mode and warns in the
- * browser console if one of them no longer matches the part-worths.
+ * scripts, the professor's review), in whole percent. They are the engine's
+ * own results for the saved design (run CJ-03). src/lib/conjoint.ts compares
+ * them with what the simulator in the browser calculates, and `npm run check`
+ * fails if the two disagree.
  */
 export const quotedNumbers = {
-  /** Saved design, CHF 2.50: predicted share in percent. */
-  design: { all: 43, health: 76, taste: 31, price: 15 },
-  /** The same design at CHF 1.90. */
-  designAtLowPrice: { all: 55, health: 81, taste: 39, price: 38 },
+  /** Saved design: predicted share in percent. */
+  design: Object.fromEntries(groupIds.map((g) => [g, whole(engineRuns['CJ-03'].shares[0][g])])) as Record<GroupId, number>,
+  /** The same design at the lowest price. */
+  designAtLowPrice: Object.fromEntries(
+    groupIds.map((g) => [g, whole(engineRuns['CJ-03'].shares_at_low_price[0][g])]),
+  ) as Record<GroupId, number>,
   importance: {
-    all: { price: 42, sugar: 24 },
-    health: { sugar: 47, price: 20 },
-    taste: { flavor: 37, price: 33 },
-    price: { price: 63 },
+    all: { price: importanceOf('all', 'Price'), sugar: importanceOf('all', 'Sugar') },
+    health: { sugar: importanceOf('health', 'Sugar'), price: importanceOf('health', 'Price') },
+    taste: { flavor: importanceOf('taste', 'Flavor'), price: importanceOf('taste', 'Price') },
+    price: { price: importanceOf('price', 'Price') },
   },
 }
+const quoted = quotedNumbers
+
+/**
+ * What the presenting script in README.md says out loud about the simulator.
+ * `npm run check` fails if the README does not contain these phrases.
+ */
+export const readmeNumbers = [
+  `from ${quoted.design.all}% to ${quoted.designAtLowPrice.all}%`,
+  `from ${quoted.design.health}% to ${quoted.designAtLowPrice.health}%`,
+  `from ${quoted.design.price}% to ${quoted.designAtLowPrice.price}%`,
+  `(${segments.map((segment) => `${segment.share}%`).join(', ')})`,
+  `all ${engine.conjoint.n_allowed} allowed products`,
+  `${respondentCount} respondents`,
+]
 
 // ---------------------------------------------------------------------------
 // 6. Runs and comparisons
 // ---------------------------------------------------------------------------
 
-const segSettings = (standardize: string, method: string, k: string, starts: string) => [
-  { name: 'Basis variables', value: '8 variables' },
-  { name: 'Standardize', value: standardize },
-  { name: 'Method', value: method },
-  { name: 'Number of segments', value: k },
-  { name: 'Distance', value: 'Euclidean' },
-  { name: 'Random starts', value: starts },
-]
+type SegRunId = 'SEG-01' | 'SEG-02' | 'SEG-03' | 'SEG-04'
+
+/** The settings of a segmentation run, as the engine recorded them. */
+const segSettings = (id: SegRunId) => {
+  const run = engineRuns[id]
+  const kmeans = run.settings.method === 'kmeans'
+  return [
+    { name: 'Basis variables', value: `${run.n_basis_variables} variables` },
+    { name: 'Standardize', value: run.settings.standardization === 'none' ? 'Off' : 'On' },
+    { name: 'Method', value: kmeans ? 'K-means' : 'Hierarchical clustering' },
+    { name: 'Number of segments', value: run.settings.n_segments === null ? 'Read from the tree' : String(run.settings.n_segments) },
+    { name: 'Distance', value: 'Euclidean' },
+    { name: 'Random starts', value: kmeans ? String(run.settings.n_starts) : 'Not used' },
+  ]
+}
+/** "K-means, 3 segments, 10 variables, standardized" */
+const segSummary = (id: SegRunId) => {
+  const run = engineRuns[id]
+  const standardized = run.settings.standardization === 'none' ? 'not standardized' : 'standardized'
+  return run.settings.method === 'kmeans'
+    ? `K-means, ${run.settings.n_segments} segments, ${run.n_basis_variables} variables, ${standardized}`
+    : `Hierarchical, ${run.n_basis_variables} variables, ${standardized}`
+}
+
+const utilitiesLabel = (id: 'CJ-01' | 'CJ-02') =>
+  engineRuns[id].settings.utilities_for === 'all' ? 'All respondents' : 'Each segment from SEG-03'
 
 /** A setting that only one of two compared runs has is shown as "None" for the other. */
-const cjSettings = (utilities: string, design?: string) => [
-  { name: 'Attributes and levels', value: '5 attributes, 13 levels' },
-  { name: 'Restrictions', value: '1, leaving 96 of 108 products' },
-  { name: 'Estimate utilities for', value: utilities },
-  { name: 'Choice rule', value: 'Share of preference' },
+const cjSettings = (id: 'CJ-01' | 'CJ-02', design?: string) => [
+  { name: 'Attributes and levels', value: `${attributes.length} attributes, ${levelCount} levels` },
+  {
+    name: 'Restrictions',
+    value: `${engine.conjoint.restrictions.length}, leaving ${engine.conjoint.n_allowed} of ${engine.conjoint.n_combinations} products`,
+  },
+  { name: 'Estimate utilities for', value: utilitiesLabel(id) },
+  { name: 'Choice rule', value: engineRuns['CJ-03'].settings.rule === 'logit' ? 'Share of preference' : 'First choice' },
   ...(design ? [{ name: 'Simulator design', value: design }] : []),
 ]
+const cjSummary = `${attributes.length} attributes, ${engine.conjoint.restrictions.length} restriction`
 
 /**
- * All runs of the assignment. The three conjoint runs are the ones the demo
- * story creates: they appear in the run history once the student has pressed
- * "Run 2 scenarios" on the conjoint setup screen.
+ * All runs of the assignment. Each one is a real run of the engine with the
+ * settings shown here (see engine_results.json). The three conjoint runs are
+ * the ones the demo story creates: they appear in the run history once the
+ * student has pressed "Run 2 scenarios" on the conjoint setup screen.
  */
 export const runs: Run[] = [
   {
     id: 'SEG-01',
     module: 'segmentation',
     label: 'First look at the tree',
-    summary: 'Hierarchical, 8 variables, standardized',
+    summary: segSummary('SEG-01'),
     when: 'Tue 10 Nov, 16:12',
-    settings: segSettings('On', 'Hierarchical clustering', 'Read from the tree', 'Not used'),
+    settings: segSettings('SEG-01'),
   },
   {
     id: 'SEG-02',
     module: 'segmentation',
-    label: 'Try 4 segments',
-    summary: 'K-means, 4 segments, 8 variables, standardized',
+    label: `Try ${engineRuns['SEG-02'].settings.n_segments} segments`,
+    summary: segSummary('SEG-02'),
     when: 'Tue 10 Nov, 16:31',
-    settings: segSettings('On', 'K-means', '4', '25'),
+    settings: segSettings('SEG-02'),
   },
   {
     id: 'SEG-03',
     module: 'segmentation',
-    label: 'Final, 3 segments',
-    summary: 'K-means, 3 segments, 8 variables, standardized',
+    label: `Final, ${engineRuns['SEG-03'].settings.n_segments} segments`,
+    summary: segSummary('SEG-03'),
     when: 'Tue 10 Nov, 16:40',
     final: true,
     to: '/segmentation/results',
-    settings: segSettings('On', 'K-means', '3', '25'),
+    settings: segSettings('SEG-03'),
   },
   {
     id: 'SEG-04',
     module: 'segmentation',
     label: 'Without standardizing',
-    summary: 'K-means, 3 segments, 8 variables, not standardized',
+    summary: segSummary('SEG-04'),
     when: 'Wed 11 Nov, 09:05',
-    settings: segSettings('Off', 'K-means', '3', '25'),
+    settings: segSettings('SEG-04'),
   },
   {
     id: 'POS-01',
     module: 'positioning',
     label: 'Map with segment arrows',
-    summary: '4 brands, 6 attributes, arrows from SEG-03',
+    summary: `${engineRuns['POS-01'].n_brands} brands, ${engineRuns['POS-01'].n_attributes} attributes, arrows from SEG-03`,
     when: 'Thu 12 Nov, 14:20',
     final: true,
     to: '/positioning',
     settings: [
-      { name: 'Brands', value: '4' },
-      { name: 'Attributes', value: '6' },
-      { name: 'Dimensions', value: '2' },
+      { name: 'Brands', value: String(engineRuns['POS-01'].n_brands) },
+      { name: 'Attributes', value: String(engineRuns['POS-01'].n_attributes) },
+      { name: 'Dimensions', value: String(engineRuns['POS-01'].settings.n_dimensions) },
       { name: 'Segment preferences', value: 'Arrows from SEG-03' },
     ],
   },
@@ -724,28 +767,28 @@ export const runs: Run[] = [
     id: 'CJ-01',
     module: 'conjoint',
     label: 'All respondents',
-    summary: '5 attributes, 1 restriction, all respondents',
+    summary: `${cjSummary}, all respondents`,
     when: 'Sun 15 Nov, 18:31',
-    settings: cjSettings('All respondents'),
+    settings: cjSettings('CJ-01'),
   },
   {
     id: 'CJ-02',
     module: 'conjoint',
     label: 'By segment',
-    summary: '5 attributes, 1 restriction, each segment from SEG-03',
+    summary: `${cjSummary}, each segment from SEG-03`,
     when: 'Sun 15 Nov, 18:31',
     final: true,
     to: '/conjoint/results',
-    settings: cjSettings('Each segment from SEG-03'),
+    settings: cjSettings('CJ-02'),
   },
   {
     id: 'CJ-03',
     module: 'conjoint',
     label: 'Vanilla protein design',
-    summary: 'Simulator on CJ-02, 1 design against 3 competitors',
+    summary: `Simulator on CJ-02, 1 design against ${competitors.length} competitors`,
     when: 'Sun 15 Nov, 18:47',
     to: '/conjoint/results',
-    settings: cjSettings('Each segment from SEG-03', 'Vanilla, No added sugar, High, 1 L, CHF 2.50'),
+    settings: cjSettings('CJ-02', savedDesignText),
   },
 ]
 
@@ -766,10 +809,21 @@ export const runHistory = {
   noResultComparison: 'No result comparison is prepared for this pair in the demo.',
 }
 
+/** Run SEG-02 against the final run SEG-03: which segments keep their respondents, and which one is split. */
+const fourSegments = engineRuns['SEG-02'].segments
+const unchangedSegments = segments.filter((segment) =>
+  fourSegments.some((part) => part.mostly === segment.id && part.same_respondents),
+)
+const splitSegment = segments.find((segment) => fourSegments.filter((part) => part.mostly === segment.id).length > 1)!
+const splitParts = fourSegments.filter((part) => part.mostly === splitSegment.id).sort((a, b) => b.n - a.n)
+const extraName = `Segment ${fourSegments.length}`
+const onePercentOneModel = whole((engineRuns['CJ-01'].all.importance as Record<string, number>).Price)
+
 /**
- * Pre-written comparisons, keyed by "A|B" in run-history order. The settings
- * table is always worked out from the runs themselves. A pair without an entry
- * here gets the settings table and a sentence built from it.
+ * Comparisons, keyed by "A|B" in run-history order. The sentences are fixed,
+ * their numbers come from the engine. The settings table is always worked
+ * out from the runs themselves. A pair without an entry here gets the
+ * settings table and a sentence built from it.
  */
 export const comparisons: Record<
   string,
@@ -782,49 +836,68 @@ export const comparisons: Record<
 > = {
   'CJ-01|CJ-02': {
     sentence:
-      'One setting differs: who the utilities are estimated for. The overall result is the same in both runs.',
+      'One setting differs: who the utilities are estimated for. The overall picture is almost the same in both runs.',
     result: 'importance',
-    whatChanged:
-      'The numbers for all respondents are identical. B adds one column per segment, and the segments disagree with the overall picture: price explains 63% of the choice for Price-sensitive, but only 20% for Health-focused, where sugar leads with 47%.',
+    whatChanged: `A fits one model to everyone. B fits one per segment, and its column for all respondents is the average of the ${inWords(segments.length)} segments, so it differs a little from A (price: ${onePercentOneModel}% in A, ${quoted.importance.all.price}% in B). The segments disagree with the overall picture: price explains ${quoted.importance.price.price}% of the choice for Price-sensitive, but only ${quoted.importance.health.price}% for Health-focused, where sugar leads with ${quoted.importance.health.sugar}%.`,
   },
   'CJ-02|CJ-03': {
     sentence: 'The estimates are the same. B adds one product design in the simulator.',
     result: 'design',
-    whatChanged:
-      'Nothing in the estimates. B stores one design, Vanilla protein design, with its predicted shares against the three competitors.',
+    whatChanged: `Nothing in the estimates. B stores one design, Vanilla protein design, with its predicted shares against the ${inWords(competitors.length)} competitors.`,
   },
   'SEG-02|SEG-03': {
-    sentence: 'One setting differs: the number of segments. Two of the three segments stay the same.',
+    sentence: `One setting differs: the number of segments. ${capital(inWords(unchangedSegments.length))} of the ${inWords(segments.length)} segments stay the same.`,
     result: 'segments',
-    whatChanged:
-      'Health-focused and Price-sensitive hold the same respondents in both runs. The 102 Taste-driven respondents in B are split in A into a group of 63 and a group of 39.',
+    whatChanged: `${listed(unchangedSegments.map((segment) => segment.name))} hold the same respondents in both runs. The ${splitSegment.n} ${splitSegment.name} respondents in B are split in A into a group of ${splitParts[0].n} and a group of ${splitParts[1].n}.`,
   },
 }
+
+/** Standardized mean of a basis variable in a group of respondents, as "+1.1" or "−0.9". */
+const signedMean = (value: number) => `${value < 0 ? '−' : '+'}${Math.abs(value).toFixed(1)}`
+/** The basis variables, by how much the two groups of the split segment differ on them. */
+const splitDifferences = engineRuns['SEG-03'].basis_variables
+  .map((variable) => {
+    const means = (group: { mean_standardized: Record<string, number> }) => group.mean_standardized[variable.key]
+    const values = [means(splitParts[0]), means(splitParts[1]), means(engine.segments.find((segment) => segment.id === splitSegment.id)!)]
+    return { variable: variable.label, values, gap: Math.abs(values[0] - values[1]) }
+  })
+  .sort((a, b) => b.gap - a.gap)
+const splitRowsShown = 3
 
 /** Result block for SEG-02 against SEG-03 (segment sizes and the split groups). */
 export const segmentComparison = {
   sizesNote: 'Unchanged segments are faded',
-  a: [
-    { segment: 'health' as SegmentId, share: 38, n: 114, same: true },
-    { segment: 'taste' as SegmentId, share: 21, n: 63, same: false },
-    { segment: 'extra' as const, name: 'Segment 4', share: 13, n: 39, same: false },
-    { segment: 'price' as SegmentId, share: 28, n: 84, same: true },
-  ],
-  b: [
-    { segment: 'health' as SegmentId, share: 38, n: 114, same: true },
-    { segment: 'taste' as SegmentId, share: 34, n: 102, same: false },
-    { segment: 'price' as SegmentId, share: 28, n: 84, same: true },
-  ],
+  a: segments.flatMap((segment) =>
+    fourSegments
+      .filter((part) => part.mostly === segment.id)
+      .sort((x, y) => y.n - x.n)
+      .map((part, index) =>
+        index === 0
+          ? { segment: segment.id, share: whole(part.share), n: part.n, same: part.same_respondents }
+          : { segment: 'extra' as const, name: extraName, share: whole(part.share), n: part.n, same: false },
+      ),
+  ),
+  b: segments.map((segment) => ({
+    segment: segment.id,
+    share: segment.share,
+    n: segment.n,
+    same: unchangedSegments.includes(segment),
+  })),
   split: {
     title: 'How the split groups differ',
-    note: 'Only variables that differ by more than 0.2',
-    columns: ['A, Taste-driven (63)', 'A, Segment 4 (39)', 'B, Taste-driven (102)'],
-    rows: [
-      { variable: 'Creaminess', values: ['+0.5', '+1.6', '+0.9'], bold: 1 },
-      { variable: 'Taste', values: ['+1.2', '+0.7', '+1.0'], bold: 0 },
-      { variable: 'Uses oat drink mostly in coffee', values: ['58%', '92%', '71%'], bold: 1 },
+    note: `${capital(inWords(splitRowsShown))} largest differences, in standard deviations from the average`,
+    columns: [
+      `A, ${splitSegment.name} (${splitParts[0].n})`,
+      `A, ${extraName} (${splitParts[1].n})`,
+      `B, ${splitSegment.name} (${splitSegment.n})`,
     ],
-    rest: '6 other basis variables are within 0.2 of each other.',
+    rows: splitDifferences.slice(0, splitRowsShown).map((row) => ({
+      variable: row.variable,
+      values: row.values.map(signedMean),
+      /** The group of A that lies further from the average on this variable. */
+      bold: Math.abs(row.values[0]) >= Math.abs(row.values[1]) ? 0 : 1,
+    })),
+    rest: `The other ${splitDifferences.length - splitRowsShown} basis variables differ less.`,
   },
 }
 
@@ -839,9 +912,8 @@ export const interpretation = {
   wordRange: [150, 250],
   savedAt: '18:52',
   deadlineNote: 'You can keep editing until Fri 27 Nov, 23:59',
-  /** The student's first draft, 56 words. */
-  draft:
-    'I recommend that Alpine Oat launches the vanilla, high-protein drink without added sugar in the 1 L pack. In the simulator this design reaches 43% share against Valloat, Lumo and the supermarket own brand. Because price is the most important attribute (42%), it should be sold at CHF 1.90 to win as many buyers as possible.',
+  /** The student's first draft. */
+  draft: `I recommend that Alpine Oat launches the vanilla, high-protein drink without added sugar in the 1 L pack. In the simulator this design reaches ${quoted.design.all}% share against ${listed(competitors.map((c) => (c.name.startsWith('Supermarket') ? 'the supermarket own brand' : c.name)))}. Because price is the most important attribute (${quoted.importance.all.price}%), it should be sold at ${lowPrice} to win as many buyers as possible.`,
   pinned: [
     { run: 'CJ-02' as RunId, title: 'Attribute importance, all respondents and by segment' },
     { run: 'CJ-03' as RunId, title: 'Predicted share against three competitors' },
@@ -855,8 +927,18 @@ export const interpretation = {
   ],
 }
 
+/** The price of the saved design, as the level is named: "CHF 2.50". */
+const savedPrice = engine.conjoint.saved_design.Price
+/** The segment whose share of the saved design rises most when the price drops to the lowest level. */
+const largestJump = segments
+  .map((segment) => segment.id)
+  .sort((a, b) => quoted.designAtLowPrice[b] - quoted.design[b] - (quoted.designAtLowPrice[a] - quoted.design[a]))[0]
+/** The student's answer to the coach's first question: what matters most in two of the segments. */
+const studentSeesSegments = `No. For Health-focused it is ${topAttributeOf('health')} (${topImportanceOf('health')}%), and for Taste-driven it is ${topAttributeOf('taste')}.`
+
 /**
- * Scripted AI tutor. No model is called: every message below is fixed text.
+ * Scripted AI tutor. No model is called: every message below is fixed text,
+ * and only the numbers in it come from the engine's results.
  * The three modes behave differently, which is the point of the demo.
  */
 export const tutor = {
@@ -875,34 +957,32 @@ export const tutor = {
     opening: [
       {
         from: 'coach',
-        text: 'You set the price at CHF 1.90 because price is the most important attribute overall. Look at your pinned importance chart. Is price the most important attribute in every segment?',
+        text: `You set the price at ${lowPrice} because price is the most important attribute overall. Look at your pinned importance chart. Is price the most important attribute in every segment?`,
       },
       {
         from: 'student',
-        text: 'No. For Health-focused it is sugar (47%), and for Taste-driven it is flavor.',
+        text: studentSeesSegments,
       },
       {
         from: 'coach',
-        text: 'Good. So who is your product for? And if that segment cares less about price, what does it mean for CHF 1.90?',
+        text: `Good. So who is your product for? And if that segment cares less about price, what does it mean for ${lowPrice}?`,
       },
     ] as ChatMessage[],
     /** What happens next. Each click on the reply field inserts the next student reply. */
     turns: [
       {
-        student:
-          'It is for Health-focused. They care most about sugar and protein, so I do not need the lowest price to win them.',
+        student: `It is for Health-focused. They care most about ${topAttributeOf('health')}, and price counts for only ${quoted.importance.health.price}% of their choice, so I do not need the lowest price to win them.`,
         coach:
           'That is a clear target. Which of your results shows what happens to your share in that segment when the price goes up? Name the run.',
       },
       {
-        student: 'The simulator in CJ-03. At CHF 2.50 the design still reaches 76% in Health-focused.',
-        coach:
-          'Good, that is evidence. One more question before you rewrite your text: is 76% a forecast of sales? What does the model leave out?',
+        student: `The simulator in CJ-03. At ${savedPrice} the design still reaches ${quoted.design.health}% in Health-focused.`,
+        coach: `Good, that is evidence. One more question before you rewrite your text: is ${quoted.design.health}% a forecast of sales? What does the model leave out?`,
       },
     ],
     closing: 'This is the end of the scripted conversation in the demo.',
     hints: [
-      'Compare the Price row across the four columns of your pinned importance table. One column is very different from the others.',
+      'Compare the Price row across the four columns of your pinned importance table. The segments do not agree with each other.',
       'In the simulator, change only the price of your design. Watch the Health-focused column, not the overall share.',
       'A complete recommendation names the segment, gives two results with their run tags, and says one thing the model cannot tell you.',
     ],
@@ -919,19 +999,19 @@ export const tutor = {
     points: [
       {
         title: 'What the importance table says',
-        text: 'Price explains 42% of the choice overall, but that average hides the segments. It is 63% for Price-sensitive, 33% for Taste-driven and only 20% for Health-focused, where sugar leads with 47%.',
+        text: `Price explains ${quoted.importance.all.price}% of the choice overall, but that average hides the segments. It is ${quoted.importance.price.price}% for Price-sensitive, ${quoted.importance.taste.price}% for Taste-driven and only ${quoted.importance.health.price}% for Health-focused, where sugar leads with ${quoted.importance.health.sugar}%.`,
       },
       {
         title: 'What it means for your design',
-        text: 'A vanilla, high-protein drink without added sugar is what Health-focused buyers want. In the simulator (CJ-03) it reaches 76% in that segment at CHF 2.50, and 43% overall. At CHF 1.90 the overall share rises to 55%, but most of the gain comes from Price-sensitive buyers (15% to 38%). In Health-focused it only moves from 76% to 81%.',
+        text: `A vanilla, high-protein drink without added sugar is what Health-focused buyers want. In the simulator (CJ-03) it reaches ${quoted.design.health}% in that segment at ${savedPrice}, and ${quoted.design.all}% overall. At ${lowPrice} the overall share rises to ${quoted.designAtLowPrice.all}%, and the largest jump is among ${segmentOf(largestJump).name} buyers (${quoted.design[largestJump]}% to ${quoted.designAtLowPrice[largestJump]}%). In Health-focused it only moves from ${quoted.design.health}% to ${quoted.designAtLowPrice.health}%.`,
       },
       {
         title: 'What the model does not tell you',
-        text: 'These are shares of preference among four products. Brand strength, shelf space and advertising are not in the model, so 43% is not a sales forecast.',
+        text: `These are shares of preference among ${inWords(competitors.length + 1)} products. Brand strength, shelf space and advertising are not in the model, so ${quoted.design.all}% is not a sales forecast.`,
       },
       {
         title: 'Compared with what you wrote',
-        text: 'You chose CHF 1.90 because price matters most overall. That holds for the average respondent, but not for the segment your product fits best. Your text also does not name a target segment yet.',
+        text: `You chose ${lowPrice} because price matters most overall. That holds for the average respondent, but not for the segment your product fits best. Your text also does not name a target segment yet.`,
       },
     ],
     followUpPlaceholder: 'Ask a follow-up question',
@@ -949,7 +1029,7 @@ export const assignmentSetup = {
     {
       id: 'alpine',
       name: 'Alpine Oat Co.',
-      meta: 'Oat drinks, Switzerland, 300 respondents',
+      meta: `Oat drinks, Switzerland, ${respondentCount} respondents`,
       text: 'Which new product to launch and for which segment. Covers segmentation, positioning and conjoint.',
       previewTitle: 'Alpine Oat Co.: which product, for which segment?',
     },
@@ -1017,6 +1097,9 @@ export const assignmentSetup = {
 // 9. Professor: submissions review
 // ---------------------------------------------------------------------------
 
+/** Compared with the other brands, the attribute on which the own brand is rated lowest (from run POS-01). */
+const ownBrandWeakest = engineRuns['POS-01'].brands.find((brand) => brand.own)!.weakest
+
 export const submissions = {
   title: 'Alpine Oat Co.',
   line: 'Which product, for which segment? Closed on Fri 27 Nov, 23:59. AI tutor mode:',
@@ -1030,7 +1113,7 @@ export const submissions = {
     },
     {
       title: 'Confuses importance with preference for a level',
-      example: 'Example: "Sugar has 24% importance, so buyers want less sugar."',
+      example: `Example: "Sugar has ${quoted.importance.all.sugar}% importance, so buyers want less sugar."`,
       students: 11,
     },
     {
@@ -1053,19 +1136,19 @@ export const submissions = {
   lea: {
     submitted: 'Submitted Thu 26 Nov, 21:14, 99 words',
     paragraphs: [
-      'I recommend launching a vanilla, high-protein oat drink without added sugar in a 1 L pack at CHF 2.50, aimed at the Health-focused segment (38% of respondents, SEG-03).',
-      'For this segment sugar is the most important attribute (47%) and price counts for only 20% (CJ-02), so a low price is not needed. In the simulator the design reaches 76% share within Health-focused and 43% overall (CJ-03).',
-      'Price is the most important attribute overall (42%), but this comes mainly from the Price-sensitive segment, where my design reaches only 15%. I would not try to win that segment with this product.',
+      `I recommend launching a vanilla, high-protein oat drink without added sugar in a 1 L pack at ${savedPrice}, aimed at the Health-focused segment (${segmentOf('health').share}% of respondents, SEG-03).`,
+      `For this segment sugar is the most important attribute (${quoted.importance.health.sugar}%) and price counts for only ${quoted.importance.health.price}% (CJ-02), so a low price is not needed. In the simulator the design reaches ${quoted.design.health}% share within Health-focused and ${quoted.design.all}% overall (CJ-03).`,
+      `Price is the most important attribute overall (${quoted.importance.all.price}%), but this comes mainly from the Price-sensitive segment, where my design reaches only ${quoted.design.price}%. I would not try to win that segment with this product.`,
     ],
     cites: ['SEG-03', 'CJ-02', 'CJ-03'] as RunId[],
     conversationNote: '6 messages, 2 of 3 hints used',
     conversation: [
       { from: 'coach', text: 'Is price the most important attribute in every segment?' },
-      { from: 'student', text: 'No. For Health-focused it is sugar (47%), and for Taste-driven it is flavor.' },
-      { from: 'coach', text: 'So who is your product for? And what does that mean for CHF 1.90?' },
+      { from: 'student', text: studentSeesSegments },
+      { from: 'coach', text: `So who is your product for? And what does that mean for ${lowPrice}?` },
     ] as ChatMessage[],
     draftChange:
-      'Between her first draft and the final text she changed the price from CHF 1.90 to CHF 2.50 and added a target segment.',
+      `Between her first draft and the final text she changed the price from ${lowPrice} to ${savedPrice} and added a target segment.`,
     feedback: {
       scores: [
         { title: 'Decision and target segment', note: 'Names product, price and segment.', score: 5, of: 5 },
@@ -1075,10 +1158,9 @@ export const submissions = {
           score: 4,
           of: 5,
         },
-        { title: 'Limits of the model', note: 'Treats 76% as an outcome, no caveat.', score: 2, of: 5 },
+        { title: 'Limits of the model', note: `Treats ${quoted.design.health}% as an outcome, no caveat.`, score: 2, of: 5 },
       ],
-      comment:
-        'Clear recommendation with a named segment, and you support it with three runs. You noticed that the overall weight of price comes from the Price-sensitive segment, which many missed.\n\nTwo things to improve. You do not use the positioning map, where Alpine Oat is weakest on tasty. And 76% is a share of preference, not a sales forecast: say what the model leaves out.',
+      comment: `Clear recommendation with a named segment, and you support it with three runs. You noticed that the overall weight of price comes from the Price-sensitive segment, which many missed.\n\nTwo things to improve. You do not use the positioning map, where Alpine Oat is weakest on “${ownBrandWeakest}”. And ${quoted.design.health}% is a share of preference, not a sales forecast: say what the model leaves out.`,
       footnote: 'Nothing reaches the student until you approve. The grade is yours: the draft is a starting point.',
     },
   },
@@ -1094,7 +1176,7 @@ export const segmentationSetup = {
   doneSteps: [
     {
       title: 'Variables',
-      text: '8 basis variables selected. The 6 descriptors are kept aside to describe the segments later.',
+      text: `${basisCount} basis variables selected. The ${descriptorCount} descriptors are kept aside to describe the segments later.`,
     },
     {
       title: 'Standardize',
@@ -1127,11 +1209,11 @@ export const segmentationSetup = {
       rows: [
         {
           term: 'Distance',
-          text: 'Euclidean. Straight-line distance between two respondents across the 8 variables.',
+          text: `Euclidean. Straight-line distance between two respondents across the ${basisCount} variables.`,
         },
         {
           term: 'Random starts',
-          text: '25. K-means is repeated from 25 starting points and the best result is kept, so that the answer does not depend on luck.',
+          text: `${engineRuns['SEG-03'].n_starts}. K-means is repeated from ${engineRuns['SEG-03'].n_starts} starting points and the best result is kept, so that the answer does not depend on luck.`,
         },
       ],
     },
@@ -1140,22 +1222,21 @@ export const segmentationSetup = {
     title: 'Number of segments',
     text: 'How many groups K-means should form.',
     options: [2, 3, 4, 5, 6, 7, 8],
-    suggested: 3,
-    whyBefore: 'Why 3: in the tree from',
-    whyAfter:
-      'the distance jumps from 4.1 to 7.9 when going from 3 groups to 2. A big jump means two quite different groups would be forced together.',
+    suggested: engine.tree.suggested_n_segments,
+    whyBefore: `Why ${engine.tree.suggested_n_segments}: in the tree from`,
+    whyAfter: `the distance jumps from ${oneDecimal(engine.tree.distance_before_jump)} to ${oneDecimal(engine.tree.distance_after_jump)} when going from ${engine.tree.suggested_n_segments} groups to ${engine.tree.suggested_n_segments - 1}. A big jump means two quite different groups would be forced together.`,
   },
   thisRun: {
     id: 'SEG-03' as RunId,
-    label: 'Final, 3 segments',
+    label: `Final, ${engineRuns['SEG-03'].settings.n_segments} segments`,
     lines: [
-      { name: 'Variables', value: '8 basis variables' },
+      { name: 'Variables', value: `${basisCount} basis variables` },
       { name: 'Standardize', value: 'On' },
       { name: 'Method', value: 'K-means' },
-      { name: 'Number of segments', value: '3 (default, not yet confirmed)' },
+      { name: 'Number of segments', value: `${engineRuns['SEG-03'].settings.n_segments} (default, not yet confirmed)` },
     ],
     compareWith: 'SEG-02' as RunId,
-    compareText: ': only the number of segments changes, from 4 to 3.',
+    compareText: `: only the number of segments changes, from ${engineRuns['SEG-02'].settings.n_segments} to ${engineRuns['SEG-03'].settings.n_segments}.`,
     note: 'You can run now. Unconfirmed steps use their defaults.',
   },
 }
@@ -1163,49 +1244,49 @@ export const segmentationSetup = {
 /** A node of the dendrogram: either a leaf (a small group of n respondents) or a merge at a distance. */
 export type TreeNode = { n: number } | { at: number; left: TreeNode; right: TreeNode }
 
+/** Where the tree is cut: halfway between the last merge inside a segment and the first merge of two segments. */
+const cutAt = Math.round(((engine.tree.cut_between.above + engine.tree.cut_between.below) / 2) * 10) / 10
+
 export const segmentationResults = {
   runId: 'SEG-03' as RunId,
-  summary: 'K-means, 3 segments, 8 basis variables, standardized. Run on Tue 10 Nov at 16:40.',
-  headline: 'Three segments. The largest, Health-focused, holds 38% of respondents.',
-  profileNote:
-    'Bars show how far the segment is from the average respondent, in standard deviations. Only the four largest differences are shown. All 8 variables are in the details below.',
+  summary: `${segSummary('SEG-03').replace('variables', 'basis variables')}. Run on Tue 10 Nov at 16:40.`,
+  headline: `${capital(inWords(segments.length))} segments. The largest, ${largestSegment.name}, holds ${largestSegment.share}% of respondents.`,
+  profileNote: `Bars show how far the segment is from the average respondent, in standard deviations. Only the four largest differences are shown. All ${basisCount} variables are in the details below.`,
   renameTip: 'Segment names are yours. Click to rename.',
   tree: {
-    title: 'Why three segments? The tree from',
+    title: `Why ${inWords(engine.tree.suggested_n_segments)} segments? The tree from`,
     fromRun: 'SEG-01' as RunId,
     /** The tree is cut at this distance, which gives three segments. */
-    cutAt: 5.6,
-    cutLabel: 'Cut here: 3 segments',
+    cutAt,
+    cutLabel: `Cut here: ${engine.tree.suggested_n_segments} segments`,
     axisLabel: 'Distance when groups merge',
-    /** One subtree per segment, in segment order, and the two merges above the cut. */
-    health: {
-      at: 2.6,
-      left: { at: 1.1, left: { n: 31 }, right: { n: 28 } },
-      right: { at: 1.4, left: { n: 30 }, right: { n: 25 } },
-    } as TreeNode,
-    taste: {
-      at: 4.1,
-      left: { at: 1.2, left: { n: 34 }, right: { n: 29 } },
-      right: { at: 1.0, left: { n: 22 }, right: { n: 17 } },
-    } as TreeNode,
-    price: { at: 2.2, left: { at: 0.9, left: { n: 30 }, right: { n: 26 } }, right: { n: 28 } } as TreeNode,
-    /** Health-focused and Taste-driven merge at 7.9, the result merges with Price-sensitive at 10.6. */
-    mergeHealthTaste: 7.9,
-    mergeAll: 10.6,
+    /**
+     * One branch per segment. The first two branches merge first (at
+     * mergeFirstTwo), then the third joins them (at mergeAll). The tree draws
+     * them in the order of the segments where the two that merge stay neighbours.
+     */
+    branches: engine.tree.branches.map((branch) => ({
+      segment: branch.segment as SegmentId,
+      n: branch.n,
+      tree: branch.tree as unknown as TreeNode,
+    })),
+    mergeFirstTwo: engine.tree.merge_first_two,
+    mergeAll: engine.tree.merge_all,
     howToRead: [
       'Each line at the bottom is a small group of similar respondents (the number is its size). Groups join as you move up. The higher the join, the more different the two groups are.',
-      'The cut line crosses three branches, so three segments.',
+      `The cut line crosses ${inWords(engine.tree.suggested_n_segments)} branches, so ${inWords(engine.tree.suggested_n_segments)} segments.`,
+      `The tree is a first look. K-means then moves some respondents to a better fitting segment: ${whole(engine.tree.share_in_final_segment)}% stay in the segment of their branch.`,
     ],
   },
   details: [
     {
-      title: 'Segment means on all 8 basis variables',
+      title: `Segment means on all ${basisCount} basis variables`,
       note: 'Table, original and standardized values',
     },
-    { title: 'Descriptor variables by segment', note: '6 tables with significance tests' },
+    { title: 'Descriptor variables by segment', note: `${descriptorCount} tables with significance tests` },
     {
       title: 'Model quality and settings',
-      note: 'Variance explained 58%, 25 random starts, converged in 9 steps',
+      note: `Variance explained ${whole(engineRuns['SEG-03'].variance_explained)}%, ${engineRuns['SEG-03'].n_starts} random starts, converged in ${engineRuns['SEG-03'].n_iterations} steps`,
     },
   ],
   detailsEmpty: 'This table is not filled in for the demo.',
@@ -1216,56 +1297,77 @@ export const segmentationResults = {
 //     Coordinates are positions on the two map dimensions.
 // ---------------------------------------------------------------------------
 
+const brandMap = engineRuns['POS-01']
+/**
+ * The map is drawn 2.76 units wide and 2.5 units high on each side of the centre.
+ * The engine's coordinates are multiplied by one factor so that they fit, which keeps
+ * all distances and angles as they are. Of an attribute line and a preference arrow
+ * only the direction is read, so each kind gets one factor for its length that reads well.
+ */
+const MAP_SCALE = 0.55
+const ATTRIBUTE_LENGTH = 1.55
+const PREFERENCE_LENGTH = 2.3
+const twoDecimals = (value: number) => Math.round(value * 100) / 100
+const percentOneDecimal = (fraction: number) => Math.round(fraction * 1000) / 10
+const brandScaleMax = engine.case.brand_rating_scale.maximum
+
+/** One sentence on what a brand is rated high and low on, compared with the other brands. */
+function brandTip(brand: (typeof brandMap.brands)[number]): string {
+  const means = brand.means as Record<string, number>
+  const standardized = brand.standardized as Record<string, number>
+  const mean = (key: string) => oneDecimal(means[key])
+  if (Math.max(...Object.values(standardized).map(Math.abs)) < 0.5) {
+    return `Close to the average on every attribute. Highest on ${brand.strongest[0]} (${mean(brand.strongest_keys[0])} of ${brandScaleMax}).`
+  }
+  // A second strength is only named when the brand is rated above the average brand on it.
+  const second =
+    standardized[brand.strongest_keys[1]] > 0 ? ` and ${brand.strongest[1]} (${mean(brand.strongest_keys[1])})` : ''
+  return `Strongest on ${brand.strongest[0]} (${mean(brand.strongest_keys[0])} of ${brandScaleMax})${second}. Weakest on ${brand.weakest} (${mean(brand.weakest_key)}).`
+}
+
+/** Where a label sits so that it does not cover a neighbour. Checked by eye for the engine's map. */
+type BrandLabel = 'left' | 'right' | 'belowLeft'
+type AttributeLabel = 'right' | 'top' | 'below' | 'topLeft' | 'rightUp' | 'rightDown'
+type PreferenceLabel = 'left' | 'right' | 'below' | 'above'
+const brandLabelSide: Record<string, BrandLabel> = { 'Alpine Oat': 'belowLeft', 'Supermarket own brand': 'left' }
+const attributeLabelSide: Record<string, AttributeLabel> = {
+  good_value: 'below',
+  tasty: 'top',
+  sustainable: 'rightUp',
+  natural: 'rightDown',
+}
+const preferenceLabelSide: Record<SegmentId, PreferenceLabel> = { health: 'right', taste: 'right', price: 'above' }
+const mapShare = brandMap.variance_explained_by_map
+
 export const positioning = {
   runId: 'POS-01' as RunId,
-  summary: '4 brands, 6 attributes, arrows from SEG-03. Run on Thu 12 Nov at 14:20.',
-  headline: 'Two dimensions capture 88% of how respondents see the four brands.',
-  axes: { x: 'Dimension 1 (61% of variance)', y: 'Dimension 2 (27%)' },
-  brands: [
-    {
-      name: 'Alpine Oat',
-      x: 1.0,
-      y: -0.84,
-      own: true,
-      label: 'right',
-      tip: 'Strongest on healthy (5.9 of 7) and natural (5.7). Weakest on tasty (4.1).',
-    },
-    {
-      name: 'Valloat',
-      x: 1.0,
-      y: 1.12,
-      label: 'right',
-      tip: 'Strongest on creamy (6.0) and tasty (5.8). Weakest on good value (3.4).',
-    },
-    {
-      name: 'Lumo',
-      x: 0.04,
-      y: 0.44,
-      label: 'left',
-      tip: 'Close to the average on every attribute. Highest on tasty (4.9).',
-    },
-    {
-      name: 'Supermarket own brand',
-      x: -1.2,
-      y: -1.28,
-      label: 'right',
-      tip: 'Strongest on good value (6.2). Weakest on natural (3.3) and sustainable (3.2).',
-    },
-  ] as { name: string; x: number; y: number; own?: boolean; label: 'left' | 'right'; tip: string }[],
-  attributes: [
-    { name: 'natural', x: 1.9, y: -0.08, label: 'right' },
-    { name: 'healthy', x: 1.72, y: -0.68, label: 'right' },
-    { name: 'sustainable', x: 1.68, y: 0.6, label: 'right' },
-    { name: 'creamy', x: 1.28, y: 1.4, label: 'right' },
-    { name: 'tasty', x: 0.16, y: 1.84, label: 'topLeft' },
-    { name: 'good value', x: -1.8, y: -0.12, label: 'top' },
-  ] as { name: string; x: number; y: number; label: 'right' | 'top' | 'topLeft' }[],
+  summary: `${brandMap.n_brands} brands, ${brandMap.n_attributes} attributes, arrows from SEG-03. Run on Thu 12 Nov at 14:20.`,
+  headline: `Two dimensions capture ${mapShare >= 0.995 ? percentOneDecimal(mapShare) : whole(mapShare)}% of how respondents see the ${inWords(brandMap.n_brands)} brands.`,
+  axes: {
+    x: `Dimension 1 (${whole(brandMap.variance_explained[0])}% of variance)`,
+    y: `Dimension 2 (${whole(brandMap.variance_explained[1])}%)`,
+  },
+  brands: brandMap.brands.map((brand) => ({
+    name: brand.name,
+    x: twoDecimals(brand.coordinates[0] * MAP_SCALE),
+    y: twoDecimals(brand.coordinates[1] * MAP_SCALE),
+    own: brand.own,
+    label: brandLabelSide[brand.name] ?? 'right',
+    tip: brandTip(brand),
+  })) as { name: string; x: number; y: number; own?: boolean; label: BrandLabel; tip: string }[],
+  attributes: brandMap.attributes.map((attribute) => ({
+    name: capital(attribute.label),
+    x: twoDecimals(attribute.direction[0] * attribute.length * ATTRIBUTE_LENGTH),
+    y: twoDecimals(attribute.direction[1] * attribute.length * ATTRIBUTE_LENGTH),
+    label: attributeLabelSide[attribute.key] ?? 'right',
+  })) as { name: string; x: number; y: number; label: AttributeLabel }[],
   /** Preference arrows: the further a brand lies along the arrow, the more the segment prefers it. */
-  preferences: [
-    { segment: 'health' as SegmentId, x: 1.1, y: -1.9, label: 'left' },
-    { segment: 'taste' as SegmentId, x: 0.8, y: 2.08, label: 'right' },
-    { segment: 'price' as SegmentId, x: -2.2, y: -0.6, label: 'below' },
-  ] as { segment: SegmentId; x: number; y: number; label: 'left' | 'right' | 'below' }[],
+  preferences: brandMap.preferences.map((preference) => ({
+    segment: preference.segment as SegmentId,
+    x: twoDecimals(preference.direction[0] * preference.length * PREFERENCE_LENGTH),
+    y: twoDecimals(preference.direction[1] * preference.length * PREFERENCE_LENGTH),
+    label: preferenceLabelSide[preference.segment as SegmentId],
+  })) as { segment: SegmentId; x: number; y: number; label: PreferenceLabel }[],
   arrowTip: 'The further a brand lies along this arrow, the more this segment prefers it.',
   howToRead: [
     'Brands that sit close together are seen as similar.',
@@ -1275,9 +1377,13 @@ export const positioning = {
   layersNote: 'From run SEG-03',
   arrowsNote: 'Arrows fit when more is always better. Ideal points fit when a segment has a sweet spot.',
   variance: [
-    { name: 'Dimension 1', value: 61, color: '#56607A' },
-    { name: 'Dimension 2', value: 27, color: '#8C95AB' },
-    { name: 'Not shown', value: 12, color: '#B4BAC8' },
+    { name: 'Dimension 1', value: percentOneDecimal(brandMap.variance_explained[0]), color: '#56607A' },
+    { name: 'Dimension 2', value: percentOneDecimal(brandMap.variance_explained[1]), color: '#8C95AB' },
+    {
+      name: 'Not shown',
+      value: Math.round((100 - percentOneDecimal(brandMap.variance_explained[0]) - percentOneDecimal(brandMap.variance_explained[1])) * 10) / 10,
+      color: '#B4BAC8',
+    },
   ],
   varianceNote: 'How much of the brand ratings the flat map keeps.',
 }

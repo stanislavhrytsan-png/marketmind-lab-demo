@@ -11,12 +11,32 @@ const H = 320
 const LEFT = 54
 const RIGHT = 654
 const BASE = 246 // y of distance 0
-const STEP = 20.17 // px per unit of distance
+const TOP = 44.3 // y of the highest tick of the distance axis
 const FIRST_LEAF = 81.3
-const LEAF_GAP = 54.54
+const LAST_LEAF = 626.7
 const GREY = '#8D94A3'
 
+const { tree } = segmentationResults
+
+/** The distance axis: at most six round ticks that reach past the last merge. */
+const tickStep = [1, 2, 5, 10, 20, 50, 100].find((step) => tree.mergeAll / step <= 5) ?? 100
+const ticks = Array.from({ length: Math.ceil(tree.mergeAll / tickStep) + 1 }, (_, i) => i * tickStep)
+const STEP = (BASE - TOP) / ticks[ticks.length - 1] // px per unit of distance
 const y = (distance: number) => BASE - distance * STEP
+
+const countLeaves = (node: TreeNode): number => ('n' in node ? 1 : countLeaves(node.left) + countLeaves(node.right))
+const LEAF_GAP =
+  (LAST_LEAF - FIRST_LEAF) / (tree.branches.reduce((sum, branch) => sum + countLeaves(branch.tree), 0) - 1)
+
+/**
+ * The branches from left to right: in the order of the segments, as on every
+ * other screen, as long as the two branches that merge first stay neighbours.
+ */
+const segmentOrder = segments.map((segment) => segment.id)
+const bySegment = [...tree.branches].sort((a, b) => segmentOrder.indexOf(a.segment) - segmentOrder.indexOf(b.segment))
+const pairStaysTogether =
+  Math.abs(bySegment.indexOf(tree.branches[0]) - bySegment.indexOf(tree.branches[1])) === 1
+const shownBranches = pairStaysTogether ? bySegment : tree.branches
 
 interface Drawn {
   /** x of the vertical line that leaves this node upwards. */
@@ -51,19 +71,21 @@ function draw(node: TreeNode, firstLeaf: number): Drawn {
 }
 
 export function Dendrogram() {
-  const { tree } = segmentationResults
   const cut = y(tree.cutAt)
 
   // One branch per segment, laid out left to right.
-  const branches = segments.reduce<(Drawn & { segment: Segment })[]>((done, segment) => {
+  const branches = shownBranches.reduce<(Drawn & { segment: Segment; n: number; first: boolean })[]>((done, branch) => {
     const leavesSoFar = done.reduce((sum, b) => sum + b.leaves.length, 0)
-    return [...done, { segment, ...draw(tree[segment.id], leavesSoFar) }]
+    const segment = segments.find((s) => s.id === branch.segment)!
+    const first = tree.branches.indexOf(branch) < 2
+    return [...done, { segment, n: branch.n, first, ...draw(branch.tree, leavesSoFar) }]
   }, [])
-  const [health, taste, price] = branches
-  const healthTaste = (health.x + taste.x) / 2
-  const mergeHT = y(tree.mergeHealthTaste)
+  // Two branches merge first, then the third joins them.
+  const [one, two] = branches.filter((b) => b.first)
+  const third = branches.find((b) => !b.first)!
+  const pair = (one.x + two.x) / 2
+  const mergePair = y(tree.mergeFirstTwo)
   const mergeAll = y(tree.mergeAll)
-  const ticks = [0, 2, 4, 6, 8, 10]
 
   return (
     <svg
@@ -71,7 +93,7 @@ export function Dendrogram() {
       height={H}
       viewBox={`0 0 ${W} ${H}`}
       role="img"
-      aria-label={`Dendrogram. Cutting the tree at distance ${tree.cutAt} gives three segments.`}
+      aria-label={`Dendrogram. Cutting the tree at distance ${tree.cutAt} gives ${branches.length} segments.`}
       className="flex-none"
     >
       {/* distance axis */}
@@ -99,12 +121,12 @@ export function Dendrogram() {
 
       {/* above the cut: the merges between segments */}
       <g stroke={GREY} strokeWidth={1.5} fill="none">
-        <path d={`M${health.x} ${cut}V${mergeHT}`} />
-        <path d={`M${taste.x} ${cut}V${mergeHT}`} />
-        <path d={`M${health.x} ${mergeHT}H${taste.x}`} />
-        <path d={`M${healthTaste} ${mergeHT}V${mergeAll}`} />
-        <path d={`M${price.x} ${cut}V${mergeAll}`} />
-        <path d={`M${healthTaste} ${mergeAll}H${price.x}`} />
+        <path d={`M${one.x} ${cut}V${mergePair}`} />
+        <path d={`M${two.x} ${cut}V${mergePair}`} />
+        <path d={`M${one.x} ${mergePair}H${two.x}`} />
+        <path d={`M${pair} ${mergePair}V${mergeAll}`} />
+        <path d={`M${third.x} ${cut}V${mergeAll}`} />
+        <path d={`M${pair} ${mergeAll}H${third.x}`} />
       </g>
 
       {/* leaves: small groups of similar respondents, labelled with their size */}
@@ -118,7 +140,7 @@ export function Dendrogram() {
             fontSize={12}
             fill="#636B7D"
             tabIndex={0}
-            data-tip={`A group of ${leaf.n} similar respondents, part of ${b.segment.name}`}
+            data-tip={`A group of ${leaf.n} similar respondents, in the branch that becomes ${b.segment.name}`}
           >
             {leaf.n}
           </text>
@@ -137,7 +159,7 @@ export function Dendrogram() {
               {b.segment.name}
             </text>
             <text x={middle} y={312} textAnchor="middle" fontSize={12} fill="#636B7D">
-              {b.segment.n} respondents
+              {b.n} respondents
             </text>
           </g>
         )

@@ -22,7 +22,7 @@ import {
   segments,
 } from '../../data/alpineOat'
 import type { ModuleId, Run, RunId } from '../../data/alpineOat'
-import { pct, pct1, sharesAgainstCompetitors } from '../../lib/conjoint'
+import { importance, importanceOneModel, pct, pct1, sharesAgainstCompetitors } from '../../lib/conjoint'
 import { cx, useDemo } from '../../lib/demo'
 import type { SizePart } from '../../lib/sizeParts'
 
@@ -122,12 +122,19 @@ function WhatChanged({ children }: { children: ReactNode }) {
   )
 }
 
-/** CJ-01 against CJ-02: the same importance overall, plus one column per segment in B. */
+/** CJ-01 against CJ-02: almost the same importance overall, plus one column per segment in B. */
 function ImportanceComparison({ hideSame, text }: { hideSame: boolean; text: string }) {
   const same: ImportanceColumn[] = [
-    { group: 'all', label: 'A, all respondents', faded: true },
+    { group: 'all', label: 'A, all respondents', faded: true, values: importanceOneModel },
     { group: 'all', label: 'B, all respondents', faded: true },
   ]
+  /** The largest difference between the two columns for all respondents, in whole points. */
+  const apart = Math.max(
+    ...Object.entries(importance('all')).map(([attr, value]) =>
+      Math.abs(Math.round(value * 100) - Math.round(importanceOneModel[attr as keyof typeof importanceOneModel] * 100)),
+    ),
+  )
+  const identical = apart === 0
   const added: ImportanceColumn[] = segments.map((s) => ({
     group: s.id,
     label: (
@@ -137,9 +144,16 @@ function ImportanceComparison({ hideSame, text }: { hideSame: boolean; text: str
     ),
   }))
   return (
-    <Section title="Attribute importance" note="Identical columns are faded. The segment columns exist only in B.">
+    <Section
+      title="Attribute importance"
+      note={
+        identical
+          ? 'Identical columns are faded. The segment columns exist only in B.'
+          : `Faded columns differ by at most ${apart} ${apart === 1 ? 'point' : 'points'}. Segment columns exist only in B.`
+      }
+    >
       <div className="-mx-3 mt-2">
-        <ImportanceTable columns={hideSame ? added : [...same, ...added]} />
+        <ImportanceTable columns={hideSame && identical ? added : [...same, ...added]} />
       </div>
       <WhatChanged>{text}</WhatChanged>
     </Section>
@@ -186,7 +200,8 @@ function SegmentComparison({ hideSame, text }: { hideSame: boolean; text: string
         share: row.share,
         n: row.n,
         faded: row.same,
-        caption: `${row.share}%, ${row.n}${changedSegment ? ' respondents' : ''}`,
+        // A narrow part has no room for the word.
+        caption: `${row.share}%, ${row.n}${changedSegment && row.share >= 25 ? ' respondents' : ''}`,
       }
     })
   return (

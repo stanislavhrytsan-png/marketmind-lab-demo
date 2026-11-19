@@ -5,8 +5,11 @@ import { Accordion, Card, Hr, LinkButton, Note, SegmentedControl } from '../../c
 import { allColor, caseBrief, course } from '../../data/alpineOat'
 import { useDemo } from '../../lib/demo'
 
-/** Seven small bars: how often each answer from 1 to 7 was given. */
+const { minimum, maximum } = caseBrief.scale
+
+/** One small bar per answer on the scale: how often each answer was given. */
 function AnswerShape({ shape }: { shape: number[] }) {
+  const step = 84 / shape.length
   return (
     <svg
       className="inline-block align-baseline"
@@ -14,11 +17,11 @@ function AnswerShape({ shape }: { shape: number[] }) {
       height="24"
       viewBox="0 0 84 24"
       role="img"
-      aria-label="Distribution of answers from 1 to 7"
+      aria-label={`Distribution of answers from ${minimum} to ${maximum}`}
     >
       {shape.map((share, i) => {
         const height = Math.round(share * 240) / 10
-        return <rect key={i} x={1 + i * 12} y={24 - height} width="10" height={height} rx="1.5" fill={allColor} />
+        return <rect key={i} x={1 + i * step} y={24 - height} width={step - 2} height={height} rx="1.5" fill={allColor} />
       })}
     </svg>
   )
@@ -92,7 +95,9 @@ export default function CaseBrief() {
                   <tr>
                     <th>Variable</th>
                     <th>What the respondent was asked</th>
-                    <th>Answers, 1 to 7</th>
+                    <th>
+                      Answers, {minimum} to {maximum}
+                    </th>
                     <th className="r">Mean</th>
                   </tr>
                 </thead>
@@ -154,7 +159,8 @@ export default function CaseBrief() {
               </>
             }
           >
-            <table className="tbl mt-2">
+            {/* Less space between the columns, so that all basis variables fit side by side. */}
+            <table className="tbl mt-2 [&_td]:px-[7px] [&_th]:px-[7px]">
               <thead>
                 <tr>
                   <th>Respondent</th>
@@ -170,8 +176,8 @@ export default function CaseBrief() {
                   <tr key={row.id}>
                     <td className="num font-semibold">{row.id}</td>
                     {row.answers.map((answer, i) => (
-                      <td key={i} className="r">
-                        {answer}
+                      <td key={i} className={answer === null ? 'r text-ink3' : 'r'}>
+                        {answer ?? 'missing'}
                       </td>
                     ))}
                   </tr>

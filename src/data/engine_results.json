@@ -1,0 +1,2257 @@
+{
+ "about": {
+  "made_by": "python -m marketmind.export_demo",
+  "engine_version": "0.2.0",
+  "case": "Alpine Oat Co.",
+  "seed": 2026,
+  "note": "Real results of the MarketMind Lab engine on the synthetic survey of the case. Do not edit by hand: run the command again."
+ },
+ "case": {
+  "n_respondents": 300,
+  "rating_scale": {
+   "minimum": 0,
+   "maximum": 9
+  },
+  "basis_variables": [
+   {
+    "key": "creamy",
+    "label": "Creamy",
+    "question": "How important is a creamy texture?",
+    "mean": 5.25,
+    "n_missing": 0,
+    "shape": [
+     0.016667,
+     0.15,
+     0.3,
+     0.45,
+     0.916667,
+     0.916667,
+     1.0,
+     0.483333,
+     0.383333,
+     0.383333
+    ]
+   },
+   {
+    "key": "healthy",
+    "label": "Healthy",
+    "question": "How important is it that the drink is healthy?",
+    "mean": 5.436242,
+    "n_missing": 2,
+    "shape": [
+     0.017544,
+     0.070175,
+     0.280702,
+     0.719298,
+     0.666667,
+     1.0,
+     0.754386,
+     0.736842,
+     0.561404,
+     0.421053
+    ]
+   },
+   {
+    "key": "natural",
+    "label": "Natural",
+    "question": "How important are natural ingredients?",
+    "mean": 5.08,
+    "n_missing": 0,
+    "shape": [
+     0.05,
+     0.15,
+     0.233333,
+     0.5,
+     0.916667,
+     1.0,
+     0.916667,
+     0.816667,
+     0.35,
+     0.066667
+    ]
+   },
+   {
+    "key": "good_value",
+    "label": "Good value",
+    "question": "How important is good value for money?",
+    "mean": 5.056856,
+    "n_missing": 1,
+    "shape": [
+     0.046154,
+     0.153846,
+     0.323077,
+     0.630769,
+     1.0,
+     0.692308,
+     0.430769,
+     0.538462,
+     0.307692,
+     0.476923
+    ]
+   },
+   {
+    "key": "sustainable",
+    "label": "Sustainable",
+    "question": "How important are sustainable sourcing and packaging?",
+    "mean": 4.781879,
+    "n_missing": 2,
+    "shape": [
+     0.0,
+     0.109375,
+     0.328125,
+     0.703125,
+     0.875,
+     1.0,
+     0.875,
+     0.546875,
+     0.15625,
+     0.0625
+    ]
+   },
+   {
+    "key": "tasty",
+    "label": "Tasty",
+    "question": "How important is the taste on its own?",
+    "mean": 5.989933,
+    "n_missing": 2,
+    "shape": [
+     0.0,
+     0.047619,
+     0.047619,
+     0.269841,
+     0.746032,
+     0.809524,
+     1.0,
+     0.650794,
+     0.634921,
+     0.52381
+    ]
+   },
+   {
+    "key": "high_protein",
+    "label": "High protein",
+    "question": "How important is a high protein content?",
+    "mean": 4.57047,
+    "n_missing": 2,
+    "shape": [
+     0.067797,
+     0.118644,
+     0.491525,
+     0.966102,
+     1.0,
+     0.779661,
+     0.677966,
+     0.627119,
+     0.169492,
+     0.152542
+    ]
+   },
+   {
+    "key": "low_sugar",
+    "label": "Low sugar",
+    "question": "How important is little or no added sugar?",
+    "mean": 5.013378,
+    "n_missing": 1,
+    "shape": [
+     0.035088,
+     0.192982,
+     0.438596,
+     0.666667,
+     1.0,
+     0.754386,
+     0.701754,
+     0.684211,
+     0.491228,
+     0.280702
+    ]
+   },
+   {
+    "key": "convenient",
+    "label": "Convenient",
+    "question": "How important is it that the drink is easy to buy and to store?",
+    "mean": 5.334448,
+    "n_missing": 1,
+    "shape": [
+     0.0,
+     0.046154,
+     0.138462,
+     0.523077,
+     0.861538,
+     1.0,
+     0.815385,
+     0.676923,
+     0.276923,
+     0.261538
+    ]
+   },
+   {
+    "key": "local",
+    "label": "Local",
+    "question": "How important is it that the drink is made in Switzerland?",
+    "mean": 4.598662,
+    "n_missing": 1,
+    "shape": [
+     0.014085,
+     0.098592,
+     0.267606,
+     0.690141,
+     1.0,
+     0.887324,
+     0.704225,
+     0.422535,
+     0.098592,
+     0.028169
+    ]
+   }
+  ],
+  "descriptor_variables": [
+   {
+    "key": "age_group",
+    "label": "Age group",
+    "type": "category",
+    "categories": [
+     "18-24",
+     "25-34",
+     "35-44",
+     "45-54",
+     "55-64",
+     "65+"
+    ]
+   },
+   {
+    "key": "income_group",
+    "label": "Household income",
+    "type": "category",
+    "categories": [
+     "low",
+     "middle",
+     "high"
+    ]
+   },
+   {
+    "key": "sport_frequency",
+    "label": "Sport per week",
+    "type": "category",
+    "categories": [
+     "never",
+     "1-2 times",
+     "3-4 times",
+     "5+ times"
+    ]
+   },
+   {
+    "key": "weekly_consumption",
+    "label": "Weekly consumption (litres of oat drink)",
+    "type": "number"
+   }
+  ],
+  "n_basis_answers": 3000,
+  "n_missing_answers": 12,
+  "n_columns": 15,
+  "raw_rows": [
+   {
+    "id": 1001,
+    "answers": [
+     9,
+     5,
+     4,
+     5,
+     4,
+     6,
+     5,
+     2,
+     5,
+     5
+    ]
+   },
+   {
+    "id": 1002,
+    "answers": [
+     5,
+     9,
+     5,
+     6,
+     5,
+     4,
+     7,
+     5,
+     9,
+     6
+    ]
+   },
+   {
+    "id": 1003,
+    "answers": [
+     4,
+     7,
+     6,
+     3,
+     4,
+     4,
+     6,
+     7,
+     2,
+     6
+    ]
+   },
+   {
+    "id": 1004,
+    "answers": [
+     4,
+     7,
+     8,
+     4,
+     3,
+     6,
+     4,
+     9,
+     4,
+     3
+    ]
+   },
+   {
+    "id": 1005,
+    "answers": [
+     8,
+     5,
+     6,
+     5,
+     6,
+     8,
+     3,
+     5,
+     4,
+     7
+    ]
+   },
+   {
+    "id": 1006,
+    "answers": [
+     4,
+     8,
+     5,
+     4,
+     5,
+     5,
+     7,
+     9,
+     7,
+     5
+    ]
+   }
+  ],
+  "brands": [
+   "Alpine Oat",
+   "Valloat",
+   "Lumo",
+   "Supermarket own brand"
+  ],
+  "own_brand": "Alpine Oat",
+  "n_brand_attributes": 6,
+  "brand_rating_scale": {
+   "minimum": 0,
+   "maximum": 9
+  },
+  "choice_tasks_per_respondent": 12,
+  "alternatives_per_task": 3
+ },
+ "segments": [
+  {
+   "id": "health",
+   "name": "Health-focused",
+   "number": 1,
+   "n": 113,
+   "share": 0.376667,
+   "largest_differences": [
+    {
+     "variable": "low_sugar",
+     "label": "Low sugar",
+     "z": 0.880427
+    },
+    {
+     "variable": "healthy",
+     "label": "Healthy",
+     "z": 0.868598
+    },
+    {
+     "variable": "high_protein",
+     "label": "High protein",
+     "z": 0.807891
+    },
+    {
+     "variable": "natural",
+     "label": "Natural",
+     "z": 0.699799
+    }
+   ],
+   "mean_standardized": {
+    "creamy": -0.561371,
+    "healthy": 0.868598,
+    "natural": 0.699799,
+    "good_value": -0.48046,
+    "sustainable": 0.458389,
+    "tasty": -0.49295,
+    "high_protein": 0.807891,
+    "low_sugar": 0.880427,
+    "convenient": -0.574711,
+    "local": 0.344503
+   },
+   "mean_original": {
+    "creamy": 4.115044,
+    "healthy": 7.223214,
+    "natural": 6.371681,
+    "good_value": 3.982143,
+    "sustainable": 5.566372,
+    "tasty": 5.081081,
+    "high_protein": 6.141593,
+    "low_sugar": 6.893805,
+    "convenient": 4.309735,
+    "local": 5.159292
+   },
+   "descriptors": {
+    "age_group": {
+     "shares": {
+      "18-24": 0.123894,
+      "25-34": 0.283186,
+      "35-44": 0.274336,
+      "45-54": 0.132743,
+      "55-64": 0.132743,
+      "65+": 0.053097
+     },
+     "shares_all": {
+      "18-24": 0.196667,
+      "25-34": 0.27,
+      "35-44": 0.21,
+      "45-54": 0.136667,
+      "55-64": 0.11,
+      "65+": 0.076667
+     },
+     "differs": true
+    },
+    "income_group": {
+     "shares": {
+      "high": 0.451327,
+      "low": 0.141593,
+      "middle": 0.40708
+     },
+     "shares_all": {
+      "high": 0.276667,
+      "low": 0.28,
+      "middle": 0.443333
+     },
+     "differs": true
+    },
+    "sport_frequency": {
+     "shares": {
+      "1-2 times": 0.292035,
+      "3-4 times": 0.353982,
+      "5+ times": 0.309735,
+      "never": 0.044248
+     },
+     "shares_all": {
+      "1-2 times": 0.386667,
+      "3-4 times": 0.266667,
+      "5+ times": 0.166667,
+      "never": 0.18
+     },
+     "differs": true
+    },
+    "weekly_consumption": {
+     "mean": 1.823009,
+     "mean_all": 1.801667,
+     "differs": true
+    }
+   }
+  },
+  {
+   "id": "taste",
+   "name": "Taste-driven",
+   "number": 2,
+   "n": 102,
+   "share": 0.34,
+   "largest_differences": [
+    {
+     "variable": "creamy",
+     "label": "Creamy",
+     "z": 0.981965
+    },
+    {
+     "variable": "tasty",
+     "label": "Tasty",
+     "z": 0.8669
+    },
+    {
+     "variable": "low_sugar",
+     "label": "Low sugar",
+     "z": -0.8371
+    },
+    {
+     "variable": "healthy",
+     "label": "Healthy",
+     "z": -0.488439
+    }
+   ],
+   "mean_standardized": {
+    "creamy": 0.981965,
+    "healthy": -0.488439,
+    "natural": -0.160195,
+    "good_value": -0.47686,
+    "sustainable": 0.081169,
+    "tasty": 0.8669,
+    "high_protein": -0.43218,
+    "low_sugar": -0.8371,
+    "convenient": -0.098728,
+    "local": 0.059862
+   },
+   "mean_original": {
+    "creamy": 7.235294,
+    "healthy": 4.431373,
+    "natural": 4.784314,
+    "good_value": 3.990196,
+    "sustainable": 4.920792,
+    "tasty": 7.588235,
+    "high_protein": 3.73,
+    "low_sugar": 3.22549,
+    "convenient": 5.158416,
+    "local": 4.696078
+   },
+   "descriptors": {
+    "age_group": {
+     "shares": {
+      "18-24": 0.372549,
+      "25-34": 0.343137,
+      "35-44": 0.196078,
+      "45-54": 0.039216,
+      "55-64": 0.029412,
+      "65+": 0.019608
+     },
+     "shares_all": {
+      "18-24": 0.196667,
+      "25-34": 0.27,
+      "35-44": 0.21,
+      "45-54": 0.136667,
+      "55-64": 0.11,
+      "65+": 0.076667
+     },
+     "differs": true
+    },
+    "income_group": {
+     "shares": {
+      "high": 0.235294,
+      "low": 0.294118,
+      "middle": 0.470588
+     },
+     "shares_all": {
+      "high": 0.276667,
+      "low": 0.28,
+      "middle": 0.443333
+     },
+     "differs": true
+    },
+    "sport_frequency": {
+     "shares": {
+      "1-2 times": 0.431373,
+      "3-4 times": 0.245098,
+      "5+ times": 0.117647,
+      "never": 0.205882
+     },
+     "shares_all": {
+      "1-2 times": 0.386667,
+      "3-4 times": 0.266667,
+      "5+ times": 0.166667,
+      "never": 0.18
+     },
+     "differs": true
+    },
+    "weekly_consumption": {
+     "mean": 1.251961,
+     "mean_all": 1.801667,
+     "differs": true
+    }
+   }
+  },
+  {
+   "id": "price",
+   "name": "Price-sensitive",
+   "number": 3,
+   "n": 85,
+   "share": 0.283333,
+   "largest_differences": [
+    {
+     "variable": "good_value",
+     "label": "Good value",
+     "z": 1.205309
+    },
+    {
+     "variable": "convenient",
+     "label": "Convenient",
+     "z": 0.881339
+    },
+    {
+     "variable": "natural",
+     "label": "Natural",
+     "z": -0.738087
+    },
+    {
+     "variable": "sustainable",
+     "label": "Sustainable",
+     "z": -0.714238
+    }
+   ],
+   "mean_standardized": {
+    "creamy": -0.432065,
+    "healthy": -0.565026,
+    "natural": -0.738087,
+    "good_value": 1.205309,
+    "sustainable": -0.714238,
+    "tasty": -0.396545,
+    "high_protein": -0.565572,
+    "low_sugar": -0.167906,
+    "convenient": 0.881339,
+    "local": -0.536128
+   },
+   "mean_original": {
+    "creamy": 4.376471,
+    "healthy": 4.27381,
+    "natural": 3.717647,
+    "good_value": 7.752941,
+    "sustainable": 3.559524,
+    "tasty": 5.258824,
+    "high_protein": 3.470588,
+    "low_sugar": 4.654762,
+    "convenient": 6.905882,
+    "local": 3.72619
+   },
+   "descriptors": {
+    "age_group": {
+     "shares": {
+      "18-24": 0.082353,
+      "25-34": 0.164706,
+      "35-44": 0.141176,
+      "45-54": 0.258824,
+      "55-64": 0.176471,
+      "65+": 0.176471
+     },
+     "shares_all": {
+      "18-24": 0.196667,
+      "25-34": 0.27,
+      "35-44": 0.21,
+      "45-54": 0.136667,
+      "55-64": 0.11,
+      "65+": 0.076667
+     },
+     "differs": true
+    },
+    "income_group": {
+     "shares": {
+      "high": 0.094118,
+      "low": 0.447059,
+      "middle": 0.458824
+     },
+     "shares_all": {
+      "high": 0.276667,
+      "low": 0.28,
+      "middle": 0.443333
+     },
+     "differs": true
+    },
+    "sport_frequency": {
+     "shares": {
+      "1-2 times": 0.458824,
+      "3-4 times": 0.176471,
+      "5+ times": 0.035294,
+      "never": 0.329412
+     },
+     "shares_all": {
+      "1-2 times": 0.386667,
+      "3-4 times": 0.266667,
+      "5+ times": 0.166667,
+      "never": 0.18
+     },
+     "differs": true
+    },
+    "weekly_consumption": {
+     "mean": 2.432941,
+     "mean_all": 1.801667,
+     "differs": true
+    }
+   }
+  }
+ ],
+ "runs": {
+  "SEG-01": {
+   "settings": {
+    "method": "hierarchical",
+    "n_segments": null,
+    "standardization": "per_variable",
+    "missing_values": "fill_with_average",
+    "start": "random",
+    "n_starts": 25,
+    "seed": 2026,
+    "max_segments": 8,
+    "tree_groups": 12
+   },
+   "n_basis_variables": 10,
+   "n_segments_read_from_tree": 3,
+   "segments": [
+    {
+     "number": 1,
+     "n": 111,
+     "share": 0.37,
+     "mostly": "health",
+     "n_shared": 111,
+     "same_respondents": false,
+     "mean_standardized": {
+      "creamy": -0.573714,
+      "healthy": 0.870571,
+      "natural": 0.703428,
+      "good_value": -0.48467,
+      "sustainable": 0.464352,
+      "tasty": -0.482191,
+      "high_protein": 0.799937,
+      "low_sugar": 0.900622,
+      "convenient": -0.622108,
+      "local": 0.335195
+     },
+     "mean_original": {
+      "creamy": 4.09009,
+      "healthy": 7.227273,
+      "natural": 6.378378,
+      "good_value": 3.972727,
+      "sustainable": 5.576577,
+      "tasty": 5.100917,
+      "high_protein": 6.126126,
+      "low_sugar": 6.936937,
+      "convenient": 4.225225,
+      "local": 5.144144
+     }
+    },
+    {
+     "number": 2,
+     "n": 95,
+     "share": 0.316667,
+     "mostly": "taste",
+     "n_shared": 93,
+     "same_respondents": false,
+     "mean_standardized": {
+      "creamy": 0.948888,
+      "healthy": -0.498572,
+      "natural": -0.168805,
+      "good_value": -0.543065,
+      "sustainable": 0.06529,
+      "tasty": 0.867571,
+      "high_protein": -0.448159,
+      "low_sugar": -0.888462,
+      "convenient": -0.169864,
+      "local": 0.033164
+     },
+     "mean_original": {
+      "creamy": 7.168421,
+      "healthy": 4.410526,
+      "natural": 4.768421,
+      "good_value": 3.842105,
+      "sustainable": 4.893617,
+      "tasty": 7.589474,
+      "high_protein": 3.698925,
+      "low_sugar": 3.115789,
+      "convenient": 5.031579,
+      "local": 4.652632
+     }
+    },
+    {
+     "number": 3,
+     "n": 94,
+     "share": 0.313333,
+     "mostly": "price",
+     "n_shared": 83,
+     "same_respondents": false,
+     "mean_standardized": {
+      "creamy": -0.281512,
+      "healthy": -0.520413,
+      "natural": -0.660042,
+      "good_value": 1.116009,
+      "sustainable": -0.620218,
+      "tasty": -0.317664,
+      "high_protein": -0.501215,
+      "low_sugar": -0.167367,
+      "convenient": 0.916033,
+      "local": -0.433948
+     },
+     "mean_original": {
+      "creamy": 4.680851,
+      "healthy": 4.365591,
+      "natural": 3.861702,
+      "good_value": 7.553191,
+      "sustainable": 3.72043,
+      "tasty": 5.404255,
+      "high_protein": 3.595745,
+      "low_sugar": 4.655914,
+      "convenient": 6.967742,
+      "local": 3.892473
+     }
+    }
+   ],
+   "variance_explained": 0.377763
+  },
+  "SEG-02": {
+   "settings": {
+    "method": "kmeans",
+    "n_segments": 4,
+    "standardization": "per_variable",
+    "missing_values": "fill_with_average",
+    "start": "random",
+    "n_starts": 25,
+    "seed": 2026,
+    "max_segments": 8,
+    "tree_groups": 12
+   },
+   "n_basis_variables": 10,
+   "segments": [
+    {
+     "number": 1,
+     "n": 102,
+     "share": 0.34,
+     "mostly": "taste",
+     "n_shared": 102,
+     "same_respondents": true,
+     "mean_standardized": {
+      "creamy": 0.981965,
+      "healthy": -0.488439,
+      "natural": -0.160195,
+      "good_value": -0.47686,
+      "sustainable": 0.081169,
+      "tasty": 0.8669,
+      "high_protein": -0.43218,
+      "low_sugar": -0.8371,
+      "convenient": -0.098728,
+      "local": 0.059862
+     },
+     "mean_original": {
+      "creamy": 7.235294,
+      "healthy": 4.431373,
+      "natural": 4.784314,
+      "good_value": 3.990196,
+      "sustainable": 4.920792,
+      "tasty": 7.588235,
+      "high_protein": 3.73,
+      "low_sugar": 3.22549,
+      "convenient": 5.158416,
+      "local": 4.696078
+     }
+    },
+    {
+     "number": 2,
+     "n": 85,
+     "share": 0.283333,
+     "mostly": "price",
+     "n_shared": 85,
+     "same_respondents": true,
+     "mean_standardized": {
+      "creamy": -0.432065,
+      "healthy": -0.565026,
+      "natural": -0.738087,
+      "good_value": 1.205309,
+      "sustainable": -0.714238,
+      "tasty": -0.396545,
+      "high_protein": -0.565572,
+      "low_sugar": -0.167906,
+      "convenient": 0.881339,
+      "local": -0.536128
+     },
+     "mean_original": {
+      "creamy": 4.376471,
+      "healthy": 4.27381,
+      "natural": 3.717647,
+      "good_value": 7.752941,
+      "sustainable": 3.559524,
+      "tasty": 5.258824,
+      "high_protein": 3.470588,
+      "low_sugar": 4.654762,
+      "convenient": 6.905882,
+      "local": 3.72619
+     }
+    },
+    {
+     "number": 3,
+     "n": 61,
+     "share": 0.203333,
+     "mostly": "health",
+     "n_shared": 61,
+     "same_respondents": false,
+     "mean_standardized": {
+      "creamy": -0.277717,
+      "healthy": 1.05493,
+      "natural": 0.951391,
+      "good_value": -0.39186,
+      "sustainable": 0.759658,
+      "tasty": -0.229574,
+      "high_protein": 1.038551,
+      "low_sugar": 1.060632,
+      "convenient": -0.150798,
+      "local": 0.77045
+     },
+     "mean_original": {
+      "creamy": 4.688525,
+      "healthy": 7.606557,
+      "natural": 6.836066,
+      "good_value": 4.180328,
+      "sustainable": 6.081967,
+      "tasty": 5.566667,
+      "high_protein": 6.590164,
+      "low_sugar": 7.278689,
+      "convenient": 5.065574,
+      "local": 5.852459
+     }
+    },
+    {
+     "number": 4,
+     "n": 52,
+     "share": 0.173333,
+     "mostly": "health",
+     "n_shared": 52,
+     "same_respondents": false,
+     "mean_standardized": {
+      "creamy": -0.89412,
+      "healthy": 0.64573,
+      "natural": 0.404664,
+      "good_value": -0.586433,
+      "sustainable": 0.104977,
+      "tasty": -0.802804,
+      "high_protein": 0.537308,
+      "low_sugar": 0.669033,
+      "convenient": -1.071993,
+      "local": -0.155165
+     },
+     "mean_original": {
+      "creamy": 3.442308,
+      "healthy": 6.764706,
+      "natural": 5.826923,
+      "good_value": 3.745098,
+      "sustainable": 4.961538,
+      "tasty": 4.509804,
+      "high_protein": 5.615385,
+      "low_sugar": 6.442308,
+      "convenient": 3.423077,
+      "local": 4.346154
+     }
+    }
+   ],
+   "variance_explained": 0.425633,
+   "n_iterations": 8
+  },
+  "SEG-03": {
+   "settings": {
+    "method": "kmeans",
+    "n_segments": 3,
+    "standardization": "per_variable",
+    "missing_values": "fill_with_average",
+    "start": "random",
+    "n_starts": 25,
+    "seed": 2026,
+    "max_segments": 8,
+    "tree_groups": 12
+   },
+   "n_basis_variables": 10,
+   "n_descriptor_variables": 4,
+   "segments": [
+    {
+     "number": 1,
+     "n": 113,
+     "share": 0.376667,
+     "mostly": "health",
+     "n_shared": 113,
+     "same_respondents": true,
+     "mean_standardized": {
+      "creamy": -0.561371,
+      "healthy": 0.868598,
+      "natural": 0.699799,
+      "good_value": -0.48046,
+      "sustainable": 0.458389,
+      "tasty": -0.49295,
+      "high_protein": 0.807891,
+      "low_sugar": 0.880427,
+      "convenient": -0.574711,
+      "local": 0.344503
+     },
+     "mean_original": {
+      "creamy": 4.115044,
+      "healthy": 7.223214,
+      "natural": 6.371681,
+      "good_value": 3.982143,
+      "sustainable": 5.566372,
+      "tasty": 5.081081,
+      "high_protein": 6.141593,
+      "low_sugar": 6.893805,
+      "convenient": 4.309735,
+      "local": 5.159292
+     }
+    },
+    {
+     "number": 2,
+     "n": 102,
+     "share": 0.34,
+     "mostly": "taste",
+     "n_shared": 102,
+     "same_respondents": true,
+     "mean_standardized": {
+      "creamy": 0.981965,
+      "healthy": -0.488439,
+      "natural": -0.160195,
+      "good_value": -0.47686,
+      "sustainable": 0.081169,
+      "tasty": 0.8669,
+      "high_protein": -0.43218,
+      "low_sugar": -0.8371,
+      "convenient": -0.098728,
+      "local": 0.059862
+     },
+     "mean_original": {
+      "creamy": 7.235294,
+      "healthy": 4.431373,
+      "natural": 4.784314,
+      "good_value": 3.990196,
+      "sustainable": 4.920792,
+      "tasty": 7.588235,
+      "high_protein": 3.73,
+      "low_sugar": 3.22549,
+      "convenient": 5.158416,
+      "local": 4.696078
+     }
+    },
+    {
+     "number": 3,
+     "n": 85,
+     "share": 0.283333,
+     "mostly": "price",
+     "n_shared": 85,
+     "same_respondents": true,
+     "mean_standardized": {
+      "creamy": -0.432065,
+      "healthy": -0.565026,
+      "natural": -0.738087,
+      "good_value": 1.205309,
+      "sustainable": -0.714238,
+      "tasty": -0.396545,
+      "high_protein": -0.565572,
+      "low_sugar": -0.167906,
+      "convenient": 0.881339,
+      "local": -0.536128
+     },
+     "mean_original": {
+      "creamy": 4.376471,
+      "healthy": 4.27381,
+      "natural": 3.717647,
+      "good_value": 7.752941,
+      "sustainable": 3.559524,
+      "tasty": 5.258824,
+      "high_protein": 3.470588,
+      "low_sugar": 4.654762,
+      "convenient": 6.905882,
+      "local": 3.72619
+     }
+    }
+   ],
+   "variance_explained": 0.390466,
+   "n_iterations": 8,
+   "n_starts": 25,
+   "n_answers_filled": 12,
+   "descriptors_that_differ": [
+    "age_group",
+    "income_group",
+    "sport_frequency",
+    "weekly_consumption"
+   ],
+   "basis_variables": [
+    {
+     "key": "creamy",
+     "label": "Creamy"
+    },
+    {
+     "key": "healthy",
+     "label": "Healthy"
+    },
+    {
+     "key": "natural",
+     "label": "Natural"
+    },
+    {
+     "key": "good_value",
+     "label": "Good value"
+    },
+    {
+     "key": "sustainable",
+     "label": "Sustainable"
+    },
+    {
+     "key": "tasty",
+     "label": "Tasty"
+    },
+    {
+     "key": "high_protein",
+     "label": "High protein"
+    },
+    {
+     "key": "low_sugar",
+     "label": "Low sugar"
+    },
+    {
+     "key": "convenient",
+     "label": "Convenient"
+    },
+    {
+     "key": "local",
+     "label": "Local"
+    }
+   ]
+  },
+  "SEG-04": {
+   "settings": {
+    "method": "kmeans",
+    "n_segments": 3,
+    "standardization": "none",
+    "missing_values": "fill_with_average",
+    "start": "random",
+    "n_starts": 25,
+    "seed": 2026,
+    "max_segments": 8,
+    "tree_groups": 12
+   },
+   "n_basis_variables": 10,
+   "segments": [
+    {
+     "number": 1,
+     "n": 113,
+     "share": 0.376667,
+     "mostly": "health",
+     "n_shared": 113,
+     "same_respondents": true,
+     "mean_standardized": {
+      "creamy": -0.561371,
+      "healthy": 0.868598,
+      "natural": 0.699799,
+      "good_value": -0.48046,
+      "sustainable": 0.458389,
+      "tasty": -0.49295,
+      "high_protein": 0.807891,
+      "low_sugar": 0.880427,
+      "convenient": -0.574711,
+      "local": 0.344503
+     },
+     "mean_original": {
+      "creamy": 4.115044,
+      "healthy": 7.223214,
+      "natural": 6.371681,
+      "good_value": 3.982143,
+      "sustainable": 5.566372,
+      "tasty": 5.081081,
+      "high_protein": 6.141593,
+      "low_sugar": 6.893805,
+      "convenient": 4.309735,
+      "local": 5.159292
+     }
+    },
+    {
+     "number": 2,
+     "n": 101,
+     "share": 0.336667,
+     "mostly": "taste",
+     "n_shared": 101,
+     "same_respondents": false,
+     "mean_standardized": {
+      "creamy": 0.988014,
+      "healthy": -0.486363,
+      "natural": -0.161352,
+      "good_value": -0.490182,
+      "sustainable": 0.074863,
+      "tasty": 0.864688,
+      "high_protein": -0.44397,
+      "low_sugar": -0.845326,
+      "convenient": -0.114665,
+      "local": 0.058013
+     },
+     "mean_original": {
+      "creamy": 7.247525,
+      "healthy": 4.435644,
+      "natural": 4.782178,
+      "good_value": 3.960396,
+      "sustainable": 4.91,
+      "tasty": 7.584158,
+      "high_protein": 3.707071,
+      "low_sugar": 3.207921,
+      "convenient": 5.13,
+      "local": 4.693069
+     }
+    },
+    {
+     "number": 3,
+     "n": 86,
+     "share": 0.286667,
+     "mostly": "price",
+     "n_shared": 85,
+     "same_respondents": false,
+     "mean_standardized": {
+      "creamy": -0.422727,
+      "healthy": -0.566592,
+      "natural": -0.730009,
+      "good_value": 1.201395,
+      "sustainable": -0.697461,
+      "tasty": -0.379257,
+      "high_protein": -0.550449,
+      "low_sugar": -0.166004,
+      "convenient": 0.888475,
+      "local": -0.526919
+     },
+     "mean_original": {
+      "creamy": 4.395349,
+      "healthy": 4.270588,
+      "natural": 3.732558,
+      "good_value": 7.744186,
+      "sustainable": 3.588235,
+      "tasty": 5.290698,
+      "high_protein": 3.5,
+      "low_sugar": 4.658824,
+      "convenient": 6.918605,
+      "local": 3.741176
+     }
+    }
+   ],
+   "variance_explained": 0.414491,
+   "n_iterations": 9,
+   "n_in_same_segment_as_final": 299
+  },
+  "POS-01": {
+   "settings": {
+    "n_dimensions": 2
+   },
+   "n_brands": 4,
+   "n_attributes": 6,
+   "variance_explained": [
+    0.697983,
+    0.298705
+   ],
+   "variance_explained_by_map": 0.996688,
+   "arrow_scale": 3.369559,
+   "brands": [
+    {
+     "name": "Alpine Oat",
+     "own": true,
+     "coordinates": [
+      1.306143,
+      -2.050546
+     ],
+     "means": {
+      "creamy": 4.75,
+      "healthy": 6.65,
+      "natural": 6.106667,
+      "good_value": 4.363333,
+      "sustainable": 5.866667,
+      "tasty": 4.44
+     },
+     "standardized": {
+      "creamy": -0.808172,
+      "healthy": 1.176771,
+      "natural": 0.88521,
+      "good_value": -0.775692,
+      "sustainable": 0.764085,
+      "tasty": -1.38152
+     },
+     "strongest": [
+      "healthy",
+      "natural"
+     ],
+     "strongest_keys": [
+      "healthy",
+      "natural"
+     ],
+     "weakest": "tasty",
+     "weakest_key": "tasty"
+    },
+    {
+     "name": "Valloat",
+     "own": false,
+     "coordinates": [
+      1.927577,
+      1.704054
+     ],
+     "means": {
+      "creamy": 6.12,
+      "healthy": 5.663333,
+      "natural": 5.973333,
+      "good_value": 4.243333,
+      "sustainable": 5.91,
+      "tasty": 6.716667
+     },
+     "standardized": {
+      "creamy": 1.598776,
+      "healthy": 0.239786,
+      "natural": 0.764671,
+      "good_value": -0.898304,
+      "sustainable": 0.800772,
+      "tasty": 1.408068
+     },
+     "strongest": [
+      "creamy",
+      "tasty"
+     ],
+     "strongest_keys": [
+      "creamy",
+      "tasty"
+     ],
+     "weakest": "good value",
+     "weakest_key": "good_value"
+    },
+    {
+     "name": "Lumo",
+     "own": false,
+     "coordinates": [
+      0.129789,
+      0.160032
+     ],
+     "means": {
+      "creamy": 5.263333,
+      "healthy": 5.593333,
+      "natural": 5.096667,
+      "good_value": 5.186667,
+      "sustainable": 5.08,
+      "tasty": 5.746667
+     },
+     "standardized": {
+      "creamy": 0.093701,
+      "healthy": 0.173311,
+      "natural": -0.027875,
+      "good_value": 0.065563,
+      "sustainable": 0.098068,
+      "tasty": 0.219532
+     },
+     "strongest": [
+      "tasty",
+      "healthy"
+     ],
+     "strongest_keys": [
+      "tasty",
+      "healthy"
+     ],
+     "weakest": "natural",
+     "weakest_key": "natural"
+    },
+    {
+     "name": "Supermarket own brand",
+     "own": false,
+     "coordinates": [
+      -3.363509,
+      0.18646
+     ],
+     "means": {
+      "creamy": 4.706667,
+      "healthy": 3.736667,
+      "natural": 3.333333,
+      "good_value": 6.696667,
+      "sustainable": 3.0,
+      "tasty": 5.366667
+     },
+     "standardized": {
+      "creamy": -0.884304,
+      "healthy": -1.589867,
+      "natural": -1.622006,
+      "good_value": 1.608432,
+      "sustainable": -1.662925,
+      "tasty": -0.24608
+     },
+     "strongest": [
+      "good value",
+      "tasty"
+     ],
+     "strongest_keys": [
+      "good_value",
+      "tasty"
+     ],
+     "weakest": "sustainable",
+     "weakest_key": "sustainable"
+    }
+   ],
+   "attributes": [
+    {
+     "key": "creamy",
+     "label": "creamy",
+     "direction": [
+      0.61237,
+      0.790239
+     ],
+     "length": 0.999737
+    },
+    {
+     "key": "healthy",
+     "label": "healthy",
+     "direction": [
+      0.900256,
+      -0.424489
+     ],
+     "length": 0.995315
+    },
+    {
+     "key": "natural",
+     "label": "natural",
+     "direction": [
+      0.987349,
+      -0.152947
+     ],
+     "length": 0.999125
+    },
+    {
+     "key": "good_value",
+     "label": "good value",
+     "direction": [
+      -0.995167,
+      0.069138
+     ],
+     "length": 0.997566
+    },
+    {
+     "key": "sustainable",
+     "label": "sustainable",
+     "direction": [
+      0.995334,
+      -0.092738
+     ],
+     "length": 0.999645
+    },
+    {
+     "key": "tasty",
+     "label": "tasty",
+     "direction": [
+      0.215727,
+      0.975084
+     ],
+     "length": 0.998662
+    }
+   ],
+   "preferences": [
+    {
+     "segment": "health",
+     "direction": [
+      0.661521,
+      -0.749927
+     ],
+     "length": 0.825553,
+     "favourite_brand": "Alpine Oat",
+     "top_brand_along_arrow": "Alpine Oat",
+     "r_squared_brand_means": 0.982424
+    },
+    {
+     "segment": "taste",
+     "direction": [
+      0.510875,
+      0.859655
+     ],
+     "length": 0.893352,
+     "favourite_brand": "Valloat",
+     "top_brand_along_arrow": "Valloat",
+     "r_squared_brand_means": 0.998911
+    },
+    {
+     "segment": "price",
+     "direction": [
+      -0.99775,
+      0.06704
+     ],
+     "length": 0.568012,
+     "favourite_brand": "Supermarket own brand",
+     "top_brand_along_arrow": "Supermarket own brand",
+     "r_squared_brand_means": 0.996405
+    }
+   ]
+  },
+  "CJ-01": {
+   "settings": {
+    "utilities_for": "all",
+    "holdout_tasks": 2,
+    "importance_method": "group_part_worths"
+   },
+   "all": {
+    "n": 300,
+    "part_worths": {
+     "Flavor": [
+      -0.181006,
+      0.291263,
+      -0.110258
+     ],
+     "Sugar": [
+      0.318087,
+      0.080144,
+      -0.39823
+     ],
+     "Protein": [
+      -0.159406,
+      0.159406
+     ],
+     "Pack size": [
+      -0.248231,
+      0.248231
+     ],
+     "Price": [
+      0.657077,
+      0.05559,
+      -0.712667
+     ]
+    },
+    "importance": {
+     "Flavor": 0.139989,
+     "Sugar": 0.21233,
+     "Protein": 0.094502,
+     "Pack size": 0.147161,
+     "Price": 0.406018
+    },
+    "importance_ranking": [
+     "Price",
+     "Sugar",
+     "Pack size",
+     "Flavor",
+     "Protein"
+    ],
+    "preferred_levels": {
+     "Flavor": "Vanilla",
+     "Sugar": "No added sugar",
+     "Protein": "High",
+     "Pack size": "1 L",
+     "Price": "CHF 1.90"
+    }
+   },
+   "hit_rate_held_out": 0.585,
+   "hit_rate_by_guessing": 0.333333
+  },
+  "CJ-02": {
+   "settings": {
+    "utilities_for": "segment",
+    "holdout_tasks": 2,
+    "importance_method": "group_part_worths"
+   },
+   "all": {
+    "n": 300,
+    "part_worths": {
+     "Flavor": [
+      -0.244997,
+      0.33056,
+      -0.085563
+     ],
+     "Sugar": [
+      0.341773,
+      0.222229,
+      -0.564002
+     ],
+     "Protein": [
+      -0.197767,
+      0.197767
+     ],
+     "Pack size": [
+      -0.342989,
+      0.342989
+     ],
+     "Price": [
+      0.889114,
+      0.071686,
+      -0.9608
+     ]
+    },
+    "importance": {
+     "Flavor": 0.13043,
+     "Sugar": 0.205263,
+     "Protein": 0.089634,
+     "Pack size": 0.155453,
+     "Price": 0.419219
+    },
+    "importance_ranking": [
+     "Price",
+     "Sugar",
+     "Pack size",
+     "Flavor",
+     "Protein"
+    ],
+    "preferred_levels": {
+     "Flavor": "Vanilla",
+     "Sugar": "No added sugar",
+     "Protein": "High",
+     "Pack size": "1 L",
+     "Price": "CHF 1.90"
+    }
+   },
+   "health": {
+    "n": 113,
+    "part_worths": {
+     "Flavor": [
+      0.044568,
+      0.074114,
+      -0.118682
+     ],
+     "Sugar": [
+      1.32236,
+      0.223741,
+      -1.546101
+     ],
+     "Protein": [
+      -0.554121,
+      0.554121
+     ],
+     "Pack size": [
+      -0.085891,
+      0.085891
+     ],
+     "Price": [
+      0.694955,
+      0.076064,
+      -0.771019
+     ]
+    },
+    "importance": {
+     "Flavor": 0.033199,
+     "Sugar": 0.493945,
+     "Protein": 0.190837,
+     "Pack size": 0.02958,
+     "Price": 0.252438
+    },
+    "importance_ranking": [
+     "Sugar",
+     "Price",
+     "Protein",
+     "Flavor",
+     "Pack size"
+    ],
+    "preferred_levels": {
+     "Flavor": "Vanilla",
+     "Sugar": "No added sugar",
+     "Protein": "High",
+     "Pack size": "1 L",
+     "Price": "CHF 1.90"
+    }
+   },
+   "taste": {
+    "n": 102,
+    "part_worths": {
+     "Flavor": [
+      -0.988776,
+      0.831123,
+      0.157653
+     ],
+     "Sugar": [
+      -0.486002,
+      0.286277,
+      0.199725
+     ],
+     "Protein": [
+      0.048485,
+      -0.048485
+     ],
+     "Pack size": [
+      -0.334343,
+      0.334343
+     ],
+     "Price": [
+      0.688045,
+      -0.004509,
+      -0.683536
+     ]
+    },
+    "importance": {
+     "Flavor": 0.384804,
+     "Sugar": 0.163293,
+     "Protein": 0.020503,
+     "Pack size": 0.141389,
+     "Price": 0.290011
+    },
+    "importance_ranking": [
+     "Flavor",
+     "Price",
+     "Sugar",
+     "Pack size",
+     "Protein"
+    ],
+    "preferred_levels": {
+     "Flavor": "Vanilla",
+     "Sugar": "Low",
+     "Protein": "Standard",
+     "Pack size": "1 L",
+     "Price": "CHF 1.90"
+    }
+   },
+   "price": {
+    "n": 85,
+    "part_worths": {
+     "Flavor": [
+      0.262587,
+      0.070808,
+      -0.333395
+     ],
+     "Sugar": [
+      0.031501,
+      0.14336,
+      -0.174861
+     ],
+     "Protein": [
+      -0.019528,
+      0.019528
+     ],
+     "Pack size": [
+      -0.695154,
+      0.695154
+     ],
+     "Price": [
+      1.388513,
+      0.1573,
+      -1.545813
+     ]
+    },
+    "importance": {
+     "Flavor": 0.11292,
+     "Sugar": 0.060293,
+     "Protein": 0.0074,
+     "Pack size": 0.263421,
+     "Price": 0.555965
+    },
+    "importance_ranking": [
+     "Price",
+     "Pack size",
+     "Flavor",
+     "Sugar",
+     "Protein"
+    ],
+    "preferred_levels": {
+     "Flavor": "Original",
+     "Sugar": "Low",
+     "Protein": "High",
+     "Pack size": "1 L",
+     "Price": "CHF 1.90"
+    }
+   },
+   "hit_rate_held_out": 0.706667,
+   "hit_rate_by_guessing": 0.333333,
+   "n_tasks_held_out_per_respondent": 2
+  },
+  "CJ-03": {
+   "settings": {
+    "rule": "logit",
+    "scale": 1.0
+   },
+   "design": {
+    "Flavor": "Vanilla",
+    "Sugar": "No added sugar",
+    "Protein": "High",
+    "Pack size": "1 L",
+    "Price": "CHF 2.50"
+   },
+   "shares": [
+    {
+     "name": "Alpine Oat Vanilla Protein",
+     "levels": {
+      "Flavor": "Vanilla",
+      "Sugar": "No added sugar",
+      "Protein": "High",
+      "Pack size": "1 L",
+      "Price": "CHF 2.50"
+     },
+     "all": 0.449029,
+     "health": 0.862525,
+     "taste": 0.233518,
+     "price": 0.157934
+    },
+    {
+     "name": "Valloat",
+     "levels": {
+      "Flavor": "Original",
+      "Sugar": "Low",
+      "Protein": "Standard",
+      "Pack size": "1 L",
+      "Price": "CHF 2.50"
+     },
+     "all": 0.123699,
+     "health": 0.092154,
+     "taste": 0.090252,
+     "price": 0.20577
+    },
+    {
+     "name": "Lumo",
+     "levels": {
+      "Flavor": "Vanilla",
+      "Sugar": "Regular",
+      "Protein": "Standard",
+      "Pack size": "1 L",
+      "Price": "CHF 2.50"
+     },
+     "all": 0.214769,
+     "health": 0.01617,
+     "taste": 0.510789,
+     "price": 0.123564
+    },
+    {
+     "name": "Supermarket own brand",
+     "levels": {
+      "Flavor": "Original",
+      "Sugar": "Regular",
+      "Protein": "Standard",
+      "Pack size": "1 L",
+      "Price": "CHF 1.90"
+     },
+     "all": 0.212504,
+     "health": 0.029151,
+     "taste": 0.16544,
+     "price": 0.512732
+    }
+   ],
+   "low_price": "CHF 1.90",
+   "shares_at_low_price": [
+    {
+     "name": "Alpine Oat Vanilla Protein",
+     "levels": {
+      "Flavor": "Vanilla",
+      "Sugar": "No added sugar",
+      "Protein": "High",
+      "Pack size": "1 L",
+      "Price": "CHF 1.90"
+     },
+     "all": 0.586401,
+     "health": 0.920949,
+     "taste": 0.378482,
+     "price": 0.391153
+    },
+    {
+     "name": "Valloat",
+     "levels": {
+      "Flavor": "Original",
+      "Sugar": "Low",
+      "Protein": "Standard",
+      "Pack size": "1 L",
+      "Price": "CHF 2.50"
+     },
+     "all": 0.086996,
+     "health": 0.05299,
+     "taste": 0.073183,
+     "price": 0.14878
+    },
+    {
+     "name": "Lumo",
+     "levels": {
+      "Flavor": "Vanilla",
+      "Sugar": "Regular",
+      "Protein": "Standard",
+      "Pack size": "1 L",
+      "Price": "CHF 2.50"
+     },
+     "all": 0.169638,
+     "health": 0.009298,
+     "taste": 0.414184,
+     "price": 0.089342
+    },
+    {
+     "name": "Supermarket own brand",
+     "levels": {
+      "Flavor": "Original",
+      "Sugar": "Regular",
+      "Protein": "Standard",
+      "Pack size": "1 L",
+      "Price": "CHF 1.90"
+     },
+     "all": 0.156964,
+     "health": 0.016763,
+     "taste": 0.134151,
+     "price": 0.370725
+    }
+   ]
+  }
+ },
+ "tree": {
+  "from_run": "SEG-01",
+  "branches": [
+   {
+    "segment": "taste",
+    "n": 95,
+    "n_in_final_segment": 93,
+    "at": 10.888382,
+    "tree": {
+     "at": 10.888382,
+     "left": {
+      "n": 18
+     },
+     "right": {
+      "at": 8.831262,
+      "left": {
+       "n": 23
+      },
+      "right": {
+       "at": 8.507876,
+       "left": {
+        "n": 24
+       },
+       "right": {
+        "n": 30
+       }
+      }
+     }
+    }
+   },
+   {
+    "segment": "price",
+    "n": 94,
+    "n_in_final_segment": 83,
+    "at": 13.614313,
+    "tree": {
+     "at": 13.614313,
+     "left": {
+      "at": 8.499723,
+      "left": {
+       "n": 15
+      },
+      "right": {
+       "n": 22
+      }
+     },
+     "right": {
+      "at": 9.361403,
+      "left": {
+       "n": 16
+      },
+      "right": {
+       "n": 41
+      }
+     }
+    }
+   },
+   {
+    "segment": "health",
+    "n": 111,
+    "n_in_final_segment": 111,
+    "at": 13.746543,
+    "tree": {
+     "at": 13.746543,
+     "left": {
+      "at": 8.227833,
+      "left": {
+       "n": 11
+      },
+      "right": {
+       "n": 39
+      }
+     },
+     "right": {
+      "at": 9.279395,
+      "left": {
+       "n": 13
+      },
+      "right": {
+       "n": 48
+      }
+     }
+    }
+   }
+  ],
+  "merge_first_two": 28.004693,
+  "merge_all": 38.500826,
+  "cut_between": {
+   "above": 13.746543,
+   "below": 28.004693
+  },
+  "suggested_n_segments": 3,
+  "distance_before_jump": 13.746543,
+  "distance_after_jump": 28.004693,
+  "n_leaves": 12,
+  "share_in_final_segment": 0.956667
+ },
+ "conjoint": {
+  "attributes": [
+   {
+    "name": "Flavor",
+    "levels": [
+     "Original",
+     "Vanilla",
+     "Chocolate"
+    ]
+   },
+   {
+    "name": "Sugar",
+    "levels": [
+     "No added sugar",
+     "Low",
+     "Regular"
+    ]
+   },
+   {
+    "name": "Protein",
+    "levels": [
+     "Standard",
+     "High"
+    ]
+   },
+   {
+    "name": "Pack size",
+    "levels": [
+     "250 ml",
+     "1 L"
+    ]
+   },
+   {
+    "name": "Price",
+    "levels": [
+     "CHF 1.90",
+     "CHF 2.50",
+     "CHF 3.20"
+    ]
+   }
+  ],
+  "prices": {
+   "attribute": "Price",
+   "amounts": {
+    "CHF 1.90": 1.9,
+    "CHF 2.50": 2.5,
+    "CHF 3.20": 3.2
+   }
+  },
+  "restrictions": [
+   {
+    "Flavor": "Chocolate",
+    "Sugar": "No added sugar"
+   }
+  ],
+  "competitors": [
+   {
+    "name": "Valloat",
+    "levels": {
+     "Flavor": "Original",
+     "Sugar": "Low",
+     "Protein": "Standard",
+     "Pack size": "1 L",
+     "Price": "CHF 2.50"
+    }
+   },
+   {
+    "name": "Lumo",
+    "levels": {
+     "Flavor": "Vanilla",
+     "Sugar": "Regular",
+     "Protein": "Standard",
+     "Pack size": "1 L",
+     "Price": "CHF 2.50"
+    }
+   },
+   {
+    "name": "Supermarket own brand",
+    "levels": {
+     "Flavor": "Original",
+     "Sugar": "Regular",
+     "Protein": "Standard",
+     "Pack size": "1 L",
+     "Price": "CHF 1.90"
+    }
+   }
+  ],
+  "saved_design": {
+   "Flavor": "Vanilla",
+   "Sugar": "No added sugar",
+   "Protein": "High",
+   "Pack size": "1 L",
+   "Price": "CHF 2.50"
+  },
+  "n_combinations": 108,
+  "n_allowed": 96,
+  "best_products": {
+   "share": [
+    {
+     "levels": {
+      "Flavor": "Vanilla",
+      "Sugar": "Low",
+      "Protein": "High",
+      "Pack size": "1 L",
+      "Price": "CHF 1.90"
+     },
+     "share": 0.611329,
+     "revenue_per_100": 116.152488
+    },
+    {
+     "levels": {
+      "Flavor": "Vanilla",
+      "Sugar": "No added sugar",
+      "Protein": "High",
+      "Pack size": "1 L",
+      "Price": "CHF 1.90"
+     },
+     "share": 0.586401,
+     "revenue_per_100": 111.416269
+    },
+    {
+     "levels": {
+      "Flavor": "Vanilla",
+      "Sugar": "No added sugar",
+      "Protein": "Standard",
+      "Pack size": "1 L",
+      "Price": "CHF 1.90"
+     },
+     "share": 0.54367,
+     "revenue_per_100": 103.297315
+    }
+   ],
+   "revenue": [
+    {
+     "levels": {
+      "Flavor": "Vanilla",
+      "Sugar": "Low",
+      "Protein": "High",
+      "Pack size": "1 L",
+      "Price": "CHF 1.90"
+     },
+     "share": 0.611329,
+     "revenue_per_100": 116.152488
+    },
+    {
+     "levels": {
+      "Flavor": "Vanilla",
+      "Sugar": "No added sugar",
+      "Protein": "High",
+      "Pack size": "1 L",
+      "Price": "CHF 2.50"
+     },
+     "share": 0.449029,
+     "revenue_per_100": 112.257142
+    },
+    {
+     "levels": {
+      "Flavor": "Vanilla",
+      "Sugar": "No added sugar",
+      "Protein": "High",
+      "Pack size": "1 L",
+      "Price": "CHF 1.90"
+     },
+     "share": 0.586401,
+     "revenue_per_100": 111.416269
+    }
+   ]
+  },
+  "simulator_checks": [
+   {
+    "levels": {
+     "Flavor": "Vanilla",
+     "Sugar": "No added sugar",
+     "Protein": "High",
+     "Pack size": "1 L",
+     "Price": "CHF 2.50"
+    },
+    "all": 0.449029,
+    "health": 0.862525,
+    "taste": 0.233518,
+    "price": 0.157934
+   },
+   {
+    "levels": {
+     "Flavor": "Vanilla",
+     "Sugar": "No added sugar",
+     "Protein": "High",
+     "Pack size": "1 L",
+     "Price": "CHF 1.90"
+    },
+    "all": 0.586401,
+    "health": 0.920949,
+    "taste": 0.378482,
+    "price": 0.391153
+   },
+   {
+    "levels": {
+     "Flavor": "Original",
+     "Sugar": "No added sugar",
+     "Protein": "High",
+     "Pack size": "1 L",
+     "Price": "CHF 2.50"
+    },
+    "all": 0.392003,
+    "health": 0.858984,
+    "taste": 0.047046,
+    "price": 0.18514
+   },
+   {
+    "levels": {
+     "Flavor": "Vanilla",
+     "Sugar": "Low",
+     "Protein": "High",
+     "Pack size": "1 L",
+     "Price": "CHF 2.50"
+    },
+    "all": 0.439066,
+    "health": 0.676515,
+    "taste": 0.397409,
+    "price": 0.173386
+   },
+   {
+    "levels": {
+     "Flavor": "Vanilla",
+     "Sugar": "Regular",
+     "Protein": "High",
+     "Pack size": "1 L",
+     "Price": "CHF 2.50"
+    },
+    "all": 0.264593,
+    "health": 0.262689,
+    "taste": 0.376877,
+    "price": 0.132384
+   },
+   {
+    "levels": {
+     "Flavor": "Vanilla",
+     "Sugar": "No added sugar",
+     "Protein": "Standard",
+     "Pack size": "1 L",
+     "Price": "CHF 2.50"
+    },
+    "all": 0.382771,
+    "health": 0.674406,
+    "taste": 0.251321,
+    "price": 0.152809
+   },
+   {
+    "levels": {
+     "Flavor": "Vanilla",
+     "Sugar": "No added sugar",
+     "Protein": "High",
+     "Pack size": "250 ml",
+     "Price": "CHF 2.50"
+    },
+    "all": 0.375274,
+    "health": 0.84086,
+    "taste": 0.135026,
+    "price": 0.044617
+   },
+   {
+    "levels": {
+     "Flavor": "Vanilla",
+     "Sugar": "No added sugar",
+     "Protein": "High",
+     "Pack size": "1 L",
+     "Price": "CHF 3.20"
+    },
+    "all": 0.329432,
+    "health": 0.728957,
+    "taste": 0.133822,
+    "price": 0.033029
+   },
+   {
+    "levels": {
+     "Flavor": "Vanilla",
+     "Sugar": "Low",
+     "Protein": "High",
+     "Pack size": "1 L",
+     "Price": "CHF 1.90"
+    },
+    "all": 0.611329,
+    "health": 0.795222,
+    "taste": 0.568635,
+    "price": 0.418093
+   },
+   {
+    "levels": {
+     "Flavor": "Vanilla",
+     "Sugar": "No added sugar",
+     "Protein": "Standard",
+     "Pack size": "1 L",
+     "Price": "CHF 1.90"
+    },
+    "all": 0.54367,
+    "health": 0.79365,
+    "taste": 0.401546,
+    "price": 0.381892
+   }
+  ]
+ }
+}

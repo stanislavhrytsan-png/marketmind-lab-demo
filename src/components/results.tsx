@@ -5,8 +5,8 @@
  */
 import type { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
-import { allColor, attributes, segments } from '../data/alpineOat'
-import type { GroupId, RunId } from '../data/alpineOat'
+import { allColor, attributes, respondentCount, segments } from '../data/alpineOat'
+import type { AttrId, GroupId, RunId } from '../data/alpineOat'
 import { importance } from '../lib/conjoint'
 import { cx } from '../lib/demo'
 import type { SizePart } from '../lib/sizeParts'
@@ -107,7 +107,7 @@ export function SizeBar({ parts, height = 34 }: { parts: SizePart[]; height?: nu
           <div
             key={p.key}
             tabIndex={0}
-            data-tip={`${p.name}: ${p.share}% of respondents (${p.n} of 300)`}
+            data-tip={`${p.name}: ${p.share}% of respondents (${p.n} of ${respondentCount})`}
             className={cx('min-w-0 rounded', !p.segment && 'hatch')}
             style={{ flex: p.share, background: p.segment?.color, opacity: p.faded ? 0.28 : 1 }}
           />
@@ -157,6 +157,8 @@ export interface ImportanceColumn {
   label?: ReactNode
   /** Faded columns are the ones that did not change in a comparison. */
   faded?: boolean
+  /** Importance from another run than the final one. Default: the group's importance in run CJ-02. */
+  values?: Record<AttrId, number>
 }
 
 const defaultColumns: ImportanceColumn[] = [{ group: 'all' }, { group: 'health' }, { group: 'taste' }, { group: 'price' }]
@@ -167,7 +169,7 @@ const defaultColumns: ImportanceColumn[] = [{ group: 'all' }, { group: 'health' 
  */
 export function ImportanceTable({ columns = defaultColumns }: { columns?: ImportanceColumn[] }) {
   const data = columns.map((column) => {
-    const values = importance(column.group)
+    const values = column.values ?? importance(column.group)
     return { ...column, values, max: Math.max(...Object.values(values)) }
   })
   return (

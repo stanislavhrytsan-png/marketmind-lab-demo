@@ -57,9 +57,9 @@ function BrandPoint(props: ScatterShapeProps) {
         className="outline-none"
       />
       <text
-        x={brand.label === 'left' ? cx - 14 : cx + gap}
-        y={cy + 5}
-        textAnchor={brand.label === 'left' ? 'end' : 'start'}
+        x={brand.label === 'belowLeft' ? cx + 8 : brand.label === 'left' ? cx - gap - 1 : cx + gap}
+        y={brand.label === 'belowLeft' ? cy + gap + 14 : cy + 5}
+        textAnchor={brand.label === 'right' ? 'start' : 'end'}
         fontSize={13.5}
         fontWeight={700}
         fill={INK}
@@ -73,12 +73,16 @@ function BrandPoint(props: ScatterShapeProps) {
 function AttributePoint(props: ScatterShapeProps) {
   const { cx = 0, cy = 0 } = props
   const attribute = props.payload as Attribute
-  const label =
-    attribute.label === 'top'
-      ? { x: cx, y: cy - 10, anchor: 'middle' as const }
-      : attribute.label === 'topLeft'
-        ? { x: cx - 8, y: cy - 6, anchor: 'end' as const }
-        : { x: cx + 8, y: cy + 4, anchor: 'start' as const }
+  // Where the name sits, relative to the end of the line.
+  const places = {
+    top: { x: cx, y: cy - 10, anchor: 'middle' as const },
+    below: { x: cx, y: cy + 20, anchor: 'middle' as const },
+    topLeft: { x: cx - 8, y: cy - 6, anchor: 'end' as const },
+    right: { x: cx + 8, y: cy + 4, anchor: 'start' as const },
+    rightUp: { x: cx + 8, y: cy - 3, anchor: 'start' as const },
+    rightDown: { x: cx + 8, y: cy + 13, anchor: 'start' as const },
+  }
+  const label = places[attribute.label]
   return (
     <g tabIndex={0} data-tip={`Attribute: ${attribute.name}. A brand far along this line scores high on it.`} className="outline-none">
       <circle cx={cx} cy={cy} r={2.5} fill="#8D94A3" />
@@ -128,12 +132,13 @@ function PreferenceEnd(props: ScatterShapeProps) {
   // Both axes share one scale, so the angle on screen follows from the data.
   const angle = (Math.atan2(-preference.y, preference.x) * 180) / Math.PI
   // Where the name starts (or ends), relative to the tip of the arrow.
-  const label =
-    preference.label === 'left'
-      ? { x: cx - 18, y: cy + 2, align: 'end' as const }
-      : preference.label === 'below'
-        ? { x: cx + 14, y: cy + 26, align: 'start' as const }
-        : { x: cx + 28, y: cy + 6, align: 'start' as const }
+  const places = {
+    left: { x: cx - 18, y: cy + 2, align: 'end' as const },
+    below: { x: cx + 14, y: cy + 26, align: 'start' as const },
+    above: { x: cx + 14, y: cy - 16, align: 'start' as const },
+    right: { x: cx + 28, y: cy + 6, align: 'start' as const },
+  }
+  const label = places[preference.label]
   return (
     <g>
       <path d="M3.5 0L-14 -8.75V8.75Z" fill={segment.color} transform={`translate(${cx} ${cy}) rotate(${angle})`} />
