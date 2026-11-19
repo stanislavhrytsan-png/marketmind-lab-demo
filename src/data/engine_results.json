@@ -21302,6 +21302,9168 @@
      ]
     }
    ]
+  },
+  "network": {
+   "data": {
+    "ties_file": "community_ties.csv",
+    "members_file": "community_members.csv",
+    "tie_meaning": "the two members follow each other in the customer community",
+    "n_members": 200,
+    "n_ties": 647
+   },
+   "runs": {
+    "NW-01": {
+     "function": "network_overview, centrality, find_communities",
+     "settings": {
+      "top_n": 10,
+      "resolution": 1.0,
+      "seed": 2026
+     },
+     "overview": {
+      "n_members": 200,
+      "n_ties": 647,
+      "density": 0.0325125628,
+      "ties_per_member": {
+       "mean": 6.47,
+       "median": 6.0,
+       "lowest": 0,
+       "highest": 32
+      },
+      "n_members_without_ties": 5,
+      "n_parts": 6,
+      "largest_part": {
+       "n_members": 195,
+       "share_of_members": 0.975
+      },
+      "mean_steps_between_members": 3.8616442,
+      "longest_shortest_way": 8,
+      "degree_distribution": [
+       {
+        "ties": 0,
+        "n_members": 5
+       },
+       {
+        "ties": 1,
+        "n_members": 2
+       },
+       {
+        "ties": 2,
+        "n_members": 8
+       },
+       {
+        "ties": 3,
+        "n_members": 18
+       },
+       {
+        "ties": 4,
+        "n_members": 24
+       },
+       {
+        "ties": 5,
+        "n_members": 28
+       },
+       {
+        "ties": 6,
+        "n_members": 36
+       },
+       {
+        "ties": 7,
+        "n_members": 27
+       },
+       {
+        "ties": 8,
+        "n_members": 14
+       },
+       {
+        "ties": 9,
+        "n_members": 17
+       },
+       {
+        "ties": 10,
+        "n_members": 7
+       },
+       {
+        "ties": 11,
+        "n_members": 3
+       },
+       {
+        "ties": 12,
+        "n_members": 4
+       },
+       {
+        "ties": 16,
+        "n_members": 1
+       },
+       {
+        "ties": 21,
+        "n_members": 2
+       },
+       {
+        "ties": 22,
+        "n_members": 1
+       },
+       {
+        "ties": 26,
+        "n_members": 1
+       },
+       {
+        "ties": 27,
+        "n_members": 1
+       },
+       {
+        "ties": 32,
+        "n_members": 1
+       }
+      ],
+      "how_to_read": [
+       "A density of 0.05 means that 5% of all possible ties between members exist.",
+       "The fewer steps lie between members, the faster news can travel through the network."
+      ],
+      "warnings": [
+       "The network falls into 6 separate parts (5 of them are members without any tie). A message cannot travel from one part to another."
+      ]
+     },
+     "measures": [
+      {
+       "key": "degree",
+       "label": "Degree",
+       "meaning": "The number of ties of a member. Who has many direct contacts?"
+      },
+      {
+       "key": "betweenness",
+       "label": "Betweenness",
+       "meaning": "How often a member lies on the shortest way between two others. Who connects parts of the network that would otherwise be far apart?"
+      },
+      {
+       "key": "closeness",
+       "label": "Closeness",
+       "meaning": "How few steps a member needs to reach all others. From whom does news travel fastest through the whole network?"
+      },
+      {
+       "key": "eigenvector",
+       "label": "Eigenvector centrality",
+       "meaning": "Whether a member is tied to members who are well connected themselves. Who has important contacts, not just many?"
+      }
+     ],
+     "top": {
+      "degree": [
+       {
+        "member": "M084",
+        "value": 32,
+        "place": 1
+       },
+       {
+        "member": "M177",
+        "value": 27,
+        "place": 2
+       },
+       {
+        "member": "M113",
+        "value": 26,
+        "place": 3
+       },
+       {
+        "member": "M001",
+        "value": 22,
+        "place": 4
+       },
+       {
+        "member": "M170",
+        "value": 21,
+        "place": 5
+       },
+       {
+        "member": "M180",
+        "value": 21,
+        "place": 5
+       },
+       {
+        "member": "M093",
+        "value": 16,
+        "place": 7
+       },
+       {
+        "member": "M055",
+        "value": 12,
+        "place": 8
+       },
+       {
+        "member": "M096",
+        "value": 12,
+        "place": 8
+       },
+       {
+        "member": "M118",
+        "value": 12,
+        "place": 8
+       }
+      ],
+      "betweenness": [
+       {
+        "member": "M170",
+        "value": 0.193279936,
+        "place": 1
+       },
+       {
+        "member": "M084",
+        "value": 0.170746147,
+        "place": 2
+       },
+       {
+        "member": "M113",
+        "value": 0.166449025,
+        "place": 3
+       },
+       {
+        "member": "M191",
+        "value": 0.119453006,
+        "place": 4
+       },
+       {
+        "member": "M052",
+        "value": 0.11741291,
+        "place": 5
+       },
+       {
+        "member": "M082",
+        "value": 0.101451725,
+        "place": 6
+       },
+       {
+        "member": "M006",
+        "value": 0.0968925081,
+        "place": 7
+       },
+       {
+        "member": "M125",
+        "value": 0.0687391027,
+        "place": 8
+       },
+       {
+        "member": "M059",
+        "value": 0.0641536182,
+        "place": 9
+       },
+       {
+        "member": "M058",
+        "value": 0.0628918673,
+        "place": 10
+       }
+      ],
+      "closeness": [
+       {
+        "member": "M084",
+        "value": 0.341382,
+        "place": 1
+       },
+       {
+        "member": "M113",
+        "value": 0.337122332,
+        "place": 2
+       },
+       {
+        "member": "M170",
+        "value": 0.326078669,
+        "place": 3
+       },
+       {
+        "member": "M082",
+        "value": 0.313641174,
+        "place": 4
+       },
+       {
+        "member": "M006",
+        "value": 0.306524519,
+        "place": 5
+       },
+       {
+        "member": "M191",
+        "value": 0.306028524,
+        "place": 6
+       },
+       {
+        "member": "M048",
+        "value": 0.305041336,
+        "place": 7
+       },
+       {
+        "member": "M125",
+        "value": 0.303085943,
+        "place": 8
+       },
+       {
+        "member": "M052",
+        "value": 0.299723658,
+        "place": 9
+       },
+       {
+        "member": "M075",
+        "value": 0.299249412,
+        "place": 10
+       }
+      ],
+      "eigenvector": [
+       {
+        "member": "M084",
+        "value": 1.0,
+        "place": 1
+       },
+       {
+        "member": "M001",
+        "value": 0.656475306,
+        "place": 2
+       },
+       {
+        "member": "M118",
+        "value": 0.484050346,
+        "place": 3
+       },
+       {
+        "member": "M055",
+        "value": 0.427929349,
+        "place": 4
+       },
+       {
+        "member": "M040",
+        "value": 0.406432984,
+        "place": 5
+       },
+       {
+        "member": "M016",
+        "value": 0.399761055,
+        "place": 6
+       },
+       {
+        "member": "M092",
+        "value": 0.387544391,
+        "place": 7
+       },
+       {
+        "member": "M026",
+        "value": 0.378527644,
+        "place": 8
+       },
+       {
+        "member": "M015",
+        "value": 0.375786497,
+        "place": 9
+       },
+       {
+        "member": "M022",
+        "value": 0.368589878,
+        "place": 10
+       }
+      ]
+     },
+     "agreement": [
+      {
+       "first": "degree",
+       "second": "betweenness",
+       "rank_correlation": 0.671521062
+      },
+      {
+       "first": "degree",
+       "second": "closeness",
+       "rank_correlation": 0.683942403
+      },
+      {
+       "first": "degree",
+       "second": "eigenvector",
+       "rank_correlation": 0.561835203
+      },
+      {
+       "first": "betweenness",
+       "second": "closeness",
+       "rank_correlation": 0.739463015
+      },
+      {
+       "first": "betweenness",
+       "second": "eigenvector",
+       "rank_correlation": 0.311179617
+      },
+      {
+       "first": "closeness",
+       "second": "eigenvector",
+       "rank_correlation": 0.653883974
+      }
+     ],
+     "centrality_how_to_read": [
+      "The four measures often agree on who is important. The interesting members are those where they do not.",
+      "A member with few ties but a high betweenness is a bridge: the only way between two groups."
+     ],
+     "centrality_warnings": [
+      "The network falls into 6 separate parts. Eigenvector centrality then mostly describes the best connected part, and closeness is lowered for members who cannot reach everybody."
+     ],
+     "communities": {
+      "n_communities": 9,
+      "n_communities_with_several_members": 4,
+      "modularity": 0.700743414,
+      "modularity_in_shuffled_networks": {
+       "mean": 0.352536854,
+       "highest": 0.367557793,
+       "n_networks": 5
+      },
+      "clearly_above_chance": true,
+      "ties_between_communities": [
+       {
+        "first": 1,
+        "second": 2,
+        "n_ties": 4
+       },
+       {
+        "first": 1,
+        "second": 3,
+        "n_ties": 1
+       },
+       {
+        "first": 1,
+        "second": 4,
+        "n_ties": 4
+       },
+       {
+        "first": 2,
+        "second": 3,
+        "n_ties": 7
+       },
+       {
+        "first": 2,
+        "second": 4,
+        "n_ties": 2
+       },
+       {
+        "first": 3,
+        "second": 4,
+        "n_ties": 4
+       }
+      ],
+      "how_to_read": [
+       "Members of one community hear the same news from the same people. To reach the whole network, each community needs its own start.",
+       "The communities are found from the ties alone. Compare them with what you know about the members (town, age, interests) to give them a name."
+      ],
+      "warnings": [
+       "5 member(s) form a community of their own, mostly because they have no ties."
+      ],
+      "n_ties_inside": 625,
+      "share_of_ties_inside": 0.965996909,
+      "communities": [
+       {
+        "community": 1,
+        "n_members": 59,
+        "share_of_members": 0.295,
+        "n_ties_inside": 219,
+        "n_ties_to_other_communities": 9,
+        "share_of_ties_inside": 0.960526316,
+        "density_inside": 0.127995324,
+        "best_connected_members": [
+         {
+          "member": "M084",
+          "ties_inside": 31
+         },
+         {
+          "member": "M001",
+          "ties_inside": 22
+         },
+         {
+          "member": "M055",
+          "ties_inside": 12
+         }
+        ]
+       },
+       {
+        "community": 2,
+        "n_members": 50,
+        "share_of_members": 0.25,
+        "n_ties_inside": 162,
+        "n_ties_to_other_communities": 13,
+        "share_of_ties_inside": 0.925714286,
+        "density_inside": 0.132244898,
+        "best_connected_members": [
+         {
+          "member": "M177",
+          "ties_inside": 27
+         },
+         {
+          "member": "M113",
+          "ties_inside": 24
+         },
+         {
+          "member": "M011",
+          "ties_inside": 11
+         }
+        ]
+       },
+       {
+        "community": 3,
+        "n_members": 45,
+        "share_of_members": 0.225,
+        "n_ties_inside": 131,
+        "n_ties_to_other_communities": 12,
+        "share_of_ties_inside": 0.916083916,
+        "density_inside": 0.132323232,
+        "best_connected_members": [
+         {
+          "member": "M170",
+          "ties_inside": 19
+         },
+         {
+          "member": "M093",
+          "ties_inside": 16
+         },
+         {
+          "member": "M158",
+          "ties_inside": 12
+         }
+        ]
+       },
+       {
+        "community": 4,
+        "n_members": 41,
+        "share_of_members": 0.205,
+        "n_ties_inside": 113,
+        "n_ties_to_other_communities": 10,
+        "share_of_ties_inside": 0.918699187,
+        "density_inside": 0.137804878,
+        "best_connected_members": [
+         {
+          "member": "M180",
+          "ties_inside": 21
+         },
+         {
+          "member": "M096",
+          "ties_inside": 12
+         },
+         {
+          "member": "M135",
+          "ties_inside": 11
+         }
+        ]
+       },
+       {
+        "community": 5,
+        "n_members": 1,
+        "share_of_members": 0.005,
+        "n_ties_inside": 0,
+        "n_ties_to_other_communities": 0,
+        "share_of_ties_inside": null,
+        "density_inside": null,
+        "best_connected_members": [
+         {
+          "member": "M019",
+          "ties_inside": 0
+         }
+        ]
+       },
+       {
+        "community": 6,
+        "n_members": 1,
+        "share_of_members": 0.005,
+        "n_ties_inside": 0,
+        "n_ties_to_other_communities": 0,
+        "share_of_ties_inside": null,
+        "density_inside": null,
+        "best_connected_members": [
+         {
+          "member": "M064",
+          "ties_inside": 0
+         }
+        ]
+       },
+       {
+        "community": 7,
+        "n_members": 1,
+        "share_of_members": 0.005,
+        "n_ties_inside": 0,
+        "n_ties_to_other_communities": 0,
+        "share_of_ties_inside": null,
+        "density_inside": null,
+        "best_connected_members": [
+         {
+          "member": "M109",
+          "ties_inside": 0
+         }
+        ]
+       },
+       {
+        "community": 8,
+        "n_members": 1,
+        "share_of_members": 0.005,
+        "n_ties_inside": 0,
+        "n_ties_to_other_communities": 0,
+        "share_of_ties_inside": null,
+        "density_inside": null,
+        "best_connected_members": [
+         {
+          "member": "M159",
+          "ties_inside": 0
+         }
+        ]
+       },
+       {
+        "community": 9,
+        "n_members": 1,
+        "share_of_members": 0.005,
+        "n_ties_inside": 0,
+        "n_ties_to_other_communities": 0,
+        "share_of_ties_inside": null,
+        "density_inside": null,
+        "best_connected_members": [
+         {
+          "member": "M171",
+          "ties_inside": 0
+         }
+        ]
+       }
+      ]
+     }
+    },
+    "NW-02": {
+     "function": "rank_influencers",
+     "settings": {
+      "measure": "degree",
+      "seeding": "spread",
+      "n_seeds": 5,
+      "top_n": 10,
+      "resolution": 1.0,
+      "seed": 2026
+     },
+     "seeds": [
+      {
+       "member": "M084",
+       "degree": 32,
+       "place": 1,
+       "community": 1
+      },
+      {
+       "member": "M177",
+       "degree": 27,
+       "place": 2,
+       "community": 2
+      },
+      {
+       "member": "M170",
+       "degree": 21,
+       "place": 5,
+       "community": 3
+      },
+      {
+       "member": "M180",
+       "degree": 21,
+       "place": 6,
+       "community": 4
+      },
+      {
+       "member": "M113",
+       "degree": 26,
+       "place": 3,
+       "community": 2
+      }
+     ],
+     "ranking": [
+      {
+       "member": "M084",
+       "degree": 32,
+       "betweenness": 0.170746147,
+       "closeness": 0.341382,
+       "eigenvector": 1.0,
+       "score": 32.0,
+       "place": 1,
+       "community": 1,
+       "places": {
+        "degree": 1,
+        "betweenness": 2,
+        "closeness": 1,
+        "eigenvector": 1
+       }
+      },
+      {
+       "member": "M177",
+       "degree": 27,
+       "betweenness": 0.0523440934,
+       "closeness": 0.283972415,
+       "eigenvector": 0.0741899939,
+       "score": 27.0,
+       "place": 2,
+       "community": 2,
+       "places": {
+        "degree": 2,
+        "betweenness": 13,
+        "closeness": 24,
+        "eigenvector": 61
+       }
+      },
+      {
+       "member": "M113",
+       "degree": 26,
+       "betweenness": 0.166449025,
+       "closeness": 0.337122332,
+       "eigenvector": 0.110418147,
+       "score": 26.0,
+       "place": 3,
+       "community": 2,
+       "places": {
+        "degree": 3,
+        "betweenness": 3,
+        "closeness": 2,
+        "eigenvector": 54
+       }
+      },
+      {
+       "member": "M001",
+       "degree": 22,
+       "betweenness": 0.0425044074,
+       "closeness": 0.28568826,
+       "eigenvector": 0.656475306,
+       "score": 22.0,
+       "place": 4,
+       "community": 1,
+       "places": {
+        "degree": 4,
+        "betweenness": 15,
+        "closeness": 20,
+        "eigenvector": 2
+       }
+      },
+      {
+       "member": "M170",
+       "degree": 21,
+       "betweenness": 0.193279936,
+       "closeness": 0.326078669,
+       "eigenvector": 0.0477695712,
+       "score": 21.0,
+       "place": 5,
+       "community": 3,
+       "places": {
+        "degree": 5,
+        "betweenness": 1,
+        "closeness": 3,
+        "eigenvector": 62
+       }
+      },
+      {
+       "member": "M180",
+       "degree": 21,
+       "betweenness": 0.0480274101,
+       "closeness": 0.246257328,
+       "eigenvector": 0.00775452046,
+       "score": 21.0,
+       "place": 6,
+       "community": 4,
+       "places": {
+        "degree": 5,
+        "betweenness": 14,
+        "closeness": 118,
+        "eigenvector": 131
+       }
+      },
+      {
+       "member": "M093",
+       "degree": 16,
+       "betweenness": 0.0331244138,
+       "closeness": 0.274492929,
+       "eigenvector": 0.0155256365,
+       "score": 16.0,
+       "place": 7,
+       "community": 3,
+       "places": {
+        "degree": 7,
+        "betweenness": 20,
+        "closeness": 45,
+        "eigenvector": 103
+       }
+      },
+      {
+       "member": "M055",
+       "degree": 12,
+       "betweenness": 0.0183783201,
+       "closeness": 0.279358387,
+       "eigenvector": 0.427929349,
+       "score": 12.0,
+       "place": 8,
+       "community": 1,
+       "places": {
+        "degree": 8,
+        "betweenness": 37,
+        "closeness": 35,
+        "eigenvector": 4
+       }
+      },
+      {
+       "member": "M096",
+       "degree": 12,
+       "betweenness": 0.0251556854,
+       "closeness": 0.253859904,
+       "eigenvector": 0.00948308248,
+       "score": 12.0,
+       "place": 9,
+       "community": 4,
+       "places": {
+        "degree": 8,
+        "betweenness": 25,
+        "closeness": 102,
+        "eigenvector": 120
+       }
+      },
+      {
+       "member": "M118",
+       "degree": 12,
+       "betweenness": 0.00601357337,
+       "closeness": 0.269409727,
+       "eigenvector": 0.484050346,
+       "score": 12.0,
+       "place": 10,
+       "community": 1,
+       "places": {
+        "degree": 8,
+        "betweenness": 87,
+        "closeness": 59,
+        "eigenvector": 3
+       }
+      }
+     ],
+     "reach": {
+      "spread": {
+       "within_one_step": 0.575,
+       "within_two_steps": 0.96,
+       "n_communities_with_a_seed": 4
+      },
+      "top": {
+       "within_one_step": 0.5,
+       "within_two_steps": 0.785,
+       "n_communities_with_a_seed": 3
+      }
+     },
+     "how_to_read": [
+      "A seed is a member you approach first, hoping that the message spreads from there.",
+      "Reach within one step: the seeds and their direct contacts, as a share of all members.",
+      "The ranking only knows the ties. Whether a member is willing and credible is not in the data."
+     ],
+     "warnings": []
+    },
+    "NW-03": {
+     "function": "rank_influencers",
+     "settings": {
+      "measure": "degree",
+      "seeding": "top",
+      "n_seeds": 5,
+      "top_n": 10,
+      "resolution": 1.0,
+      "seed": 2026
+     },
+     "seeds": [
+      {
+       "member": "M084",
+       "degree": 32,
+       "place": 1,
+       "community": 1
+      },
+      {
+       "member": "M177",
+       "degree": 27,
+       "place": 2,
+       "community": 2
+      },
+      {
+       "member": "M113",
+       "degree": 26,
+       "place": 3,
+       "community": 2
+      },
+      {
+       "member": "M001",
+       "degree": 22,
+       "place": 4,
+       "community": 1
+      },
+      {
+       "member": "M170",
+       "degree": 21,
+       "place": 5,
+       "community": 3
+      }
+     ],
+     "ranking": [
+      {
+       "member": "M084",
+       "degree": 32,
+       "betweenness": 0.170746147,
+       "closeness": 0.341382,
+       "eigenvector": 1.0,
+       "score": 32.0,
+       "place": 1,
+       "community": 1,
+       "places": {
+        "degree": 1,
+        "betweenness": 2,
+        "closeness": 1,
+        "eigenvector": 1
+       }
+      },
+      {
+       "member": "M177",
+       "degree": 27,
+       "betweenness": 0.0523440934,
+       "closeness": 0.283972415,
+       "eigenvector": 0.0741899939,
+       "score": 27.0,
+       "place": 2,
+       "community": 2,
+       "places": {
+        "degree": 2,
+        "betweenness": 13,
+        "closeness": 24,
+        "eigenvector": 61
+       }
+      },
+      {
+       "member": "M113",
+       "degree": 26,
+       "betweenness": 0.166449025,
+       "closeness": 0.337122332,
+       "eigenvector": 0.110418147,
+       "score": 26.0,
+       "place": 3,
+       "community": 2,
+       "places": {
+        "degree": 3,
+        "betweenness": 3,
+        "closeness": 2,
+        "eigenvector": 54
+       }
+      },
+      {
+       "member": "M001",
+       "degree": 22,
+       "betweenness": 0.0425044074,
+       "closeness": 0.28568826,
+       "eigenvector": 0.656475306,
+       "score": 22.0,
+       "place": 4,
+       "community": 1,
+       "places": {
+        "degree": 4,
+        "betweenness": 15,
+        "closeness": 20,
+        "eigenvector": 2
+       }
+      },
+      {
+       "member": "M170",
+       "degree": 21,
+       "betweenness": 0.193279936,
+       "closeness": 0.326078669,
+       "eigenvector": 0.0477695712,
+       "score": 21.0,
+       "place": 5,
+       "community": 3,
+       "places": {
+        "degree": 5,
+        "betweenness": 1,
+        "closeness": 3,
+        "eigenvector": 62
+       }
+      },
+      {
+       "member": "M180",
+       "degree": 21,
+       "betweenness": 0.0480274101,
+       "closeness": 0.246257328,
+       "eigenvector": 0.00775452046,
+       "score": 21.0,
+       "place": 6,
+       "community": 4,
+       "places": {
+        "degree": 5,
+        "betweenness": 14,
+        "closeness": 118,
+        "eigenvector": 131
+       }
+      },
+      {
+       "member": "M093",
+       "degree": 16,
+       "betweenness": 0.0331244138,
+       "closeness": 0.274492929,
+       "eigenvector": 0.0155256365,
+       "score": 16.0,
+       "place": 7,
+       "community": 3,
+       "places": {
+        "degree": 7,
+        "betweenness": 20,
+        "closeness": 45,
+        "eigenvector": 103
+       }
+      },
+      {
+       "member": "M055",
+       "degree": 12,
+       "betweenness": 0.0183783201,
+       "closeness": 0.279358387,
+       "eigenvector": 0.427929349,
+       "score": 12.0,
+       "place": 8,
+       "community": 1,
+       "places": {
+        "degree": 8,
+        "betweenness": 37,
+        "closeness": 35,
+        "eigenvector": 4
+       }
+      },
+      {
+       "member": "M096",
+       "degree": 12,
+       "betweenness": 0.0251556854,
+       "closeness": 0.253859904,
+       "eigenvector": 0.00948308248,
+       "score": 12.0,
+       "place": 9,
+       "community": 4,
+       "places": {
+        "degree": 8,
+        "betweenness": 25,
+        "closeness": 102,
+        "eigenvector": 120
+       }
+      },
+      {
+       "member": "M118",
+       "degree": 12,
+       "betweenness": 0.00601357337,
+       "closeness": 0.269409727,
+       "eigenvector": 0.484050346,
+       "score": 12.0,
+       "place": 10,
+       "community": 1,
+       "places": {
+        "degree": 8,
+        "betweenness": 87,
+        "closeness": 59,
+        "eigenvector": 3
+       }
+      }
+     ],
+     "reach": {
+      "spread": {
+       "within_one_step": 0.575,
+       "within_two_steps": 0.96,
+       "n_communities_with_a_seed": 4
+      },
+      "top": {
+       "within_one_step": 0.5,
+       "within_two_steps": 0.785,
+       "n_communities_with_a_seed": 3
+      }
+     },
+     "how_to_read": [
+      "A seed is a member you approach first, hoping that the message spreads from there.",
+      "Reach within one step: the seeds and their direct contacts, as a share of all members.",
+      "The ranking only knows the ties. Whether a member is willing and credible is not in the data."
+     ],
+     "warnings": [
+      "Seeds that are spread over the communities would reach clearly more members within one step. Several of the best ranked members share the same contacts."
+     ]
+    }
+   },
+   "members": [
+    {
+     "member": "M001",
+     "degree": 22,
+     "betweenness": 0.0425044074,
+     "closeness": 0.28568826,
+     "eigenvector": 0.656475306,
+     "places": {
+      "degree": 4,
+      "betweenness": 15,
+      "closeness": 20,
+      "eigenvector": 2
+     },
+     "community": 1,
+     "x": 0.209,
+     "y": 0.747
+    },
+    {
+     "member": "M002",
+     "degree": 3,
+     "betweenness": 0.000235503658,
+     "closeness": 0.223552752,
+     "eigenvector": 0.00603271915,
+     "places": {
+      "degree": 168,
+      "betweenness": 182,
+      "closeness": 173,
+      "eigenvector": 140
+     },
+     "community": 2,
+     "x": 0.343,
+     "y": 0.02
+    },
+    {
+     "member": "M003",
+     "degree": 1,
+     "betweenness": 0.0,
+     "closeness": 0.178252241,
+     "eigenvector": 0.000381205485,
+     "places": {
+      "degree": 194,
+      "betweenness": 192,
+      "closeness": 195,
+      "eigenvector": 195
+     },
+     "community": 3,
+     "x": 0.982,
+     "y": 0.0
+    },
+    {
+     "member": "M004",
+     "degree": 6,
+     "betweenness": 0.00121254636,
+     "closeness": 0.221199565,
+     "eigenvector": 0.00305357848,
+     "places": {
+      "degree": 80,
+      "betweenness": 148,
+      "closeness": 176,
+      "eigenvector": 174
+     },
+     "community": 4,
+     "x": 0.761,
+     "y": 0.847
+    },
+    {
+     "member": "M005",
+     "degree": 9,
+     "betweenness": 0.00114523779,
+     "closeness": 0.240924367,
+     "eigenvector": 0.312663663,
+     "places": {
+      "degree": 22,
+      "betweenness": 149,
+      "closeness": 134,
+      "eigenvector": 17
+     },
+     "community": 1,
+     "x": 0.133,
+     "y": 0.728
+    },
+    {
+     "member": "M006",
+     "degree": 10,
+     "betweenness": 0.0968925081,
+     "closeness": 0.306524519,
+     "eigenvector": 0.0303749717,
+     "places": {
+      "degree": 15,
+      "betweenness": 7,
+      "closeness": 5,
+      "eigenvector": 78
+     },
+     "community": 4,
+     "x": 0.674,
+     "y": 0.7
+    },
+    {
+     "member": "M007",
+     "degree": 7,
+     "betweenness": 0.00559565411,
+     "closeness": 0.246257328,
+     "eigenvector": 0.183938553,
+     "places": {
+      "degree": 53,
+      "betweenness": 92,
+      "closeness": 118,
+      "eigenvector": 40
+     },
+     "community": 1,
+     "x": 0.103,
+     "y": 0.777
+    },
+    {
+     "member": "M008",
+     "degree": 9,
+     "betweenness": 0.0341270476,
+     "closeness": 0.269794049,
+     "eigenvector": 0.00604837851,
+     "places": {
+      "degree": 22,
+      "betweenness": 19,
+      "closeness": 57,
+      "eigenvector": 139
+     },
+     "community": 4,
+     "x": 0.791,
+     "y": 0.699
+    },
+    {
+     "member": "M009",
+     "degree": 6,
+     "betweenness": 0.0595307343,
+     "closeness": 0.29736734,
+     "eigenvector": 0.238545426,
+     "places": {
+      "degree": 80,
+      "betweenness": 11,
+      "closeness": 11,
+      "eigenvector": 29
+     },
+     "community": 1,
+     "x": 0.358,
+     "y": 0.682
+    },
+    {
+     "member": "M010",
+     "degree": 6,
+     "betweenness": 0.00147284888,
+     "closeness": 0.224082498,
+     "eigenvector": 0.00302553575,
+     "places": {
+      "degree": 80,
+      "betweenness": 144,
+      "closeness": 172,
+      "eigenvector": 175
+     },
+     "community": 4,
+     "x": 0.761,
+     "y": 0.697
+    },
+    {
+     "member": "M011",
+     "degree": 11,
+     "betweenness": 0.0112560271,
+     "closeness": 0.280186116,
+     "eigenvector": 0.0439851367,
+     "places": {
+      "degree": 12,
+      "betweenness": 55,
+      "closeness": 33,
+      "eigenvector": 63
+     },
+     "community": 2,
+     "x": 0.268,
+     "y": 0.232
+    },
+    {
+     "member": "M012",
+     "degree": 3,
+     "betweenness": 0.00101251494,
+     "closeness": 0.244664461,
+     "eigenvector": 0.0861352073,
+     "places": {
+      "degree": 168,
+      "betweenness": 152,
+      "closeness": 123,
+      "eigenvector": 59
+     },
+     "community": 1,
+     "x": 0.247,
+     "y": 0.599
+    },
+    {
+     "member": "M013",
+     "degree": 6,
+     "betweenness": 0.021880247,
+     "closeness": 0.263039817,
+     "eigenvector": 0.00414189428,
+     "places": {
+      "degree": 80,
+      "betweenness": 33,
+      "closeness": 80,
+      "eigenvector": 156
+     },
+     "community": 4,
+     "x": 0.729,
+     "y": 0.668
+    },
+    {
+     "member": "M014",
+     "degree": 7,
+     "betweenness": 0.000954293959,
+     "closeness": 0.240617848,
+     "eigenvector": 0.229174365,
+     "places": {
+      "degree": 53,
+      "betweenness": 154,
+      "closeness": 135,
+      "eigenvector": 33
+     },
+     "community": 1,
+     "x": 0.144,
+     "y": 0.8
+    },
+    {
+     "member": "M015",
+     "degree": 9,
+     "betweenness": 0.00849567799,
+     "closeness": 0.281436947,
+     "eigenvector": 0.375786497,
+     "places": {
+      "degree": 22,
+      "betweenness": 68,
+      "closeness": 31,
+      "eigenvector": 9
+     },
+     "community": 1,
+     "x": 0.13,
+     "y": 0.702
+    },
+    {
+     "member": "M016",
+     "degree": 9,
+     "betweenness": 0.0108833446,
+     "closeness": 0.285257358,
+     "eigenvector": 0.399761055,
+     "places": {
+      "degree": 22,
+      "betweenness": 56,
+      "closeness": 21,
+      "eigenvector": 6
+     },
+     "community": 1,
+     "x": 0.222,
+     "y": 0.675
+    },
+    {
+     "member": "M017",
+     "degree": 7,
+     "betweenness": 0.00535796085,
+     "closeness": 0.273698449,
+     "eigenvector": 0.265747025,
+     "places": {
+      "degree": 53,
+      "betweenness": 96,
+      "closeness": 49,
+      "eigenvector": 27
+     },
+     "community": 1,
+     "x": 0.147,
+     "y": 0.676
+    },
+    {
+     "member": "M018",
+     "degree": 4,
+     "betweenness": 0.00786174295,
+     "closeness": 0.243718593,
+     "eigenvector": 0.00188534878,
+     "places": {
+      "degree": 144,
+      "betweenness": 72,
+      "closeness": 127,
+      "eigenvector": 185
+     },
+     "community": 4,
+     "x": 0.828,
+     "y": 0.631
+    },
+    {
+     "member": "M019",
+     "degree": 0,
+     "betweenness": 0.0,
+     "closeness": 0.0,
+     "eigenvector": 0.0,
+     "places": {
+      "degree": 196,
+      "betweenness": 192,
+      "closeness": 196,
+      "eigenvector": 196
+     },
+     "community": 5,
+     "x": 0.04,
+     "y": 1.0
+    },
+    {
+     "member": "M020",
+     "degree": 10,
+     "betweenness": 0.0218859767,
+     "closeness": 0.287862448,
+     "eigenvector": 0.337348222,
+     "places": {
+      "degree": 15,
+      "betweenness": 32,
+      "closeness": 17,
+      "eigenvector": 14
+     },
+     "community": 1,
+     "x": 0.181,
+     "y": 0.735
+    },
+    {
+     "member": "M021",
+     "degree": 7,
+     "betweenness": 0.00388341316,
+     "closeness": 0.235817491,
+     "eigenvector": 0.00539734839,
+     "places": {
+      "degree": 53,
+      "betweenness": 106,
+      "closeness": 147,
+      "eigenvector": 146
+     },
+     "community": 3,
+     "x": 0.823,
+     "y": 0.125
+    },
+    {
+     "member": "M022",
+     "degree": 8,
+     "betweenness": 0.00560427709,
+     "closeness": 0.282698996,
+     "eigenvector": 0.368589878,
+     "places": {
+      "degree": 39,
+      "betweenness": 91,
+      "closeness": 28,
+      "eigenvector": 10
+     },
+     "community": 1,
+     "x": 0.189,
+     "y": 0.675
+    },
+    {
+     "member": "M023",
+     "degree": 4,
+     "betweenness": 0.000562775682,
+     "closeness": 0.22461476,
+     "eigenvector": 0.0039502746,
+     "places": {
+      "degree": 144,
+      "betweenness": 169,
+      "closeness": 171,
+      "eigenvector": 161
+     },
+     "community": 3,
+     "x": 0.829,
+     "y": 0.183
+    },
+    {
+     "member": "M024",
+     "degree": 7,
+     "betweenness": 0.00224338857,
+     "closeness": 0.258015864,
+     "eigenvector": 0.220517364,
+     "places": {
+      "degree": 53,
+      "betweenness": 127,
+      "closeness": 95,
+      "eigenvector": 34
+     },
+     "community": 1,
+     "x": 0.164,
+     "y": 0.693
+    },
+    {
+     "member": "M025",
+     "degree": 9,
+     "betweenness": 0.0358898283,
+     "closeness": 0.294130059,
+     "eigenvector": 0.0132503702,
+     "places": {
+      "degree": 22,
+      "betweenness": 18,
+      "closeness": 13,
+      "eigenvector": 110
+     },
+     "community": 3,
+     "x": 0.661,
+     "y": 0.173
+    },
+    {
+     "member": "M026",
+     "degree": 10,
+     "betweenness": 0.0132264874,
+     "closeness": 0.284399441,
+     "eigenvector": 0.378527644,
+     "places": {
+      "degree": 15,
+      "betweenness": 51,
+      "closeness": 23,
+      "eigenvector": 8
+     },
+     "community": 1,
+     "x": 0.261,
+     "y": 0.655
+    },
+    {
+     "member": "M027",
+     "degree": 4,
+     "betweenness": 0.000824267803,
+     "closeness": 0.226769338,
+     "eigenvector": 0.09943821,
+     "places": {
+      "degree": 144,
+      "betweenness": 159,
+      "closeness": 168,
+      "eigenvector": 55
+     },
+     "community": 1,
+     "x": 0.011,
+     "y": 0.685
+    },
+    {
+     "member": "M028",
+     "degree": 5,
+     "betweenness": 0.000500637058,
+     "closeness": 0.221199565,
+     "eigenvector": 0.00376029824,
+     "places": {
+      "degree": 116,
+      "betweenness": 173,
+      "closeness": 176,
+      "eigenvector": 163
+     },
+     "community": 3,
+     "x": 0.925,
+     "y": 0.149
+    },
+    {
+     "member": "M029",
+     "degree": 6,
+     "betweenness": 0.00661551505,
+     "closeness": 0.262310164,
+     "eigenvector": 0.233481401,
+     "places": {
+      "degree": 80,
+      "betweenness": 82,
+      "closeness": 84,
+      "eigenvector": 30
+     },
+     "community": 1,
+     "x": 0.091,
+     "y": 0.817
+    },
+    {
+     "member": "M030",
+     "degree": 3,
+     "betweenness": 0.000705952832,
+     "closeness": 0.239096875,
+     "eigenvector": 0.11090851,
+     "places": {
+      "degree": 168,
+      "betweenness": 167,
+      "closeness": 140,
+      "eigenvector": 53
+     },
+     "community": 1,
+     "x": 0.174,
+     "y": 0.875
+    },
+    {
+     "member": "M031",
+     "degree": 5,
+     "betweenness": 0.0381176369,
+     "closeness": 0.287862448,
+     "eigenvector": 0.0151702176,
+     "places": {
+      "degree": 116,
+      "betweenness": 16,
+      "closeness": 17,
+      "eigenvector": 104
+     },
+     "community": 3,
+     "x": 0.593,
+     "y": 0.198
+    },
+    {
+     "member": "M032",
+     "degree": 7,
+     "betweenness": 0.00666639882,
+     "closeness": 0.228137067,
+     "eigenvector": 0.00415697296,
+     "places": {
+      "degree": 53,
+      "betweenness": 81,
+      "closeness": 165,
+      "eigenvector": 155
+     },
+     "community": 4,
+     "x": 0.757,
+     "y": 0.789
+    },
+    {
+     "member": "M033",
+     "degree": 5,
+     "betweenness": 0.0145173024,
+     "closeness": 0.271732224,
+     "eigenvector": 0.0104205268,
+     "places": {
+      "degree": 116,
+      "betweenness": 50,
+      "closeness": 52,
+      "eigenvector": 117
+     },
+     "community": 3,
+     "x": 0.624,
+     "y": 0.248
+    },
+    {
+     "member": "M034",
+     "degree": 6,
+     "betweenness": 0.00290238837,
+     "closeness": 0.262310164,
+     "eigenvector": 0.0276983389,
+     "places": {
+      "degree": 80,
+      "betweenness": 114,
+      "closeness": 84,
+      "eigenvector": 83
+     },
+     "community": 2,
+     "x": 0.192,
+     "y": 0.132
+    },
+    {
+     "member": "M035",
+     "degree": 5,
+     "betweenness": 0.00196008429,
+     "closeness": 0.25731378,
+     "eigenvector": 0.00926952583,
+     "places": {
+      "degree": 116,
+      "betweenness": 132,
+      "closeness": 96,
+      "eigenvector": 122
+     },
+     "community": 3,
+     "x": 0.736,
+     "y": 0.248
+    },
+    {
+     "member": "M036",
+     "degree": 5,
+     "betweenness": 0.00258588738,
+     "closeness": 0.274492929,
+     "eigenvector": 0.0237705988,
+     "places": {
+      "degree": 116,
+      "betweenness": 120,
+      "closeness": 45,
+      "eigenvector": 91
+     },
+     "community": 2,
+     "x": 0.249,
+     "y": 0.27
+    },
+    {
+     "member": "M037",
+     "degree": 4,
+     "betweenness": 0.000544394772,
+     "closeness": 0.24278001,
+     "eigenvector": 0.126605452,
+     "places": {
+      "degree": 144,
+      "betweenness": 172,
+      "closeness": 129,
+      "eigenvector": 50
+     },
+     "community": 1,
+     "x": 0.273,
+     "y": 0.827
+    },
+    {
+     "member": "M038",
+     "degree": 6,
+     "betweenness": 0.00279667607,
+     "closeness": 0.23007984,
+     "eigenvector": 0.00347464298,
+     "places": {
+      "degree": 80,
+      "betweenness": 115,
+      "closeness": 159,
+      "eigenvector": 166
+     },
+     "community": 3,
+     "x": 0.866,
+     "y": 0.14
+    },
+    {
+     "member": "M039",
+     "degree": 8,
+     "betweenness": 0.0220057522,
+     "closeness": 0.278946354,
+     "eigenvector": 0.0256510108,
+     "places": {
+      "degree": 39,
+      "betweenness": 31,
+      "closeness": 36,
+      "eigenvector": 90
+     },
+     "community": 2,
+     "x": 0.418,
+     "y": 0.184
+    },
+    {
+     "member": "M040",
+     "degree": 11,
+     "betweenness": 0.0102599678,
+     "closeness": 0.269409727,
+     "eigenvector": 0.406432984,
+     "places": {
+      "degree": 12,
+      "betweenness": 60,
+      "closeness": 59,
+      "eigenvector": 5
+     },
+     "community": 1,
+     "x": 0.103,
+     "y": 0.732
+    },
+    {
+     "member": "M041",
+     "degree": 7,
+     "betweenness": 0.0105225012,
+     "closeness": 0.270565992,
+     "eigenvector": 0.191919057,
+     "places": {
+      "degree": 53,
+      "betweenness": 57,
+      "closeness": 54,
+      "eigenvector": 39
+     },
+     "community": 1,
+     "x": 0.275,
+     "y": 0.7
+    },
+    {
+     "member": "M042",
+     "degree": 6,
+     "betweenness": 0.0093711003,
+     "closeness": 0.242468754,
+     "eigenvector": 0.00520578216,
+     "places": {
+      "degree": 80,
+      "betweenness": 65,
+      "closeness": 130,
+      "eigenvector": 148
+     },
+     "community": 4,
+     "x": 0.825,
+     "y": 0.806
+    },
+    {
+     "member": "M043",
+     "degree": 3,
+     "betweenness": 0.00184111737,
+     "closeness": 0.236999534,
+     "eigenvector": 0.00264997263,
+     "places": {
+      "degree": 168,
+      "betweenness": 134,
+      "closeness": 144,
+      "eigenvector": 178
+     },
+     "community": 3,
+     "x": 0.913,
+     "y": 0.269
+    },
+    {
+     "member": "M044",
+     "degree": 9,
+     "betweenness": 0.0245969922,
+     "closeness": 0.291860537,
+     "eigenvector": 0.0342341973,
+     "places": {
+      "degree": 22,
+      "betweenness": 26,
+      "closeness": 15,
+      "eigenvector": 74
+     },
+     "community": 2,
+     "x": 0.359,
+     "y": 0.193
+    },
+    {
+     "member": "M045",
+     "degree": 2,
+     "betweenness": 0.0,
+     "closeness": 0.229243186,
+     "eigenvector": 0.011489667,
+     "places": {
+      "degree": 186,
+      "betweenness": 192,
+      "closeness": 162,
+      "eigenvector": 112
+     },
+     "community": 2,
+     "x": 0.156,
+     "y": 0.083
+    },
+    {
+     "member": "M046",
+     "degree": 4,
+     "betweenness": 0.000335438338,
+     "closeness": 0.214915487,
+     "eigenvector": 0.00233615445,
+     "places": {
+      "degree": 144,
+      "betweenness": 179,
+      "closeness": 185,
+      "eigenvector": 180
+     },
+     "community": 4,
+     "x": 0.862,
+     "y": 0.794
+    },
+    {
+     "member": "M047",
+     "degree": 3,
+     "betweenness": 0.00227929149,
+     "closeness": 0.218895403,
+     "eigenvector": 0.00344307573,
+     "places": {
+      "degree": 168,
+      "betweenness": 122,
+      "closeness": 180,
+      "eigenvector": 167
+     },
+     "community": 4,
+     "x": 0.709,
+     "y": 0.886
+    },
+    {
+     "member": "M048",
+     "degree": 7,
+     "betweenness": 0.0263362595,
+     "closeness": 0.305041336,
+     "eigenvector": 0.0354014795,
+     "places": {
+      "degree": 53,
+      "betweenness": 24,
+      "closeness": 7,
+      "eigenvector": 73
+     },
+     "community": 2,
+     "x": 0.372,
+     "y": 0.267
+    },
+    {
+     "member": "M049",
+     "degree": 3,
+     "betweenness": 0.000221646599,
+     "closeness": 0.234356417,
+     "eigenvector": 0.00812640892,
+     "places": {
+      "degree": 168,
+      "betweenness": 183,
+      "closeness": 150,
+      "eigenvector": 128
+     },
+     "community": 2,
+     "x": 0.407,
+     "y": 0.069
+    },
+    {
+     "member": "M050",
+     "degree": 4,
+     "betweenness": 0.0203923093,
+     "closeness": 0.236111895,
+     "eigenvector": 0.0230287119,
+     "places": {
+      "degree": 144,
+      "betweenness": 35,
+      "closeness": 146,
+      "eigenvector": 92
+     },
+     "community": 4,
+     "x": 0.585,
+     "y": 0.84
+    },
+    {
+     "member": "M051",
+     "degree": 5,
+     "betweenness": 0.0102871278,
+     "closeness": 0.217886668,
+     "eigenvector": 0.00374629514,
+     "places": {
+      "degree": 116,
+      "betweenness": 59,
+      "closeness": 181,
+      "eigenvector": 165
+     },
+     "community": 3,
+     "x": 0.888,
+     "y": 0.095
+    },
+    {
+     "member": "M052",
+     "degree": 9,
+     "betweenness": 0.11741291,
+     "closeness": 0.299723658,
+     "eigenvector": 0.00795819923,
+     "places": {
+      "degree": 22,
+      "betweenness": 5,
+      "closeness": 9,
+      "eigenvector": 130
+     },
+     "community": 4,
+     "x": 0.757,
+     "y": 0.511
+    },
+    {
+     "member": "M053",
+     "degree": 7,
+     "betweenness": 0.0163954734,
+     "closeness": 0.275693335,
+     "eigenvector": 0.0368473499,
+     "places": {
+      "degree": 53,
+      "betweenness": 40,
+      "closeness": 43,
+      "eigenvector": 68
+     },
+     "community": 2,
+     "x": 0.222,
+     "y": 0.222
+    },
+    {
+     "member": "M054",
+     "degree": 7,
+     "betweenness": 0.000899170729,
+     "closeness": 0.264511368,
+     "eigenvector": 0.0356457376,
+     "places": {
+      "degree": 53,
+      "betweenness": 155,
+      "closeness": 74,
+      "eigenvector": 72
+     },
+     "community": 2,
+     "x": 0.223,
+     "y": 0.239
+    },
+    {
+     "member": "M055",
+     "degree": 12,
+     "betweenness": 0.0183783201,
+     "closeness": 0.279358387,
+     "eigenvector": 0.427929349,
+     "places": {
+      "degree": 8,
+      "betweenness": 37,
+      "closeness": 35,
+      "eigenvector": 4
+     },
+     "community": 1,
+     "x": 0.248,
+     "y": 0.753
+    },
+    {
+     "member": "M056",
+     "degree": 7,
+     "betweenness": 0.0242936098,
+     "closeness": 0.25872179,
+     "eigenvector": 0.209431586,
+     "places": {
+      "degree": 53,
+      "betweenness": 27,
+      "closeness": 94,
+      "eigenvector": 37
+     },
+     "community": 1,
+     "x": 0.321,
+     "y": 0.805
+    },
+    {
+     "member": "M057",
+     "degree": 4,
+     "betweenness": 0.0147634488,
+     "closeness": 0.234066371,
+     "eigenvector": 0.0108907151,
+     "places": {
+      "degree": 144,
+      "betweenness": 48,
+      "closeness": 151,
+      "eigenvector": 114
+     },
+     "community": 4,
+     "x": 0.62,
+     "y": 0.808
+    },
+    {
+     "member": "M058",
+     "degree": 8,
+     "betweenness": 0.0628918673,
+     "closeness": 0.293218028,
+     "eigenvector": 0.0105493439,
+     "places": {
+      "degree": 39,
+      "betweenness": 10,
+      "closeness": 14,
+      "eigenvector": 115
+     },
+     "community": 3,
+     "x": 0.59,
+     "y": 0.261
+    },
+    {
+     "member": "M059",
+     "degree": 7,
+     "betweenness": 0.0641536182,
+     "closeness": 0.283122198,
+     "eigenvector": 0.00891992432,
+     "places": {
+      "degree": 53,
+      "betweenness": 9,
+      "closeness": 26,
+      "eigenvector": 125
+     },
+     "community": 4,
+     "x": 0.631,
+     "y": 0.596
+    },
+    {
+     "member": "M060",
+     "degree": 10,
+     "betweenness": 0.0118954622,
+     "closeness": 0.276904287,
+     "eigenvector": 0.335166335,
+     "places": {
+      "degree": 15,
+      "betweenness": 54,
+      "closeness": 40,
+      "eigenvector": 15
+     },
+     "community": 1,
+     "x": 0.227,
+     "y": 0.76
+    },
+    {
+     "member": "M061",
+     "degree": 6,
+     "betweenness": 0.00602376813,
+     "closeness": 0.279771639,
+     "eigenvector": 0.274111173,
+     "places": {
+      "degree": 80,
+      "betweenness": 86,
+      "closeness": 34,
+      "eigenvector": 24
+     },
+     "community": 1,
+     "x": 0.162,
+     "y": 0.656
+    },
+    {
+     "member": "M062",
+     "degree": 3,
+     "betweenness": 0.00204668234,
+     "closeness": 0.220941154,
+     "eigenvector": 0.00168106559,
+     "places": {
+      "degree": 168,
+      "betweenness": 130,
+      "closeness": 178,
+      "eigenvector": 187
+     },
+     "community": 4,
+     "x": 0.889,
+     "y": 0.822
+    },
+    {
+     "member": "M063",
+     "degree": 5,
+     "betweenness": 0.00700828914,
+     "closeness": 0.245299129,
+     "eigenvector": 0.00310664095,
+     "places": {
+      "degree": 116,
+      "betweenness": 78,
+      "closeness": 121,
+      "eigenvector": 172
+     },
+     "community": 4,
+     "x": 0.719,
+     "y": 0.729
+    },
+    {
+     "member": "M064",
+     "degree": 0,
+     "betweenness": 0.0,
+     "closeness": 0.0,
+     "eigenvector": 0.0,
+     "places": {
+      "degree": 196,
+      "betweenness": 192,
+      "closeness": 196,
+      "eigenvector": 196
+     },
+     "community": 6,
+     "x": 0.09,
+     "y": 1.0
+    },
+    {
+     "member": "M065",
+     "degree": 5,
+     "betweenness": 0.0131683683,
+     "closeness": 0.248196362,
+     "eigenvector": 0.00284040569,
+     "places": {
+      "degree": 116,
+      "betweenness": 52,
+      "closeness": 114,
+      "eigenvector": 176
+     },
+     "community": 4,
+     "x": 0.851,
+     "y": 0.656
+    },
+    {
+     "member": "M066",
+     "degree": 4,
+     "betweenness": 0.016273192,
+     "closeness": 0.250166175,
+     "eigenvector": 0.0962485171,
+     "places": {
+      "degree": 144,
+      "betweenness": 41,
+      "closeness": 108,
+      "eigenvector": 57
+     },
+     "community": 1,
+     "x": 0.401,
+     "y": 0.782
+    },
+    {
+     "member": "M067",
+     "degree": 7,
+     "betweenness": 0.0065179318,
+     "closeness": 0.272908554,
+     "eigenvector": 0.215510167,
+     "places": {
+      "degree": 53,
+      "betweenness": 83,
+      "closeness": 50,
+      "eigenvector": 35
+     },
+     "community": 1,
+     "x": 0.246,
+     "y": 0.805
+    },
+    {
+     "member": "M068",
+     "degree": 2,
+     "betweenness": 0.0,
+     "closeness": 0.197005863,
+     "eigenvector": 0.000988920975,
+     "places": {
+      "degree": 186,
+      "betweenness": 192,
+      "closeness": 193,
+      "eigenvector": 193
+     },
+     "community": 4,
+     "x": 0.929,
+     "y": 0.854
+    },
+    {
+     "member": "M069",
+     "degree": 3,
+     "betweenness": 0.00272009304,
+     "closeness": 0.245617699,
+     "eigenvector": 0.00558963604,
+     "places": {
+      "degree": 168,
+      "betweenness": 117,
+      "closeness": 120,
+      "eigenvector": 144
+     },
+     "community": 2,
+     "x": 0.471,
+     "y": 0.128
+    },
+    {
+     "member": "M070",
+     "degree": 7,
+     "betweenness": 0.00276482733,
+     "closeness": 0.267883326,
+     "eigenvector": 0.0331570846,
+     "places": {
+      "degree": 53,
+      "betweenness": 116,
+      "closeness": 61,
+      "eigenvector": 76
+     },
+     "community": 2,
+     "x": 0.325,
+     "y": 0.145
+    },
+    {
+     "member": "M071",
+     "degree": 4,
+     "betweenness": 0.00107132263,
+     "closeness": 0.217385779,
+     "eigenvector": 0.00196409586,
+     "places": {
+      "degree": 144,
+      "betweenness": 151,
+      "closeness": 182,
+      "eigenvector": 184
+     },
+     "community": 4,
+     "x": 0.858,
+     "y": 0.836
+    },
+    {
+     "member": "M072",
+     "degree": 6,
+     "betweenness": 0.00194754727,
+     "closeness": 0.261584548,
+     "eigenvector": 0.0259140345,
+     "places": {
+      "degree": 80,
+      "betweenness": 133,
+      "closeness": 88,
+      "eigenvector": 89
+     },
+     "community": 2,
+     "x": 0.217,
+     "y": 0.181
+    },
+    {
+     "member": "M073",
+     "degree": 5,
+     "betweenness": 0.0059625751,
+     "closeness": 0.270953622,
+     "eigenvector": 0.0365249497,
+     "places": {
+      "degree": 116,
+      "betweenness": 88,
+      "closeness": 53,
+      "eigenvector": 69
+     },
+     "community": 2,
+     "x": 0.167,
+     "y": 0.294
+    },
+    {
+     "member": "M074",
+     "degree": 6,
+     "betweenness": 0.0010724438,
+     "closeness": 0.263406167,
+     "eigenvector": 0.297755248,
+     "places": {
+      "degree": 80,
+      "betweenness": 150,
+      "closeness": 79,
+      "eigenvector": 19
+     },
+     "community": 1,
+     "x": 0.149,
+     "y": 0.829
+    },
+    {
+     "member": "M075",
+     "degree": 8,
+     "betweenness": 0.0591774582,
+     "closeness": 0.299249412,
+     "eigenvector": 0.163916543,
+     "places": {
+      "degree": 39,
+      "betweenness": 12,
+      "closeness": 10,
+      "eigenvector": 46
+     },
+     "community": 2,
+     "x": 0.226,
+     "y": 0.432
+    },
+    {
+     "member": "M076",
+     "degree": 5,
+     "betweenness": 0.000378603851,
+     "closeness": 0.228137067,
+     "eigenvector": 0.0145652908,
+     "places": {
+      "degree": 116,
+      "betweenness": 176,
+      "closeness": 165,
+      "eigenvector": 105
+     },
+     "community": 2,
+     "x": 0.13,
+     "y": 0.151
+    },
+    {
+     "member": "M077",
+     "degree": 1,
+     "betweenness": 0.0,
+     "closeness": 0.205795025,
+     "eigenvector": 0.00101005084,
+     "places": {
+      "degree": 194,
+      "betweenness": 192,
+      "closeness": 190,
+      "eigenvector": 191
+     },
+     "community": 3,
+     "x": 0.838,
+     "y": 0.019
+    },
+    {
+     "member": "M078",
+     "degree": 9,
+     "betweenness": 0.00941799284,
+     "closeness": 0.236407035,
+     "eigenvector": 0.00396046318,
+     "places": {
+      "degree": 22,
+      "betweenness": 64,
+      "closeness": 145,
+      "eigenvector": 159
+     },
+     "community": 4,
+     "x": 0.854,
+     "y": 0.717
+    },
+    {
+     "member": "M079",
+     "degree": 6,
+     "betweenness": 0.00224763565,
+     "closeness": 0.250166175,
+     "eigenvector": 0.00922702748,
+     "places": {
+      "degree": 80,
+      "betweenness": 126,
+      "closeness": 108,
+      "eigenvector": 123
+     },
+     "community": 3,
+     "x": 0.863,
+     "y": 0.268
+    },
+    {
+     "member": "M080",
+     "degree": 7,
+     "betweenness": 0.00507838409,
+     "closeness": 0.238193486,
+     "eigenvector": 0.00584643675,
+     "places": {
+      "degree": 53,
+      "betweenness": 98,
+      "closeness": 143,
+      "eigenvector": 142
+     },
+     "community": 3,
+     "x": 0.767,
+     "y": 0.196
+    },
+    {
+     "member": "M081",
+     "degree": 3,
+     "betweenness": 0.000145897774,
+     "closeness": 0.21442815,
+     "eigenvector": 0.00333297083,
+     "places": {
+      "degree": 168,
+      "betweenness": 185,
+      "closeness": 186,
+      "eigenvector": 169
+     },
+     "community": 3,
+     "x": 0.962,
+     "y": 0.232
+    },
+    {
+     "member": "M082",
+     "degree": 10,
+     "betweenness": 0.101451725,
+     "closeness": 0.313641174,
+     "eigenvector": 0.327471567,
+     "places": {
+      "degree": 15,
+      "betweenness": 6,
+      "closeness": 4,
+      "eigenvector": 16
+     },
+     "community": 1,
+     "x": 0.198,
+     "y": 0.567
+    },
+    {
+     "member": "M083",
+     "degree": 6,
+     "betweenness": 0.00603209937,
+     "closeness": 0.267883326,
+     "eigenvector": 0.0279177294,
+     "places": {
+      "degree": 80,
+      "betweenness": 85,
+      "closeness": 61,
+      "eigenvector": 82
+     },
+     "community": 2,
+     "x": 0.327,
+     "y": 0.124
+    },
+    {
+     "member": "M084",
+     "degree": 32,
+     "betweenness": 0.170746147,
+     "closeness": 0.341382,
+     "eigenvector": 1.0,
+     "places": {
+      "degree": 1,
+      "betweenness": 2,
+      "closeness": 1,
+      "eigenvector": 1
+     },
+     "community": 1,
+     "x": 0.194,
+     "y": 0.69
+    },
+    {
+     "member": "M085",
+     "degree": 3,
+     "betweenness": 0.000731764657,
+     "closeness": 0.222500739,
+     "eigenvector": 0.00110763247,
+     "places": {
+      "degree": 168,
+      "betweenness": 165,
+      "closeness": 175,
+      "eigenvector": 190
+     },
+     "community": 4,
+     "x": 0.681,
+     "y": 0.744
+    },
+    {
+     "member": "M086",
+     "degree": 5,
+     "betweenness": 0.0021695809,
+     "closeness": 0.249177376,
+     "eigenvector": 0.00802262216,
+     "places": {
+      "degree": 116,
+      "betweenness": 128,
+      "closeness": 113,
+      "eigenvector": 129
+     },
+     "community": 3,
+     "x": 0.841,
+     "y": 0.278
+    },
+    {
+     "member": "M087",
+     "degree": 9,
+     "betweenness": 0.00437938109,
+     "closeness": 0.272515314,
+     "eigenvector": 0.0397056269,
+     "places": {
+      "degree": 22,
+      "betweenness": 104,
+      "closeness": 51,
+      "eigenvector": 65
+     },
+     "community": 2,
+     "x": 0.309,
+     "y": 0.192
+    },
+    {
+     "member": "M088",
+     "degree": 9,
+     "betweenness": 0.018808655,
+     "closeness": 0.295971249,
+     "eigenvector": 0.305571563,
+     "places": {
+      "degree": 22,
+      "betweenness": 36,
+      "closeness": 12,
+      "eigenvector": 18
+     },
+     "community": 1,
+     "x": 0.259,
+     "y": 0.674
+    },
+    {
+     "member": "M089",
+     "degree": 4,
+     "betweenness": 0.00151143822,
+     "closeness": 0.242468754,
+     "eigenvector": 0.11763254,
+     "places": {
+      "degree": 144,
+      "betweenness": 143,
+      "closeness": 130,
+      "eigenvector": 52
+     },
+     "community": 1,
+     "x": 0.301,
+     "y": 0.847
+    },
+    {
+     "member": "M090",
+     "degree": 3,
+     "betweenness": 0.000191370395,
+     "closeness": 0.239399529,
+     "eigenvector": 0.0142265973,
+     "places": {
+      "degree": 168,
+      "betweenness": 184,
+      "closeness": 139,
+      "eigenvector": 106
+     },
+     "community": 2,
+     "x": 0.109,
+     "y": 0.206
+    },
+    {
+     "member": "M091",
+     "degree": 8,
+     "betweenness": 0.00498064288,
+     "closeness": 0.265999477,
+     "eigenvector": 0.0111535016,
+     "places": {
+      "degree": 39,
+      "betweenness": 99,
+      "closeness": 68,
+      "eigenvector": 113
+     },
+     "community": 3,
+     "x": 0.811,
+     "y": 0.278
+    },
+    {
+     "member": "M092",
+     "degree": 10,
+     "betweenness": 0.00591355919,
+     "closeness": 0.265625882,
+     "eigenvector": 0.387544391,
+     "places": {
+      "degree": 15,
+      "betweenness": 89,
+      "closeness": 71,
+      "eigenvector": 7
+     },
+     "community": 1,
+     "x": 0.199,
+     "y": 0.787
+    },
+    {
+     "member": "M093",
+     "degree": 16,
+     "betweenness": 0.0331244138,
+     "closeness": 0.274492929,
+     "eigenvector": 0.0155256365,
+     "places": {
+      "degree": 7,
+      "betweenness": 20,
+      "closeness": 45,
+      "eigenvector": 103
+     },
+     "community": 3,
+     "x": 0.848,
+     "y": 0.243
+    },
+    {
+     "member": "M094",
+     "degree": 8,
+     "betweenness": 0.0182756075,
+     "closeness": 0.26050362,
+     "eigenvector": 0.00992626994,
+     "places": {
+      "degree": 39,
+      "betweenness": 38,
+      "closeness": 91,
+      "eigenvector": 119
+     },
+     "community": 3,
+     "x": 0.801,
+     "y": 0.16
+    },
+    {
+     "member": "M095",
+     "degree": 6,
+     "betweenness": 0.00678995406,
+     "closeness": 0.267883326,
+     "eigenvector": 0.148261627,
+     "places": {
+      "degree": 80,
+      "betweenness": 79,
+      "closeness": 61,
+      "eigenvector": 48
+     },
+     "community": 1,
+     "x": 0.208,
+     "y": 0.614
+    },
+    {
+     "member": "M096",
+     "degree": 12,
+     "betweenness": 0.0251556854,
+     "closeness": 0.253859904,
+     "eigenvector": 0.00948308248,
+     "places": {
+      "degree": 8,
+      "betweenness": 25,
+      "closeness": 102,
+      "eigenvector": 120
+     },
+     "community": 4,
+     "x": 0.774,
+     "y": 0.792
+    },
+    {
+     "member": "M097",
+     "degree": 7,
+     "betweenness": 0.00579187447,
+     "closeness": 0.267883326,
+     "eigenvector": 0.0269464296,
+     "places": {
+      "degree": 53,
+      "betweenness": 90,
+      "closeness": 61,
+      "eigenvector": 85
+     },
+     "community": 2,
+     "x": 0.33,
+     "y": 0.236
+    },
+    {
+     "member": "M098",
+     "degree": 8,
+     "betweenness": 0.0087398667,
+     "closeness": 0.274095113,
+     "eigenvector": 0.288246756,
+     "places": {
+      "degree": 39,
+      "betweenness": 67,
+      "closeness": 48,
+      "eigenvector": 22
+     },
+     "community": 1,
+     "x": 0.141,
+     "y": 0.602
+    },
+    {
+     "member": "M099",
+     "degree": 4,
+     "betweenness": 0.00161672817,
+     "closeness": 0.256267789,
+     "eigenvector": 0.00812713155,
+     "places": {
+      "degree": 144,
+      "betweenness": 139,
+      "closeness": 98,
+      "eigenvector": 127
+     },
+     "community": 3,
+     "x": 0.737,
+     "y": 0.165
+    },
+    {
+     "member": "M100",
+     "degree": 4,
+     "betweenness": 0.0012849482,
+     "closeness": 0.276904287,
+     "eigenvector": 0.231207804,
+     "places": {
+      "degree": 144,
+      "betweenness": 145,
+      "closeness": 40,
+      "eigenvector": 31
+     },
+     "community": 1,
+     "x": 0.123,
+     "y": 0.616
+    },
+    {
+     "member": "M101",
+     "degree": 7,
+     "betweenness": 0.00369647297,
+     "closeness": 0.232626849,
+     "eigenvector": 0.165896792,
+     "places": {
+      "degree": 53,
+      "betweenness": 108,
+      "closeness": 155,
+      "eigenvector": 44
+     },
+     "community": 1,
+     "x": 0.187,
+     "y": 0.842
+    },
+    {
+     "member": "M102",
+     "degree": 4,
+     "betweenness": 0.0147201489,
+     "closeness": 0.235817491,
+     "eigenvector": 0.0023770422,
+     "places": {
+      "degree": 144,
+      "betweenness": 49,
+      "closeness": 147,
+      "eigenvector": 179
+     },
+     "community": 4,
+     "x": 0.689,
+     "y": 0.603
+    },
+    {
+     "member": "M103",
+     "degree": 5,
+     "betweenness": 0.000741062991,
+     "closeness": 0.232626849,
+     "eigenvector": 0.123294634,
+     "places": {
+      "degree": 116,
+      "betweenness": 164,
+      "closeness": 155,
+      "eigenvector": 51
+     },
+     "community": 1,
+     "x": 0.063,
+     "y": 0.788
+    },
+    {
+     "member": "M104",
+     "degree": 7,
+     "betweenness": 0.00676863651,
+     "closeness": 0.246578394,
+     "eigenvector": 0.00587163414,
+     "places": {
+      "degree": 53,
+      "betweenness": 80,
+      "closeness": 117,
+      "eigenvector": 141
+     },
+     "community": 4,
+     "x": 0.831,
+     "y": 0.735
+    },
+    {
+     "member": "M105",
+     "degree": 5,
+     "betweenness": 0.00836521987,
+     "closeness": 0.242158295,
+     "eigenvector": 0.00333128725,
+     "places": {
+      "degree": 116,
+      "betweenness": 70,
+      "closeness": 132,
+      "eigenvector": 170
+     },
+     "community": 4,
+     "x": 0.658,
+     "y": 0.729
+    },
+    {
+     "member": "M106",
+     "degree": 8,
+     "betweenness": 0.0166723697,
+     "closeness": 0.278535535,
+     "eigenvector": 0.0229883057,
+     "places": {
+      "degree": 39,
+      "betweenness": 39,
+      "closeness": 37,
+      "eigenvector": 93
+     },
+     "community": 2,
+     "x": 0.409,
+     "y": 0.172
+    },
+    {
+     "member": "M107",
+     "degree": 2,
+     "betweenness": 0.000366737203,
+     "closeness": 0.259431589,
+     "eigenvector": 0.0138457615,
+     "places": {
+      "degree": 186,
+      "betweenness": 178,
+      "closeness": 92,
+      "eigenvector": 108
+     },
+     "community": 2,
+     "x": 0.329,
+     "y": 0.265
+    },
+    {
+     "member": "M108",
+     "degree": 7,
+     "betweenness": 0.000860134794,
+     "closeness": 0.266749828,
+     "eigenvector": 0.0325108258,
+     "places": {
+      "degree": 53,
+      "betweenness": 157,
+      "closeness": 66,
+      "eigenvector": 77
+     },
+     "community": 2,
+     "x": 0.278,
+     "y": 0.212
+    },
+    {
+     "member": "M109",
+     "degree": 0,
+     "betweenness": 0.0,
+     "closeness": 0.0,
+     "eigenvector": 0.0,
+     "places": {
+      "degree": 196,
+      "betweenness": 192,
+      "closeness": 196,
+      "eigenvector": 196
+     },
+     "community": 7,
+     "x": 0.14,
+     "y": 1.0
+    },
+    {
+     "member": "M110",
+     "degree": 5,
+     "betweenness": 0.000710136978,
+     "closeness": 0.255575173,
+     "eigenvector": 0.143358302,
+     "places": {
+      "degree": 116,
+      "betweenness": 166,
+      "closeness": 100,
+      "eigenvector": 49
+     },
+     "community": 1,
+     "x": 0.31,
+     "y": 0.735
+    },
+    {
+     "member": "M111",
+     "degree": 7,
+     "betweenness": 0.0150299903,
+     "closeness": 0.286553982,
+     "eigenvector": 0.027610204,
+     "places": {
+      "degree": 53,
+      "betweenness": 47,
+      "closeness": 19,
+      "eigenvector": 84
+     },
+     "community": 2,
+     "x": 0.391,
+     "y": 0.274
+    },
+    {
+     "member": "M112",
+     "degree": 6,
+     "betweenness": 0.0012344404,
+     "closeness": 0.261946853,
+     "eigenvector": 0.0290968759,
+     "places": {
+      "degree": 80,
+      "betweenness": 147,
+      "closeness": 87,
+      "eigenvector": 80
+     },
+     "community": 2,
+     "x": 0.169,
+     "y": 0.201
+    },
+    {
+     "member": "M113",
+     "degree": 26,
+     "betweenness": 0.166449025,
+     "closeness": 0.337122332,
+     "eigenvector": 0.110418147,
+     "places": {
+      "degree": 3,
+      "betweenness": 3,
+      "closeness": 2,
+      "eigenvector": 54
+     },
+     "community": 2,
+     "x": 0.285,
+     "y": 0.242
+    },
+    {
+     "member": "M114",
+     "degree": 6,
+     "betweenness": 0.000435193557,
+     "closeness": 0.262674484,
+     "eigenvector": 0.295705041,
+     "places": {
+      "degree": 80,
+      "betweenness": 174,
+      "closeness": 81,
+      "eigenvector": 20
+     },
+     "community": 1,
+     "x": 0.131,
+     "y": 0.645
+    },
+    {
+     "member": "M115",
+     "degree": 6,
+     "betweenness": 0.00738110145,
+     "closeness": 0.265999477,
+     "eigenvector": 0.00613564664,
+     "places": {
+      "degree": 80,
+      "betweenness": 75,
+      "closeness": 68,
+      "eigenvector": 138
+     },
+     "community": 3,
+     "x": 0.696,
+     "y": 0.216
+    },
+    {
+     "member": "M116",
+     "degree": 7,
+     "betweenness": 0.00792518841,
+     "closeness": 0.243404927,
+     "eigenvector": 0.0046141042,
+     "places": {
+      "degree": 53,
+      "betweenness": 71,
+      "closeness": 128,
+      "eigenvector": 151
+     },
+     "community": 4,
+     "x": 0.757,
+     "y": 0.738
+    },
+    {
+     "member": "M117",
+     "degree": 5,
+     "betweenness": 0.00225799159,
+     "closeness": 0.240617848,
+     "eigenvector": 0.00429988209,
+     "places": {
+      "degree": 116,
+      "betweenness": 125,
+      "closeness": 135,
+      "eigenvector": 154
+     },
+     "community": 3,
+     "x": 0.91,
+     "y": 0.234
+    },
+    {
+     "member": "M118",
+     "degree": 12,
+     "betweenness": 0.00601357337,
+     "closeness": 0.269409727,
+     "eigenvector": 0.484050346,
+     "places": {
+      "degree": 8,
+      "betweenness": 87,
+      "closeness": 59,
+      "eigenvector": 3
+     },
+     "community": 1,
+     "x": 0.168,
+     "y": 0.756
+    },
+    {
+     "member": "M119",
+     "degree": 3,
+     "betweenness": 0.000370529495,
+     "closeness": 0.202489966,
+     "eigenvector": 0.000989203358,
+     "places": {
+      "degree": 168,
+      "betweenness": 177,
+      "closeness": 192,
+      "eigenvector": 192
+     },
+     "community": 4,
+     "x": 0.885,
+     "y": 0.9
+    },
+    {
+     "member": "M120",
+     "degree": 6,
+     "betweenness": 0.00976387507,
+     "closeness": 0.250166175,
+     "eigenvector": 0.017736616,
+     "places": {
+      "degree": 80,
+      "betweenness": 62,
+      "closeness": 108,
+      "eigenvector": 101
+     },
+     "community": 2,
+     "x": 0.39,
+     "y": 0.249
+    },
+    {
+     "member": "M121",
+     "degree": 3,
+     "betweenness": 0.00055587834,
+     "closeness": 0.231487917,
+     "eigenvector": 0.0786503836,
+     "places": {
+      "degree": 168,
+      "betweenness": 170,
+      "closeness": 157,
+      "eigenvector": 60
+     },
+     "community": 1,
+     "x": 0.035,
+     "y": 0.807
+    },
+    {
+     "member": "M122",
+     "degree": 2,
+     "betweenness": 0.000406377194,
+     "closeness": 0.231487917,
+     "eigenvector": 0.00550410189,
+     "places": {
+      "degree": 186,
+      "betweenness": 175,
+      "closeness": 157,
+      "eigenvector": 145
+     },
+     "community": 2,
+     "x": 0.33,
+     "y": 0.35
+    },
+    {
+     "member": "M123",
+     "degree": 6,
+     "betweenness": 0.00557616459,
+     "closeness": 0.216887188,
+     "eigenvector": 0.00283454368,
+     "places": {
+      "degree": 80,
+      "betweenness": 93,
+      "closeness": 183,
+      "eigenvector": 177
+     },
+     "community": 4,
+     "x": 0.787,
+     "y": 0.847
+    },
+    {
+     "member": "M124",
+     "degree": 6,
+     "betweenness": 0.00125383775,
+     "closeness": 0.226226828,
+     "eigenvector": 0.00489686937,
+     "places": {
+      "degree": 80,
+      "betweenness": 146,
+      "closeness": 169,
+      "eigenvector": 149
+     },
+     "community": 3,
+     "x": 0.875,
+     "y": 0.224
+    },
+    {
+     "member": "M125",
+     "degree": 9,
+     "betweenness": 0.0687391027,
+     "closeness": 0.303085943,
+     "eigenvector": 0.0334538792,
+     "places": {
+      "degree": 22,
+      "betweenness": 8,
+      "closeness": 8,
+      "eigenvector": 75
+     },
+     "community": 2,
+     "x": 0.4,
+     "y": 0.325
+    },
+    {
+     "member": "M126",
+     "degree": 6,
+     "betweenness": 0.00842316714,
+     "closeness": 0.250166175,
+     "eigenvector": 0.00765981639,
+     "places": {
+      "degree": 80,
+      "betweenness": 69,
+      "closeness": 108,
+      "eigenvector": 133
+     },
+     "community": 3,
+     "x": 0.865,
+     "y": 0.196
+    },
+    {
+     "member": "M127",
+     "degree": 9,
+     "betweenness": 0.00226616429,
+     "closeness": 0.265625882,
+     "eigenvector": 0.354333536,
+     "places": {
+      "degree": 22,
+      "betweenness": 124,
+      "closeness": 71,
+      "eigenvector": 12
+     },
+     "community": 1,
+     "x": 0.16,
+     "y": 0.724
+    },
+    {
+     "member": "M128",
+     "degree": 3,
+     "betweenness": 0.000259192386,
+     "closeness": 0.215159987,
+     "eigenvector": 0.00210475403,
+     "places": {
+      "degree": 168,
+      "betweenness": 181,
+      "closeness": 184,
+      "eigenvector": 182
+     },
+     "community": 4,
+     "x": 0.902,
+     "y": 0.778
+    },
+    {
+     "member": "M129",
+     "degree": 5,
+     "betweenness": 0.00168280214,
+     "closeness": 0.222762813,
+     "eigenvector": 0.00219251245,
+     "places": {
+      "degree": 116,
+      "betweenness": 135,
+      "closeness": 174,
+      "eigenvector": 181
+     },
+     "community": 4,
+     "x": 0.864,
+     "y": 0.765
+    },
+    {
+     "member": "M130",
+     "degree": 5,
+     "betweenness": 0.000751706002,
+     "closeness": 0.238493856,
+     "eigenvector": 0.013838063,
+     "places": {
+      "degree": 116,
+      "betweenness": 163,
+      "closeness": 142,
+      "eigenvector": 109
+     },
+     "community": 2,
+     "x": 0.28,
+     "y": 0.068
+    },
+    {
+     "member": "M131",
+     "degree": 3,
+     "betweenness": 0.0162514556,
+     "closeness": 0.250497521,
+     "eigenvector": 0.00485615717,
+     "places": {
+      "degree": 168,
+      "betweenness": 42,
+      "closeness": 106,
+      "eigenvector": 150
+     },
+     "community": 2,
+     "x": 0.517,
+     "y": 0.404
+    },
+    {
+     "member": "M132",
+     "degree": 6,
+     "betweenness": 0.00901500369,
+     "closeness": 0.261223243,
+     "eigenvector": 0.00625750668,
+     "places": {
+      "degree": 80,
+      "betweenness": 66,
+      "closeness": 90,
+      "eigenvector": 136
+     },
+     "community": 4,
+     "x": 0.768,
+     "y": 0.67
+    },
+    {
+     "member": "M133",
+     "degree": 4,
+     "betweenness": 0.00368675197,
+     "closeness": 0.240312107,
+     "eigenvector": 0.00406541774,
+     "places": {
+      "degree": 144,
+      "betweenness": 109,
+      "closeness": 137,
+      "eigenvector": 158
+     },
+     "community": 4,
+     "x": 0.694,
+     "y": 0.793
+    },
+    {
+     "member": "M134",
+     "degree": 4,
+     "betweenness": 0.0233139929,
+     "closeness": 0.246900298,
+     "eigenvector": 0.0180419301,
+     "places": {
+      "degree": 144,
+      "betweenness": 29,
+      "closeness": 115,
+      "eigenvector": 100
+     },
+     "community": 4,
+     "x": 0.611,
+     "y": 0.758
+    },
+    {
+     "member": "M135",
+     "degree": 11,
+     "betweenness": 0.0311445677,
+     "closeness": 0.265999477,
+     "eigenvector": 0.00772415785,
+     "places": {
+      "degree": 12,
+      "betweenness": 21,
+      "closeness": 68,
+      "eigenvector": 132
+     },
+     "community": 4,
+     "x": 0.775,
+     "y": 0.721
+    },
+    {
+     "member": "M136",
+     "degree": 3,
+     "betweenness": 0.000865476322,
+     "closeness": 0.241539755,
+     "eigenvector": 0.00447876345,
+     "places": {
+      "degree": 168,
+      "betweenness": 156,
+      "closeness": 133,
+      "eigenvector": 153
+     },
+     "community": 4,
+     "x": 0.705,
+     "y": 0.832
+    },
+    {
+     "member": "M137",
+     "degree": 6,
+     "betweenness": 0.0236604898,
+     "closeness": 0.249506106,
+     "eigenvector": 0.162959739,
+     "places": {
+      "degree": 80,
+      "betweenness": 28,
+      "closeness": 112,
+      "eigenvector": 47
+     },
+     "community": 1,
+     "x": 0.36,
+     "y": 0.807
+    },
+    {
+     "member": "M138",
+     "degree": 2,
+     "betweenness": 4.23210108e-05,
+     "closeness": 0.212024247,
+     "eigenvector": 0.0424747036,
+     "places": {
+      "degree": 186,
+      "betweenness": 191,
+      "closeness": 187,
+      "eigenvector": 64
+     },
+     "community": 1,
+     "x": 0.0,
+     "y": 0.874
+    },
+    {
+     "member": "M139",
+     "degree": 2,
+     "betweenness": 8.0932158e-05,
+     "closeness": 0.191616645,
+     "eigenvector": 0.000587588361,
+     "places": {
+      "degree": 186,
+      "betweenness": 187,
+      "closeness": 194,
+      "eigenvector": 194
+     },
+     "community": 4,
+     "x": 1.0,
+     "y": 0.731
+    },
+    {
+     "member": "M140",
+     "degree": 5,
+     "betweenness": 0.00445153081,
+     "closeness": 0.265625882,
+     "eigenvector": 0.180309964,
+     "places": {
+      "degree": 116,
+      "betweenness": 103,
+      "closeness": 71,
+      "eigenvector": 42
+     },
+     "community": 1,
+     "x": 0.188,
+     "y": 0.818
+    },
+    {
+     "member": "M141",
+     "degree": 9,
+     "betweenness": 0.00606907694,
+     "closeness": 0.26377354,
+     "eigenvector": 0.274362351,
+     "places": {
+      "degree": 22,
+      "betweenness": 84,
+      "closeness": 76,
+      "eigenvector": 23
+     },
+     "community": 1,
+     "x": 0.181,
+     "y": 0.791
+    },
+    {
+     "member": "M142",
+     "degree": 6,
+     "betweenness": 0.00315599221,
+     "closeness": 0.262674484,
+     "eigenvector": 0.026918719,
+     "places": {
+      "degree": 80,
+      "betweenness": 111,
+      "closeness": 81,
+      "eigenvector": 86
+     },
+     "community": 2,
+     "x": 0.211,
+     "y": 0.107
+    },
+    {
+     "member": "M143",
+     "degree": 6,
+     "betweenness": 0.00349120471,
+     "closeness": 0.270565992,
+     "eigenvector": 0.0094509608,
+     "places": {
+      "degree": 80,
+      "betweenness": 110,
+      "closeness": 54,
+      "eigenvector": 121
+     },
+     "community": 3,
+     "x": 0.775,
+     "y": 0.283
+    },
+    {
+     "member": "M144",
+     "degree": 4,
+     "betweenness": 0.00165489994,
+     "closeness": 0.261584548,
+     "eigenvector": 0.0184208608,
+     "places": {
+      "degree": 144,
+      "betweenness": 136,
+      "closeness": 88,
+      "eigenvector": 99
+     },
+     "community": 2,
+     "x": 0.274,
+     "y": 0.11
+    },
+    {
+     "member": "M145",
+     "degree": 4,
+     "betweenness": 0.000856924403,
+     "closeness": 0.23007984,
+     "eigenvector": 0.00377112022,
+     "places": {
+      "degree": 144,
+      "betweenness": 158,
+      "closeness": 159,
+      "eigenvector": 162
+     },
+     "community": 3,
+     "x": 0.959,
+     "y": 0.299
+    },
+    {
+     "member": "M146",
+     "degree": 6,
+     "betweenness": 0.00703981206,
+     "closeness": 0.23348843,
+     "eigenvector": 0.00341207141,
+     "places": {
+      "degree": 80,
+      "betweenness": 77,
+      "closeness": 153,
+      "eigenvector": 168
+     },
+     "community": 4,
+     "x": 0.727,
+     "y": 0.7
+    },
+    {
+     "member": "M147",
+     "degree": 6,
+     "betweenness": 0.00081436551,
+     "closeness": 0.229800277,
+     "eigenvector": 0.180612131,
+     "places": {
+      "degree": 80,
+      "betweenness": 161,
+      "closeness": 161,
+      "eigenvector": 41
+     },
+     "community": 1,
+     "x": 0.058,
+     "y": 0.73
+    },
+    {
+     "member": "M148",
+     "degree": 8,
+     "betweenness": 0.00757359495,
+     "closeness": 0.252504176,
+     "eigenvector": 0.0104736342,
+     "places": {
+      "degree": 39,
+      "betweenness": 73,
+      "closeness": 103,
+      "eigenvector": 116
+     },
+     "community": 3,
+     "x": 0.886,
+     "y": 0.249
+    },
+    {
+     "member": "M149",
+     "degree": 9,
+     "betweenness": 0.0160663778,
+     "closeness": 0.274492929,
+     "eigenvector": 0.200606506,
+     "places": {
+      "degree": 22,
+      "betweenness": 43,
+      "closeness": 45,
+      "eigenvector": 38
+     },
+     "community": 1,
+     "x": 0.105,
+     "y": 0.682
+    },
+    {
+     "member": "M150",
+     "degree": 2,
+     "betweenness": 5.00337184e-05,
+     "closeness": 0.227588,
+     "eigenvector": 0.00167445724,
+     "places": {
+      "degree": 186,
+      "betweenness": 189,
+      "closeness": 167,
+      "eigenvector": 188
+     },
+     "community": 3,
+     "x": 0.867,
+     "y": 0.384
+    },
+    {
+     "member": "M151",
+     "degree": 6,
+     "betweenness": 0.0070902669,
+     "closeness": 0.251162853,
+     "eigenvector": 0.0173201972,
+     "places": {
+      "degree": 80,
+      "betweenness": 76,
+      "closeness": 104,
+      "eigenvector": 102
+     },
+     "community": 2,
+     "x": 0.368,
+     "y": 0.131
+    },
+    {
+     "member": "M152",
+     "degree": 8,
+     "betweenness": 0.0152833686,
+     "closeness": 0.275292035,
+     "eigenvector": 0.00903492218,
+     "places": {
+      "degree": 39,
+      "betweenness": 46,
+      "closeness": 44,
+      "eigenvector": 124
+     },
+     "community": 3,
+     "x": 0.752,
+     "y": 0.278
+    },
+    {
+     "member": "M153",
+     "degree": 6,
+     "betweenness": 0.00270930506,
+     "closeness": 0.228412594,
+     "eigenvector": 0.00374969735,
+     "places": {
+      "degree": 80,
+      "betweenness": 118,
+      "closeness": 164,
+      "eigenvector": 164
+     },
+     "community": 3,
+     "x": 0.91,
+     "y": 0.175
+    },
+    {
+     "member": "M154",
+     "degree": 5,
+     "betweenness": 0.021552631,
+     "closeness": 0.281856376,
+     "eigenvector": 0.00818651095,
+     "places": {
+      "degree": 116,
+      "betweenness": 34,
+      "closeness": 30,
+      "eigenvector": 126
+     },
+     "community": 3,
+     "x": 0.771,
+     "y": 0.362
+    },
+    {
+     "member": "M155",
+     "degree": 9,
+     "betweenness": 0.00542717952,
+     "closeness": 0.266749828,
+     "eigenvector": 0.257984051,
+     "places": {
+      "degree": 22,
+      "betweenness": 95,
+      "closeness": 66,
+      "eigenvector": 28
+     },
+     "community": 1,
+     "x": 0.203,
+     "y": 0.734
+    },
+    {
+     "member": "M156",
+     "degree": 8,
+     "betweenness": 0.00415527981,
+     "closeness": 0.269794049,
+     "eigenvector": 0.361222522,
+     "places": {
+      "degree": 39,
+      "betweenness": 105,
+      "closeness": 57,
+      "eigenvector": 11
+     },
+     "community": 1,
+     "x": 0.223,
+     "y": 0.707
+    },
+    {
+     "member": "M157",
+     "degree": 4,
+     "betweenness": 0.0267204012,
+     "closeness": 0.282277057,
+     "eigenvector": 0.00742079862,
+     "places": {
+      "degree": 144,
+      "betweenness": 23,
+      "closeness": 29,
+      "eigenvector": 134
+     },
+     "community": 3,
+     "x": 0.81,
+     "y": 0.385
+    },
+    {
+     "member": "M158",
+     "degree": 12,
+     "betweenness": 0.0303554029,
+     "closeness": 0.270565992,
+     "eigenvector": 0.0130540938,
+     "places": {
+      "degree": 8,
+      "betweenness": 22,
+      "closeness": 54,
+      "eigenvector": 111
+     },
+     "community": 3,
+     "x": 0.803,
+     "y": 0.206
+    },
+    {
+     "member": "M159",
+     "degree": 0,
+     "betweenness": 0.0,
+     "closeness": 0.0,
+     "eigenvector": 0.0,
+     "places": {
+      "degree": 196,
+      "betweenness": 192,
+      "closeness": 196,
+      "eigenvector": 196
+     },
+     "community": 8,
+     "x": 0.19,
+     "y": 1.0
+    },
+    {
+     "member": "M160",
+     "degree": 4,
+     "betweenness": 0.000555170286,
+     "closeness": 0.229243186,
+     "eigenvector": 0.0961293466,
+     "places": {
+      "degree": 144,
+      "betweenness": 171,
+      "closeness": 162,
+      "eigenvector": 58
+     },
+     "community": 1,
+     "x": 0.251,
+     "y": 0.857
+    },
+    {
+     "member": "M161",
+     "degree": 5,
+     "betweenness": 0.000653078316,
+     "closeness": 0.256964169,
+     "eigenvector": 0.212708119,
+     "places": {
+      "degree": 116,
+      "betweenness": 168,
+      "closeness": 97,
+      "eigenvector": 36
+     },
+     "community": 1,
+     "x": 0.068,
+     "y": 0.77
+    },
+    {
+     "member": "M162",
+     "degree": 8,
+     "betweenness": 0.0154825108,
+     "closeness": 0.277717516,
+     "eigenvector": 0.171895458,
+     "places": {
+      "degree": 39,
+      "betweenness": 44,
+      "closeness": 39,
+      "eigenvector": 43
+     },
+     "community": 1,
+     "x": 0.292,
+     "y": 0.707
+    },
+    {
+     "member": "M163",
+     "degree": 4,
+     "betweenness": 0.000271260078,
+     "closeness": 0.210607604,
+     "eigenvector": 0.00308905822,
+     "places": {
+      "degree": 144,
+      "betweenness": 180,
+      "closeness": 188,
+      "eigenvector": 173
+     },
+     "community": 3,
+     "x": 0.934,
+     "y": 0.187
+    },
+    {
+     "member": "M164",
+     "degree": 6,
+     "betweenness": 0.00386243919,
+     "closeness": 0.262674484,
+     "eigenvector": 0.0262782541,
+     "places": {
+      "degree": 80,
+      "betweenness": 107,
+      "closeness": 81,
+      "eigenvector": 88
+     },
+     "community": 2,
+     "x": 0.242,
+     "y": 0.121
+    },
+    {
+     "member": "M165",
+     "degree": 7,
+     "betweenness": 0.00546446038,
+     "closeness": 0.254543241,
+     "eigenvector": 0.0102879372,
+     "places": {
+      "degree": 53,
+      "betweenness": 94,
+      "closeness": 101,
+      "eigenvector": 118
+     },
+     "community": 3,
+     "x": 0.843,
+     "y": 0.21
+    },
+    {
+     "member": "M166",
+     "degree": 5,
+     "betweenness": 0.00968822431,
+     "closeness": 0.285257358,
+     "eigenvector": 0.0363549199,
+     "places": {
+      "degree": 116,
+      "betweenness": 63,
+      "closeness": 21,
+      "eigenvector": 70
+     },
+     "community": 2,
+     "x": 0.27,
+     "y": 0.337
+    },
+    {
+     "member": "M167",
+     "degree": 7,
+     "betweenness": 0.00240660433,
+     "closeness": 0.239702951,
+     "eigenvector": 0.0213944728,
+     "places": {
+      "degree": 53,
+      "betweenness": 121,
+      "closeness": 138,
+      "eigenvector": 96
+     },
+     "community": 2,
+     "x": 0.293,
+     "y": 0.085
+    },
+    {
+     "member": "M168",
+     "degree": 4,
+     "betweenness": 0.00304944246,
+     "closeness": 0.22042614,
+     "eigenvector": 0.00181405873,
+     "places": {
+      "degree": 144,
+      "betweenness": 112,
+      "closeness": 179,
+      "eigenvector": 186
+     },
+     "community": 4,
+     "x": 0.914,
+     "y": 0.721
+    },
+    {
+     "member": "M169",
+     "degree": 3,
+     "betweenness": 5.24508062e-05,
+     "closeness": 0.203579793,
+     "eigenvector": 0.00136874412,
+     "places": {
+      "degree": 168,
+      "betweenness": 188,
+      "closeness": 191,
+      "eigenvector": 189
+     },
+     "community": 3,
+     "x": 0.927,
+     "y": 0.1
+    },
+    {
+     "member": "M170",
+     "degree": 21,
+     "betweenness": 0.193279936,
+     "closeness": 0.326078669,
+     "eigenvector": 0.0477695712,
+     "places": {
+      "degree": 5,
+      "betweenness": 1,
+      "closeness": 3,
+      "eigenvector": 62
+     },
+     "community": 3,
+     "x": 0.718,
+     "y": 0.301
+    },
+    {
+     "member": "M171",
+     "degree": 0,
+     "betweenness": 0.0,
+     "closeness": 0.0,
+     "eigenvector": 0.0,
+     "places": {
+      "degree": 196,
+      "betweenness": 192,
+      "closeness": 196,
+      "eigenvector": 196
+     },
+     "community": 9,
+     "x": 0.24,
+     "y": 1.0
+    },
+    {
+     "member": "M172",
+     "degree": 4,
+     "betweenness": 9.63675598e-05,
+     "closeness": 0.238794985,
+     "eigenvector": 0.0187888761,
+     "places": {
+      "degree": 144,
+      "betweenness": 186,
+      "closeness": 141,
+      "eigenvector": 98
+     },
+     "community": 2,
+     "x": 0.235,
+     "y": 0.096
+    },
+    {
+     "member": "M173",
+     "degree": 5,
+     "betweenness": 0.00267738653,
+     "closeness": 0.244981384,
+     "eigenvector": 0.014048593,
+     "places": {
+      "degree": 116,
+      "betweenness": 119,
+      "closeness": 122,
+      "eigenvector": 107
+     },
+     "community": 2,
+     "x": 0.317,
+     "y": 0.091
+    },
+    {
+     "member": "M174",
+     "degree": 3,
+     "betweenness": 4.6067497e-05,
+     "closeness": 0.210607604,
+     "eigenvector": 0.00206473579,
+     "places": {
+      "degree": 168,
+      "betweenness": 190,
+      "closeness": 188,
+      "eigenvector": 183
+     },
+     "community": 4,
+     "x": 0.818,
+     "y": 0.881
+    },
+    {
+     "member": "M175",
+     "degree": 6,
+     "betweenness": 0.00164392887,
+     "closeness": 0.256267789,
+     "eigenvector": 0.0221329026,
+     "places": {
+      "degree": 80,
+      "betweenness": 138,
+      "closeness": 98,
+      "eigenvector": 95
+     },
+     "community": 2,
+     "x": 0.375,
+     "y": 0.17
+    },
+    {
+     "member": "M176",
+     "degree": 6,
+     "betweenness": 0.00096616971,
+     "closeness": 0.244664461,
+     "eigenvector": 0.0225405177,
+     "places": {
+      "degree": 80,
+      "betweenness": 153,
+      "closeness": 123,
+      "eigenvector": 94
+     },
+     "community": 2,
+     "x": 0.288,
+     "y": 0.135
+    },
+    {
+     "member": "M177",
+     "degree": 27,
+     "betweenness": 0.0523440934,
+     "closeness": 0.283972415,
+     "eigenvector": 0.0741899939,
+     "places": {
+      "degree": 2,
+      "betweenness": 13,
+      "closeness": 24,
+      "eigenvector": 61
+     },
+     "community": 2,
+     "x": 0.28,
+     "y": 0.17
+    },
+    {
+     "member": "M178",
+     "degree": 5,
+     "betweenness": 0.00164875426,
+     "closeness": 0.262310164,
+     "eigenvector": 0.0264023507,
+     "places": {
+      "degree": 116,
+      "betweenness": 137,
+      "closeness": 84,
+      "eigenvector": 87
+     },
+     "community": 2,
+     "x": 0.16,
+     "y": 0.228
+    },
+    {
+     "member": "M179",
+     "degree": 7,
+     "betweenness": 0.00154603817,
+     "closeness": 0.225149557,
+     "eigenvector": 0.00579531258,
+     "places": {
+      "degree": 53,
+      "betweenness": 141,
+      "closeness": 170,
+      "eigenvector": 143
+     },
+     "community": 3,
+     "x": 0.845,
+     "y": 0.16
+    },
+    {
+     "member": "M180",
+     "degree": 21,
+     "betweenness": 0.0480274101,
+     "closeness": 0.246257328,
+     "eigenvector": 0.00775452046,
+     "places": {
+      "degree": 5,
+      "betweenness": 14,
+      "closeness": 118,
+      "eigenvector": 131
+     },
+     "community": 4,
+     "x": 0.793,
+     "y": 0.759
+    },
+    {
+     "member": "M181",
+     "degree": 2,
+     "betweenness": 0.00199995131,
+     "closeness": 0.246900298,
+     "eigenvector": 0.00524235999,
+     "places": {
+      "degree": 186,
+      "betweenness": 131,
+      "closeness": 115,
+      "eigenvector": 147
+     },
+     "community": 3,
+     "x": 0.893,
+     "y": 0.301
+    },
+    {
+     "member": "M182",
+     "degree": 7,
+     "betweenness": 0.0127775413,
+     "closeness": 0.283122198,
+     "eigenvector": 0.2907818,
+     "places": {
+      "degree": 53,
+      "betweenness": 53,
+      "closeness": 26,
+      "eigenvector": 21
+     },
+     "community": 1,
+     "x": 0.289,
+     "y": 0.743
+    },
+    {
+     "member": "M183",
+     "degree": 5,
+     "betweenness": 0.00157946616,
+     "closeness": 0.23348843,
+     "eigenvector": 0.00314470711,
+     "places": {
+      "degree": 116,
+      "betweenness": 140,
+      "closeness": 153,
+      "eigenvector": 171
+     },
+     "community": 3,
+     "x": 0.786,
+     "y": 0.127
+    },
+    {
+     "member": "M184",
+     "degree": 7,
+     "betweenness": 0.00478067744,
+     "closeness": 0.26377354,
+     "eigenvector": 0.266558386,
+     "places": {
+      "degree": 53,
+      "betweenness": 102,
+      "closeness": 76,
+      "eigenvector": 25
+     },
+     "community": 1,
+     "x": 0.113,
+     "y": 0.793
+    },
+    {
+     "member": "M185",
+     "degree": 6,
+     "betweenness": 0.00519003319,
+     "closeness": 0.250497521,
+     "eigenvector": 0.00448235099,
+     "places": {
+      "degree": 80,
+      "betweenness": 97,
+      "closeness": 106,
+      "eigenvector": 152
+     },
+     "community": 3,
+     "x": 0.712,
+     "y": 0.19
+    },
+    {
+     "member": "M186",
+     "degree": 5,
+     "betweenness": 0.0104875899,
+     "closeness": 0.283972415,
+     "eigenvector": 0.0292519833,
+     "places": {
+      "degree": 116,
+      "betweenness": 58,
+      "closeness": 24,
+      "eigenvector": 79
+     },
+     "community": 2,
+     "x": 0.315,
+     "y": 0.297
+    },
+    {
+     "member": "M187",
+     "degree": 8,
+     "betweenness": 0.000822896657,
+     "closeness": 0.26377354,
+     "eigenvector": 0.353369937,
+     "places": {
+      "degree": 39,
+      "betweenness": 160,
+      "closeness": 76,
+      "eigenvector": 13
+     },
+     "community": 1,
+     "x": 0.097,
+     "y": 0.708
+    },
+    {
+     "member": "M188",
+     "degree": 10,
+     "betweenness": 0.0101265199,
+     "closeness": 0.278535535,
+     "eigenvector": 0.0395537433,
+     "places": {
+      "degree": 15,
+      "betweenness": 61,
+      "closeness": 37,
+      "eigenvector": 66
+     },
+     "community": 2,
+     "x": 0.338,
+     "y": 0.164
+    },
+    {
+     "member": "M189",
+     "degree": 4,
+     "betweenness": 0.00478153382,
+     "closeness": 0.235817491,
+     "eigenvector": 0.00395681588,
+     "places": {
+      "degree": 144,
+      "betweenness": 101,
+      "closeness": 147,
+      "eigenvector": 160
+     },
+     "community": 4,
+     "x": 0.726,
+     "y": 0.779
+    },
+    {
+     "member": "M190",
+     "degree": 9,
+     "betweenness": 0.0154069817,
+     "closeness": 0.250829746,
+     "eigenvector": 0.00622698618,
+     "places": {
+      "degree": 22,
+      "betweenness": 45,
+      "closeness": 105,
+      "eigenvector": 137
+     },
+     "community": 3,
+     "x": 0.794,
+     "y": 0.184
+    },
+    {
+     "member": "M191",
+     "degree": 7,
+     "betweenness": 0.119453006,
+     "closeness": 0.306028524,
+     "eigenvector": 0.266022073,
+     "places": {
+      "degree": 53,
+      "betweenness": 4,
+      "closeness": 6,
+      "eigenvector": 26
+     },
+     "community": 1,
+     "x": 0.388,
+     "y": 0.577
+    },
+    {
+     "member": "M192",
+     "degree": 5,
+     "betweenness": 0.036299093,
+     "closeness": 0.290515558,
+     "eigenvector": 0.0209380085,
+     "places": {
+      "degree": 116,
+      "betweenness": 17,
+      "closeness": 16,
+      "eigenvector": 97
+     },
+     "community": 2,
+     "x": 0.461,
+     "y": 0.255
+    },
+    {
+     "member": "M193",
+     "degree": 8,
+     "betweenness": 0.00293727847,
+     "closeness": 0.276499456,
+     "eigenvector": 0.0361158408,
+     "places": {
+      "degree": 39,
+      "betweenness": 113,
+      "closeness": 42,
+      "eigenvector": 71
+     },
+     "community": 2,
+     "x": 0.321,
+     "y": 0.209
+    },
+    {
+     "member": "M194",
+     "degree": 5,
+     "betweenness": 0.0231177642,
+     "closeness": 0.281018764,
+     "eigenvector": 0.00676151378,
+     "places": {
+      "degree": 116,
+      "betweenness": 30,
+      "closeness": 32,
+      "eigenvector": 135
+     },
+     "community": 3,
+     "x": 0.862,
+     "y": 0.357
+    },
+    {
+     "member": "M195",
+     "degree": 9,
+     "betweenness": 0.00746801652,
+     "closeness": 0.267883326,
+     "eigenvector": 0.0387246553,
+     "places": {
+      "degree": 22,
+      "betweenness": 74,
+      "closeness": 61,
+      "eigenvector": 67
+     },
+     "community": 2,
+     "x": 0.247,
+     "y": 0.172
+    },
+    {
+     "member": "M196",
+     "degree": 6,
+     "betweenness": 0.00227048291,
+     "closeness": 0.244348357,
+     "eigenvector": 0.164636882,
+     "places": {
+      "degree": 80,
+      "betweenness": 123,
+      "closeness": 125,
+      "eigenvector": 45
+     },
+     "community": 1,
+     "x": 0.221,
+     "y": 0.859
+    },
+    {
+     "member": "M197",
+     "degree": 4,
+     "betweenness": 0.000756006091,
+     "closeness": 0.234066371,
+     "eigenvector": 0.0986102567,
+     "places": {
+      "degree": 144,
+      "betweenness": 162,
+      "closeness": 151,
+      "eigenvector": 56
+     },
+     "community": 1,
+     "x": 0.026,
+     "y": 0.733
+    },
+    {
+     "member": "M198",
+     "degree": 6,
+     "betweenness": 0.00209334763,
+     "closeness": 0.259076203,
+     "eigenvector": 0.229420282,
+     "places": {
+      "degree": 80,
+      "betweenness": 129,
+      "closeness": 93,
+      "eigenvector": 32
+     },
+     "community": 1,
+     "x": 0.094,
+     "y": 0.632
+    },
+    {
+     "member": "M199",
+     "degree": 6,
+     "betweenness": 0.00487902156,
+     "closeness": 0.244348357,
+     "eigenvector": 0.00412066571,
+     "places": {
+      "degree": 80,
+      "betweenness": 100,
+      "closeness": 125,
+      "eigenvector": 157
+     },
+     "community": 3,
+     "x": 0.769,
+     "y": 0.239
+    },
+    {
+     "member": "M200",
+     "degree": 5,
+     "betweenness": 0.00152746018,
+     "closeness": 0.264511368,
+     "eigenvector": 0.0286517172,
+     "places": {
+      "degree": 116,
+      "betweenness": 142,
+      "closeness": 74,
+      "eigenvector": 81
+     },
+     "community": 2,
+     "x": 0.198,
+     "y": 0.151
+    }
+   ],
+   "ties": [
+    [
+     176,
+     174
+    ],
+    [
+     107,
+     53
+    ],
+    [
+     94,
+     81
+    ],
+    [
+     38,
+     124
+    ],
+    [
+     122,
+     179
+    ],
+    [
+     112,
+     194
+    ],
+    [
+     133,
+     136
+    ],
+    [
+     54,
+     23
+    ],
+    [
+     181,
+     195
+    ],
+    [
+     157,
+     30
+    ],
+    [
+     36,
+     139
+    ],
+    [
+     94,
+     161
+    ],
+    [
+     37,
+     198
+    ],
+    [
+     140,
+     13
+    ],
+    [
+     98,
+     24
+    ],
+    [
+     14,
+     39
+    ],
+    [
+     179,
+     128
+    ],
+    [
+     119,
+     176
+    ],
+    [
+     112,
+     165
+    ],
+    [
+     176,
+     194
+    ],
+    [
+     59,
+     66
+    ],
+    [
+     132,
+     145
+    ],
+    [
+     34,
+     90
+    ],
+    [
+     163,
+     176
+    ],
+    [
+     98,
+     157
+    ],
+    [
+     121,
+     119
+    ],
+    [
+     83,
+     155
+    ],
+    [
+     94,
+     154
+    ],
+    [
+     64,
+     7
+    ],
+    [
+     179,
+     77
+    ],
+    [
+     117,
+     100
+    ],
+    [
+     179,
+     9
+    ],
+    [
+     140,
+     154
+    ],
+    [
+     11,
+     197
+    ],
+    [
+     131,
+     58
+    ],
+    [
+     116,
+     157
+    ],
+    [
+     187,
+     110
+    ],
+    [
+     178,
+     50
+    ],
+    [
+     27,
+     37
+    ],
+    [
+     150,
+     124
+    ],
+    [
+     169,
+     156
+    ],
+    [
+     29,
+     19
+    ],
+    [
+     93,
+     76
+    ],
+    [
+     21,
+     140
+    ],
+    [
+     70,
+     134
+    ],
+    [
+     69,
+     176
+    ],
+    [
+     17,
+     115
+    ],
+    [
+     139,
+     55
+    ],
+    [
+     10,
+     124
+    ],
+    [
+     154,
+     6
+    ],
+    [
+     148,
+     126
+    ],
+    [
+     87,
+     148
+    ],
+    [
+     174,
+     69
+    ],
+    [
+     180,
+     169
+    ],
+    [
+     171,
+     176
+    ],
+    [
+     36,
+     40
+    ],
+    [
+     57,
+     114
+    ],
+    [
+     95,
+     3
+    ],
+    [
+     187,
+     47
+    ],
+    [
+     198,
+     32
+    ],
+    [
+     4,
+     117
+    ],
+    [
+     105,
+     187
+    ],
+    [
+     133,
+     12
+    ],
+    [
+     120,
+     100
+    ],
+    [
+     112,
+     187
+    ],
+    [
+     185,
+     53
+    ],
+    [
+     119,
+     174
+    ],
+    [
+     53,
+     194
+    ],
+    [
+     0,
+     21
+    ],
+    [
+     85,
+     78
+    ],
+    [
+     141,
+     112
+    ],
+    [
+     51,
+     12
+    ],
+    [
+     129,
+     141
+    ],
+    [
+     107,
+     110
+    ],
+    [
+     92,
+     90
+    ],
+    [
+     163,
+     150
+    ],
+    [
+     182,
+     116
+    ],
+    [
+     115,
+     95
+    ],
+    [
+     3,
+     179
+    ],
+    [
+     179,
+     115
+    ],
+    [
+     93,
+     147
+    ],
+    [
+     25,
+     181
+    ],
+    [
+     13,
+     126
+    ],
+    [
+     154,
+     15
+    ],
+    [
+     10,
+     187
+    ],
+    [
+     187,
+     48
+    ],
+    [
+     135,
+     95
+    ],
+    [
+     176,
+     111
+    ],
+    [
+     34,
+     92
+    ],
+    [
+     169,
+     151
+    ],
+    [
+     147,
+     80
+    ],
+    [
+     72,
+     177
+    ],
+    [
+     178,
+     79
+    ],
+    [
+     58,
+     104
+    ],
+    [
+     43,
+     176
+    ],
+    [
+     88,
+     140
+    ],
+    [
+     167,
+     17
+    ],
+    [
+     56,
+     122
+    ],
+    [
+     199,
+     52
+    ],
+    [
+     105,
+     185
+    ],
+    [
+     56,
+     104
+    ],
+    [
+     34,
+     169
+    ],
+    [
+     181,
+     140
+    ],
+    [
+     83,
+     59
+    ],
+    [
+     191,
+     110
+    ],
+    [
+     10,
+     194
+    ],
+    [
+     104,
+     132
+    ],
+    [
+     43,
+     35
+    ],
+    [
+     79,
+     151
+    ],
+    [
+     23,
+     146
+    ],
+    [
+     176,
+     141
+    ],
+    [
+     134,
+     127
+    ],
+    [
+     91,
+     40
+    ],
+    [
+     87,
+     154
+    ],
+    [
+     48,
+     150
+    ],
+    [
+     83,
+     15
+    ],
+    [
+     144,
+     193
+    ],
+    [
+     184,
+     151
+    ],
+    [
+     51,
+     7
+    ],
+    [
+     126,
+     40
+    ],
+    [
+     6,
+     26
+    ],
+    [
+     95,
+     5
+    ],
+    [
+     125,
+     123
+    ],
+    [
+     57,
+     68
+    ],
+    [
+     153,
+     198
+    ],
+    [
+     9,
+     115
+    ],
+    [
+     57,
+     151
+    ],
+    [
+     169,
+     147
+    ],
+    [
+     51,
+     17
+    ],
+    [
+     75,
+     33
+    ],
+    [
+     83,
+     81
+    ],
+    [
+     179,
+     188
+    ],
+    [
+     142,
+     153
+    ],
+    [
+     197,
+     113
+    ],
+    [
+     51,
+     64
+    ],
+    [
+     25,
+     155
+    ],
+    [
+     47,
+     174
+    ],
+    [
+     30,
+     114
+    ],
+    [
+     90,
+     78
+    ],
+    [
+     169,
+     190
+    ],
+    [
+     97,
+     4
+    ],
+    [
+     33,
+     111
+    ],
+    [
+     5,
+     134
+    ],
+    [
+     118,
+     61
+    ],
+    [
+     81,
+     21
+    ],
+    [
+     55,
+     49
+    ],
+    [
+     25,
+     109
+    ],
+    [
+     156,
+     92
+    ],
+    [
+     68,
+     105
+    ],
+    [
+     41,
+     118
+    ],
+    [
+     83,
+     73
+    ],
+    [
+     37,
+     189
+    ],
+    [
+     21,
+     83
+    ],
+    [
+     193,
+     42
+    ],
+    [
+     157,
+     92
+    ],
+    [
+     59,
+     21
+    ],
+    [
+     83,
+     139
+    ],
+    [
+     114,
+     79
+    ],
+    [
+     3,
+     62
+    ],
+    [
+     5,
+     103
+    ],
+    [
+     60,
+     146
+    ],
+    [
+     107,
+     192
+    ],
+    [
+     155,
+     0
+    ],
+    [
+     61,
+     95
+    ],
+    [
+     74,
+     72
+    ],
+    [
+     4,
+     91
+    ],
+    [
+     181,
+     88
+    ],
+    [
+     31,
+     128
+    ],
+    [
+     26,
+     39
+    ],
+    [
+     5,
+     51
+    ],
+    [
+     103,
+     41
+    ],
+    [
+     133,
+     7
+    ],
+    [
+     114,
+     157
+    ],
+    [
+     190,
+     83
+    ],
+    [
+     66,
+     36
+    ],
+    [
+     41,
+     127
+    ],
+    [
+     81,
+     60
+    ],
+    [
+     4,
+     21
+    ],
+    [
+     107,
+     69
+    ],
+    [
+     40,
+     161
+    ],
+    [
+     58,
+     5
+    ],
+    [
+     183,
+     100
+    ],
+    [
+     191,
+     185
+    ],
+    [
+     122,
+     118
+    ],
+    [
+     73,
+     117
+    ],
+    [
+     14,
+     91
+    ],
+    [
+     58,
+     62
+    ],
+    [
+     140,
+     160
+    ],
+    [
+     123,
+     27
+    ],
+    [
+     23,
+     155
+    ],
+    [
+     186,
+     14
+    ],
+    [
+     28,
+     39
+    ],
+    [
+     198,
+     184
+    ],
+    [
+     62,
+     9
+    ],
+    [
+     186,
+     113
+    ],
+    [
+     109,
+     161
+    ],
+    [
+     165,
+     124
+    ],
+    [
+     169,
+     24
+    ],
+    [
+     57,
+     24
+    ],
+    [
+     176,
+     199
+    ],
+    [
+     20,
+     27
+    ],
+    [
+     81,
+     161
+    ],
+    [
+     73,
+     195
+    ],
+    [
+     21,
+     97
+    ],
+    [
+     182,
+     37
+    ],
+    [
+     11,
+     25
+    ],
+    [
+     29,
+     159
+    ],
+    [
+     47,
+     74
+    ],
+    [
+     0,
+     19
+    ],
+    [
+     167,
+     103
+    ],
+    [
+     22,
+     125
+    ],
+    [
+     134,
+     58
+    ],
+    [
+     112,
+     163
+    ],
+    [
+     106,
+     38
+    ],
+    [
+     117,
+     83
+    ],
+    [
+     160,
+     13
+    ],
+    [
+     77,
+     188
+    ],
+    [
+     175,
+     43
+    ],
+    [
+     88,
+     136
+    ],
+    [
+     175,
+     143
+    ],
+    [
+     134,
+     9
+    ],
+    [
+     167,
+     95
+    ],
+    [
+     92,
+     178
+    ],
+    [
+     136,
+     100
+    ],
+    [
+     0,
+     36
+    ],
+    [
+     10,
+     171
+    ],
+    [
+     0,
+     99
+    ],
+    [
+     56,
+     65
+    ],
+    [
+     177,
+     35
+    ],
+    [
+     112,
+     30
+    ],
+    [
+     104,
+     84
+    ],
+    [
+     112,
+     111
+    ],
+    [
+     24,
+     20
+    ],
+    [
+     105,
+     176
+    ],
+    [
+     195,
+     183
+    ],
+    [
+     5,
+     131
+    ],
+    [
+     131,
+     103
+    ],
+    [
+     3,
+     31
+    ],
+    [
+     79,
+     162
+    ],
+    [
+     153,
+     51
+    ],
+    [
+     172,
+     43
+    ],
+    [
+     112,
+     72
+    ],
+    [
+     66,
+     100
+    ],
+    [
+     146,
+     39
+    ],
+    [
+     128,
+     122
+    ],
+    [
+     39,
+     0
+    ],
+    [
+     142,
+     92
+    ],
+    [
+     5,
+     132
+    ],
+    [
+     176,
+     82
+    ],
+    [
+     93,
+     24
+    ],
+    [
+     178,
+     98
+    ],
+    [
+     178,
+     20
+    ],
+    [
+     87,
+     40
+    ],
+    [
+     4,
+     139
+    ],
+    [
+     166,
+     199
+    ],
+    [
+     44,
+     194
+    ],
+    [
+     179,
+     145
+    ],
+    [
+     124,
+     35
+    ],
+    [
+     19,
+     16
+    ],
+    [
+     176,
+     192
+    ],
+    [
+     125,
+     90
+    ],
+    [
+     15,
+     25
+    ],
+    [
+     84,
+     12
+    ],
+    [
+     164,
+     157
+    ],
+    [
+     168,
+     37
+    ],
+    [
+     51,
+     193
+    ],
+    [
+     142,
+     114
+    ],
+    [
+     43,
+     38
+    ],
+    [
+     25,
+     113
+    ],
+    [
+     9,
+     101
+    ],
+    [
+     148,
+     197
+    ],
+    [
+     42,
+     189
+    ],
+    [
+     26,
+     196
+    ],
+    [
+     33,
+     175
+    ],
+    [
+     176,
+     52
+    ],
+    [
+     66,
+     83
+    ],
+    [
+     112,
+     199
+    ],
+    [
+     6,
+     137
+    ],
+    [
+     145,
+     58
+    ],
+    [
+     66,
+     109
+    ],
+    [
+     169,
+     142
+    ],
+    [
+     189,
+     30
+    ],
+    [
+     141,
+     171
+    ],
+    [
+     183,
+     0
+    ],
+    [
+     23,
+     4
+    ],
+    [
+     59,
+     6
+    ],
+    [
+     195,
+     100
+    ],
+    [
+     152,
+     189
+    ],
+    [
+     54,
+     21
+    ],
+    [
+     0,
+     113
+    ],
+    [
+     110,
+     192
+    ],
+    [
+     111,
+     53
+    ],
+    [
+     28,
+     59
+    ],
+    [
+     31,
+     134
+    ],
+    [
+     40,
+     190
+    ],
+    [
+     115,
+     7
+    ],
+    [
+     123,
+     198
+    ],
+    [
+     146,
+     117
+    ],
+    [
+     139,
+     102
+    ],
+    [
+     191,
+     176
+    ],
+    [
+     114,
+     189
+    ],
+    [
+     62,
+     95
+    ],
+    [
+     85,
+     178
+    ],
+    [
+     92,
+     37
+    ],
+    [
+     110,
+     112
+    ],
+    [
+     83,
+     197
+    ],
+    [
+     24,
+     182
+    ],
+    [
+     112,
+     43
+    ],
+    [
+     193,
+     169
+    ],
+    [
+     176,
+     33
+    ],
+    [
+     0,
+     60
+    ],
+    [
+     150,
+     1
+    ],
+    [
+     162,
+     164
+    ],
+    [
+     78,
+     93
+    ],
+    [
+     160,
+     186
+    ],
+    [
+     59,
+     117
+    ],
+    [
+     71,
+     96
+    ],
+    [
+     124,
+     47
+    ],
+    [
+     189,
+     142
+    ],
+    [
+     187,
+     171
+    ],
+    [
+     192,
+     105
+    ],
+    [
+     71,
+     192
+    ],
+    [
+     45,
+     103
+    ],
+    [
+     0,
+     29
+    ],
+    [
+     86,
+     71
+    ],
+    [
+     163,
+     82
+    ],
+    [
+     5,
+     8
+    ],
+    [
+     5,
+     135
+    ],
+    [
+     192,
+     53
+    ],
+    [
+     8,
+     11
+    ],
+    [
+     97,
+     26
+    ],
+    [
+     164,
+     147
+    ],
+    [
+     148,
+     81
+    ],
+    [
+     123,
+     92
+    ],
+    [
+     83,
+     74
+    ],
+    [
+     155,
+     97
+    ],
+    [
+     77,
+     103
+    ],
+    [
+     4,
+     39
+    ],
+    [
+     140,
+     102
+    ],
+    [
+     169,
+     98
+    ],
+    [
+     112,
+     192
+    ],
+    [
+     12,
+     188
+    ],
+    [
+     91,
+     0
+    ],
+    [
+     126,
+     59
+    ],
+    [
+     80,
+     78
+    ],
+    [
+     112,
+     35
+    ],
+    [
+     112,
+     69
+    ],
+    [
+     157,
+     50
+    ],
+    [
+     150,
+     174
+    ],
+    [
+     7,
+     179
+    ],
+    [
+     116,
+     144
+    ],
+    [
+     161,
+     54
+    ],
+    [
+     97,
+     99
+    ],
+    [
+     96,
+     124
+    ],
+    [
+     116,
+     92
+    ],
+    [
+     77,
+     128
+    ],
+    [
+     123,
+     151
+    ],
+    [
+     105,
+     57
+    ],
+    [
+     4,
+     14
+    ],
+    [
+     179,
+     104
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     155,
+     4
+    ],
+    [
+     167,
+     138
+    ],
+    [
+     87,
+     83
+    ],
+    [
+     35,
+     111
+    ],
+    [
+     165,
+     10
+    ],
+    [
+     148,
+     102
+    ],
+    [
+     172,
+     166
+    ],
+    [
+     0,
+     55
+    ],
+    [
+     176,
+     177
+    ],
+    [
+     8,
+     0
+    ],
+    [
+     184,
+     22
+    ],
+    [
+     145,
+     134
+    ],
+    [
+     164,
+     169
+    ],
+    [
+     87,
+     117
+    ],
+    [
+     144,
+     147
+    ],
+    [
+     155,
+     55
+    ],
+    [
+     80,
+     157
+    ],
+    [
+     13,
+     19
+    ],
+    [
+     101,
+     134
+    ],
+    [
+     28,
+     83
+    ],
+    [
+     157,
+     169
+    ],
+    [
+     16,
+     83
+    ],
+    [
+     198,
+     151
+    ],
+    [
+     32,
+     79
+    ],
+    [
+     147,
+     92
+    ],
+    [
+     50,
+     93
+    ],
+    [
+     15,
+     54
+    ],
+    [
+     16,
+     186
+    ],
+    [
+     163,
+     129
+    ],
+    [
+     7,
+     77
+    ],
+    [
+     59,
+     65
+    ],
+    [
+     152,
+     92
+    ],
+    [
+     134,
+     45
+    ],
+    [
+     147,
+     78
+    ],
+    [
+     165,
+     74
+    ],
+    [
+     117,
+     155
+    ],
+    [
+     190,
+     181
+    ],
+    [
+     83,
+     181
+    ],
+    [
+     182,
+     20
+    ],
+    [
+     25,
+     83
+    ],
+    [
+     73,
+     28
+    ],
+    [
+     163,
+     75
+    ],
+    [
+     91,
+     73
+    ],
+    [
+     194,
+     47
+    ],
+    [
+     175,
+     176
+    ],
+    [
+     58,
+     124
+    ],
+    [
+     31,
+     133
+    ],
+    [
+     83,
+     113
+    ],
+    [
+     38,
+     192
+    ],
+    [
+     112,
+     10
+    ],
+    [
+     184,
+     57
+    ],
+    [
+     152,
+     180
+    ],
+    [
+     14,
+     126
+    ],
+    [
+     156,
+     51
+    ],
+    [
+     117,
+     0
+    ],
+    [
+     109,
+     87
+    ],
+    [
+     137,
+     28
+    ],
+    [
+     150,
+     176
+    ],
+    [
+     124,
+     112
+    ],
+    [
+     154,
+     161
+    ],
+    [
+     22,
+     90
+    ],
+    [
+     12,
+     179
+    ],
+    [
+     27,
+     125
+    ],
+    [
+     185,
+     10
+    ],
+    [
+     99,
+     83
+    ],
+    [
+     83,
+     186
+    ],
+    [
+     25,
+     0
+    ],
+    [
+     152,
+     162
+    ],
+    [
+     126,
+     15
+    ],
+    [
+     32,
+     34
+    ],
+    [
+     148,
+     94
+    ],
+    [
+     15,
+     117
+    ],
+    [
+     169,
+     78
+    ],
+    [
+     123,
+     85
+    ],
+    [
+     96,
+     176
+    ],
+    [
+     97,
+     83
+    ],
+    [
+     83,
+     60
+    ],
+    [
+     81,
+     112
+    ],
+    [
+     86,
+     176
+    ],
+    [
+     185,
+     74
+    ],
+    [
+     131,
+     77
+    ],
+    [
+     96,
+     191
+    ],
+    [
+     172,
+     187
+    ],
+    [
+     164,
+     178
+    ],
+    [
+     179,
+     46
+    ],
+    [
+     3,
+     46
+    ],
+    [
+     41,
+     45
+    ],
+    [
+     3,
+     173
+    ],
+    [
+     107,
+     52
+    ],
+    [
+     169,
+     153
+    ],
+    [
+     110,
+     130
+    ],
+    [
+     136,
+     54
+    ],
+    [
+     89,
+     176
+    ],
+    [
+     166,
+     69
+    ],
+    [
+     71,
+     112
+    ],
+    [
+     121,
+     165
+    ],
+    [
+     91,
+     195
+    ],
+    [
+     19,
+     55
+    ],
+    [
+     19,
+     81
+    ],
+    [
+     8,
+     16
+    ],
+    [
+     52,
+     43
+    ],
+    [
+     17,
+     12
+    ],
+    [
+     177,
+     75
+    ],
+    [
+     65,
+     54
+    ],
+    [
+     33,
+     166
+    ],
+    [
+     52,
+     74
+    ],
+    [
+     179,
+     127
+    ],
+    [
+     184,
+     182
+    ],
+    [
+     145,
+     84
+    ],
+    [
+     135,
+     31
+    ],
+    [
+     122,
+     132
+    ],
+    [
+     86,
+     174
+    ],
+    [
+     102,
+     14
+    ],
+    [
+     6,
+     66
+    ],
+    [
+     41,
+     95
+    ],
+    [
+     88,
+     54
+    ],
+    [
+     126,
+     16
+    ],
+    [
+     151,
+     142
+    ],
+    [
+     57,
+     51
+    ],
+    [
+     173,
+     95
+    ],
+    [
+     154,
+     13
+    ],
+    [
+     152,
+     168
+    ],
+    [
+     75,
+     71
+    ],
+    [
+     83,
+     39
+    ],
+    [
+     138,
+     77
+    ],
+    [
+     20,
+     157
+    ],
+    [
+     99,
+     81
+    ],
+    [
+     175,
+     105
+    ],
+    [
+     27,
+     92
+    ],
+    [
+     15,
+     190
+    ],
+    [
+     82,
+     1
+    ],
+    [
+     48,
+     105
+    ],
+    [
+     40,
+     60
+    ],
+    [
+     50,
+     125
+    ],
+    [
+     38,
+     176
+    ],
+    [
+     159,
+     140
+    ],
+    [
+     72,
+     10
+    ],
+    [
+     89,
+     111
+    ],
+    [
+     86,
+     107
+    ],
+    [
+     130,
+     119
+    ],
+    [
+     86,
+     82
+    ],
+    [
+     122,
+     70
+    ],
+    [
+     91,
+     13
+    ],
+    [
+     179,
+     64
+    ],
+    [
+     148,
+     23
+    ],
+    [
+     143,
+     43
+    ],
+    [
+     87,
+     8
+    ],
+    [
+     154,
+     0
+    ],
+    [
+     120,
+     148
+    ],
+    [
+     38,
+     24
+    ],
+    [
+     15,
+     186
+    ],
+    [
+     74,
+     94
+    ],
+    [
+     148,
+     6
+    ],
+    [
+     179,
+     131
+    ],
+    [
+     156,
+     149
+    ],
+    [
+     10,
+     175
+    ],
+    [
+     33,
+     112
+    ],
+    [
+     83,
+     183
+    ],
+    [
+     0,
+     136
+    ],
+    [
+     53,
+     176
+    ],
+    [
+     86,
+     112
+    ],
+    [
+     145,
+     77
+    ],
+    [
+     90,
+     85
+    ],
+    [
+     31,
+     45
+    ],
+    [
+     32,
+     47
+    ],
+    [
+     176,
+     187
+    ],
+    [
+     0,
+     181
+    ],
+    [
+     69,
+     187
+    ],
+    [
+     92,
+     164
+    ],
+    [
+     16,
+     196
+    ],
+    [
+     16,
+     197
+    ],
+    [
+     176,
+     44
+    ],
+    [
+     96,
+     10
+    ],
+    [
+     134,
+     179
+    ],
+    [
+     194,
+     199
+    ],
+    [
+     166,
+     68
+    ],
+    [
+     166,
+     141
+    ],
+    [
+     179,
+     173
+    ],
+    [
+     49,
+     95
+    ],
+    [
+     20,
+     164
+    ],
+    [
+     120,
+     39
+    ],
+    [
+     69,
+     38
+    ],
+    [
+     24,
+     30
+    ],
+    [
+     183,
+     196
+    ],
+    [
+     43,
+     57
+    ],
+    [
+     67,
+     179
+    ],
+    [
+     61,
+     7
+    ],
+    [
+     101,
+     179
+    ],
+    [
+     184,
+     24
+    ],
+    [
+     9,
+     31
+    ],
+    [
+     92,
+     144
+    ],
+    [
+     161,
+     65
+    ],
+    [
+     50,
+     2
+    ],
+    [
+     136,
+     66
+    ],
+    [
+     172,
+     1
+    ],
+    [
+     19,
+     60
+    ],
+    [
+     146,
+     102
+    ],
+    [
+     169,
+     125
+    ],
+    [
+     71,
+     141
+    ],
+    [
+     23,
+     87
+    ],
+    [
+     129,
+     194
+    ],
+    [
+     91,
+     159
+    ],
+    [
+     77,
+     64
+    ],
+    [
+     14,
+     54
+    ],
+    [
+     179,
+     103
+    ],
+    [
+     85,
+     169
+    ],
+    [
+     194,
+     96
+    ],
+    [
+     92,
+     169
+    ],
+    [
+     101,
+     130
+    ],
+    [
+     183,
+     186
+    ],
+    [
+     70,
+     67
+    ],
+    [
+     110,
+     96
+    ],
+    [
+     169,
+     90
+    ],
+    [
+     107,
+     112
+    ],
+    [
+     191,
+     169
+    ],
+    [
+     116,
+     193
+    ],
+    [
+     46,
+     49
+    ],
+    [
+     87,
+     190
+    ],
+    [
+     97,
+     113
+    ],
+    [
+     126,
+     117
+    ],
+    [
+     166,
+     176
+    ],
+    [
+     55,
+     59
+    ],
+    [
+     157,
+     79
+    ],
+    [
+     119,
+     86
+    ],
+    [
+     83,
+     19
+    ],
+    [
+     89,
+     72
+    ],
+    [
+     91,
+     83
+    ],
+    [
+     147,
+     162
+    ],
+    [
+     7,
+     95
+    ],
+    [
+     54,
+     13
+    ],
+    [
+     42,
+     157
+    ],
+    [
+     172,
+     52
+    ],
+    [
+     186,
+     0
+    ],
+    [
+     81,
+     14
+    ],
+    [
+     190,
+     25
+    ],
+    [
+     47,
+     86
+    ],
+    [
+     91,
+     117
+    ],
+    [
+     79,
+     93
+    ],
+    [
+     112,
+     177
+    ],
+    [
+     152,
+     20
+    ],
+    [
+     131,
+     115
+    ],
+    [
+     129,
+     143
+    ],
+    [
+     197,
+     39
+    ],
+    [
+     82,
+     119
+    ],
+    [
+     0,
+     73
+    ],
+    [
+     126,
+     83
+    ],
+    [
+     93,
+     169
+    ],
+    [
+     115,
+     56
+    ],
+    [
+     106,
+     112
+    ],
+    [
+     128,
+     64
+    ],
+    [
+     168,
+     189
+    ],
+    [
+     8,
+     83
+    ],
+    [
+     169,
+     32
+    ],
+    [
+     10,
+     86
+    ],
+    [
+     14,
+     83
+    ],
+    [
+     49,
+     188
+    ],
+    [
+     34,
+     189
+    ],
+    [
+     183,
+     146
+    ],
+    [
+     62,
+     7
+    ],
+    [
+     161,
+     159
+    ],
+    [
+     94,
+     59
+    ],
+    [
+     134,
+     95
+    ],
+    [
+     112,
+     53
+    ],
+    [
+     83,
+     54
+    ],
+    [
+     160,
+     28
+    ],
+    [
+     195,
+     55
+    ],
+    [
+     0,
+     54
+    ],
+    [
+     22,
+     92
+    ],
+    [
+     196,
+     19
+    ],
+    [
+     151,
+     149
+    ],
+    [
+     75,
+     52
+    ],
+    [
+     39,
+     54
+    ],
+    [
+     70,
+     179
+    ],
+    [
+     83,
+     160
+    ],
+    [
+     74,
+     97
+    ],
+    [
+     90,
+     153
+    ],
+    [
+     109,
+     19
+    ],
+    [
+     39,
+     15
+    ],
+    [
+     112,
+     82
+    ],
+    [
+     189,
+     93
+    ],
+    [
+     38,
+     129
+    ],
+    [
+     154,
+     100
+    ],
+    [
+     23,
+     25
+    ],
+    [
+     143,
+     112
+    ],
+    [
+     5,
+     41
+    ],
+    [
+     83,
+     140
+    ]
+   ],
+   "by_measure": [
+    {
+     "measure": "degree",
+     "by_n_seeds": [
+      {
+       "n_seeds": 1,
+       "seeds": {
+        "spread": [
+         {
+          "member": "M084",
+          "community": 1
+         }
+        ],
+        "top": [
+         {
+          "member": "M084",
+          "community": 1
+         }
+        ]
+       },
+       "reach": {
+        "spread": {
+         "within_one_step": 0.165,
+         "within_two_steps": 0.34,
+         "n_communities_with_a_seed": 1
+        },
+        "top": {
+         "within_one_step": 0.165,
+         "within_two_steps": 0.34,
+         "n_communities_with_a_seed": 1
+        }
+       }
+      },
+      {
+       "n_seeds": 2,
+       "seeds": {
+        "spread": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M177",
+          "community": 2
+         }
+        ],
+        "top": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M177",
+          "community": 2
+         }
+        ]
+       },
+       "reach": {
+        "spread": {
+         "within_one_step": 0.305,
+         "within_two_steps": 0.565,
+         "n_communities_with_a_seed": 2
+        },
+        "top": {
+         "within_one_step": 0.305,
+         "within_two_steps": 0.565,
+         "n_communities_with_a_seed": 2
+        }
+       }
+      },
+      {
+       "n_seeds": 3,
+       "seeds": {
+        "spread": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M177",
+          "community": 2
+         },
+         {
+          "member": "M170",
+          "community": 3
+         }
+        ],
+        "top": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M177",
+          "community": 2
+         },
+         {
+          "member": "M113",
+          "community": 2
+         }
+        ]
+       },
+       "reach": {
+        "spread": {
+         "within_one_step": 0.405,
+         "within_two_steps": 0.77,
+         "n_communities_with_a_seed": 3
+        },
+        "top": {
+         "within_one_step": 0.365,
+         "within_two_steps": 0.59,
+         "n_communities_with_a_seed": 2
+        }
+       }
+      },
+      {
+       "n_seeds": 4,
+       "seeds": {
+        "spread": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M177",
+          "community": 2
+         },
+         {
+          "member": "M170",
+          "community": 3
+         },
+         {
+          "member": "M180",
+          "community": 4
+         }
+        ],
+        "top": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M177",
+          "community": 2
+         },
+         {
+          "member": "M113",
+          "community": 2
+         },
+         {
+          "member": "M001",
+          "community": 1
+         }
+        ]
+       },
+       "reach": {
+        "spread": {
+         "within_one_step": 0.515,
+         "within_two_steps": 0.96,
+         "n_communities_with_a_seed": 4
+        },
+        "top": {
+         "within_one_step": 0.4,
+         "within_two_steps": 0.6,
+         "n_communities_with_a_seed": 2
+        }
+       }
+      },
+      {
+       "n_seeds": 5,
+       "seeds": {
+        "spread": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M177",
+          "community": 2
+         },
+         {
+          "member": "M170",
+          "community": 3
+         },
+         {
+          "member": "M180",
+          "community": 4
+         },
+         {
+          "member": "M113",
+          "community": 2
+         }
+        ],
+        "top": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M177",
+          "community": 2
+         },
+         {
+          "member": "M113",
+          "community": 2
+         },
+         {
+          "member": "M001",
+          "community": 1
+         },
+         {
+          "member": "M170",
+          "community": 3
+         }
+        ]
+       },
+       "reach": {
+        "spread": {
+         "within_one_step": 0.575,
+         "within_two_steps": 0.96,
+         "n_communities_with_a_seed": 4
+        },
+        "top": {
+         "within_one_step": 0.5,
+         "within_two_steps": 0.785,
+         "n_communities_with_a_seed": 3
+        }
+       }
+      },
+      {
+       "n_seeds": 6,
+       "seeds": {
+        "spread": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M177",
+          "community": 2
+         },
+         {
+          "member": "M170",
+          "community": 3
+         },
+         {
+          "member": "M180",
+          "community": 4
+         },
+         {
+          "member": "M113",
+          "community": 2
+         },
+         {
+          "member": "M001",
+          "community": 1
+         }
+        ],
+        "top": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M177",
+          "community": 2
+         },
+         {
+          "member": "M113",
+          "community": 2
+         },
+         {
+          "member": "M001",
+          "community": 1
+         },
+         {
+          "member": "M170",
+          "community": 3
+         },
+         {
+          "member": "M180",
+          "community": 4
+         }
+        ]
+       },
+       "reach": {
+        "spread": {
+         "within_one_step": 0.61,
+         "within_two_steps": 0.96,
+         "n_communities_with_a_seed": 4
+        },
+        "top": {
+         "within_one_step": 0.61,
+         "within_two_steps": 0.96,
+         "n_communities_with_a_seed": 4
+        }
+       }
+      },
+      {
+       "n_seeds": 7,
+       "seeds": {
+        "spread": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M177",
+          "community": 2
+         },
+         {
+          "member": "M170",
+          "community": 3
+         },
+         {
+          "member": "M180",
+          "community": 4
+         },
+         {
+          "member": "M113",
+          "community": 2
+         },
+         {
+          "member": "M001",
+          "community": 1
+         },
+         {
+          "member": "M093",
+          "community": 3
+         }
+        ],
+        "top": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M177",
+          "community": 2
+         },
+         {
+          "member": "M113",
+          "community": 2
+         },
+         {
+          "member": "M001",
+          "community": 1
+         },
+         {
+          "member": "M170",
+          "community": 3
+         },
+         {
+          "member": "M180",
+          "community": 4
+         },
+         {
+          "member": "M093",
+          "community": 3
+         }
+        ]
+       },
+       "reach": {
+        "spread": {
+         "within_one_step": 0.65,
+         "within_two_steps": 0.965,
+         "n_communities_with_a_seed": 4
+        },
+        "top": {
+         "within_one_step": 0.65,
+         "within_two_steps": 0.965,
+         "n_communities_with_a_seed": 4
+        }
+       }
+      },
+      {
+       "n_seeds": 8,
+       "seeds": {
+        "spread": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M177",
+          "community": 2
+         },
+         {
+          "member": "M170",
+          "community": 3
+         },
+         {
+          "member": "M180",
+          "community": 4
+         },
+         {
+          "member": "M113",
+          "community": 2
+         },
+         {
+          "member": "M001",
+          "community": 1
+         },
+         {
+          "member": "M093",
+          "community": 3
+         },
+         {
+          "member": "M055",
+          "community": 1
+         }
+        ],
+        "top": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M177",
+          "community": 2
+         },
+         {
+          "member": "M113",
+          "community": 2
+         },
+         {
+          "member": "M001",
+          "community": 1
+         },
+         {
+          "member": "M170",
+          "community": 3
+         },
+         {
+          "member": "M180",
+          "community": 4
+         },
+         {
+          "member": "M093",
+          "community": 3
+         },
+         {
+          "member": "M055",
+          "community": 1
+         }
+        ]
+       },
+       "reach": {
+        "spread": {
+         "within_one_step": 0.675,
+         "within_two_steps": 0.965,
+         "n_communities_with_a_seed": 4
+        },
+        "top": {
+         "within_one_step": 0.675,
+         "within_two_steps": 0.965,
+         "n_communities_with_a_seed": 4
+        }
+       }
+      }
+     ]
+    },
+    {
+     "measure": "betweenness",
+     "by_n_seeds": [
+      {
+       "n_seeds": 1,
+       "seeds": {
+        "spread": [
+         {
+          "member": "M084",
+          "community": 1
+         }
+        ],
+        "top": [
+         {
+          "member": "M170",
+          "community": 3
+         }
+        ]
+       },
+       "reach": {
+        "spread": {
+         "within_one_step": 0.165,
+         "within_two_steps": 0.34,
+         "n_communities_with_a_seed": 1
+        },
+        "top": {
+         "within_one_step": 0.11,
+         "within_two_steps": 0.29,
+         "n_communities_with_a_seed": 1
+        }
+       }
+      },
+      {
+       "n_seeds": 2,
+       "seeds": {
+        "spread": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M113",
+          "community": 2
+         }
+        ],
+        "top": [
+         {
+          "member": "M170",
+          "community": 3
+         },
+         {
+          "member": "M084",
+          "community": 1
+         }
+        ]
+       },
+       "reach": {
+        "spread": {
+         "within_one_step": 0.295,
+         "within_two_steps": 0.585,
+         "n_communities_with_a_seed": 2
+        },
+        "top": {
+         "within_one_step": 0.27,
+         "within_two_steps": 0.58,
+         "n_communities_with_a_seed": 2
+        }
+       }
+      },
+      {
+       "n_seeds": 3,
+       "seeds": {
+        "spread": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M113",
+          "community": 2
+         },
+         {
+          "member": "M170",
+          "community": 3
+         }
+        ],
+        "top": [
+         {
+          "member": "M170",
+          "community": 3
+         },
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M113",
+          "community": 2
+         }
+        ]
+       },
+       "reach": {
+        "spread": {
+         "within_one_step": 0.4,
+         "within_two_steps": 0.77,
+         "n_communities_with_a_seed": 3
+        },
+        "top": {
+         "within_one_step": 0.4,
+         "within_two_steps": 0.77,
+         "n_communities_with_a_seed": 3
+        }
+       }
+      },
+      {
+       "n_seeds": 4,
+       "seeds": {
+        "spread": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M113",
+          "community": 2
+         },
+         {
+          "member": "M170",
+          "community": 3
+         },
+         {
+          "member": "M052",
+          "community": 4
+         }
+        ],
+        "top": [
+         {
+          "member": "M170",
+          "community": 3
+         },
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M113",
+          "community": 2
+         },
+         {
+          "member": "M191",
+          "community": 1
+         }
+        ]
+       },
+       "reach": {
+        "spread": {
+         "within_one_step": 0.435,
+         "within_two_steps": 0.88,
+         "n_communities_with_a_seed": 4
+        },
+        "top": {
+         "within_one_step": 0.405,
+         "within_two_steps": 0.77,
+         "n_communities_with_a_seed": 3
+        }
+       }
+      },
+      {
+       "n_seeds": 5,
+       "seeds": {
+        "spread": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M113",
+          "community": 2
+         },
+         {
+          "member": "M170",
+          "community": 3
+         },
+         {
+          "member": "M052",
+          "community": 4
+         },
+         {
+          "member": "M191",
+          "community": 1
+         }
+        ],
+        "top": [
+         {
+          "member": "M170",
+          "community": 3
+         },
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M113",
+          "community": 2
+         },
+         {
+          "member": "M191",
+          "community": 1
+         },
+         {
+          "member": "M052",
+          "community": 4
+         }
+        ]
+       },
+       "reach": {
+        "spread": {
+         "within_one_step": 0.44,
+         "within_two_steps": 0.88,
+         "n_communities_with_a_seed": 4
+        },
+        "top": {
+         "within_one_step": 0.44,
+         "within_two_steps": 0.88,
+         "n_communities_with_a_seed": 4
+        }
+       }
+      },
+      {
+       "n_seeds": 6,
+       "seeds": {
+        "spread": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M113",
+          "community": 2
+         },
+         {
+          "member": "M170",
+          "community": 3
+         },
+         {
+          "member": "M052",
+          "community": 4
+         },
+         {
+          "member": "M191",
+          "community": 1
+         },
+         {
+          "member": "M082",
+          "community": 1
+         }
+        ],
+        "top": [
+         {
+          "member": "M170",
+          "community": 3
+         },
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M113",
+          "community": 2
+         },
+         {
+          "member": "M191",
+          "community": 1
+         },
+         {
+          "member": "M052",
+          "community": 4
+         },
+         {
+          "member": "M082",
+          "community": 1
+         }
+        ]
+       },
+       "reach": {
+        "spread": {
+         "within_one_step": 0.455,
+         "within_two_steps": 0.88,
+         "n_communities_with_a_seed": 4
+        },
+        "top": {
+         "within_one_step": 0.455,
+         "within_two_steps": 0.88,
+         "n_communities_with_a_seed": 4
+        }
+       }
+      },
+      {
+       "n_seeds": 7,
+       "seeds": {
+        "spread": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M113",
+          "community": 2
+         },
+         {
+          "member": "M170",
+          "community": 3
+         },
+         {
+          "member": "M052",
+          "community": 4
+         },
+         {
+          "member": "M191",
+          "community": 1
+         },
+         {
+          "member": "M082",
+          "community": 1
+         },
+         {
+          "member": "M006",
+          "community": 4
+         }
+        ],
+        "top": [
+         {
+          "member": "M170",
+          "community": 3
+         },
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M113",
+          "community": 2
+         },
+         {
+          "member": "M191",
+          "community": 1
+         },
+         {
+          "member": "M052",
+          "community": 4
+         },
+         {
+          "member": "M082",
+          "community": 1
+         },
+         {
+          "member": "M006",
+          "community": 4
+         }
+        ]
+       },
+       "reach": {
+        "spread": {
+         "within_one_step": 0.495,
+         "within_two_steps": 0.945,
+         "n_communities_with_a_seed": 4
+        },
+        "top": {
+         "within_one_step": 0.495,
+         "within_two_steps": 0.945,
+         "n_communities_with_a_seed": 4
+        }
+       }
+      },
+      {
+       "n_seeds": 8,
+       "seeds": {
+        "spread": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M113",
+          "community": 2
+         },
+         {
+          "member": "M170",
+          "community": 3
+         },
+         {
+          "member": "M052",
+          "community": 4
+         },
+         {
+          "member": "M191",
+          "community": 1
+         },
+         {
+          "member": "M082",
+          "community": 1
+         },
+         {
+          "member": "M006",
+          "community": 4
+         },
+         {
+          "member": "M125",
+          "community": 2
+         }
+        ],
+        "top": [
+         {
+          "member": "M170",
+          "community": 3
+         },
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M113",
+          "community": 2
+         },
+         {
+          "member": "M191",
+          "community": 1
+         },
+         {
+          "member": "M052",
+          "community": 4
+         },
+         {
+          "member": "M082",
+          "community": 1
+         },
+         {
+          "member": "M006",
+          "community": 4
+         },
+         {
+          "member": "M125",
+          "community": 2
+         }
+        ]
+       },
+       "reach": {
+        "spread": {
+         "within_one_step": 0.515,
+         "within_two_steps": 0.945,
+         "n_communities_with_a_seed": 4
+        },
+        "top": {
+         "within_one_step": 0.515,
+         "within_two_steps": 0.945,
+         "n_communities_with_a_seed": 4
+        }
+       }
+      }
+     ]
+    },
+    {
+     "measure": "closeness",
+     "by_n_seeds": [
+      {
+       "n_seeds": 1,
+       "seeds": {
+        "spread": [
+         {
+          "member": "M084",
+          "community": 1
+         }
+        ],
+        "top": [
+         {
+          "member": "M084",
+          "community": 1
+         }
+        ]
+       },
+       "reach": {
+        "spread": {
+         "within_one_step": 0.165,
+         "within_two_steps": 0.34,
+         "n_communities_with_a_seed": 1
+        },
+        "top": {
+         "within_one_step": 0.165,
+         "within_two_steps": 0.34,
+         "n_communities_with_a_seed": 1
+        }
+       }
+      },
+      {
+       "n_seeds": 2,
+       "seeds": {
+        "spread": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M113",
+          "community": 2
+         }
+        ],
+        "top": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M113",
+          "community": 2
+         }
+        ]
+       },
+       "reach": {
+        "spread": {
+         "within_one_step": 0.295,
+         "within_two_steps": 0.585,
+         "n_communities_with_a_seed": 2
+        },
+        "top": {
+         "within_one_step": 0.295,
+         "within_two_steps": 0.585,
+         "n_communities_with_a_seed": 2
+        }
+       }
+      },
+      {
+       "n_seeds": 3,
+       "seeds": {
+        "spread": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M113",
+          "community": 2
+         },
+         {
+          "member": "M170",
+          "community": 3
+         }
+        ],
+        "top": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M113",
+          "community": 2
+         },
+         {
+          "member": "M170",
+          "community": 3
+         }
+        ]
+       },
+       "reach": {
+        "spread": {
+         "within_one_step": 0.4,
+         "within_two_steps": 0.77,
+         "n_communities_with_a_seed": 3
+        },
+        "top": {
+         "within_one_step": 0.4,
+         "within_two_steps": 0.77,
+         "n_communities_with_a_seed": 3
+        }
+       }
+      },
+      {
+       "n_seeds": 4,
+       "seeds": {
+        "spread": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M113",
+          "community": 2
+         },
+         {
+          "member": "M170",
+          "community": 3
+         },
+         {
+          "member": "M006",
+          "community": 4
+         }
+        ],
+        "top": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M113",
+          "community": 2
+         },
+         {
+          "member": "M170",
+          "community": 3
+         },
+         {
+          "member": "M082",
+          "community": 1
+         }
+        ]
+       },
+       "reach": {
+        "spread": {
+         "within_one_step": 0.45,
+         "within_two_steps": 0.92,
+         "n_communities_with_a_seed": 4
+        },
+        "top": {
+         "within_one_step": 0.415,
+         "within_two_steps": 0.77,
+         "n_communities_with_a_seed": 3
+        }
+       }
+      },
+      {
+       "n_seeds": 5,
+       "seeds": {
+        "spread": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M113",
+          "community": 2
+         },
+         {
+          "member": "M170",
+          "community": 3
+         },
+         {
+          "member": "M006",
+          "community": 4
+         },
+         {
+          "member": "M082",
+          "community": 1
+         }
+        ],
+        "top": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M113",
+          "community": 2
+         },
+         {
+          "member": "M170",
+          "community": 3
+         },
+         {
+          "member": "M082",
+          "community": 1
+         },
+         {
+          "member": "M006",
+          "community": 4
+         }
+        ]
+       },
+       "reach": {
+        "spread": {
+         "within_one_step": 0.465,
+         "within_two_steps": 0.92,
+         "n_communities_with_a_seed": 4
+        },
+        "top": {
+         "within_one_step": 0.465,
+         "within_two_steps": 0.92,
+         "n_communities_with_a_seed": 4
+        }
+       }
+      },
+      {
+       "n_seeds": 6,
+       "seeds": {
+        "spread": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M113",
+          "community": 2
+         },
+         {
+          "member": "M170",
+          "community": 3
+         },
+         {
+          "member": "M006",
+          "community": 4
+         },
+         {
+          "member": "M082",
+          "community": 1
+         },
+         {
+          "member": "M191",
+          "community": 1
+         }
+        ],
+        "top": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M113",
+          "community": 2
+         },
+         {
+          "member": "M170",
+          "community": 3
+         },
+         {
+          "member": "M082",
+          "community": 1
+         },
+         {
+          "member": "M006",
+          "community": 4
+         },
+         {
+          "member": "M191",
+          "community": 1
+         }
+        ]
+       },
+       "reach": {
+        "spread": {
+         "within_one_step": 0.47,
+         "within_two_steps": 0.92,
+         "n_communities_with_a_seed": 4
+        },
+        "top": {
+         "within_one_step": 0.47,
+         "within_two_steps": 0.92,
+         "n_communities_with_a_seed": 4
+        }
+       }
+      },
+      {
+       "n_seeds": 7,
+       "seeds": {
+        "spread": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M113",
+          "community": 2
+         },
+         {
+          "member": "M170",
+          "community": 3
+         },
+         {
+          "member": "M006",
+          "community": 4
+         },
+         {
+          "member": "M082",
+          "community": 1
+         },
+         {
+          "member": "M191",
+          "community": 1
+         },
+         {
+          "member": "M048",
+          "community": 2
+         }
+        ],
+        "top": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M113",
+          "community": 2
+         },
+         {
+          "member": "M170",
+          "community": 3
+         },
+         {
+          "member": "M082",
+          "community": 1
+         },
+         {
+          "member": "M006",
+          "community": 4
+         },
+         {
+          "member": "M191",
+          "community": 1
+         },
+         {
+          "member": "M048",
+          "community": 2
+         }
+        ]
+       },
+       "reach": {
+        "spread": {
+         "within_one_step": 0.48,
+         "within_two_steps": 0.92,
+         "n_communities_with_a_seed": 4
+        },
+        "top": {
+         "within_one_step": 0.48,
+         "within_two_steps": 0.92,
+         "n_communities_with_a_seed": 4
+        }
+       }
+      },
+      {
+       "n_seeds": 8,
+       "seeds": {
+        "spread": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M113",
+          "community": 2
+         },
+         {
+          "member": "M170",
+          "community": 3
+         },
+         {
+          "member": "M006",
+          "community": 4
+         },
+         {
+          "member": "M082",
+          "community": 1
+         },
+         {
+          "member": "M191",
+          "community": 1
+         },
+         {
+          "member": "M048",
+          "community": 2
+         },
+         {
+          "member": "M125",
+          "community": 2
+         }
+        ],
+        "top": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M113",
+          "community": 2
+         },
+         {
+          "member": "M170",
+          "community": 3
+         },
+         {
+          "member": "M082",
+          "community": 1
+         },
+         {
+          "member": "M006",
+          "community": 4
+         },
+         {
+          "member": "M191",
+          "community": 1
+         },
+         {
+          "member": "M048",
+          "community": 2
+         },
+         {
+          "member": "M125",
+          "community": 2
+         }
+        ]
+       },
+       "reach": {
+        "spread": {
+         "within_one_step": 0.495,
+         "within_two_steps": 0.92,
+         "n_communities_with_a_seed": 4
+        },
+        "top": {
+         "within_one_step": 0.495,
+         "within_two_steps": 0.92,
+         "n_communities_with_a_seed": 4
+        }
+       }
+      }
+     ]
+    },
+    {
+     "measure": "eigenvector",
+     "by_n_seeds": [
+      {
+       "n_seeds": 1,
+       "seeds": {
+        "spread": [
+         {
+          "member": "M084",
+          "community": 1
+         }
+        ],
+        "top": [
+         {
+          "member": "M084",
+          "community": 1
+         }
+        ]
+       },
+       "reach": {
+        "spread": {
+         "within_one_step": 0.165,
+         "within_two_steps": 0.34,
+         "n_communities_with_a_seed": 1
+        },
+        "top": {
+         "within_one_step": 0.165,
+         "within_two_steps": 0.34,
+         "n_communities_with_a_seed": 1
+        }
+       }
+      },
+      {
+       "n_seeds": 2,
+       "seeds": {
+        "spread": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M075",
+          "community": 2
+         }
+        ],
+        "top": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M001",
+          "community": 1
+         }
+        ]
+       },
+       "reach": {
+        "spread": {
+         "within_one_step": 0.195,
+         "within_two_steps": 0.435,
+         "n_communities_with_a_seed": 2
+        },
+        "top": {
+         "within_one_step": 0.2,
+         "within_two_steps": 0.35,
+         "n_communities_with_a_seed": 1
+        }
+       }
+      },
+      {
+       "n_seeds": 3,
+       "seeds": {
+        "spread": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M075",
+          "community": 2
+         },
+         {
+          "member": "M170",
+          "community": 3
+         }
+        ],
+        "top": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M001",
+          "community": 1
+         },
+         {
+          "member": "M118",
+          "community": 1
+         }
+        ]
+       },
+       "reach": {
+        "spread": {
+         "within_one_step": 0.3,
+         "within_two_steps": 0.66,
+         "n_communities_with_a_seed": 3
+        },
+        "top": {
+         "within_one_step": 0.215,
+         "within_two_steps": 0.35,
+         "n_communities_with_a_seed": 1
+        }
+       }
+      },
+      {
+       "n_seeds": 4,
+       "seeds": {
+        "spread": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M075",
+          "community": 2
+         },
+         {
+          "member": "M170",
+          "community": 3
+         },
+         {
+          "member": "M006",
+          "community": 4
+         }
+        ],
+        "top": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M001",
+          "community": 1
+         },
+         {
+          "member": "M118",
+          "community": 1
+         },
+         {
+          "member": "M055",
+          "community": 1
+         }
+        ]
+       },
+       "reach": {
+        "spread": {
+         "within_one_step": 0.35,
+         "within_two_steps": 0.815,
+         "n_communities_with_a_seed": 4
+        },
+        "top": {
+         "within_one_step": 0.24,
+         "within_two_steps": 0.355,
+         "n_communities_with_a_seed": 1
+        }
+       }
+      },
+      {
+       "n_seeds": 5,
+       "seeds": {
+        "spread": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M075",
+          "community": 2
+         },
+         {
+          "member": "M170",
+          "community": 3
+         },
+         {
+          "member": "M006",
+          "community": 4
+         },
+         {
+          "member": "M001",
+          "community": 1
+         }
+        ],
+        "top": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M001",
+          "community": 1
+         },
+         {
+          "member": "M118",
+          "community": 1
+         },
+         {
+          "member": "M055",
+          "community": 1
+         },
+         {
+          "member": "M040",
+          "community": 1
+         }
+        ]
+       },
+       "reach": {
+        "spread": {
+         "within_one_step": 0.385,
+         "within_two_steps": 0.82,
+         "n_communities_with_a_seed": 4
+        },
+        "top": {
+         "within_one_step": 0.25,
+         "within_two_steps": 0.355,
+         "n_communities_with_a_seed": 1
+        }
+       }
+      },
+      {
+       "n_seeds": 6,
+       "seeds": {
+        "spread": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M075",
+          "community": 2
+         },
+         {
+          "member": "M170",
+          "community": 3
+         },
+         {
+          "member": "M006",
+          "community": 4
+         },
+         {
+          "member": "M001",
+          "community": 1
+         },
+         {
+          "member": "M118",
+          "community": 1
+         }
+        ],
+        "top": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M001",
+          "community": 1
+         },
+         {
+          "member": "M118",
+          "community": 1
+         },
+         {
+          "member": "M055",
+          "community": 1
+         },
+         {
+          "member": "M040",
+          "community": 1
+         },
+         {
+          "member": "M016",
+          "community": 1
+         }
+        ]
+       },
+       "reach": {
+        "spread": {
+         "within_one_step": 0.4,
+         "within_two_steps": 0.82,
+         "n_communities_with_a_seed": 4
+        },
+        "top": {
+         "within_one_step": 0.25,
+         "within_two_steps": 0.355,
+         "n_communities_with_a_seed": 1
+        }
+       }
+      },
+      {
+       "n_seeds": 7,
+       "seeds": {
+        "spread": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M075",
+          "community": 2
+         },
+         {
+          "member": "M170",
+          "community": 3
+         },
+         {
+          "member": "M006",
+          "community": 4
+         },
+         {
+          "member": "M001",
+          "community": 1
+         },
+         {
+          "member": "M118",
+          "community": 1
+         },
+         {
+          "member": "M055",
+          "community": 1
+         }
+        ],
+        "top": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M001",
+          "community": 1
+         },
+         {
+          "member": "M118",
+          "community": 1
+         },
+         {
+          "member": "M055",
+          "community": 1
+         },
+         {
+          "member": "M040",
+          "community": 1
+         },
+         {
+          "member": "M016",
+          "community": 1
+         },
+         {
+          "member": "M092",
+          "community": 1
+         }
+        ]
+       },
+       "reach": {
+        "spread": {
+         "within_one_step": 0.425,
+         "within_two_steps": 0.825,
+         "n_communities_with_a_seed": 4
+        },
+        "top": {
+         "within_one_step": 0.265,
+         "within_two_steps": 0.355,
+         "n_communities_with_a_seed": 1
+        }
+       }
+      },
+      {
+       "n_seeds": 8,
+       "seeds": {
+        "spread": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M075",
+          "community": 2
+         },
+         {
+          "member": "M170",
+          "community": 3
+         },
+         {
+          "member": "M006",
+          "community": 4
+         },
+         {
+          "member": "M001",
+          "community": 1
+         },
+         {
+          "member": "M118",
+          "community": 1
+         },
+         {
+          "member": "M055",
+          "community": 1
+         },
+         {
+          "member": "M040",
+          "community": 1
+         }
+        ],
+        "top": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M001",
+          "community": 1
+         },
+         {
+          "member": "M118",
+          "community": 1
+         },
+         {
+          "member": "M055",
+          "community": 1
+         },
+         {
+          "member": "M040",
+          "community": 1
+         },
+         {
+          "member": "M016",
+          "community": 1
+         },
+         {
+          "member": "M092",
+          "community": 1
+         },
+         {
+          "member": "M026",
+          "community": 1
+         }
+        ]
+       },
+       "reach": {
+        "spread": {
+         "within_one_step": 0.435,
+         "within_two_steps": 0.825,
+         "n_communities_with_a_seed": 4
+        },
+        "top": {
+         "within_one_step": 0.275,
+         "within_two_steps": 0.355,
+         "n_communities_with_a_seed": 1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "measure": "combined",
+     "by_n_seeds": [
+      {
+       "n_seeds": 1,
+       "seeds": {
+        "spread": [
+         {
+          "member": "M084",
+          "community": 1
+         }
+        ],
+        "top": [
+         {
+          "member": "M084",
+          "community": 1
+         }
+        ]
+       },
+       "reach": {
+        "spread": {
+         "within_one_step": 0.165,
+         "within_two_steps": 0.34,
+         "n_communities_with_a_seed": 1
+        },
+        "top": {
+         "within_one_step": 0.165,
+         "within_two_steps": 0.34,
+         "n_communities_with_a_seed": 1
+        }
+       }
+      },
+      {
+       "n_seeds": 2,
+       "seeds": {
+        "spread": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M113",
+          "community": 2
+         }
+        ],
+        "top": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M001",
+          "community": 1
+         }
+        ]
+       },
+       "reach": {
+        "spread": {
+         "within_one_step": 0.295,
+         "within_two_steps": 0.585,
+         "n_communities_with_a_seed": 2
+        },
+        "top": {
+         "within_one_step": 0.2,
+         "within_two_steps": 0.35,
+         "n_communities_with_a_seed": 1
+        }
+       }
+      },
+      {
+       "n_seeds": 3,
+       "seeds": {
+        "spread": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M113",
+          "community": 2
+         },
+         {
+          "member": "M170",
+          "community": 3
+         }
+        ],
+        "top": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M001",
+          "community": 1
+         },
+         {
+          "member": "M082",
+          "community": 1
+         }
+        ]
+       },
+       "reach": {
+        "spread": {
+         "within_one_step": 0.4,
+         "within_two_steps": 0.77,
+         "n_communities_with_a_seed": 3
+        },
+        "top": {
+         "within_one_step": 0.22,
+         "within_two_steps": 0.465,
+         "n_communities_with_a_seed": 1
+        }
+       }
+      },
+      {
+       "n_seeds": 4,
+       "seeds": {
+        "spread": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M113",
+          "community": 2
+         },
+         {
+          "member": "M170",
+          "community": 3
+         },
+         {
+          "member": "M006",
+          "community": 4
+         }
+        ],
+        "top": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M001",
+          "community": 1
+         },
+         {
+          "member": "M082",
+          "community": 1
+         },
+         {
+          "member": "M113",
+          "community": 2
+         }
+        ]
+       },
+       "reach": {
+        "spread": {
+         "within_one_step": 0.45,
+         "within_two_steps": 0.92,
+         "n_communities_with_a_seed": 4
+        },
+        "top": {
+         "within_one_step": 0.345,
+         "within_two_steps": 0.595,
+         "n_communities_with_a_seed": 2
+        }
+       }
+      },
+      {
+       "n_seeds": 5,
+       "seeds": {
+        "spread": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M113",
+          "community": 2
+         },
+         {
+          "member": "M170",
+          "community": 3
+         },
+         {
+          "member": "M006",
+          "community": 4
+         },
+         {
+          "member": "M001",
+          "community": 1
+         }
+        ],
+        "top": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M001",
+          "community": 1
+         },
+         {
+          "member": "M082",
+          "community": 1
+         },
+         {
+          "member": "M113",
+          "community": 2
+         },
+         {
+          "member": "M170",
+          "community": 3
+         }
+        ]
+       },
+       "reach": {
+        "spread": {
+         "within_one_step": 0.485,
+         "within_two_steps": 0.925,
+         "n_communities_with_a_seed": 4
+        },
+        "top": {
+         "within_one_step": 0.45,
+         "within_two_steps": 0.78,
+         "n_communities_with_a_seed": 3
+        }
+       }
+      },
+      {
+       "n_seeds": 6,
+       "seeds": {
+        "spread": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M113",
+          "community": 2
+         },
+         {
+          "member": "M170",
+          "community": 3
+         },
+         {
+          "member": "M006",
+          "community": 4
+         },
+         {
+          "member": "M001",
+          "community": 1
+         },
+         {
+          "member": "M082",
+          "community": 1
+         }
+        ],
+        "top": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M001",
+          "community": 1
+         },
+         {
+          "member": "M082",
+          "community": 1
+         },
+         {
+          "member": "M113",
+          "community": 2
+         },
+         {
+          "member": "M170",
+          "community": 3
+         },
+         {
+          "member": "M020",
+          "community": 1
+         }
+        ]
+       },
+       "reach": {
+        "spread": {
+         "within_one_step": 0.5,
+         "within_two_steps": 0.925,
+         "n_communities_with_a_seed": 4
+        },
+        "top": {
+         "within_one_step": 0.465,
+         "within_two_steps": 0.78,
+         "n_communities_with_a_seed": 3
+        }
+       }
+      },
+      {
+       "n_seeds": 7,
+       "seeds": {
+        "spread": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M113",
+          "community": 2
+         },
+         {
+          "member": "M170",
+          "community": 3
+         },
+         {
+          "member": "M006",
+          "community": 4
+         },
+         {
+          "member": "M001",
+          "community": 1
+         },
+         {
+          "member": "M082",
+          "community": 1
+         },
+         {
+          "member": "M020",
+          "community": 1
+         }
+        ],
+        "top": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M001",
+          "community": 1
+         },
+         {
+          "member": "M082",
+          "community": 1
+         },
+         {
+          "member": "M113",
+          "community": 2
+         },
+         {
+          "member": "M170",
+          "community": 3
+         },
+         {
+          "member": "M020",
+          "community": 1
+         },
+         {
+          "member": "M055",
+          "community": 1
+         }
+        ]
+       },
+       "reach": {
+        "spread": {
+         "within_one_step": 0.515,
+         "within_two_steps": 0.925,
+         "n_communities_with_a_seed": 4
+        },
+        "top": {
+         "within_one_step": 0.48,
+         "within_two_steps": 0.785,
+         "n_communities_with_a_seed": 3
+        }
+       }
+      },
+      {
+       "n_seeds": 8,
+       "seeds": {
+        "spread": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M113",
+          "community": 2
+         },
+         {
+          "member": "M170",
+          "community": 3
+         },
+         {
+          "member": "M006",
+          "community": 4
+         },
+         {
+          "member": "M001",
+          "community": 1
+         },
+         {
+          "member": "M082",
+          "community": 1
+         },
+         {
+          "member": "M020",
+          "community": 1
+         },
+         {
+          "member": "M055",
+          "community": 1
+         }
+        ],
+        "top": [
+         {
+          "member": "M084",
+          "community": 1
+         },
+         {
+          "member": "M001",
+          "community": 1
+         },
+         {
+          "member": "M082",
+          "community": 1
+         },
+         {
+          "member": "M113",
+          "community": 2
+         },
+         {
+          "member": "M170",
+          "community": 3
+         },
+         {
+          "member": "M020",
+          "community": 1
+         },
+         {
+          "member": "M055",
+          "community": 1
+         },
+         {
+          "member": "M088",
+          "community": 1
+         }
+        ]
+       },
+       "reach": {
+        "spread": {
+         "within_one_step": 0.53,
+         "within_two_steps": 0.93,
+         "n_communities_with_a_seed": 4
+        },
+        "top": {
+         "within_one_step": 0.485,
+         "within_two_steps": 0.785,
+         "n_communities_with_a_seed": 3
+        }
+       }
+      }
+     ]
+    }
+   ]
   }
  },
  "settings_help": {
@@ -22027,6 +31189,110 @@
     "default": 2.0,
     "what_it_does": "Only used when a rating column is given. Reviews with this rating or less are the negative ones. Ratings in between are left out.",
     "when_to_choose": "2 for ratings from 1 to 5 stars. Change it for another scale."
+   }
+  ],
+  "network": [
+   {
+    "key": "measure",
+    "label": "What makes a member an influencer",
+    "kind": "choice",
+    "default": "degree",
+    "what_it_does": "Decides by which measure of importance the members are ranked.",
+    "when_to_choose": "Start with the number of ties. It is the simplest measure, and in the validation of this engine it gave the seeds with the widest reach.",
+    "options": [
+     {
+      "value": "degree",
+      "label": "Degree",
+      "what_it_does": "Ranks by the number of direct contacts.",
+      "when_to_choose": "Default. A member with many contacts tells many people directly."
+     },
+     {
+      "value": "betweenness",
+      "label": "Betweenness",
+      "what_it_does": "Ranks by how often a member lies on the shortest way between two others.",
+      "when_to_choose": "You want the message to cross from one group to another."
+     },
+     {
+      "value": "closeness",
+      "label": "Closeness",
+      "what_it_does": "Ranks by how few steps a member needs to reach everybody else.",
+      "when_to_choose": "You want the message to reach the whole network quickly from one starting point."
+     },
+     {
+      "value": "eigenvector",
+      "label": "Eigenvector centrality",
+      "what_it_does": "Ranks by ties to members who are well connected themselves.",
+      "when_to_choose": "You look for members in the core of the network. In a network with several communities this measure mostly describes the largest one."
+     },
+     {
+      "value": "combined",
+      "label": "All four measures together",
+      "what_it_does": "For each of the four measures the members are put in order. The score of a member is the average of its four places, from 0 (last in all) to 1 (first in all).",
+      "when_to_choose": "You want members who are strong on every count, and no single measure to decide alone."
+     }
+    ]
+   },
+   {
+    "key": "seeding",
+    "label": "How the seeds are chosen",
+    "kind": "choice",
+    "default": "spread",
+    "what_it_does": "Seeds are the members who are approached first. This decides whether they are simply the best ranked members, or spread over the communities.",
+    "when_to_choose": "Spread them if the network has communities: the best ranked members often sit in the same community and reach the same people.",
+    "options": [
+     {
+      "value": "spread",
+      "label": "Spread over the communities",
+      "what_it_does": "The largest community gets its best ranked member as a seed, then the second largest, and so on. When every community has a seed, the next best members follow.",
+      "when_to_choose": "Default. The seeds then reach different parts of the network."
+     },
+     {
+      "value": "top",
+      "label": "The best ranked members",
+      "what_it_does": "The seeds are the members at the top of the ranking, wherever they sit.",
+      "when_to_choose": "The network is one tight group, or you only care about one part of it."
+     }
+    ]
+   },
+   {
+    "key": "n_seeds",
+    "label": "Number of seeds",
+    "kind": "integer",
+    "default": 5,
+    "what_it_does": "How many members are proposed as the first to approach.",
+    "when_to_choose": "As many as you can afford to approach. With communities, at least one per community is a good start.",
+    "minimum": 1,
+    "maximum": 200
+   },
+   {
+    "key": "top_n",
+    "label": "Number of members listed",
+    "kind": "integer",
+    "default": 10,
+    "what_it_does": "How many members are listed at the top of a ranking.",
+    "when_to_choose": "10 are easy to read. The full table of all members is in the result either way.",
+    "minimum": 1,
+    "maximum": 2000
+   },
+   {
+    "key": "resolution",
+    "label": "Size of the communities",
+    "kind": "number",
+    "default": 1.0,
+    "what_it_does": "Steers how fine the split into communities is. Above 1 the search prefers more and smaller communities, below 1 fewer and larger ones.",
+    "when_to_choose": "Keep 1, the standard. Change it only if the communities found are clearly too coarse or too fine for your purpose.",
+    "minimum": 0.1,
+    "maximum": 5.0
+   },
+   {
+    "key": "seed",
+    "label": "Random seed",
+    "kind": "integer",
+    "default": 2026,
+    "what_it_does": "The search for communities goes through the members in a random order. The seed fixes that order, so the same data gives the same communities.",
+    "when_to_choose": "Keep it. Try another seed to see whether the communities stay the same: if they change a lot, they are not clear-cut.",
+    "minimum": 0,
+    "maximum": 4294967295
    }
   ]
  }

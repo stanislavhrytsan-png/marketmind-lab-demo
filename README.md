@@ -185,6 +185,14 @@ Start each path with a click on the module in the sidebar.
 - **Point at** the three reviews. **Say:** "'I would not say that the foam was bad', five stars, read as negative. The 'not' stands too far from its word."
 - **In "What if",** click "Ignore negations". **Say:** "The same reviews without that rule: 145 reviews change their label."
 
+### Network analysis
+
+- **Say:** "A customer community of 200 members, and who follows whom. The engine finds four groups that keep to themselves: 97% of all ties stay inside a group."
+- **Point at** "Are the groups more than chance?". **Say:** "A search for communities finds groups in any network. So the engine shuffled the ties and searched again: 0.70 against 0.37. These groups are real."
+- **Point at** the card "Watch out". **Say:** "Who should get the product samples? The five members with the most ties sit in three of the four communities and reach 79% of the members within two steps. One seed per community first reaches 96%."
+- **Click** "Betweenness" above the drawing. **Say:** "Another measure, other important members: the ones that connect the groups."
+- **In "What if",** click "Eigenvector", then move the number of seeds. **Say:** "By this measure the best ranked members all sit in one community. More seeds do not help."
+
 ## Where the numbers come from
 
 The calculation engine is in the folder `engine`, next to this one. One command runs it on the Alpine Oat Co. data and writes everything the demo shows into `src/data/engine_results.json`:
@@ -193,7 +201,7 @@ The calculation engine is in the folder `engine`, next to this one. One command 
 cd ../engine && .venv/bin/python -m marketmind.export_demo
 ```
 
-- **Real runs only.** The file holds the eight runs of the assignment (SEG-01 to SEG-04, POS-01 and CJ-01 to CJ-03) and the runs of the further modules: FC-01 to FC-04 (forecasting), PR-01 to PR-04 (price optimization), TG-01 and TG-02 (predictive modeling), LV-01 and LV-02 (customer lifetime value), RA-01 and RA-02 (resource allocation), GE-01 and GE-02 (GE McKinsey matrix), PN-01 and PN-02 (panel regression) and SE-01 to SE-03 (sentiment analysis). Each one is a real run of the engine with the settings the demo names.
+- **Real runs only.** The file holds the eight runs of the assignment (SEG-01 to SEG-04, POS-01 and CJ-01 to CJ-03) and the runs of the further modules: FC-01 to FC-04 (forecasting), PR-01 to PR-04 (price optimization), TG-01 and TG-02 (predictive modeling), LV-01 and LV-02 (customer lifetime value), RA-01 and RA-02 (resource allocation), GE-01 and GE-02 (GE McKinsey matrix), PN-01 and PN-02 (panel regression), SE-01 to SE-03 (sentiment analysis) and NW-01 to NW-03 (network analysis). Each one is a real run of the engine with the settings the demo names.
 - **The engine's own words.** The file also holds the engine's description of every setting of the further modules (what it does, when to choose it), and the warnings and reading notes of each result. The setup screens and the notes marked "The engine says" show them word for word.
 - **Texts follow the numbers.** Sentences that quote a number are built from the file: in `src/data/alpineOat.ts` for the assignment, and in one data file per further module (for example `src/data/forecasting.ts`). This covers the tutor scripts, Lea's texts and the feedback draft. A text cannot disagree with a chart.
 - **Do not edit the file by hand.** Change the engine or its data, then run the export again.
@@ -230,8 +238,8 @@ Three checks keep the demo and the engine together:
 | GE McKinsey matrix | Real results of the engine, calculated before: the two scores, the cell and the zone of six business units from the ratings of ten managers, 1,000 random sets of weights, every weight changed alone, and the matrix again without each one of the managers. The what-if view repeats only the weighted average in the browser, with weights of your own. | The student enters the units, the factors, the weights and the ratings, and the engine places the units when Run is pressed. |
 | Panel regression | Real results of the engine, calculated before: pooled regression, fixed effects and random effects on 4,160 store weeks, the two tests that choose between them, the carry-over rate of advertising found among 28 rates, and the level of each of the 40 stores. The what-if view only reads the three fitted models in the browser: what each one says about a change of price, advertising or promotion. | Estimated when the student presses Run, on the panel and with the settings the student picked. |
 | Sentiment analysis | Real results of the engine, calculated before: word counts, the score and the label of each of the 1,500 reviews, the comparison of brands and segments with its tests, and the drivers, for three runs (built-in word list, seven own words added, negations ignored). Nothing is calculated in the browser: "What if" switches between two of the runs. | Counted and scored when the student presses Run, with the student's own words and settings. |
+| Network analysis | Real results of the engine, calculated before: the overview of the network, four measures of importance for each of the 200 members, the communities with their check against shuffled networks, and the seeds with their reach, for every measure, one to eight seeds and both ways of choosing them (80 runs). Nothing is calculated in the browser. The places of the members in the drawing are no result: the export lays the network out once so that the ties can be seen. | Calculated when the student presses Run, on the uploaded ties. |
 | AI tutor in the further modules | One short scripted exchange per module, in Coach mode. Fixed text with the engine's numbers. | A language model, inside the limits of the mode the professor set. |
-| Modules marked "coming soon" | Names in the navigation. The engine already calculates them. | Built into the interface one by one. |
 
 Controls that the concept shows but the demo does not build answer with "Not part of this demo" when clicked. Examples: Export as Python or R, Add level, Add attribute, Add restriction, Add design, Pin another result, the datasets "Brand perceptions" and "Conjoint choices", Ideal points on the map, Prepare a recap for the next lecture, Compare drafts, Discard draft, Save as draft, the quiz and feedback buttons on the course home, and the help button.
 
@@ -283,5 +291,5 @@ To change a text, edit `src/data/alpineOat.ts` or the data file of the module. T
 - **The engine's variables.** The concept draws 8 basis variables on a scale from 1 to 7 and 6 descriptors. The demo shows the engine's data: 10 basis variables on a scale from 0 to 9 and 4 descriptors. The layout is the same.
 - **The engine's numbers.** All numbers differ from the concept images, because they are now calculated. Two things changed with them: in the comparison of SEG-02 and SEG-03 it is Health-focused that splits, and on the positioning map the labels sit where the calculated map leaves room.
 - **Submissions.** The student list shows all students when the screen opens. The concept highlights "To review" but lists everyone.
-- **The further modules.** The concept draws three modules and lists nine as "coming soon". Their screens are new. They reuse the patterns of the concept: run header, depth rail, guided settings, the mode plate. Three things are new: the card "Watch out", sliders, and the charts of these modules (lines, columns, and a grid with bubbles).
+- **The further modules.** The concept draws three modules and lists nine as "coming soon". All nine are built now, and their screens are new. They reuse the patterns of the concept: run header, depth rail, guided settings, the mode plate. Three things are new: the card "Watch out", sliders, and the charts of these modules (lines, columns, and a grid with bubbles).
 - **Run history.** With more than four modules the filter is a list to pick from. The concept draws chips, which do not fit twelve modules.

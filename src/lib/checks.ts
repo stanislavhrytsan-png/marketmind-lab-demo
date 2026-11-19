@@ -11,6 +11,7 @@ import { allocationReadme } from '../data/allocation'
 import { readmeNumbers } from '../data/alpineOat'
 import { forecastingReadme } from '../data/forecasting'
 import { lifetimeValueReadme } from '../data/lifetimeValue'
+import { networkReadme } from '../data/network'
 import { panelReadme } from '../data/panel'
 import { portfolioReadme } from '../data/portfolio'
 import { pricingReadme } from '../data/pricing'
@@ -48,4 +49,5 @@ export const readmePhrases: string[] = [
   ...portfolioReadme,
   ...panelReadme,
   ...sentimentReadme,
+  ...networkReadme,
 ]
