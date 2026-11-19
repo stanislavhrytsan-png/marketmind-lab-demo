@@ -16,10 +16,10 @@ import {
   interpretation,
   modes,
   ownColor,
-  runs,
   savedDesign,
 } from '../../data/alpineOat'
 import type { Mode, RunId } from '../../data/alpineOat'
+import { runs } from '../../data/library'
 import { pct, pct1, sharesAgainstCompetitors } from '../../lib/conjoint'
 import { useDemo } from '../../lib/demo'
 import { segmentParts } from '../../lib/sizeParts'

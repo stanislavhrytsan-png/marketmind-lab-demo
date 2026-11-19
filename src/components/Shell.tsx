@@ -5,11 +5,13 @@
 import { useEffect, useRef, useState } from 'react'
 import type { ReactNode } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { course, modules, professor, student } from '../data/alpineOat'
+import { course, professor, student } from '../data/alpineOat'
 import type { Mode } from '../data/alpineOat'
+import { modules } from '../data/library'
 import { cx, useDemo } from '../lib/demo'
 import { Icon, Logo } from './Icon'
 import type { IconName } from './Icon'
+import { moduleIcons } from './styles'
 import { ModeChip, Tag } from './ui'
 
 // ---------------------------------------------------------------- sidebar
@@ -54,12 +56,6 @@ function NavItem({
 
 function NavGroup({ children }: { children: ReactNode }) {
   return <div className="px-2.5 pb-1.5 pt-3.5 text-[12.5px] font-semibold text-side-mut">{children}</div>
-}
-
-const moduleIcons: Record<string, IconName> = {
-  segmentation: 'segmentation',
-  positioning: 'positioning',
-  conjoint: 'conjoint',
 }
 
 /** Name block at the bottom of the sidebar. In the demo it also switches between the two roles. */
@@ -202,17 +198,21 @@ export function Sidebar() {
           </>
         )}
 
-        <NavGroup>
-          Coming soon
-          <span className="ml-2 rounded-[10px] border border-white/[.22] px-[7px] text-[11.5px] font-normal">
-            {modules.comingSoon.length} modules
-          </span>
-        </NavGroup>
-        {modules.comingSoon.map((name) => (
-          <span key={name} aria-disabled="true" className="block cursor-default py-1 pl-9 pr-2.5 text-[13px] text-side-mut">
-            {name}
-          </span>
-        ))}
+        {modules.comingSoon.length > 0 && (
+          <>
+            <NavGroup>
+              Coming soon
+              <span className="ml-2 rounded-[10px] border border-white/[.22] px-[7px] text-[11.5px] font-normal">
+                {modules.comingSoon.length} {modules.comingSoon.length === 1 ? 'module' : 'modules'}
+              </span>
+            </NavGroup>
+            {modules.comingSoon.map((name) => (
+              <span key={name} aria-disabled="true" className="block cursor-default py-1 pl-9 pr-2.5 text-[13px] text-side-mut">
+                {name}
+              </span>
+            ))}
+          </>
+        )}
       </nav>
 
       <UserMenu isProfessor={isProfessor} />

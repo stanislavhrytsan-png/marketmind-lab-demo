@@ -24,6 +24,10 @@
  *   9. Professor: submissions review
  *  10. Segmentation screens (Priority 2)
  *  11. Positioning screen (Priority 2)
+ *
+ * The further modules (forecasting, price optimization and so on) have one
+ * data file each, next to this one. library.ts brings all modules and all
+ * runs together.
  */
 
 import engineResults from './engine_results.json'
@@ -59,14 +63,30 @@ const descriptorCount = engine.case.descriptor_variables.length
 // ---------------------------------------------------------------------------
 
 export type Mode = 'off' | 'coach' | 'explain'
-export type ModuleId = 'segmentation' | 'positioning' | 'conjoint'
+/** The three modules of the survey, which this file describes. */
+export type SurveyModuleId = 'segmentation' | 'positioning' | 'conjoint'
+/** The modules that work with the records of the company. Each has its own data file. */
+export type FurtherModuleId =
+  | 'forecasting'
+  | 'pricing'
+  | 'targeting'
+  | 'lifetimeValue'
+  | 'allocation'
+  | 'portfolio'
+  | 'panel'
+  | 'sentiment'
+  | 'network'
+export type ModuleId = SurveyModuleId | FurtherModuleId
 export type SegmentId = 'health' | 'taste' | 'price'
 /** A set of part-worths: the whole sample, or one segment. */
 export type GroupId = 'all' | SegmentId
 export type AttrId = 'flavor' | 'sugar' | 'protein' | 'pack' | 'price'
 /** A product: for every attribute, the index of the chosen level. */
 export type Design = Record<AttrId, number>
-export type RunId = 'SEG-01' | 'SEG-02' | 'SEG-03' | 'SEG-04' | 'POS-01' | 'CJ-01' | 'CJ-02' | 'CJ-03'
+export type SurveyRunId = 'SEG-01' | 'SEG-02' | 'SEG-03' | 'SEG-04' | 'POS-01' | 'CJ-01' | 'CJ-02' | 'CJ-03'
+/** Runs of the further modules: FC forecasting, PR pricing, TG targeting, LV lifetime value, RA allocation, GE matrix, PN panel, SE sentiment, NW network. */
+export type FurtherRunId = `${'FC' | 'PR' | 'TG' | 'LV' | 'RA' | 'GE' | 'PN' | 'SE' | 'NW'}-0${1 | 2 | 3 | 4 | 5 | 6}`
+export type RunId = SurveyRunId | FurtherRunId
 
 export interface Segment {
   id: SegmentId
@@ -92,6 +112,8 @@ export interface Run {
   final?: boolean
   /** Screen that shows this run's results, if the demo has one. */
   to?: string
+  /** Screen that shows this run's setup, if the demo has one. */
+  setupTo?: string
   settings: { name: string; value: string }[]
 }
 
@@ -178,24 +200,22 @@ export const modes: Record<
   },
 }
 
-export const modules = {
-  active: [
-    { id: 'segmentation' as ModuleId, name: 'Segmentation', to: '/segmentation' },
-    { id: 'positioning' as ModuleId, name: 'Positioning', to: '/positioning' },
-    { id: 'conjoint' as ModuleId, name: 'Conjoint analysis', to: '/conjoint' },
-  ],
-  comingSoon: [
-    'Sentiment analysis',
-    'Predictive modeling',
-    'Price optimization',
-    'GE McKinsey matrix',
-    'Resource allocation',
-    'Customer lifetime value',
-    'Network analysis',
-    'Bass forecasting',
-    'Panel regression',
-  ],
-}
+/** The three modules of the assignment. library.ts adds the further modules. */
+export const surveyModules: { id: ModuleId; name: string; to: string; text: string }[] = [
+  {
+    id: 'segmentation',
+    name: 'Segmentation',
+    to: '/segmentation',
+    text: 'Hierarchical and k-means clustering, segment profiles',
+  },
+  { id: 'positioning', name: 'Positioning', to: '/positioning', text: 'Perceptual map with segment preferences' },
+  {
+    id: 'conjoint',
+    name: 'Conjoint analysis',
+    to: '/conjoint',
+    text: 'Part-worths, importance, market simulator, scenario batch',
+  },
+]
 
 // ---------------------------------------------------------------------------
 // 2. Course home
@@ -712,8 +732,9 @@ const cjSummary = `${attributes.length} attributes, ${engine.conjoint.restrictio
  * settings shown here (see engine_results.json). The three conjoint runs are
  * the ones the demo story creates: they appear in the run history once the
  * student has pressed "Run 2 scenarios" on the conjoint setup screen.
+ * The runs of the further modules are added in library.ts.
  */
-export const runs: Run[] = [
+export const surveyRuns: Run[] = [
   {
     id: 'SEG-01',
     module: 'segmentation',
@@ -791,12 +812,6 @@ export const runs: Run[] = [
     settings: cjSettings('CJ-02', savedDesignText),
   },
 ]
-
-export const moduleNames: Record<ModuleId, string> = {
-  segmentation: 'Segmentation',
-  positioning: 'Positioning',
-  conjoint: 'Conjoint analysis',
-}
 
 export const runHistory = {
   hint: 'Tick two runs of the same module to compare them.',
@@ -1050,21 +1065,8 @@ export const assignmentSetup = {
     },
   ],
   modulesNote: 'Students only see the modules you tick',
-  modules: [
-    {
-      id: 'segmentation' as ModuleId,
-      name: 'Segmentation',
-      text: 'Hierarchical and k-means clustering, segment profiles',
-    },
-    { id: 'positioning' as ModuleId, name: 'Positioning', text: 'Perceptual map with segment preferences' },
-    {
-      id: 'conjoint' as ModuleId,
-      name: 'Conjoint analysis',
-      text: 'Part-worths, importance, market simulator, scenario batch',
-    },
-  ],
-  modulesFootnote:
-    '9 more modules are in development, from sentiment analysis to panel regression. They appear here as they are released.',
+  /** The modules ticked when the screen opens: the three of this assignment. */
+  modulesTicked: ['segmentation', 'positioning', 'conjoint'] as ModuleId[],
   opens: 'Mon 9 Nov 2026, 08:00',
   due: 'Fri 27 Nov 2026, 23:59',
   dueShort: 'Due Fri 27 Nov, 23:59',

@@ -1,9 +1,12 @@
 /**
  * `npm run check`: do the demo and the engine still agree?
  *
- * 1. The market simulator in the browser (src/lib/conjoint.ts) must give the
- *    same shares as the engine for the products the engine wrote into
- *    src/data/engine_results.json, within 0.1 percentage points.
+ * 1. Where the demo calculates in the browser, it must give the engine's
+ *    numbers: the market simulator, the Bass curve and so on (the list is in
+ *    src/lib/checks.ts). The engine wrote its own results for a list of cases
+ *    into src/data/engine_results.json. The browser's arithmetic must match
+ *    them within 0.1 percentage points for shares and within 0.1% for other
+ *    values.
  * 2. The numbers the presenting script in README.md says out loud must be
  *    the engine's numbers.
  *
@@ -15,14 +18,18 @@ import { readFileSync } from 'node:fs'
 import { createServer } from 'vite'
 
 const server = await createServer({ server: { middlewareMode: true }, appType: 'custom', logLevel: 'error' })
-let problems = []
+const problems = []
+const passed = []
 try {
-  const { engineDisagreements } = await server.ssrLoadModule('/src/lib/conjoint.ts')
-  const { readmeNumbers } = await server.ssrLoadModule('/src/data/alpineOat.ts')
-  problems = engineDisagreements()
+  const { browserChecks, readmePhrases } = await server.ssrLoadModule('/src/lib/checks.ts')
+  for (const check of browserChecks) {
+    const found = check.run()
+    problems.push(...found)
+    if (found.length === 0) passed.push(check.name)
+  }
 
   const readme = readFileSync(new URL('../README.md', import.meta.url), 'utf8')
-  for (const phrase of readmeNumbers) {
+  for (const phrase of readmePhrases) {
     if (!readme.includes(phrase)) problems.push(`README.md does not say "${phrase}"`)
   }
 } finally {
@@ -33,4 +40,4 @@ if (problems.length) {
   console.error(`The demo and the engine disagree in ${problems.length} place(s):\n- ${problems.join('\n- ')}`)
   process.exit(1)
 }
-console.log('The simulator in the browser and the README give the engine’s numbers.')
+console.log(`The browser gives the engine's numbers, and the README quotes them. Checked:\n- ${passed.join('\n- ')}`)

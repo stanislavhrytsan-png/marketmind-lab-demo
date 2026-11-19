@@ -5,6 +5,9 @@ import { Sidebar } from './components/Shell'
 import { TooltipLayer } from './components/Tooltip'
 import { useDemo } from './lib/demo'
 import { useFitToWidth } from './lib/useFitToWidth'
+import ForecastingExisting from './screens/modules/ForecastingExisting'
+import ForecastingNew from './screens/modules/ForecastingNew'
+import ModuleSetup from './screens/modules/ModuleSetup'
 import AssignmentSetup from './screens/professor/AssignmentSetup'
 import SubmissionsReview from './screens/professor/SubmissionsReview'
 import CaseBrief from './screens/student/CaseBrief'
@@ -58,6 +61,11 @@ export default function App() {
             <Route path="/segmentation/setup" element={<SegmentationSetup />} />
             <Route path="/segmentation/results" element={<SegmentationResults />} />
             <Route path="/positioning" element={<Positioning />} />
+            {/* The further modules: results screens, and one setup screen for all of them */}
+            <Route path="/forecasting" element={<Navigate to="/forecasting/new-product" replace />} />
+            <Route path="/forecasting/new-product" element={<ForecastingNew />} />
+            <Route path="/forecasting/existing-product" element={<ForecastingExisting />} />
+            <Route path="/:module/setup/:runId" element={<ModuleSetup />} />
             {/* Professor */}
             <Route path="/professor" element={<Navigate to="/professor/assignment" replace />} />
             <Route path="/professor/assignment" element={<AssignmentSetup />} />

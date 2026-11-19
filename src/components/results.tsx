@@ -10,7 +10,7 @@ import type { AttrId, GroupId, RunId } from '../data/alpineOat'
 import { importance } from '../lib/conjoint'
 import { cx } from '../lib/demo'
 import type { SizePart } from '../lib/sizeParts'
-import { DemoButton, EditableLabel, LinkButton, Marker, RunTag, SegName } from './ui'
+import { Button, DemoButton, EditableLabel, LinkButton, Marker, RunTag, SegName } from './ui'
 
 // ---------------------------------------------------------------- run header
 
@@ -19,12 +19,15 @@ export function RunHeader({
   summary,
   setupTo,
   compareTo,
+  onInterpret,
 }: {
   id: RunId
   summary: string
   /** The setup screen of this run, if the demo has one. */
   setupTo?: string
   compareTo: string
+  /** Where "Write interpretation" leads when the interpretation is on the same screen. Default: the interpretation screen. */
+  onInterpret?: () => void
 }) {
   return (
     <div className="flex items-start gap-3">
@@ -50,9 +53,15 @@ export function RunHeader({
         Compare
       </LinkButton>
       <DemoButton icon="code">Export as Python or R</DemoButton>
-      <LinkButton to="/interpretation" variant="pri" icon="pencil">
-        Write interpretation
-      </LinkButton>
+      {onInterpret ? (
+        <Button variant="pri" icon="pencil" onClick={onInterpret}>
+          Write interpretation
+        </Button>
+      ) : (
+        <LinkButton to="/interpretation" variant="pri" icon="pencil">
+          Write interpretation
+        </LinkButton>
+      )}
     </div>
   )
 }
@@ -68,16 +77,19 @@ export function Layer({
   title,
   note,
   last = false,
+  id,
   children,
 }: {
   n: number
   title: string
   note: string
   last?: boolean
+  /** A name to scroll to. The layer then stops below the top bar. */
+  id?: string
   children: ReactNode
 }) {
   return (
-    <section className="relative grid grid-cols-[150px_minmax(0,1fr)] gap-x-6 [&+section]:mt-8">
+    <section id={id} className="relative grid scroll-mt-[76px] grid-cols-[150px_minmax(0,1fr)] gap-x-6 [&+section]:mt-8">
       <div className="relative grid grid-cols-[26px_1fr] content-start gap-x-2.5">
         <span
           className={cx(

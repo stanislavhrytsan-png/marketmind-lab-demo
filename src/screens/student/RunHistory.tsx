@@ -6,28 +6,28 @@ import { ImportanceTable, SizeBar } from '../../components/results'
 import type { ImportanceColumn } from '../../components/results'
 import { Icon } from '../../components/Icon'
 import { Eyebrow, Page } from '../../components/Shell'
-import { Card, CheckMark, Hr, Note, RunTag, SegName, Tag } from '../../components/ui'
+import { Card, CheckMark, Hr, Note, RunTag, SegName, Select, Tag } from '../../components/ui'
 import {
   allColor,
   caseBrief,
   comparisons,
   competitors,
   course,
-  moduleNames,
   ownColor,
   runHistory,
-  runs,
   savedDesign,
   segmentComparison,
   segments,
 } from '../../data/alpineOat'
 import type { ModuleId, Run, RunId } from '../../data/alpineOat'
+import { moduleNames, moduleOrder, moduleShortNames, runs } from '../../data/library'
 import { importance, importanceOneModel, pct, pct1, sharesAgainstCompetitors } from '../../lib/conjoint'
 import { cx, useDemo } from '../../lib/demo'
 import type { SizePart } from '../../lib/sizeParts'
 
-const moduleOrder: ModuleId[] = ['segmentation', 'positioning', 'conjoint']
 const byId = (id: string) => runs.find((r) => r.id === id)
+/** With many modules the filter is a list to pick from. With few it is a row of chips, as in the concept. */
+const MANY_MODULES = moduleOrder.length > 4
 
 /** The letter that marks a run in a comparison. */
 function Letter({ is }: { is: 'A' | 'B' }) {
@@ -412,7 +412,7 @@ export default function RunHistory() {
     { id: 'all', label: `All ${visibleRuns.length}` },
     ...moduleOrder
       .filter((m) => count(m) > 0)
-      .map((m) => ({ id: m, label: `${m === 'conjoint' ? 'Conjoint' : moduleNames[m]} ${count(m)}` })),
+      .map((m) => ({ id: m, label: `${moduleShortNames[m]} ${count(m)}` })),
   ]
 
   const [a, b] = selected.map((id) => byId(id)!)
@@ -444,13 +444,27 @@ export default function RunHistory() {
               />
             </label>
           </div>
-          <div className="flex flex-wrap items-center gap-1.5 px-4 pt-2.5">
-            {chips.map((chip) => (
-              <button key={chip.id} type="button" aria-pressed={filter === chip.id} onClick={() => setFilter(chip.id)}>
-                <Tag tone={filter === chip.id ? 'primary' : 'outline'}>{chip.label}</Tag>
-              </button>
-            ))}
-          </div>
+          {MANY_MODULES ? (
+            <div className="px-4 pt-2.5">
+              <Select
+                label="Show the runs of"
+                value={filter}
+                onChange={(value) => setFilter(value as ModuleId | 'all')}
+                options={chips.map((chip) => ({
+                  value: chip.id,
+                  label: chip.id === 'all' ? `All modules, ${visibleRuns.length} runs` : `${moduleNames[chip.id]}, ${count(chip.id)} ${count(chip.id) === 1 ? 'run' : 'runs'}`,
+                }))}
+              />
+            </div>
+          ) : (
+            <div className="flex flex-wrap items-center gap-1.5 px-4 pt-2.5">
+              {chips.map((chip) => (
+                <button key={chip.id} type="button" aria-pressed={filter === chip.id} onClick={() => setFilter(chip.id)}>
+                  <Tag tone={filter === chip.id ? 'primary' : 'outline'}>{chip.label}</Tag>
+                </button>
+              ))}
+            </div>
+          )}
 
           {moduleOrder.map((m) => {
             const list = shown.filter((r) => r.module === m)

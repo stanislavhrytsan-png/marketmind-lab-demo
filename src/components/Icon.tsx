@@ -119,6 +119,61 @@ const paths = {
   ),
   bars: <path d="M4 20h16M7 20v-7M12 20V6M17 20v-10" />,
   restart: <path d="M4 12a8 8 0 1 1 2.6 5.9M4 20v-5h5" />,
+  alert: <path d="M12 4l9 16H3zM12 10v4.5M12 17.3h0" />,
+  // The further modules
+  forecasting: (
+    <>
+      <path d="M4 4v16h16" />
+      <path d="M7 17c2.5 0 3-9 5.5-9s3 9 5.5 9" />
+    </>
+  ),
+  pricing: (
+    <>
+      <path d="M3 11V4h7l11 11-7 7z" />
+      <circle cx="7.5" cy="8.5" r="1.4" />
+    </>
+  ),
+  targeting: (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <circle cx="12" cy="12" r="5" />
+      <path d="M12 12h0" />
+    </>
+  ),
+  lifetimeValue: (
+    <>
+      <path d="M20 12a8 8 0 1 1-2.3-5.6M20 3.5v4h-4" />
+      <circle cx="12" cy="10.3" r="2" />
+      <path d="M8.6 15.6c.6-1.6 1.8-2.4 3.4-2.4s2.8.8 3.4 2.4" />
+    </>
+  ),
+  allocation: (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 3v9l6.4 6.4M12 12H3" />
+    </>
+  ),
+  portfolio: (
+    <>
+      <rect x="3" y="3" width="18" height="18" rx="2" />
+      <path d="M9 3v18M15 3v18M3 9h18M3 15h18" />
+    </>
+  ),
+  panel: <path d="M4 8l4-2 4 3 4-2 4 1M4 13l4-1 4 2 4-3 4 2M4 18l4-2 4 1 4-1 4 2" />,
+  sentiment: (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M9 10h0M15 10h0M8.5 14c1 1.3 2.1 2 3.5 2s2.5-.7 3.5-2" />
+    </>
+  ),
+  network: (
+    <>
+      <circle cx="6" cy="7" r="2.2" />
+      <circle cx="18" cy="8" r="2.2" />
+      <circle cx="12" cy="18" r="2.2" />
+      <path d="M8.2 7.2l7.6.6M7.1 8.9l3.8 7.2M16.9 9.9l-3.8 6.2" />
+    </>
+  ),
 } satisfies Record<string, ReactNode>
 
 export type IconName = keyof typeof paths

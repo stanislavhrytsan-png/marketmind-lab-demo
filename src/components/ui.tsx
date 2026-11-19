@@ -388,7 +388,8 @@ export function Note({
   children,
 }: {
   icon?: IconName
-  tone?: 'neutral' | 'primary'
+  /** "warn" is for a warning of the engine: something the student must know before trusting a result. */
+  tone?: 'neutral' | 'primary' | 'warn'
   className?: string
   children: ReactNode
 }) {
@@ -396,7 +397,9 @@ export function Note({
     <div
       className={cx(
         'flex items-start gap-2.5 rounded-lg px-3 py-2.5 text-[13px]',
-        tone === 'primary' ? 'bg-primary-t text-primary-d' : 'bg-fill text-ink2',
+        tone === 'primary' && 'bg-primary-t text-primary-d',
+        tone === 'warn' && 'bg-warn-t text-warn',
+        tone === 'neutral' && 'bg-fill text-ink2',
         className,
       )}
     >

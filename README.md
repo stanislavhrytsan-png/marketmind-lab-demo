@@ -1,6 +1,6 @@
 # MarketMind Lab: clickable demo
 
-A front-end demo of MarketMind Lab, built from the design concept. It tells one connected story with the Alpine Oat Co. case: a student runs a conjoint analysis and interprets it with the AI tutor, then a professor sets up the assignment and reviews the submissions.
+A front-end demo of MarketMind Lab, built from the design concept. It tells one connected story with the Alpine Oat Co. case: a student runs a conjoint analysis and interprets it with the AI tutor, then a professor sets up the assignment and reviews the submissions. The module library next to the story holds further modules on the company data of the same case, starting with forecasting. They are listed under "The further modules".
 
 **The numbers are real, the AI tutor is not.** Every number on the screens is a result of the MarketMind Lab calculation engine on the fictional Alpine Oat Co. data. The engine calculated them once and wrote them into one file. The demo reads that file and does not run the engine itself. The AI tutor is still a script: no AI is called. There is no backend, no database and no login. The sections "Where the numbers come from" and "What is fake and what would be real" list this in detail.
 
@@ -110,11 +110,28 @@ About 5 minutes. Each step says what to click and what to say. Start on the Cour
 
 "Segmentation" and "Positioning" in the sidebar open three more screens. They are view-only: you can read them, open the details and hover the charts, but not change settings. On the positioning map the three switches under "Show on the map" work.
 
+The further modules each take one to two minutes. Their click paths are in the next section.
+
 ### Good to know while presenting
 
-- The student story starts just before the conjoint run. Until you press "Run 2 scenarios", the run history holds 5 runs. After that it holds 8.
+- The student story starts just before the conjoint run. The three conjoint runs appear in the run history when you press "Run 2 scenarios". The runs of the further modules are there from the start: in the story they come from the weekly exercises in October.
 - The two professor screens show the same assignment at two other moments: before it is published, and after the deadline.
 - A control that answers "Not part of this demo" exists in the concept but is not built here.
+
+## The further modules
+
+The modules below work with records the company keeps itself: sales, prices, customers. Each one follows the same pattern as the conjoint results: one headline, the key results, a card "Watch out" with a trap the engine found in the data, details on demand, and the AI tutor in Coach mode at the end. Where the arithmetic is simple, the student can change a number and the browser calculates the answer with the engine's formula. "Open setup" under the run name shows every setting with the engine's own texts on what it does and when to choose it.
+
+Start each path with a click on the module in the sidebar.
+
+### Forecasting
+
+- **Say:** "A new product first. The headline is a finding, not a decision: the subscription is heading for about 59,400 households."
+- **Point at** the card "Watch out". **Say:** "The engine found this trap, and the screen keeps it in view. After 4 quarters the same model said 429,910 subscribers by the end of 2025. In reality there were 55,250."
+- **In "What if",** drag "Imitation (q)" to the left. The curve flattens and the peak moves to the right. **Say:** "The estimate is the engine's. The curve for other values is calculated in the browser, with the engine's formula."
+- **Optional:** choose "Typical durable product" under "Start from". The curve of a similar product replaces the estimate.
+- **Scroll to "Interpretation".** Click the reply field, then send. **Say:** "The student's own reading comes first. The coach answers with a question."
+- **Optional:** click "Existing product" at the top, then "Vanilla 1 L". Two methods are almost level, and the screen says that a narrow win proves little.
 
 ## Where the numbers come from
 
@@ -124,8 +141,9 @@ The calculation engine is in the folder `engine`, next to this one. One command 
 cd ../engine && .venv/bin/python -m marketmind.export_demo
 ```
 
-- **Eight real runs.** The file holds the eight runs of the run history: SEG-01 to SEG-04, POS-01 and CJ-01 to CJ-03. Each one is a real run of the engine with the settings the demo names.
-- **Texts follow the numbers.** Sentences that quote a number are built from the file in `src/data/alpineOat.ts`. This covers the tutor script, Lea's texts and the feedback draft. A text cannot disagree with a chart.
+- **Real runs only.** The file holds the eight runs of the assignment (SEG-01 to SEG-04, POS-01 and CJ-01 to CJ-03) and the runs of the further modules (FC-01 to FC-04 for forecasting). Each one is a real run of the engine with the settings the demo names.
+- **The engine's own words.** The file also holds the engine's description of every setting of the further modules (what it does, when to choose it), and the warnings and reading notes of each result. The setup screens and the notes marked "The engine says" show them word for word.
+- **Texts follow the numbers.** Sentences that quote a number are built from the file: in `src/data/alpineOat.ts` for the assignment, and in one data file per further module (for example `src/data/forecasting.ts`). This covers the tutor scripts, Lea's texts and the feedback draft. A text cannot disagree with a chart.
 - **Do not edit the file by hand.** Change the engine or its data, then run the export again.
 
 Three checks keep the demo and the engine together:
@@ -133,7 +151,7 @@ Three checks keep the demo and the engine together:
 | Check | What it tells you |
 |---|---|
 | `python -m marketmind.export_demo --check` in the engine folder | Whether the file is still exactly what the engine gives. The engine's test suite runs the same check. |
-| `npm run check` in this folder | Whether the simulator in the browser gives the engine's shares (within 0.1 percentage points) and the engine's best products, and whether the presenting script above quotes the engine's numbers. |
+| `npm run check` in this folder | Whether everything the browser calculates is what the engine gives: the market simulator (shares within 0.1 percentage points, the same best products) and the what-if views of the further modules (within 0.1% of the engine's value). And whether the presenting scripts above quote the engine's numbers. The list of checks is in `src/lib/checks.ts`. |
 | `npm run build` | Whether the data file still fits the screens. |
 
 ## What is fake and what would be real
@@ -152,7 +170,9 @@ Three checks keep the demo and the engine together:
 | Assignment setup | The choices change the preview. "Publish" changes nothing outside this screen. | Creates the assignment for the class and locks the AI mode. |
 | Submissions review | One student is filled in (Lea Brunner). The class numbers, the common mistakes and the feedback draft are fixed text with the engine's numbers. "Approve" only changes the counters. | All submissions, mistakes found across the class, an AI draft per student, sent after approval. |
 | Accounts | No login. The name block at the bottom left switches between student and professor. | Accounts and roles. |
-| Other modules | The 9 "coming soon" modules are names in the navigation. The engine already calculates them. | Built into the interface one by one. |
+| Forecasting | Real results of the engine, calculated before: the Bass model on 12 quarters of sales, the same model from the first 4, 6 and 8 quarters, and four methods compared on three sales series. The what-if view draws the Bass curve for other values in the browser, with the engine's formula. The setup screens are view-only. | Estimated when the student presses Run, on the data and with the settings the student picked. |
+| AI tutor in the further modules | One short scripted exchange per module, in Coach mode. Fixed text with the engine's numbers. | A language model, inside the limits of the mode the professor set. |
+| Modules marked "coming soon" | Names in the navigation. The engine already calculates them. | Built into the interface one by one. |
 
 Controls that the concept shows but the demo does not build answer with "Not part of this demo" when clicked. Examples: Export as Python or R, Add level, Add attribute, Add restriction, Add design, Pin another result, the datasets "Brand perceptions" and "Conjoint choices", Ideal points on the map, Prepare a recap for the next lecture, Compare drafts, Discard draft, Save as draft, the quiz and feedback buttons on the course home, and the help button.
 
@@ -162,26 +182,34 @@ Controls that the concept shows but the demo does not build answer with "Not par
 demo/
   src/
     data/engine_results.json  the engine's results, written by the engine's export command
-    data/alpineOat.ts      all texts of the demo, and how the engine's numbers reach the screens
+    data/alpineOat.ts      the texts of the assignment, and how the engine's numbers reach its screens
+    data/forecasting.ts    one data file per further module: its texts, runs, setup and tutor script
+    data/moduleKit.ts      what the further modules share: settings help of the engine, setup, tutor script
+    data/library.ts        all modules and all runs in one place
     lib/conjoint.ts        the simulator arithmetic (utility, logit shares, importance, search)
-    lib/                   demo state (which runs exist, run labels), window scaling
+    lib/forecasting.ts     one file per calculation in the browser, each with its check against the engine
+    lib/checks.ts          the list of everything `npm run check` compares
+    lib/                   demo state (which runs exist, run labels), number formats, chart scales, window scaling
     components/            reusable components that follow the style guide
       ui.tsx               buttons, cards, tags, run tag, AI mode chip, option card, details
       Shell.tsx            sidebar, top bar, page frame
       results.tsx          run header, depth rail, importance table, segment size bar
       charts.tsx           Recharts: part-worths and bar charts
+      plot.tsx             plain SVG: the line, point and column charts of the further modules
+      module.tsx           headline, numbers, the "Watch out" card, slider, and the tutor card of the further modules
       PerceptualMap.tsx    Recharts: the positioning map
       Dendrogram.tsx       the segmentation tree (plain SVG)
       tutor.tsx            mode plate and AI tutor panel
     screens/student/       one file per student screen
     screens/professor/     one file per professor screen
+    screens/modules/       the screens of the further modules, and one setup screen for all of them
   scripts/
     check-engine-numbers.mjs  what `npm run check` runs
 ```
 
 Built with React, Vite, TypeScript, Tailwind CSS and Recharts. The colours, type sizes and spacing in `src/index.css` are the tokens of the concept's style guide.
 
-To change a text, edit `src/data/alpineOat.ts`. To change a number, change the engine and run the export again (see "Where the numbers come from"). In development mode the browser console shows a warning if the simulator and the engine disagree.
+To change a text, edit `src/data/alpineOat.ts` or the data file of the module. To change a number, change the engine and run the export again (see "Where the numbers come from"). In development mode the browser console shows a warning if a calculation in the browser and the engine disagree.
 
 ## Where the demo differs from the concept screens
 
@@ -196,3 +224,5 @@ To change a text, edit `src/data/alpineOat.ts`. To change a number, change the e
 - **The engine's variables.** The concept draws 8 basis variables on a scale from 1 to 7 and 6 descriptors. The demo shows the engine's data: 10 basis variables on a scale from 0 to 9 and 4 descriptors. The layout is the same.
 - **The engine's numbers.** All numbers differ from the concept images, because they are now calculated. Two things changed with them: in the comparison of SEG-02 and SEG-03 it is Health-focused that splits, and on the positioning map the labels sit where the calculated map leaves room.
 - **Submissions.** The student list shows all students when the screen opens. The concept highlights "To review" but lists everyone.
+- **The further modules.** The concept draws three modules and lists nine as "coming soon". Their screens are new. They reuse the patterns of the concept: run header, depth rail, guided settings, the mode plate. Three things are new: the card "Watch out", sliders, and line charts.
+- **Run history.** With more than four modules the filter is a list to pick from. The concept draws chips, which do not fit twelve modules.

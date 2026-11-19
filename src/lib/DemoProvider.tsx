@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type { ReactNode } from 'react'
-import { courseHome, runs } from '../data/alpineOat'
+import { courseHome } from '../data/alpineOat'
 import type { RunId } from '../data/alpineOat'
+import { runs } from '../data/library'
 import { DemoContext } from './demo'
 import type { DemoState } from './demo'
 

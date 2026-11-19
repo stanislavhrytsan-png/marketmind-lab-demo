@@ -1,5 +1,5 @@
 /** Class names and small lookups shared by several components. */
-import type { Mode } from '../data/alpineOat'
+import type { Mode, ModuleId } from '../data/alpineOat'
 import { cx } from '../lib/demo'
 import type { IconName } from './Icon'
 
@@ -23,3 +23,19 @@ export function buttonClass(variant: ButtonVariant = 'sec', size: ButtonSize = '
 
 const modeIcons: Record<Mode, IconName> = { off: 'off', coach: 'coach', explain: 'explain' }
 export const modeIcon = (mode: Mode) => modeIcons[mode]
+
+/** Every module has its own icon, in the navigation and in the professor's module list. */
+export const moduleIcons: Record<ModuleId, IconName> = {
+  segmentation: 'segmentation',
+  positioning: 'positioning',
+  conjoint: 'conjoint',
+  forecasting: 'forecasting',
+  pricing: 'pricing',
+  targeting: 'targeting',
+  lifetimeValue: 'lifetimeValue',
+  allocation: 'allocation',
+  portfolio: 'portfolio',
+  panel: 'panel',
+  sentiment: 'sentiment',
+  network: 'network',
+}

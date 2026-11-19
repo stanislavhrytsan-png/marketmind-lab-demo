@@ -3,8 +3,9 @@ import { Icon } from '../../components/Icon'
 import { Page } from '../../components/Shell'
 import { buttonClass } from '../../components/styles'
 import { Button, Card, Hr, LinkButton, ModeChip, NamedRun, Note, Tag } from '../../components/ui'
-import { assignment, assignmentRows, course, courseHome, modes, runs } from '../../data/alpineOat'
+import { assignment, assignmentRows, course, courseHome, modes } from '../../data/alpineOat'
 import type { AssignmentRow, Mode, RunId } from '../../data/alpineOat'
+import { runs } from '../../data/library'
 import { cx, useDemo } from '../../lib/demo'
 
 /** Six-step progress line: done, current, still to do. */

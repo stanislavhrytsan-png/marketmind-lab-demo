@@ -6,11 +6,13 @@
  *
  * No model is called. Every tutor message is scripted text from the data file.
  */
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
 import type { ReactNode } from 'react'
 import { interpretation, modes, professor, tutor } from '../data/alpineOat'
 import type { ChatMessage, Mode } from '../data/alpineOat'
+import { useCoachScript } from '../lib/coach'
 import { cx, useDemo } from '../lib/demo'
+import { wordCount } from '../lib/format'
 import { Icon } from './Icon'
 import { modeIcon } from './styles'
 import { Button, StepNumber } from './ui'
@@ -24,7 +26,16 @@ const modeTitle: Record<Mode, string> = { off: 'Off', coach: 'Coach mode', expla
  * The mode plate. Students cannot change the mode: the two modes that are not
  * in use carry a lock.
  */
-export function ModePlate({ mode, reason }: { mode: Mode; reason: string }) {
+export function ModePlate({
+  mode,
+  reason,
+  setFor = 'this assignment',
+}: {
+  mode: Mode
+  reason: string
+  /** What the mode was set for: "this assignment", or "the weekly exercises". */
+  setFor?: string
+}) {
   return (
     <div className="border-b border-primary-l bg-primary-t px-5 py-4">
       <div className="flex items-center gap-3">
@@ -62,7 +73,7 @@ export function ModePlate({ mode, reason }: { mode: Mode; reason: string }) {
         })}
       </div>
       <p className="mt-3 text-[13px] text-primary-d">
-        <b>{modeTitle[mode]}</b>, set by {professor.shortName} for this assignment. Her reason: "{reason}"
+        <b>{modeTitle[mode]}</b>, set by {professor.shortName} for {setFor}. Her reason: "{reason}"
       </p>
     </div>
   )
@@ -90,7 +101,73 @@ function Message({ message, name }: { message: ChatMessage; name?: string }) {
 
 export { Message as ChatBubble }
 
-function SectionHead({ n, title, note }: { n: number; title: string; note: ReactNode }) {
+/** The messages of a conversation, with the line that shows the coach is writing. */
+export function Conversation({ messages, thinking }: { messages: ChatMessage[]; thinking: boolean }) {
+  return (
+    <div className="mt-3 flex flex-col gap-2.5" aria-live="polite">
+      {messages.map((message, i) => (
+        <Message key={i} message={message} />
+      ))}
+      {thinking && (
+        <div className="fade-in max-w-[88%] rounded-[10px] rounded-tl-sm bg-primary-t px-3 py-2.5 text-[13px] text-ink3">
+          Coach is writing…
+        </div>
+      )}
+    </div>
+  )
+}
+
+/** The reply field. The reply is scripted too: clicking the field inserts the student's next answer. */
+export function ReplyField({
+  reply,
+  thinking,
+  scriptDone,
+  onInsert,
+  onSend,
+}: {
+  reply: string
+  thinking: boolean
+  scriptDone: boolean
+  onInsert: () => void
+  onSend: () => void
+}) {
+  const { coach } = tutor
+  return (
+    <div
+      className={cx(
+        'mt-2 flex min-h-10 items-center gap-2 rounded-md border bg-white py-1.5 pl-2.5 pr-1.5 text-[14px]',
+        scriptDone ? 'border-line bg-fill text-ink3' : 'border-ctl focus-within:border-primary',
+      )}
+    >
+      {scriptDone ? (
+        <span className="flex-1 py-1 text-[13px]">{coach.closing}</span>
+      ) : (
+        <>
+          <button
+            type="button"
+            aria-label="Reply to the coach. In the demo, a click inserts the next scripted reply."
+            data-tip={reply ? undefined : 'Demo: click to insert the next scripted reply'}
+            onClick={onInsert}
+            className={cx('min-w-0 flex-1 cursor-text py-1 text-left', reply ? 'text-ink' : 'text-ink3')}
+          >
+            {reply || coach.replyPlaceholder}
+          </button>
+          <button
+            type="button"
+            aria-label="Send reply"
+            onClick={onSend}
+            disabled={!reply || thinking}
+            className="grid h-7 w-7 flex-none place-items-center self-end rounded text-primary transition-colors duration-150 ease-std hover:bg-primary-t disabled:text-ctl2 disabled:hover:bg-transparent"
+          >
+            <Icon name="send" size={16} />
+          </button>
+        </>
+      )}
+    </div>
+  )
+}
+
+export function SectionHead({ n, title, note }: { n: number; title: string; note: ReactNode }) {
   return (
     <div className="flex items-center gap-3">
       <StepNumber n={n} size={22} />
@@ -101,7 +178,7 @@ function SectionHead({ n, title, note }: { n: number; title: string; note: React
   )
 }
 
-function VisibleNote({ children }: { children: ReactNode }) {
+export function VisibleNote({ children }: { children: ReactNode }) {
   return (
     <p className="mt-2 flex items-start gap-1.5 text-[12.5px] text-ink2">
       <Icon name="eye" size={14} className="mt-0.5" />
@@ -110,7 +187,6 @@ function VisibleNote({ children }: { children: ReactNode }) {
   )
 }
 
-const wordCount = (text: string) => text.trim().split(/\s+/).filter(Boolean).length
 
 /**
  * The last block of the panel: hint, reply field and the line that says the
@@ -123,110 +199,35 @@ const FOOTER = 'sticky bottom-0 mt-3 border-t border-line2 bg-white px-5 pb-4 pt
 
 function Coach({ onNewMessage }: { onNewMessage: () => void }) {
   const { coach } = tutor
-  const [messages, setMessages] = useState<ChatMessage[]>(coach.opening)
-  const [turn, setTurn] = useState(0)
-  const [hints, setHints] = useState(0)
-  const [reply, setReply] = useState('')
-  const [thinking, setThinking] = useState(false)
-  const timer = useRef<number | undefined>(undefined)
-  useEffect(() => () => window.clearTimeout(timer.current), [])
-
-  // Bring a new message into view. The opening conversation does not move the panel.
-  const seen = useRef(messages.length)
-  useEffect(() => {
-    if (messages.length > seen.current || thinking) onNewMessage()
-    seen.current = messages.length
-  }, [messages, thinking, onNewMessage])
-
-  const scriptDone = turn >= coach.turns.length
-  const next = coach.turns[turn]
-
-  /** The coach "answers" after a short pause, with the next scripted line. */
-  const coachSays = (message: ChatMessage, after?: () => void) => {
-    setThinking(true)
-    timer.current = window.setTimeout(() => {
-      setMessages((old) => [...old, message])
-      setThinking(false)
-      after?.()
-    }, 900)
-  }
-
-  const send = () => {
-    if (!reply || thinking || !next) return
-    setMessages((old) => [...old, { from: 'student', text: reply }])
-    setReply('')
-    coachSays({ from: 'coach', text: next.coach }, () => setTurn((t) => t + 1))
-  }
-
-  const askHint = () => {
-    if (hints >= coach.hintLimit || thinking) return
-    const n = hints + 1
-    setHints(n)
-    coachSays({ from: 'coach', text: coach.hints[n - 1], hint: n })
-  }
+  const chat = useCoachScript(coach, onNewMessage)
 
   return (
     <>
       <div className="flex-1 px-5 pt-5">
         <SectionHead n={2} title="Coach" note={coach.subtitle} />
-        <div className="mt-3 flex flex-col gap-2.5" aria-live="polite">
-          {messages.map((message, i) => (
-            <Message key={i} message={message} />
-          ))}
-          {thinking && (
-            <div className="fade-in max-w-[88%] rounded-[10px] rounded-tl-sm bg-primary-t px-3 py-2.5 text-[13px] text-ink3">
-              Coach is writing…
-            </div>
-          )}
-        </div>
+        <Conversation messages={chat.messages} thinking={chat.thinking} />
       </div>
 
       <div className={FOOTER}>
         <div className="flex items-center gap-3">
-          <Button size="sm" icon="bulb" onClick={askHint} disabled={hints >= coach.hintLimit || thinking}>
-            {hints >= coach.hintLimit ? 'No hints left' : 'Ask for a hint'}
+          <Button size="sm" icon="bulb" onClick={chat.askHint} disabled={chat.hints >= chat.hintLimit || chat.thinking}>
+            {chat.hints >= chat.hintLimit ? 'No hints left' : 'Ask for a hint'}
           </Button>
           <span className="text-[12.5px] text-ink2">
-            {hints} of {coach.hintLimit} hints used
+            {chat.hints} of {chat.hintLimit} hints used
           </span>
           <span className="flex-1" />
           <span className="cursor-help text-[12.5px] text-ink3" tabIndex={0} data-tip={coach.whyNoAnswer}>
             Why no direct answer?
           </span>
         </div>
-
-        {/* The reply is scripted too: clicking the field inserts the student's next answer. */}
-        <div
-          className={cx(
-            'mt-2 flex min-h-10 items-center gap-2 rounded-md border bg-white py-1.5 pl-2.5 pr-1.5 text-[14px]',
-            scriptDone ? 'border-line bg-fill text-ink3' : 'border-ctl focus-within:border-primary',
-          )}
-        >
-          {scriptDone ? (
-            <span className="flex-1 py-1 text-[13px]">{coach.closing}</span>
-          ) : (
-            <>
-              <button
-                type="button"
-                aria-label="Reply to the coach. In the demo, a click inserts the next scripted reply."
-                data-tip={reply ? undefined : 'Demo: click to insert the next scripted reply'}
-                onClick={() => !reply && setReply(next.student)}
-                className={cx('min-w-0 flex-1 cursor-text py-1 text-left', reply ? 'text-ink' : 'text-ink3')}
-              >
-                {reply || coach.replyPlaceholder}
-              </button>
-              <button
-                type="button"
-                aria-label="Send reply"
-                onClick={send}
-                disabled={!reply || thinking}
-                className="grid h-7 w-7 flex-none place-items-center self-end rounded text-primary transition-colors duration-150 ease-std hover:bg-primary-t disabled:text-ctl2 disabled:hover:bg-transparent"
-              >
-                <Icon name="send" size={16} />
-              </button>
-            </>
-          )}
-        </div>
+        <ReplyField
+          reply={chat.reply}
+          thinking={chat.thinking}
+          scriptDone={chat.scriptDone}
+          onInsert={chat.insertReply}
+          onSend={chat.send}
+        />
         <VisibleNote>{tutor.visibleNote}</VisibleNote>
       </div>
     </>

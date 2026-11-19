@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import type { ReactNode } from 'react'
 import { Icon } from '../../components/Icon'
-import type { IconName } from '../../components/Icon'
 import { Eyebrow, Page } from '../../components/Shell'
+import { moduleIcons } from '../../components/styles'
 import { ModePlate } from '../../components/tutor'
 import {
   Button,
@@ -19,6 +19,7 @@ import {
 } from '../../components/ui'
 import { assignmentSetup, course, modes } from '../../data/alpineOat'
 import type { Mode, ModuleId } from '../../data/alpineOat'
+import { comingSoonNote, modules } from '../../data/library'
 import { cx, useDemo } from '../../lib/demo'
 
 const modeOrder: Mode[] = ['off', 'coach', 'explain']
@@ -27,12 +28,6 @@ const settingsTitle: Record<Mode, string> = {
   coach: 'Coach settings',
   explain: 'Explain settings',
 }
-const moduleIcons: Record<ModuleId, IconName> = {
-  segmentation: 'segmentation',
-  positioning: 'positioning',
-  conjoint: 'conjoint',
-}
-
 function Block({ n, title, note, first = false }: { n: number; title: string; note?: string; first?: boolean }) {
   return (
     <div className={cx('flex items-center gap-2.5', !first && 'mt-8')}>
@@ -79,7 +74,7 @@ export default function AssignmentSetup() {
   const setup = assignmentSetup
 
   const [caseId, setCaseId] = useState(setup.cases[0].id)
-  const [ticked, setTicked] = useState<ModuleId[]>(setup.modules.map((m) => m.id))
+  const [ticked, setTicked] = useState<ModuleId[]>(setup.modulesTicked)
   const [format, setFormat] = useState<'Individual' | 'Groups'>('Individual')
   const [mode, setMode] = useState<Mode>('coach')
   const [reasons, setReasons] = useState<Record<Mode, string>>({
@@ -93,7 +88,7 @@ export default function AssignmentSetup() {
 
   const chosenCase = setup.cases.find((c) => c.id === caseId)!
   const moduleLine =
-    setup.modules
+    modules.active
       .filter((m) => ticked.includes(m.id))
       .map((m) => m.name)
       .join(', ') || 'No module ticked yet'
@@ -128,7 +123,7 @@ export default function AssignmentSetup() {
           <Block n={2} title="Modules" note={setup.modulesNote} />
           <Card className="mt-3 px-5 pb-1.5 pt-0.5">
             <div className="-mt-px">
-              {setup.modules.map((m) => {
+              {modules.active.map((m) => {
                 const on = ticked.includes(m.id)
                 return (
                   <button
@@ -141,13 +136,13 @@ export default function AssignmentSetup() {
                   >
                     <CheckMark on={on} />
                     <Icon name={moduleIcons[m.id]} size={17} className="text-primary" />
-                    <span className="w-[150px] font-semibold">{m.name}</span>
+                    <span className="w-[190px] flex-none font-semibold">{m.name}</span>
                     <span className="text-[13px] text-ink2">{m.text}</span>
                   </button>
                 )
               })}
             </div>
-            <p className="border-t border-line2 py-2.5 text-[13px] text-ink3">{setup.modulesFootnote}</p>
+            {comingSoonNote && <p className="border-t border-line2 py-2.5 text-[13px] text-ink3">{comingSoonNote}</p>}
           </Card>
 
           {/* 3. Deadline and format */}
