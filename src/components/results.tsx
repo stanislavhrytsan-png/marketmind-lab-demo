@@ -20,14 +20,17 @@ export function RunHeader({
   setupTo,
   compareTo,
   onInterpret,
+  interpretTo = '/interpretation',
 }: {
   id: RunId
   summary: string
   /** The setup screen of this run, if the demo has one. */
   setupTo?: string
   compareTo: string
-  /** Where "Write interpretation" leads when the interpretation is on the same screen. Default: the interpretation screen. */
+  /** What "Write interpretation" does when the interpretation is on the same screen. Default: open the interpretation screen. */
   onInterpret?: () => void
+  /** Where "Write interpretation" leads instead of the interpretation screen of the assignment. */
+  interpretTo?: string
 }) {
   return (
     <div className="flex items-start gap-3">
@@ -58,7 +61,7 @@ export function RunHeader({
           Write interpretation
         </Button>
       ) : (
-        <LinkButton to="/interpretation" variant="pri" icon="pencil">
+        <LinkButton to={interpretTo} variant="pri" icon="pencil">
           Write interpretation
         </LinkButton>
       )}

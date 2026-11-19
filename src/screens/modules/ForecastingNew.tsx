@@ -19,6 +19,7 @@ import type { BassParameters } from '../../data/forecasting'
 import { cx } from '../../lib/demo'
 import { bassCurve, bassPeak, runningTotal } from '../../lib/forecasting'
 import { pct, roughly, signedPct, thousands } from '../../lib/format'
+import { INTERPRETATION, useInterpretation } from '../../lib/interpretation'
 import { chart, niceDomain, spread } from '../../lib/plot'
 
 const s = bassScreen
@@ -432,6 +433,7 @@ function ScenarioTable() {
 
 export default function ForecastingNew() {
   const { details } = s
+  const toInterpretation = useInterpretation()
   return (
     <Page crumbs={[course.name, caseBrief.name, 'Forecasting', s.runId]}>
       <ModuleTabs tabs={forecastingTabs} label="Forecasting screens" />
@@ -440,7 +442,7 @@ export default function ForecastingNew() {
         summary={s.summary}
         setupTo={`/forecasting/setup/${s.runId}`}
         compareTo={`/runs?a=${s.runId}`}
-        onInterpret={() => document.getElementById('interpretation')?.scrollIntoView({ behavior: 'smooth' })}
+        onInterpret={toInterpretation}
       />
 
       <div className="mt-8">
@@ -505,7 +507,7 @@ export default function ForecastingNew() {
           </Accordion>
         </Layer>
 
-        <Layer n={5} title="Interpretation" note="Your reading first, then the coach" id="interpretation" last>
+        <Layer n={5} title="Interpretation" note="Your reading first, then the coach" id={INTERPRETATION} last>
           <CoachCard script={s.coach} />
         </Layer>
       </div>

@@ -1,6 +1,6 @@
 # MarketMind Lab: clickable demo
 
-A front-end demo of MarketMind Lab, built from the design concept. It tells one connected story with the Alpine Oat Co. case: a student runs a conjoint analysis and interprets it with the AI tutor, then a professor sets up the assignment and reviews the submissions. The module library next to the story holds further modules on the company data of the same case, starting with forecasting. They are listed under "The further modules".
+A front-end demo of MarketMind Lab, built from the design concept. It tells one connected story with the Alpine Oat Co. case: a student runs a conjoint analysis and interprets it with the AI tutor, then a professor sets up the assignment and reviews the submissions. The module library next to the story holds further modules on the company data of the same case. They are listed under "The further modules".
 
 **The numbers are real, the AI tutor is not.** Every number on the screens is a result of the MarketMind Lab calculation engine on the fictional Alpine Oat Co. data. The engine calculated them once and wrote them into one file. The demo reads that file and does not run the engine itself. The AI tutor is still a script: no AI is called. There is no backend, no database and no login. The sections "Where the numbers come from" and "What is fake and what would be real" list this in detail.
 
@@ -133,6 +133,13 @@ Start each path with a click on the module in the sidebar.
 - **Scroll to "Interpretation".** Click the reply field, then send. **Say:** "The student's own reading comes first. The coach answers with a question."
 - **Optional:** click "Existing product" at the top, then "Vanilla 1 L". Two methods are almost level, and the screen says that a narrow win proves little.
 
+### Price optimization
+
+- **Say:** "Ten prices were tested in stores. The engine fits three forms of demand curve and reads the best price from the one that fits best: profit is highest at about CHF 2.47."
+- **Point at** the card "Watch out". **Say:** "Two curves fit the tests equally well and agree on the price. The third fits worse and recommends CHF 1.90. If the best curve is right, that price gives away 28% of the profit. The engine's own warning is quoted under the table."
+- **In "What if",** drag "Unit cost" to the right: the best price rises. Then drag "Your price" away from the best price: the last number says how much profit that costs.
+- **Optional:** click "From the conjoint study" at the top. The same question, answered with the market simulator of the conjoint study: CHF 3.16. Two sources, two answers, and the screen says what each one measures.
+
 ## Where the numbers come from
 
 The calculation engine is in the folder `engine`, next to this one. One command runs it on the Alpine Oat Co. data and writes everything the demo shows into `src/data/engine_results.json`:
@@ -141,7 +148,7 @@ The calculation engine is in the folder `engine`, next to this one. One command 
 cd ../engine && .venv/bin/python -m marketmind.export_demo
 ```
 
-- **Real runs only.** The file holds the eight runs of the assignment (SEG-01 to SEG-04, POS-01 and CJ-01 to CJ-03) and the runs of the further modules (FC-01 to FC-04 for forecasting). Each one is a real run of the engine with the settings the demo names.
+- **Real runs only.** The file holds the eight runs of the assignment (SEG-01 to SEG-04, POS-01 and CJ-01 to CJ-03) and the runs of the further modules: FC-01 to FC-04 (forecasting) and PR-01 to PR-04 (price optimization). Each one is a real run of the engine with the settings the demo names.
 - **The engine's own words.** The file also holds the engine's description of every setting of the further modules (what it does, when to choose it), and the warnings and reading notes of each result. The setup screens and the notes marked "The engine says" show them word for word.
 - **Texts follow the numbers.** Sentences that quote a number are built from the file: in `src/data/alpineOat.ts` for the assignment, and in one data file per further module (for example `src/data/forecasting.ts`). This covers the tutor scripts, Lea's texts and the feedback draft. A text cannot disagree with a chart.
 - **Do not edit the file by hand.** Change the engine or its data, then run the export again.
@@ -171,6 +178,7 @@ Three checks keep the demo and the engine together:
 | Submissions review | One student is filled in (Lea Brunner). The class numbers, the common mistakes and the feedback draft are fixed text with the engine's numbers. "Approve" only changes the counters. | All submissions, mistakes found across the class, an AI draft per student, sent after approval. |
 | Accounts | No login. The name block at the bottom left switches between student and professor. | Accounts and roles. |
 | Forecasting | Real results of the engine, calculated before: the Bass model on 12 quarters of sales, the same model from the first 4, 6 and 8 quarters, and four methods compared on three sales series. The what-if view draws the Bass curve for other values in the browser, with the engine's formula. The setup screens are view-only. | Estimated when the student presses Run, on the data and with the settings the student picked. |
+| Price optimization | Real results of the engine, calculated before: three forms of demand curve fitted to the price tests of three products, the best price of each, and a demand curve from the conjoint study. The what-if view moves along the engine's curves in the browser: another unit cost, another form, another price. | Fitted when the student presses Run, on the data and with the settings the student picked. |
 | AI tutor in the further modules | One short scripted exchange per module, in Coach mode. Fixed text with the engine's numbers. | A language model, inside the limits of the mode the professor set. |
 | Modules marked "coming soon" | Names in the navigation. The engine already calculates them. | Built into the interface one by one. |
 
@@ -183,11 +191,11 @@ demo/
   src/
     data/engine_results.json  the engine's results, written by the engine's export command
     data/alpineOat.ts      the texts of the assignment, and how the engine's numbers reach its screens
-    data/forecasting.ts    one data file per further module: its texts, runs, setup and tutor script
+    data/forecasting.ts    one data file per further module (forecasting, pricing, ...): its texts, runs, setup and tutor script
     data/moduleKit.ts      what the further modules share: settings help of the engine, setup, tutor script
     data/library.ts        all modules and all runs in one place
     lib/conjoint.ts        the simulator arithmetic (utility, logit shares, importance, search)
-    lib/forecasting.ts     one file per calculation in the browser, each with its check against the engine
+    lib/forecasting.ts     one file per calculation in the browser (forecasting, pricing, ...), each with its check against the engine
     lib/checks.ts          the list of everything `npm run check` compares
     lib/                   demo state (which runs exist, run labels), number formats, chart scales, window scaling
     components/            reusable components that follow the style guide

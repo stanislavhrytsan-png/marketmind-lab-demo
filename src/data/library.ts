@@ -10,10 +10,12 @@ import { surveyModules, surveyRuns } from './alpineOat'
 import type { FurtherModuleId, ModuleId, Run, RunId } from './alpineOat'
 import { forecastingModule, forecastingRuns, forecastingSetups } from './forecasting'
 import type { FurtherModule, SetupInfo } from './moduleKit'
+import { pricingModule, pricingRuns, pricingSetups } from './pricing'
 
 /** The further modules that are built, in the order of the navigation. */
 const built: { module: FurtherModule; runs: Run[]; setups: SetupInfo[] }[] = [
   { module: forecastingModule, runs: forecastingRuns, setups: forecastingSetups },
+  { module: pricingModule, runs: pricingRuns, setups: pricingSetups },
 ]
 
 /** The names of the further modules that are not built yet, in the order of the concept. */

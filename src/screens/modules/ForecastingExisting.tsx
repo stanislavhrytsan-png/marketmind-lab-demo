@@ -17,6 +17,7 @@ import { forecastingTabs, narrowWins, seriesRunIds, seriesScreen } from '../../d
 import type { SeriesRunId } from '../../data/forecasting'
 import { cx } from '../../lib/demo'
 import { fixed, monthName, pct, signedPct, thousands } from '../../lib/format'
+import { atInterpretation } from '../../lib/interpretation'
 import { chart, niceDomain, spread } from '../../lib/plot'
 
 type Screen = ReturnType<typeof seriesScreen>
@@ -383,7 +384,14 @@ export default function ForecastingExisting() {
         <span className="mt-[5px] text-[13px] text-ink2">Sales series</span>
         <SegmentedControl label="Sales series" value={id} onChange={(run) => setParams({ run }, { replace: true })} options={seriesOptions} />
       </div>
-      <RunHeader key={id} id={s.runId} summary={s.summary} setupTo={`/forecasting/setup/${s.runId}`} compareTo={`/runs?a=${seriesRunIds[0]}&b=${id === seriesRunIds[0] ? seriesRunIds[1] : id}`} />
+      <RunHeader
+        key={id}
+        id={s.runId}
+        summary={s.summary}
+        setupTo={`/forecasting/setup/${s.runId}`}
+        compareTo={`/runs?a=${seriesRunIds[0]}&b=${id === seriesRunIds[0] ? seriesRunIds[1] : id}`}
+        interpretTo={atInterpretation(forecastingTabs[0].to)}
+      />
 
       <div className="mt-8">
         <Layer n={1} title="Headline" note="The one thing to take away">

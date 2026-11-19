@@ -265,6 +265,23 @@ export function Mark({
   )
 }
 
+/** A quiet band over a stretch the data does not cover, for example prices that were never tested. From and to are in pixels. */
+export function Shade({ frame, from, to, label }: { frame: Frame; from: number; to: number; label?: string }) {
+  const left = Math.min(from, to)
+  const width = Math.abs(to - from)
+  if (width < 1) return null
+  return (
+    <g>
+      <rect x={left} y={frame.top} width={width} height={frame.bottom - frame.top} fill={chart.ink} opacity={0.05} />
+      {label && width > 44 && (
+        <text x={left + width / 2} y={frame.bottom - 8} textAnchor="middle" fontSize={11.5} fill={chart.ink3}>
+          {label}
+        </text>
+      )}
+    </g>
+  )
+}
+
 /** A vertical hairline with a small label at its top, for example the peak or the best price. */
 export function VRule({ x, top, bottom, color = chart.ink3, dashed = true }: { x: number; top: number; bottom: number; color?: string; dashed?: boolean }) {
   return <path d={`M${x} ${top}V${bottom}`} stroke={color} strokeDasharray={dashed ? '3 3' : undefined} />
