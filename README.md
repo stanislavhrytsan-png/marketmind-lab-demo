@@ -256,6 +256,7 @@ demo/
     lib/conjoint.ts        the simulator arithmetic (utility, logit shares, importance, search)
     lib/forecasting.ts     one file per calculation in the browser (forecasting, pricing, ...), each with its check against the engine
     lib/checks.ts          the list of everything `npm run check` compares
+    lib/motion.ts          the motion of the demo: charts that build up, numbers that count up, text that is typed out
     lib/                   demo state (which runs exist, run labels), number formats, chart scales, window scaling
     components/            reusable components that follow the style guide
       ui.tsx               buttons, cards, tags, run tag, AI mode chip, option card, details
@@ -294,4 +295,5 @@ To change a text, edit `src/data/alpineOat.ts` or the data file of the module. T
 - **The engine's numbers.** All numbers differ from the concept images, because they are now calculated. Two things changed with them: in the comparison of SEG-02 and SEG-03 it is Health-focused that splits, and on the positioning map the labels sit where the calculated map leaves room.
 - **Submissions.** The student list shows all students when the screen opens. The concept highlights "To review" but lists everyone.
 - **The further modules.** The concept draws three modules and lists nine as "coming soon". All nine are built now, and their screens are new. They reuse the patterns of the concept: run header, depth rail, guided settings, the mode plate. Three things are new: the card "Watch out", sliders, and the charts of these modules (lines, columns, and a grid with bubbles).
+- **Motion.** The concept images are still. The demo adds short motion with a purpose: a new screen fades in, a chart builds up when it comes into view, the numbers under a headline count up, and an answer of the coach is typed out. All of it is off when the system asks for reduced motion.
 - **Run history.** With more than four modules the filter is a list to pick from. The concept draws chips, which do not fit twelve modules.

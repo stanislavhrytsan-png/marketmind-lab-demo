@@ -12,6 +12,7 @@ import type { CoachScript } from '../data/moduleKit'
 import { practiceMode } from '../data/moduleKit'
 import { useCoachScript } from '../lib/coach'
 import { cx } from '../lib/demo'
+import { useCountUp } from '../lib/motion'
 import { wordCount } from '../lib/format'
 import { Conversation, ModePlate, ReplyField, SectionHead, VisibleNote } from './tutor'
 import { Card, Note, Tag } from './ui'
@@ -24,10 +25,27 @@ export function Headline({ children, wide = false }: { children: ReactNode; wide
 }
 
 /** One number with what it is and one line of context. */
-export function Stat({ value, label, note, className }: { value: ReactNode; label: ReactNode; note?: ReactNode; className?: string }) {
+export function Stat({
+  value,
+  label,
+  note,
+  className,
+  countUp = false,
+}: {
+  value: ReactNode
+  label: ReactNode
+  note?: ReactNode
+  className?: string
+  /** Count up from zero once, when the number first appears. For the numbers under a headline. */
+  countUp?: boolean
+}) {
+  const text = typeof value === 'string' ? value : ''
+  const counted = useCountUp(text, countUp && text !== '')
   return (
     <div className={cx('min-w-0', className)}>
-      <div className="num font-serif text-[30px] leading-[1.1]">{value}</div>
+      <div className="num font-serif text-[30px] leading-[1.1]" aria-label={text || undefined}>
+        {text ? counted : value}
+      </div>
       <div className="mt-1 text-[13px] font-semibold">{label}</div>
       {note && <div className="text-[13px] text-ink3">{note}</div>}
     </div>
@@ -39,7 +57,7 @@ export function Stats({ items, className }: { items: { value: ReactNode; label: 
   return (
     <div className={cx('flex items-start gap-6', className)}>
       {items.map((item, i) => (
-        <Stat key={i} className="flex-1" {...item} />
+        <Stat key={i} className="flex-1" countUp {...item} />
       ))}
     </div>
   )

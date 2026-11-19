@@ -8,6 +8,7 @@ export default defineConfig({
   base: './',
   plugins: [react(), tailwindcss()],
   server: { port: 5173 },
-  // One bundle of about 760 kB (225 kB compressed) is fine for a demo, so the size hint is raised.
-  build: { chunkSizeWarningLimit: 900 },
+  // The screens of the further modules are separate files that load when they are opened (see src/App.tsx).
+  // What every screen needs stays in one file. The engine's results alone are about 450 kB of it, so the size hint is raised.
+  build: { chunkSizeWarningLimit: 1200 },
 })

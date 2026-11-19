@@ -123,7 +123,7 @@ export function SizeBar({ parts, height = 34 }: { parts: SizePart[]; height?: nu
             key={p.key}
             tabIndex={0}
             data-tip={`${p.name}: ${p.share}% of respondents (${p.n} of ${respondentCount})`}
-            className={cx('min-w-0 rounded', !p.segment && 'hatch')}
+            className={cx('bar-grow min-w-0 rounded', !p.segment && 'hatch')}
             style={{ flex: p.share, background: p.segment?.color, opacity: p.faded ? 0.28 : 1 }}
           />
         ))}
@@ -214,7 +214,7 @@ export function ImportanceTable({ columns = defaultColumns }: { columns?: Import
                   <div className="flex items-center gap-2">
                     <span className="h-3 flex-1 rounded-[3px] bg-fill">
                       <i
-                        className="block h-3 rounded-r-[3px]"
+                        className="bar-grow block h-3 rounded-r-[3px]"
                         style={{
                           width: `${Math.min(100, (value / 0.65) * 100)}%`,
                           background: groupColor(c.group),
@@ -260,7 +260,7 @@ export function CellBar({
     <div className="flex items-center gap-2">
       <span className="flex-1 rounded-[3px] bg-fill" style={{ height }}>
         <i
-          className="block rounded-r transition-[width] duration-200 ease-std"
+          className="bar-grow block rounded-r transition-[width] duration-200 ease-std"
           style={{ height, width: `${Math.max(0, Math.min(1, fraction)) * 100}%`, background: color }}
         />
       </span>

@@ -111,7 +111,7 @@ export function Dendrogram() {
 
       {/* one coloured branch per segment, up to the cut line */}
       {branches.map((b) => (
-        <g key={b.segment.id} stroke={b.segment.color} strokeWidth={2} fill="none">
+        <g key={b.segment.id} className="plot-fade" stroke={b.segment.color} strokeWidth={2} fill="none">
           {b.lines.map((d) => (
             <path key={d} d={d} />
           ))}
@@ -120,7 +120,7 @@ export function Dendrogram() {
       ))}
 
       {/* above the cut: the merges between segments */}
-      <g stroke={GREY} strokeWidth={1.5} fill="none">
+      <g className="plot-fade" stroke={GREY} strokeWidth={1.5} fill="none">
         <path d={`M${one.x} ${cut}V${mergePair}`} />
         <path d={`M${two.x} ${cut}V${mergePair}`} />
         <path d={`M${one.x} ${mergePair}H${two.x}`} />

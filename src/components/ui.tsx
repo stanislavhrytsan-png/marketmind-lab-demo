@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom'
 import { modes, segments } from '../data/alpineOat'
 import type { Mode, RunId, SegmentId } from '../data/alpineOat'
 import { cx, useDemo } from '../lib/demo'
+import { useSeen } from '../lib/motion'
 import { Icon } from './Icon'
 import type { IconName } from './Icon'
 import { buttonClass, modeIcon } from './styles'
@@ -77,8 +78,11 @@ export function Card({
   /** "tint" is the primary-tinted card, "dashed" a quiet placeholder on the page background. */
   tone?: 'white' | 'tint' | 'dashed'
 }) {
+  // The charts inside a card build up when the card first comes into view (see src/lib/motion.ts).
+  const seen = useSeen<HTMLElement>()
   return (
     <Tag
+      ref={seen as never}
       className={cx(
         'rounded-[10px] border',
         tone === 'white' && 'border-line bg-white',
@@ -284,8 +288,8 @@ export function SegmentedControl<T extends string>({
           aria-pressed={o.value === value}
           onClick={() => onChange(o.value)}
           className={cx(
-            'whitespace-nowrap rounded px-3 py-1 text-[13px] font-semibold transition-colors duration-150 ease-std',
-            o.value === value ? 'bg-white text-ink shadow-[0_0_0_1px_var(--color-line)]' : 'text-ink2',
+            'whitespace-nowrap rounded px-3 py-1 text-[13px] font-semibold transition-colors duration-150 ease-std active:translate-y-px',
+            o.value === value ? 'bg-white text-ink shadow-[0_0_0_1px_var(--color-line)]' : 'text-ink2 hover:bg-white/60 hover:text-ink',
           )}
         >
           {o.label}
@@ -481,7 +485,7 @@ export function OptionCard({
         onSelect && 'cursor-pointer',
         selected
           ? 'border-primary bg-white shadow-[0_0_0_1px_var(--color-primary)]'
-          : cx('border-line', onSelect && 'hover:border-ctl', dashed ? 'border-dashed bg-transparent' : 'bg-white'),
+          : cx('border-line', onSelect && 'hover:border-ctl2 hover:shadow-[0_1px_4px_rgba(27,34,48,.08)] active:translate-y-px', dashed ? 'border-dashed bg-transparent' : 'bg-white'),
         className,
       )}
     >
@@ -521,7 +525,7 @@ export function Accordion({
       onToggle={(e) => setOpen((e.target as HTMLDetailsElement).open)}
       className={cx('group rounded-lg border border-line bg-white [&+details]:mt-2', className)}
     >
-      <summary className="flex list-none items-center gap-2.5 px-4 py-3 font-semibold">
+      <summary className="flex list-none items-center gap-2.5 rounded-lg px-4 py-3 font-semibold transition-colors duration-150 ease-std hover:bg-[#FAFAFC] group-open:rounded-b-none">
         <Icon
           name="chevronRight"
           size={16}

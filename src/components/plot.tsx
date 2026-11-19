@@ -143,7 +143,9 @@ export function Line({
 }) {
   return (
     <path
-      className="plot-line"
+      // A solid line draws itself from left to right (pathLength makes its length 1 for the stylesheet). A dashed one fades in.
+      className={dashed ? 'plot-fade' : 'plot-line'}
+      pathLength={dashed ? undefined : 1}
       d={linePath(points)}
       fill="none"
       stroke={color}

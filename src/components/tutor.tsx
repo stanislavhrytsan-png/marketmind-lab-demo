@@ -13,6 +13,7 @@ import type { ChatMessage, Mode } from '../data/alpineOat'
 import { useCoachScript } from '../lib/coach'
 import { cx, useDemo } from '../lib/demo'
 import { wordCount } from '../lib/format'
+import { useTyped } from '../lib/motion'
 import { Icon } from './Icon'
 import { modeIcon } from './styles'
 import { Button, StepNumber } from './ui'
@@ -81,8 +82,9 @@ export function ModePlate({
 
 // ---------------------------------------------------------------- pieces
 
-function Message({ message, name }: { message: ChatMessage; name?: string }) {
+function Message({ message, name, typed = false }: { message: ChatMessage; name?: string; typed?: boolean }) {
   const fromCoach = message.from === 'coach'
+  const shown = useTyped(message.text, typed)
   return (
     <div
       className={cx(
@@ -94,7 +96,17 @@ function Message({ message, name }: { message: ChatMessage; name?: string }) {
         {fromCoach ? 'Coach' : (name ?? 'You')}
         {message.hint && `, hint ${message.hint} of ${tutor.coach.hintLimit}`}
       </span>
-      {message.text}
+      {shown >= message.text.length ? (
+        message.text
+      ) : (
+        // While the text is typed out, the whole text already holds its place, so nothing below it moves.
+        <span className="relative block">
+          <span className="text-transparent">{message.text}</span>
+          <span aria-hidden="true" className="absolute inset-0">
+            {message.text.slice(0, shown)}
+          </span>
+        </span>
+      )}
     </div>
   )
 }
@@ -103,10 +115,12 @@ export { Message as ChatBubble }
 
 /** The messages of a conversation, with the line that shows the coach is writing. */
 export function Conversation({ messages, thinking }: { messages: ChatMessage[]; thinking: boolean }) {
+  // The messages that are there when the conversation opens stand as they are. A new message of the coach is typed out.
+  const [opening] = useState(messages.length)
   return (
     <div className="mt-3 flex flex-col gap-2.5" aria-live="polite">
       {messages.map((message, i) => (
-        <Message key={i} message={message} />
+        <Message key={i} message={message} typed={i >= opening && message.from === 'coach'} />
       ))}
       {thinking && (
         <div className="fade-in max-w-[88%] rounded-[10px] rounded-tl-sm bg-primary-t px-3 py-2.5 text-[13px] text-ink3">

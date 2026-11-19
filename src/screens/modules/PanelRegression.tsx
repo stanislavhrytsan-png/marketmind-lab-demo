@@ -113,7 +113,7 @@ function ModelsPanel({ variable }: { variable: string }) {
               <text x={0} y={y} dy="0.32em" fontSize={12.5} fontWeight={kind === s.recommended ? 600 : 400} fill={chart.ink}>
                 {label}
               </text>
-              <path className="plot-line" d={`M${sx(row.lower_95)} ${y}H${sx(row.upper_95)}`} stroke={color} strokeWidth={2} strokeLinecap="round" />
+              <path className="plot-fade" d={`M${sx(row.lower_95)} ${y}H${sx(row.upper_95)}`} stroke={color} strokeWidth={2} strokeLinecap="round" />
               <circle className="plot-dot" cx={sx(row.coefficient)} cy={y} r={5} fill={color} stroke="#fff" strokeWidth={2} />
               <text x={right + 8} y={y} dy="0.32em" fontSize={12.5} fontWeight={600} fill={chart.ink} style={{ fontVariantNumeric: 'tabular-nums' }}>
                 {fixed(row.coefficient)}

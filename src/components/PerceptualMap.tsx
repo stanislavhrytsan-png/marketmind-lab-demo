@@ -43,7 +43,7 @@ function BrandPoint(props: ScatterShapeProps) {
   const brand = props.payload as Brand
   const gap = brand.own ? 19 : 13
   return (
-    <g>
+    <g className="plot-fade">
       {brand.own && <circle cx={cx} cy={cy} r={13} fill="none" stroke={PRIMARY} strokeWidth={1.5} />}
       <circle
         cx={cx}

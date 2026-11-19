@@ -74,7 +74,7 @@ export function PartWorthChart({
     return (
       <g data-tip={row.tip} tabIndex={0} className="outline-none">
         <rect x={0} y={y - (PW_ROW - height) / 2} width={parentViewBox.width} height={PW_ROW} fill="transparent" />
-        <path d={barPath(left, y, w, height, row.value >= 0, 3)} fill={color} />
+        <path className="plot-fade" d={barPath(left, y, w, height, row.value >= 0, 3)} fill={color} />
         <text
           x={parentViewBox.width}
           y={y + height / 2}
@@ -155,7 +155,7 @@ export function TrackBarChart({
     return (
       <g data-tip={row.tip} tabIndex={0} className="outline-none">
         <rect x={0} y={y - (TRACK_ROW - height) / 2} width={parentViewBox.width} height={TRACK_ROW} fill="transparent" />
-        <path d={barPath(x, y, Math.max(width, 0), height, true, 4)} fill={row.color} />
+        <path className="plot-fade" d={barPath(x, y, Math.max(width, 0), height, true, 4)} fill={row.color} />
         <text
           x={parentViewBox.width}
           y={y + height / 2}

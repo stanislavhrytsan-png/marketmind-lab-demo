@@ -10,13 +10,13 @@ export type ButtonSize = 'md' | 'sm'
 export function buttonClass(variant: ButtonVariant = 'sec', size: ButtonSize = 'md', extra?: string) {
   return cx(
     'inline-flex items-center gap-[7px] rounded-md border font-semibold whitespace-nowrap',
-    'transition-colors duration-150 ease-std',
+    'transition-[color,background-color,border-color,transform] duration-150 ease-std active:translate-y-px',
     size === 'md' ? 'h-9 text-[14px]' : 'h-[30px] text-[13px]',
     variant === 'quiet' ? (size === 'md' ? 'px-2' : 'px-2.5') : size === 'md' ? 'px-3.5' : 'px-2.5',
     variant === 'pri' && 'border-primary bg-primary text-white hover:border-primary-d hover:bg-primary-d',
     variant === 'sec' && 'border-line bg-white text-ink hover:border-ctl hover:bg-[#FAFAFC]',
     variant === 'quiet' && 'border-transparent bg-transparent text-primary hover:bg-primary-t',
-    'disabled:cursor-not-allowed disabled:border-fill disabled:bg-fill disabled:text-ctl2',
+    'disabled:translate-y-0 disabled:cursor-not-allowed disabled:border-fill disabled:bg-fill disabled:text-ctl2',
     extra,
   )
 }

@@ -174,6 +174,88 @@
   animation: fade-in 200ms var(--ease-std) both;
 }
 
+/* ------------------------------------------------------------------
+   Motion. Short and functional: 150 ms for hover and toggles, 200 ms
+   for content that appears, 250 ms for a chart that builds up. Nothing
+   loops. Under "reduce motion" all of it is off (see the base layer).
+   ------------------------------------------------------------------ */
+
+/* A new screen fades in. Only the opacity moves, so the sticky top bar stays where it is. */
+@keyframes screen-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.screen-in {
+  animation: screen-in 200ms var(--ease-std) both;
+}
+
+/* Charts build up once: a line draws itself, a column rises, a bar grows, points and labels follow. */
+@keyframes draw-line {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes rise {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+@keyframes grow-right {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.plot-line {
+  stroke-dasharray: 1;
+  animation: draw-line 250ms var(--ease-std) both;
+}
+.plot-column {
+  animation: rise 250ms var(--ease-std) both;
+}
+.bar-grow {
+  transform-origin: left center;
+  animation: grow-right 250ms var(--ease-std) both;
+}
+.plot-dot,
+.plot-band,
+.plot-mark,
+.plot-fade {
+  animation: appear 200ms var(--ease-std) 120ms both;
+}
+/* A card that has not been on screen yet holds the first frame of its charts (src/lib/motion.ts marks the cards). */
+[data-seen='false'] :is(.plot-line, .plot-column, .bar-grow, .plot-dot, .plot-band, .plot-mark, .plot-fade) {
+  animation-play-state: paused;
+}
+
+/* A table row answers the pointer, so that a wide row is easy to follow. */
+.tbl tbody tr {
+  transition: background-color 150ms var(--ease-std);
+}
+.tbl tbody tr:hover {
+  background: #fafafc;
+}
+
 /* Progress bar of a run: fills from left to right once. */
 @keyframes grow {
   from {
