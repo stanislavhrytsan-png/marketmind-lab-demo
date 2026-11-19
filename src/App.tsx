@@ -7,6 +7,7 @@ import { useDemo } from './lib/demo'
 import { useFitToWidth } from './lib/useFitToWidth'
 import ForecastingExisting from './screens/modules/ForecastingExisting'
 import ForecastingNew from './screens/modules/ForecastingNew'
+import LifetimeValue from './screens/modules/LifetimeValue'
 import ModuleSetup from './screens/modules/ModuleSetup'
 import PricingConjoint from './screens/modules/PricingConjoint'
 import PricingTests from './screens/modules/PricingTests'
@@ -72,6 +73,7 @@ export default function App() {
             <Route path="/pricing/price-tests" element={<PricingTests />} />
             <Route path="/pricing/from-conjoint" element={<PricingConjoint />} />
             <Route path="/targeting" element={<Targeting />} />
+            <Route path="/lifetime-value" element={<LifetimeValue />} />
             <Route path="/:module/setup/:runId" element={<ModuleSetup />} />
             {/* Professor */}
             <Route path="/professor" element={<Navigate to="/professor/assignment" replace />} />

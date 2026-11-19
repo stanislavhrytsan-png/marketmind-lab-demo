@@ -10435,6 +10435,1941 @@
      "Decision tree: No customer reaches a probability of 0.5, so the model predicts 'no response' for everyone. This is normal when few customers respond. Lower the threshold, or judge the model by its lift."
     ]
    }
+  },
+  "lifetime_value": {
+   "data": {
+    "cohorts_file": "subscriber_cohorts.csv",
+    "subscribers_file": "subscribers.csv",
+    "period": "year",
+    "currency": "CHF",
+    "n_subscribers": 3882,
+    "n_cohorts": 6,
+    "first_cohort": "2019",
+    "last_cohort": "2024",
+    "discount_rate": 0.08,
+    "acquisition_cost": {
+     "Health-focused": 90.0,
+     "Taste-driven": 80.0,
+     "Price-sensitive": 160.0
+    },
+    "segments": [
+     "Health-focused",
+     "Taste-driven",
+     "Price-sensitive"
+    ],
+    "cohort_table": [
+     {
+      "cohort": "2019",
+      "started": 1939.0,
+      "still_active": [
+       1939.0,
+       1303.0,
+       940.0,
+       685.0,
+       515.0,
+       398.0,
+       302.0
+      ],
+      "share_still_active": [
+       1.0,
+       0.671995874,
+       0.484785972,
+       0.353274884,
+       0.265600825,
+       0.205260444,
+       0.155750387
+      ]
+     },
+     {
+      "cohort": "2020",
+      "started": 1901.0,
+      "still_active": [
+       1901.0,
+       1293.0,
+       882.0,
+       636.0,
+       499.0,
+       383.0,
+       null
+      ],
+      "share_still_active": [
+       1.0,
+       0.680168332,
+       0.463966334,
+       0.334560757,
+       0.262493425,
+       0.201472909,
+       null
+      ]
+     },
+     {
+      "cohort": "2021",
+      "started": 1874.0,
+      "still_active": [
+       1874.0,
+       1250.0,
+       907.0,
+       643.0,
+       475.0,
+       null,
+       null
+      ],
+      "share_still_active": [
+       1.0,
+       0.667022412,
+       0.483991462,
+       0.343116329,
+       0.253468517,
+       null,
+       null
+      ]
+     },
+     {
+      "cohort": "2022",
+      "started": 1873.0,
+      "still_active": [
+       1873.0,
+       1288.0,
+       889.0,
+       673.0,
+       null,
+       null,
+       null
+      ],
+      "share_still_active": [
+       1.0,
+       0.687666845,
+       0.474639616,
+       0.359316604,
+       null,
+       null,
+       null
+      ]
+     },
+     {
+      "cohort": "2023",
+      "started": 1870.0,
+      "still_active": [
+       1870.0,
+       1266.0,
+       887.0,
+       null,
+       null,
+       null,
+       null
+      ],
+      "share_still_active": [
+       1.0,
+       0.677005348,
+       0.474331551,
+       null,
+       null,
+       null,
+       null
+      ]
+     },
+     {
+      "cohort": "2024",
+      "started": 1743.0,
+      "still_active": [
+       1743.0,
+       1162.0,
+       null,
+       null,
+       null,
+       null,
+       null
+      ],
+      "share_still_active": [
+       1.0,
+       0.666666667,
+       null,
+       null,
+       null,
+       null,
+       null
+      ]
+     }
+    ]
+   },
+   "runs": {
+    "LV-01": {
+     "function": "estimate_retention, lifetime_value_by_segment",
+     "retention_from": "each segment",
+     "settings": {
+      "first_margin": "start",
+      "horizon": null
+     },
+     "discount_rate": 0.08,
+     "n_customers": 3882,
+     "customer_equity": 1682511.45,
+     "mean_lifetime_value": 433.413562,
+     "segments": [
+      {
+       "segment": "Health-focused",
+       "n_customers": 1709,
+       "mean_margin": 140.428379,
+       "retention_rate": 0.85483871,
+       "expected_lifetime": 6.88888889,
+       "margin_multiple": 4.7965616,
+       "lifetime_value": 673.573372,
+       "customer_equity": 1151136.89,
+       "share_of_customers": 0.440236991,
+       "share_of_equity": 0.684177748,
+       "acquisition_cost": 90.0,
+       "net_value_of_a_new_customer": 583.573372,
+       "value_to_cost_ratio": 7.48414857,
+       "payback_periods": 1,
+       "worth_acquiring": true
+      },
+      {
+       "segment": "Taste-driven",
+       "n_customers": 1301,
+       "mean_margin": 110.478924,
+       "retention_rate": 0.697948655,
+       "expected_lifetime": 3.3106954,
+       "margin_multiple": 2.82684517,
+       "lifetime_value": 312.306813,
+       "customer_equity": 406311.163,
+       "share_of_customers": 0.335136528,
+       "share_of_equity": 0.241490876,
+       "acquisition_cost": 80.0,
+       "net_value_of_a_new_customer": 232.306813,
+       "value_to_cost_ratio": 3.90383516,
+       "payback_periods": 1,
+       "worth_acquiring": true
+      },
+      {
+       "segment": "Price-sensitive",
+       "n_customers": 872,
+       "mean_margin": 70.1829587,
+       "retention_rate": 0.55150399,
+       "expected_lifetime": 2.22967424,
+       "margin_multiple": 2.04353482,
+       "lifetime_value": 143.42132,
+       "customer_equity": 125063.391,
+       "share_of_customers": 0.224626481,
+       "share_of_equity": 0.0743313761,
+       "acquisition_cost": 160.0,
+       "net_value_of_a_new_customer": -16.5786799,
+       "value_to_cost_ratio": 0.896383251,
+       "payback_periods": null,
+       "worth_acquiring": false
+      }
+     ],
+     "how_to_read": [
+      "Customer equity is what all current customers together are worth from now on.",
+      "A segment is worth growing when the value of a new customer is clearly above the cost of winning one."
+     ],
+     "warnings": [
+      "Segment 'Price-sensitive': an average new customer is worth 143.42 and costs 160.00 to win. Acquiring more customers of this segment loses money."
+     ]
+    },
+    "LV-02": {
+     "function": "estimate_retention, lifetime_value_by_segment",
+     "retention_from": "all customers",
+     "settings": {
+      "first_margin": "start",
+      "horizon": null
+     },
+     "discount_rate": 0.08,
+     "n_customers": 3882,
+     "customer_equity": 1272721.06,
+     "mean_lifetime_value": 327.851896,
+     "segments": [
+      {
+       "segment": "Health-focused",
+       "n_customers": 1709,
+       "mean_margin": 140.428379,
+       "retention_rate": 0.702447751,
+       "expected_lifetime": 3.3607543,
+       "margin_multiple": 2.86053124,
+       "lifetime_value": 401.699765,
+       "customer_equity": 686504.898,
+       "share_of_customers": 0.440236991,
+       "share_of_equity": 0.539399339,
+       "acquisition_cost": 90.0,
+       "net_value_of_a_new_customer": 311.699765,
+       "value_to_cost_ratio": 4.46333072,
+       "payback_periods": 1,
+       "worth_acquiring": true
+      },
+      {
+       "segment": "Taste-driven",
+       "n_customers": 1301,
+       "mean_margin": 110.478924,
+       "retention_rate": 0.702447751,
+       "expected_lifetime": 3.3607543,
+       "margin_multiple": 2.86053124,
+       "lifetime_value": 316.028413,
+       "customer_equity": 411152.965,
+       "share_of_customers": 0.335136528,
+       "share_of_equity": 0.323050335,
+       "acquisition_cost": 80.0,
+       "net_value_of_a_new_customer": 236.028413,
+       "value_to_cost_ratio": 3.95035516,
+       "payback_periods": 1,
+       "worth_acquiring": true
+      },
+      {
+       "segment": "Price-sensitive",
+       "n_customers": 872,
+       "mean_margin": 70.1829587,
+       "retention_rate": 0.702447751,
+       "expected_lifetime": 3.3607543,
+       "margin_multiple": 2.86053124,
+       "lifetime_value": 200.760546,
+       "customer_equity": 175063.196,
+       "share_of_customers": 0.224626481,
+       "share_of_equity": 0.137550325,
+       "acquisition_cost": 160.0,
+       "net_value_of_a_new_customer": 40.7605456,
+       "value_to_cost_ratio": 1.25475341,
+       "payback_periods": 4,
+       "worth_acquiring": true
+      }
+     ],
+     "how_to_read": [
+      "Customer equity is what all current customers together are worth from now on.",
+      "A segment is worth growing when the value of a new customer is clearly above the cost of winning one."
+     ],
+     "warnings": [],
+     "equity_against_by_segment": -0.243558752
+    }
+   },
+   "retention": {
+    "overall": {
+     "segment": null,
+     "retention_rate": 0.702447751,
+     "standard_error": 0.00291523821,
+     "n_at_risk": 24594.0,
+     "n_retained": 17276.0,
+     "n_cohorts": 6,
+     "expected_lifetime": 3.3607543,
+     "same_rate_at_every_age": {
+      "chi_square": 109.459986,
+      "degrees_of_freedom": 5,
+      "p_value": 5.3286283e-22,
+      "constant": false
+     },
+     "by_age": {
+      "from_period": [
+       0.0,
+       1.0,
+       2.0,
+       3.0,
+       4.0,
+       5.0
+      ],
+      "at_risk": [
+       11200.0,
+       6400.0,
+       3618.0,
+       1964.0,
+       1014.0,
+       398.0
+      ],
+      "retained": [
+       7562.0,
+       4505.0,
+       2637.0,
+       1489.0,
+       781.0,
+       302.0
+      ],
+      "retention_rate": [
+       0.675178571,
+       0.70390625,
+       0.728855721,
+       0.75814664,
+       0.770216963,
+       0.75879397
+      ]
+     }
+    },
+    "segments": [
+     {
+      "segment": "Health-focused",
+      "retention_rate": 0.85483871,
+      "standard_error": 0.00386473087,
+      "n_at_risk": 8308.0,
+      "n_retained": 7102.0,
+      "n_cohorts": 6,
+      "expected_lifetime": 6.88888889,
+      "same_rate_at_every_age": {
+       "chi_square": 1.63104788,
+       "degrees_of_freedom": 5,
+       "p_value": 0.897469469,
+       "constant": true
+      },
+      "by_age": {
+       "from_period": [
+        0.0,
+        1.0,
+        2.0,
+        3.0,
+        4.0,
+        5.0
+       ],
+       "at_risk": [
+        2915.0,
+        2149.0,
+        1530.0,
+        937.0,
+        558.0,
+        219.0
+       ],
+       "retained": [
+        2487.0,
+        1852.0,
+        1302.0,
+        803.0,
+        474.0,
+        184.0
+       ],
+       "retention_rate": [
+        0.853173242,
+        0.861796184,
+        0.850980392,
+        0.856990395,
+        0.849462366,
+        0.840182648
+       ]
+      }
+     },
+     {
+      "segment": "Taste-driven",
+      "retention_rate": 0.697948655,
+      "standard_error": 0.00508877498,
+      "n_at_risk": 8141.0,
+      "n_retained": 5682.0,
+      "n_cohorts": 6,
+      "expected_lifetime": 3.3106954,
+      "same_rate_at_every_age": {
+       "chi_square": 8.62804819,
+       "degrees_of_freedom": 5,
+       "p_value": 0.124851889,
+       "constant": true
+      },
+      "by_age": {
+       "from_period": [
+        0.0,
+        1.0,
+        2.0,
+        3.0,
+        4.0,
+        5.0
+       ],
+       "at_risk": [
+        3760.0,
+        2120.0,
+        1171.0,
+        628.0,
+        318.0,
+        144.0
+       ],
+       "retained": [
+        2598.0,
+        1491.0,
+        798.0,
+        464.0,
+        230.0,
+        101.0
+       ],
+       "retention_rate": [
+        0.690957447,
+        0.703301887,
+        0.68146883,
+        0.738853503,
+        0.72327044,
+        0.701388889
+       ]
+      }
+     },
+     {
+      "segment": "Price-sensitive",
+      "retention_rate": 0.55150399,
+      "standard_error": 0.0055107166,
+      "n_at_risk": 8145.0,
+      "n_retained": 4492.0,
+      "n_cohorts": 6,
+      "expected_lifetime": 2.22967424,
+      "same_rate_at_every_age": {
+       "chi_square": 5.62651213,
+       "degrees_of_freedom": 5,
+       "p_value": 0.344272681,
+       "constant": true
+      },
+      "by_age": {
+       "from_period": [
+        0.0,
+        1.0,
+        2.0,
+        3.0,
+        4.0,
+        5.0
+       ],
+       "at_risk": [
+        4525.0,
+        2131.0,
+        917.0,
+        399.0,
+        138.0,
+        35.0
+       ],
+       "retained": [
+        2477.0,
+        1162.0,
+        537.0,
+        222.0,
+        77.0,
+        17.0
+       ],
+       "retention_rate": [
+        0.547403315,
+        0.545283904,
+        0.585605234,
+        0.556390977,
+        0.557971014,
+        0.485714286
+       ]
+      }
+     }
+    ],
+    "how_to_read": [
+     "A retention rate of 80% means: of 100 customers, 80 are still there one period later.",
+     "The expected lifetime is 1 / (1 - retention rate): with 80%, a customer stays 5 periods on average."
+    ],
+    "warnings": [
+     "All customers: the retention rate is not the same at every age (for example 68% in the first step and 76% in the last). The lifetime value formula assumes one constant rate, so its result is only a rough guide here."
+    ]
+   },
+   "formula": {
+    "conventions": [
+     "start",
+     "end",
+     "end_if_retained"
+    ],
+    "segments": [
+     {
+      "segment": "Health-focused",
+      "by_convention": [
+       {
+        "first_margin": "start",
+        "margin": 140.428379,
+        "retention_rate": 0.85483871,
+        "discount_rate": 0.08,
+        "acquisition_cost": 90.0,
+        "lifetime_value": 673.573372,
+        "margin_multiple": 4.7965616,
+        "formula": "margin x (1 + d) / (1 + d - r)",
+        "expected_lifetime": 6.88888889,
+        "net_value": 583.573372,
+        "value_to_cost_ratio": 7.48414857,
+        "payback_periods": 1,
+        "worth_acquiring": true,
+        "periods": {
+         "period": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+         ],
+         "chance_customer_pays": [
+          1.0,
+          0.85483871,
+          0.73074922,
+          0.62467272,
+          0.533994422,
+          0.456479103,
+          0.390216007,
+          0.333571748,
+          0.285150043,
+          0.243757294
+         ],
+         "present_value": [
+          140.428379,
+          111.151495,
+          87.9783337,
+          69.6363753,
+          55.1183974,
+          43.6271664,
+          34.531658,
+          27.3324055,
+          21.6340725,
+          17.1237431
+         ],
+         "cumulative_present_value": [
+          140.428379,
+          251.579874,
+          339.558208,
+          409.194583,
+          464.31298,
+          507.940147,
+          542.471805,
+          569.80421,
+          591.438283,
+          608.562026
+         ]
+        },
+        "warnings": []
+       },
+       {
+        "first_margin": "end",
+        "margin": 140.428379,
+        "retention_rate": 0.85483871,
+        "discount_rate": 0.08,
+        "acquisition_cost": 90.0,
+        "lifetime_value": 623.679048,
+        "margin_multiple": 4.44126074,
+        "formula": "margin / (1 + d - r)",
+        "expected_lifetime": 6.88888889,
+        "net_value": 533.679048,
+        "value_to_cost_ratio": 6.9297672,
+        "payback_periods": 1,
+        "worth_acquiring": true,
+        "periods": {
+         "period": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+         ],
+         "chance_customer_pays": [
+          1.0,
+          0.85483871,
+          0.73074922,
+          0.62467272,
+          0.533994422,
+          0.456479103,
+          0.390216007,
+          0.333571748,
+          0.285150043,
+          0.243757294
+         ],
+         "present_value": [
+          130.026277,
+          102.918051,
+          81.4614201,
+          64.4781253,
+          51.0355531,
+          40.3955244,
+          31.9737574,
+          25.3077829,
+          20.0315486,
+          15.8553177
+         ],
+         "cumulative_present_value": [
+          130.026277,
+          232.944328,
+          314.405748,
+          378.883873,
+          429.919426,
+          470.314951,
+          502.288708,
+          527.596491,
+          547.62804,
+          563.483357
+         ]
+        },
+        "warnings": []
+       },
+       {
+        "first_margin": "end_if_retained",
+        "margin": 140.428379,
+        "retention_rate": 0.85483871,
+        "discount_rate": 0.08,
+        "acquisition_cost": 90.0,
+        "lifetime_value": 533.144993,
+        "margin_multiple": 3.7965616,
+        "formula": "margin x r / (1 + d - r)",
+        "expected_lifetime": 6.88888889,
+        "net_value": 443.144993,
+        "value_to_cost_ratio": 5.92383325,
+        "payback_periods": 1,
+        "worth_acquiring": true,
+        "periods": {
+         "period": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+         ],
+         "chance_customer_pays": [
+          0.85483871,
+          0.73074922,
+          0.62467272,
+          0.533994422,
+          0.456479103,
+          0.390216007,
+          0.333571748,
+          0.285150043,
+          0.243757294,
+          0.208373171
+         ],
+         "present_value": [
+          111.151495,
+          87.9783337,
+          69.6363753,
+          55.1183974,
+          43.6271664,
+          34.531658,
+          27.3324055,
+          21.6340725,
+          17.1237431,
+          13.5537393
+         ],
+         "cumulative_present_value": [
+          111.151495,
+          199.129829,
+          268.766204,
+          323.884601,
+          367.511768,
+          402.043426,
+          429.375831,
+          451.009904,
+          468.133647,
+          481.687386
+         ]
+        },
+        "warnings": []
+       }
+      ]
+     },
+     {
+      "segment": "Taste-driven",
+      "by_convention": [
+       {
+        "first_margin": "start",
+        "margin": 110.478924,
+        "retention_rate": 0.697948655,
+        "discount_rate": 0.08,
+        "acquisition_cost": 80.0,
+        "lifetime_value": 312.306813,
+        "margin_multiple": 2.82684517,
+        "formula": "margin x (1 + d) / (1 + d - r)",
+        "expected_lifetime": 3.3106954,
+        "net_value": 232.306813,
+        "value_to_cost_ratio": 3.90383516,
+        "payback_periods": 1,
+        "worth_acquiring": true,
+        "periods": {
+         "period": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+         ],
+         "chance_customer_pays": [
+          1.0,
+          0.697948655,
+          0.487132325,
+          0.339993351,
+          0.237297902,
+          0.165621752,
+          0.115595479,
+          0.0806797089,
+          0.0563102943,
+          0.0393016942
+         ],
+         "present_value": [
+          110.478924,
+          71.396867,
+          46.1401364,
+          29.8180057,
+          19.269849,
+          12.4531159,
+          8.04781066,
+          5.20088762,
+          3.36106715,
+          2.17208546
+         ],
+         "cumulative_present_value": [
+          110.478924,
+          181.875791,
+          228.015927,
+          257.833933,
+          277.103782,
+          289.556898,
+          297.604709,
+          302.805596,
+          306.166663,
+          308.338749
+         ]
+        },
+        "warnings": []
+       },
+       {
+        "first_margin": "end",
+        "margin": 110.478924,
+        "retention_rate": 0.697948655,
+        "discount_rate": 0.08,
+        "acquisition_cost": 80.0,
+        "lifetime_value": 289.172975,
+        "margin_multiple": 2.61744923,
+        "formula": "margin / (1 + d - r)",
+        "expected_lifetime": 3.3106954,
+        "net_value": 209.172975,
+        "value_to_cost_ratio": 3.61466218,
+        "payback_periods": 1,
+        "worth_acquiring": true,
+        "periods": {
+         "period": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+         ],
+         "chance_customer_pays": [
+          1.0,
+          0.697948655,
+          0.487132325,
+          0.339993351,
+          0.237297902,
+          0.165621752,
+          0.115595479,
+          0.0806797089,
+          0.0563102943,
+          0.0393016942
+         ],
+         "present_value": [
+          102.2953,
+          66.1082102,
+          42.7223485,
+          27.6092645,
+          17.8424528,
+          11.5306629,
+          7.45167654,
+          4.81563668,
+          3.11209921,
+          2.01119024
+         ],
+         "cumulative_present_value": [
+          102.2953,
+          168.40351,
+          211.125859,
+          238.735123,
+          256.577576,
+          268.108239,
+          275.559915,
+          280.375552,
+          283.487651,
+          285.498841
+         ]
+        },
+        "warnings": []
+       },
+       {
+        "first_margin": "end_if_retained",
+        "margin": 110.478924,
+        "retention_rate": 0.697948655,
+        "discount_rate": 0.08,
+        "acquisition_cost": 80.0,
+        "lifetime_value": 201.827889,
+        "margin_multiple": 1.82684517,
+        "formula": "margin x r / (1 + d - r)",
+        "expected_lifetime": 3.3106954,
+        "net_value": 121.827889,
+        "value_to_cost_ratio": 2.52284861,
+        "payback_periods": 2,
+        "worth_acquiring": true,
+        "periods": {
+         "period": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+         ],
+         "chance_customer_pays": [
+          0.697948655,
+          0.487132325,
+          0.339993351,
+          0.237297902,
+          0.165621752,
+          0.115595479,
+          0.0806797089,
+          0.0563102943,
+          0.0393016942,
+          0.0274305646
+         ],
+         "present_value": [
+          71.396867,
+          46.1401364,
+          29.8180057,
+          19.269849,
+          12.4531159,
+          8.04781066,
+          5.20088762,
+          3.36106715,
+          2.17208546,
+          1.40370752
+         ],
+         "cumulative_present_value": [
+          71.396867,
+          117.537003,
+          147.355009,
+          166.624858,
+          179.077974,
+          187.125785,
+          192.326672,
+          195.687739,
+          197.859825,
+          199.263532
+         ]
+        },
+        "warnings": []
+       }
+      ]
+     },
+     {
+      "segment": "Price-sensitive",
+      "by_convention": [
+       {
+        "first_margin": "start",
+        "margin": 70.1829587,
+        "retention_rate": 0.55150399,
+        "discount_rate": 0.08,
+        "acquisition_cost": 160.0,
+        "lifetime_value": 143.42132,
+        "margin_multiple": 2.04353482,
+        "formula": "margin x (1 + d) / (1 + d - r)",
+        "expected_lifetime": 2.22967424,
+        "net_value": -16.5786799,
+        "value_to_cost_ratio": 0.896383251,
+        "payback_periods": null,
+        "worth_acquiring": false,
+        "periods": {
+         "period": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+         ],
+         "chance_customer_pays": [
+          1.0,
+          0.55150399,
+          0.304156651,
+          0.167743607,
+          0.0925112685,
+          0.0510203337,
+          0.0281379176,
+          0.0155181738,
+          0.00855833479,
+          0.00471995579
+         ],
+         "present_value": [
+          70.1829587,
+          35.8390572,
+          18.3012806,
+          9.34558266,
+          4.77233901,
+          2.43700371,
+          1.24446043,
+          0.635486014,
+          0.324512104,
+          0.165712704
+         ],
+         "cumulative_present_value": [
+          70.1829587,
+          106.022016,
+          124.323297,
+          133.668879,
+          138.441218,
+          140.878222,
+          142.122682,
+          142.758168,
+          143.08268,
+          143.248393
+         ]
+        },
+        "warnings": [
+         "The lifetime value (143.42) does not cover the acquisition cost (160.00). Winning such a customer loses money, unless the margin, the retention or the cost changes."
+        ]
+       },
+       {
+        "first_margin": "end",
+        "margin": 70.1829587,
+        "retention_rate": 0.55150399,
+        "discount_rate": 0.08,
+        "acquisition_cost": 160.0,
+        "lifetime_value": 132.797519,
+        "margin_multiple": 1.89216187,
+        "formula": "margin / (1 + d - r)",
+        "expected_lifetime": 2.22967424,
+        "net_value": -27.2024814,
+        "value_to_cost_ratio": 0.829984492,
+        "payback_periods": null,
+        "worth_acquiring": false,
+        "periods": {
+         "period": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+         ],
+         "chance_customer_pays": [
+          1.0,
+          0.55150399,
+          0.304156651,
+          0.167743607,
+          0.0925112685,
+          0.0510203337,
+          0.0281379176,
+          0.0155181738,
+          0.00855833479,
+          0.00471995579
+         ],
+         "present_value": [
+          64.984221,
+          33.1843122,
+          16.9456302,
+          8.65331728,
+          4.41883242,
+          2.25648492,
+          1.15227818,
+          0.588412976,
+          0.300474171,
+          0.153437689
+         ],
+         "cumulative_present_value": [
+          64.984221,
+          98.1685333,
+          115.114163,
+          123.767481,
+          128.186313,
+          130.442798,
+          131.595076,
+          132.183489,
+          132.483963,
+          132.637401
+         ]
+        },
+        "warnings": [
+         "The lifetime value (132.80) does not cover the acquisition cost (160.00). Winning such a customer loses money, unless the margin, the retention or the cost changes."
+        ]
+       },
+       {
+        "first_margin": "end_if_retained",
+        "margin": 70.1829587,
+        "retention_rate": 0.55150399,
+        "discount_rate": 0.08,
+        "acquisition_cost": 160.0,
+        "lifetime_value": 73.2383614,
+        "margin_multiple": 1.04353482,
+        "formula": "margin x r / (1 + d - r)",
+        "expected_lifetime": 2.22967424,
+        "net_value": -86.7616386,
+        "value_to_cost_ratio": 0.457739759,
+        "payback_periods": null,
+        "worth_acquiring": false,
+        "periods": {
+         "period": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+         ],
+         "chance_customer_pays": [
+          0.55150399,
+          0.304156651,
+          0.167743607,
+          0.0925112685,
+          0.0510203337,
+          0.0281379176,
+          0.0155181738,
+          0.00855833479,
+          0.00471995579,
+          0.00260307445
+         ],
+         "present_value": [
+          35.8390572,
+          18.3012806,
+          9.34558266,
+          4.77233901,
+          2.43700371,
+          1.24446043,
+          0.635486014,
+          0.324512104,
+          0.165712704,
+          0.0846214977
+         ],
+         "cumulative_present_value": [
+          35.8390572,
+          54.1403378,
+          63.4859205,
+          68.2582595,
+          70.6952632,
+          71.9397236,
+          72.5752096,
+          72.8997217,
+          73.0654344,
+          73.1500559
+         ]
+        },
+        "warnings": [
+         "The lifetime value (73.24) does not cover the acquisition cost (160.00). Winning such a customer loses money, unless the margin, the retention or the cost changes."
+        ]
+       }
+      ]
+     }
+    ],
+    "other_customers": [
+     {
+      "first_margin": "start",
+      "margin": 100.0,
+      "retention_rate": 0.8,
+      "discount_rate": 0.1,
+      "acquisition_cost": 150.0,
+      "lifetime_value": 366.666667,
+      "margin_multiple": 3.66666667,
+      "formula": "margin x (1 + d) / (1 + d - r)",
+      "expected_lifetime": 5.0,
+      "net_value": 216.666667,
+      "value_to_cost_ratio": 2.44444444,
+      "payback_periods": 2,
+      "worth_acquiring": true,
+      "periods": {
+       "period": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+       ],
+       "chance_customer_pays": [
+        1.0,
+        0.8,
+        0.64,
+        0.512,
+        0.4096,
+        0.32768,
+        0.262144,
+        0.2097152,
+        0.16777216,
+        0.134217728
+       ],
+       "present_value": [
+        100.0,
+        72.7272727,
+        52.892562,
+        38.4673178,
+        27.9762311,
+        20.3463499,
+        14.7973454,
+        10.7617057,
+        7.82669508,
+        5.69214188
+       ],
+       "cumulative_present_value": [
+        100.0,
+        172.727273,
+        225.619835,
+        264.087153,
+        292.063384,
+        312.409734,
+        327.207079,
+        337.968785,
+        345.79548,
+        351.487622
+       ]
+      },
+      "warnings": []
+     },
+     {
+      "first_margin": "end",
+      "margin": 100.0,
+      "retention_rate": 0.8,
+      "discount_rate": 0.1,
+      "acquisition_cost": 150.0,
+      "lifetime_value": 333.333333,
+      "margin_multiple": 3.33333333,
+      "formula": "margin / (1 + d - r)",
+      "expected_lifetime": 5.0,
+      "net_value": 183.333333,
+      "value_to_cost_ratio": 2.22222222,
+      "payback_periods": 2,
+      "worth_acquiring": true,
+      "periods": {
+       "period": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+       ],
+       "chance_customer_pays": [
+        1.0,
+        0.8,
+        0.64,
+        0.512,
+        0.4096,
+        0.32768,
+        0.262144,
+        0.2097152,
+        0.16777216,
+        0.134217728
+       ],
+       "present_value": [
+        90.9090909,
+        66.1157025,
+        48.0841473,
+        34.9702889,
+        25.4329374,
+        18.4966817,
+        13.4521322,
+        9.78336885,
+        7.11517735,
+        5.17467444
+       ],
+       "cumulative_present_value": [
+        90.9090909,
+        157.024793,
+        205.108941,
+        240.07923,
+        265.512167,
+        284.008849,
+        297.460981,
+        307.24435,
+        314.359527,
+        319.534202
+       ]
+      },
+      "warnings": []
+     },
+     {
+      "first_margin": "end_if_retained",
+      "margin": 100.0,
+      "retention_rate": 0.8,
+      "discount_rate": 0.1,
+      "acquisition_cost": 150.0,
+      "lifetime_value": 266.666667,
+      "margin_multiple": 2.66666667,
+      "formula": "margin x r / (1 + d - r)",
+      "expected_lifetime": 5.0,
+      "net_value": 116.666667,
+      "value_to_cost_ratio": 1.77777778,
+      "payback_periods": 3,
+      "worth_acquiring": true,
+      "periods": {
+       "period": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+       ],
+       "chance_customer_pays": [
+        0.8,
+        0.64,
+        0.512,
+        0.4096,
+        0.32768,
+        0.262144,
+        0.2097152,
+        0.16777216,
+        0.134217728,
+        0.107374182
+       ],
+       "present_value": [
+        72.7272727,
+        52.892562,
+        38.4673178,
+        27.9762311,
+        20.3463499,
+        14.7973454,
+        10.7617057,
+        7.82669508,
+        5.69214188,
+        4.13973955
+       ],
+       "cumulative_present_value": [
+        72.7272727,
+        125.619835,
+        164.087153,
+        192.063384,
+        212.409734,
+        227.207079,
+        237.968785,
+        245.79548,
+        251.487622,
+        255.627361
+       ]
+      },
+      "warnings": []
+     },
+     {
+      "first_margin": "start",
+      "margin": 60.0,
+      "retention_rate": 0.5,
+      "discount_rate": 0.0,
+      "acquisition_cost": 100.0,
+      "lifetime_value": 120.0,
+      "margin_multiple": 2.0,
+      "formula": "margin x (1 + d) / (1 + d - r)",
+      "expected_lifetime": 2.0,
+      "net_value": 20.0,
+      "value_to_cost_ratio": 1.2,
+      "payback_periods": 3,
+      "worth_acquiring": true,
+      "periods": {
+       "period": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+       ],
+       "chance_customer_pays": [
+        1.0,
+        0.5,
+        0.25,
+        0.125,
+        0.0625,
+        0.03125,
+        0.015625,
+        0.0078125,
+        0.00390625,
+        0.001953125
+       ],
+       "present_value": [
+        60.0,
+        30.0,
+        15.0,
+        7.5,
+        3.75,
+        1.875,
+        0.9375,
+        0.46875,
+        0.234375,
+        0.1171875
+       ],
+       "cumulative_present_value": [
+        60.0,
+        90.0,
+        105.0,
+        112.5,
+        116.25,
+        118.125,
+        119.0625,
+        119.53125,
+        119.765625,
+        119.882812
+       ]
+      },
+      "warnings": []
+     },
+     {
+      "first_margin": "end",
+      "margin": 60.0,
+      "retention_rate": 0.5,
+      "discount_rate": 0.0,
+      "acquisition_cost": 100.0,
+      "lifetime_value": 120.0,
+      "margin_multiple": 2.0,
+      "formula": "margin / (1 + d - r)",
+      "expected_lifetime": 2.0,
+      "net_value": 20.0,
+      "value_to_cost_ratio": 1.2,
+      "payback_periods": 3,
+      "worth_acquiring": true,
+      "periods": {
+       "period": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+       ],
+       "chance_customer_pays": [
+        1.0,
+        0.5,
+        0.25,
+        0.125,
+        0.0625,
+        0.03125,
+        0.015625,
+        0.0078125,
+        0.00390625,
+        0.001953125
+       ],
+       "present_value": [
+        60.0,
+        30.0,
+        15.0,
+        7.5,
+        3.75,
+        1.875,
+        0.9375,
+        0.46875,
+        0.234375,
+        0.1171875
+       ],
+       "cumulative_present_value": [
+        60.0,
+        90.0,
+        105.0,
+        112.5,
+        116.25,
+        118.125,
+        119.0625,
+        119.53125,
+        119.765625,
+        119.882812
+       ]
+      },
+      "warnings": []
+     },
+     {
+      "first_margin": "end_if_retained",
+      "margin": 60.0,
+      "retention_rate": 0.5,
+      "discount_rate": 0.0,
+      "acquisition_cost": 100.0,
+      "lifetime_value": 60.0,
+      "margin_multiple": 1.0,
+      "formula": "margin x r / (1 + d - r)",
+      "expected_lifetime": 2.0,
+      "net_value": -40.0,
+      "value_to_cost_ratio": 0.6,
+      "payback_periods": null,
+      "worth_acquiring": false,
+      "periods": {
+       "period": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+       ],
+       "chance_customer_pays": [
+        0.5,
+        0.25,
+        0.125,
+        0.0625,
+        0.03125,
+        0.015625,
+        0.0078125,
+        0.00390625,
+        0.001953125,
+        0.0009765625
+       ],
+       "present_value": [
+        30.0,
+        15.0,
+        7.5,
+        3.75,
+        1.875,
+        0.9375,
+        0.46875,
+        0.234375,
+        0.1171875,
+        0.05859375
+       ],
+       "cumulative_present_value": [
+        30.0,
+        45.0,
+        52.5,
+        56.25,
+        58.125,
+        59.0625,
+        59.53125,
+        59.765625,
+        59.8828125,
+        59.9414062
+       ]
+      },
+      "warnings": [
+       "The lifetime value (60.00) does not cover the acquisition cost (100.00). Winning such a customer loses money, unless the margin, the retention or the cost changes."
+      ]
+     },
+     {
+      "first_margin": "start",
+      "margin": 200.0,
+      "retention_rate": 0.95,
+      "discount_rate": 0.05,
+      "acquisition_cost": 50.0,
+      "lifetime_value": 2100.0,
+      "margin_multiple": 10.5,
+      "formula": "margin x (1 + d) / (1 + d - r)",
+      "expected_lifetime": 20.0,
+      "net_value": 2050.0,
+      "value_to_cost_ratio": 42.0,
+      "payback_periods": 1,
+      "worth_acquiring": true,
+      "periods": {
+       "period": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+       ],
+       "chance_customer_pays": [
+        1.0,
+        0.95,
+        0.9025,
+        0.857375,
+        0.81450625,
+        0.773780937,
+        0.735091891,
+        0.698337296,
+        0.663420431,
+        0.63024941
+       ],
+       "present_value": [
+        200.0,
+        180.952381,
+        163.718821,
+        148.126552,
+        134.019262,
+        121.255522,
+        109.707377,
+        99.2590557,
+        89.8058123,
+        81.2528778
+       ],
+       "cumulative_present_value": [
+        200.0,
+        380.952381,
+        544.671202,
+        692.797754,
+        826.817016,
+        948.072538,
+        1057.77992,
+        1157.03897,
+        1246.84478,
+        1328.09766
+       ]
+      },
+      "warnings": []
+     },
+     {
+      "first_margin": "end",
+      "margin": 200.0,
+      "retention_rate": 0.95,
+      "discount_rate": 0.05,
+      "acquisition_cost": 50.0,
+      "lifetime_value": 2000.0,
+      "margin_multiple": 10.0,
+      "formula": "margin / (1 + d - r)",
+      "expected_lifetime": 20.0,
+      "net_value": 1950.0,
+      "value_to_cost_ratio": 40.0,
+      "payback_periods": 1,
+      "worth_acquiring": true,
+      "periods": {
+       "period": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+       ],
+       "chance_customer_pays": [
+        1.0,
+        0.95,
+        0.9025,
+        0.857375,
+        0.81450625,
+        0.773780937,
+        0.735091891,
+        0.698337296,
+        0.663420431,
+        0.63024941
+       ],
+       "present_value": [
+        190.47619,
+        172.335601,
+        155.922687,
+        141.072907,
+        127.637392,
+        115.48145,
+        104.483217,
+        94.532434,
+        85.529345,
+        77.3836931
+       ],
+       "cumulative_present_value": [
+        190.47619,
+        362.811791,
+        518.734478,
+        659.807385,
+        787.444777,
+        902.926227,
+        1007.40944,
+        1101.94188,
+        1187.47122,
+        1264.85492
+       ]
+      },
+      "warnings": []
+     },
+     {
+      "first_margin": "end_if_retained",
+      "margin": 200.0,
+      "retention_rate": 0.95,
+      "discount_rate": 0.05,
+      "acquisition_cost": 50.0,
+      "lifetime_value": 1900.0,
+      "margin_multiple": 9.5,
+      "formula": "margin x r / (1 + d - r)",
+      "expected_lifetime": 20.0,
+      "net_value": 1850.0,
+      "value_to_cost_ratio": 38.0,
+      "payback_periods": 1,
+      "worth_acquiring": true,
+      "periods": {
+       "period": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+       ],
+       "chance_customer_pays": [
+        0.95,
+        0.9025,
+        0.857375,
+        0.81450625,
+        0.773780937,
+        0.735091891,
+        0.698337296,
+        0.663420431,
+        0.63024941,
+        0.598736939
+       ],
+       "present_value": [
+        180.952381,
+        163.718821,
+        148.126552,
+        134.019262,
+        121.255522,
+        109.707377,
+        99.2590557,
+        89.8058123,
+        81.2528778,
+        73.5145085
+       ],
+       "cumulative_present_value": [
+        180.952381,
+        344.671202,
+        492.797754,
+        626.817016,
+        748.072538,
+        857.779915,
+        957.038971,
+        1046.84478,
+        1128.09766,
+        1201.61217
+       ]
+      },
+      "warnings": []
+     },
+     {
+      "first_margin": "start",
+      "margin": 45.0,
+      "retention_rate": 0.3,
+      "discount_rate": 0.2,
+      "acquisition_cost": 40.0,
+      "lifetime_value": 60.0,
+      "margin_multiple": 1.33333333,
+      "formula": "margin x (1 + d) / (1 + d - r)",
+      "expected_lifetime": 1.42857143,
+      "net_value": 20.0,
+      "value_to_cost_ratio": 1.5,
+      "payback_periods": 1,
+      "worth_acquiring": true,
+      "periods": {
+       "period": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+       ],
+       "chance_customer_pays": [
+        1.0,
+        0.3,
+        0.09,
+        0.027,
+        0.0081,
+        0.00243,
+        0.000729,
+        0.0002187,
+        6.561e-05,
+        1.9683e-05
+       ],
+       "present_value": [
+        45.0,
+        11.25,
+        2.8125,
+        0.703125,
+        0.17578125,
+        0.0439453125,
+        0.0109863281,
+        0.00274658203,
+        0.000686645508,
+        0.000171661377
+       ],
+       "cumulative_present_value": [
+        45.0,
+        56.25,
+        59.0625,
+        59.765625,
+        59.9414062,
+        59.9853516,
+        59.9963379,
+        59.9990845,
+        59.9997711,
+        59.9999428
+       ]
+      },
+      "warnings": []
+     },
+     {
+      "first_margin": "end",
+      "margin": 45.0,
+      "retention_rate": 0.3,
+      "discount_rate": 0.2,
+      "acquisition_cost": 40.0,
+      "lifetime_value": 50.0,
+      "margin_multiple": 1.11111111,
+      "formula": "margin / (1 + d - r)",
+      "expected_lifetime": 1.42857143,
+      "net_value": 10.0,
+      "value_to_cost_ratio": 1.25,
+      "payback_periods": 2,
+      "worth_acquiring": true,
+      "periods": {
+       "period": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+       ],
+       "chance_customer_pays": [
+        1.0,
+        0.3,
+        0.09,
+        0.027,
+        0.0081,
+        0.00243,
+        0.000729,
+        0.0002187,
+        6.561e-05,
+        1.9683e-05
+       ],
+       "present_value": [
+        37.5,
+        9.375,
+        2.34375,
+        0.5859375,
+        0.146484375,
+        0.0366210938,
+        0.00915527344,
+        0.00228881836,
+        0.00057220459,
+        0.000143051147
+       ],
+       "cumulative_present_value": [
+        37.5,
+        46.875,
+        49.21875,
+        49.8046875,
+        49.9511719,
+        49.987793,
+        49.9969482,
+        49.9992371,
+        49.9998093,
+        49.9999523
+       ]
+      },
+      "warnings": []
+     },
+     {
+      "first_margin": "end_if_retained",
+      "margin": 45.0,
+      "retention_rate": 0.3,
+      "discount_rate": 0.2,
+      "acquisition_cost": 40.0,
+      "lifetime_value": 15.0,
+      "margin_multiple": 0.333333333,
+      "formula": "margin x r / (1 + d - r)",
+      "expected_lifetime": 1.42857143,
+      "net_value": -25.0,
+      "value_to_cost_ratio": 0.375,
+      "payback_periods": null,
+      "worth_acquiring": false,
+      "periods": {
+       "period": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+       ],
+       "chance_customer_pays": [
+        0.3,
+        0.09,
+        0.027,
+        0.0081,
+        0.00243,
+        0.000729,
+        0.0002187,
+        6.561e-05,
+        1.9683e-05,
+        5.9049e-06
+       ],
+       "present_value": [
+        11.25,
+        2.8125,
+        0.703125,
+        0.17578125,
+        0.0439453125,
+        0.0109863281,
+        0.00274658203,
+        0.000686645508,
+        0.000171661377,
+        4.29153442e-05
+       ],
+       "cumulative_present_value": [
+        11.25,
+        14.0625,
+        14.765625,
+        14.9414062,
+        14.9853516,
+        14.9963379,
+        14.9990845,
+        14.9997711,
+        14.9999428,
+        14.9999857
+       ]
+      },
+      "warnings": [
+       "The lifetime value (15.00) does not cover the acquisition cost (40.00). Winning such a customer loses money, unless the margin, the retention or the cost changes."
+      ]
+     }
+    ],
+    "how_to_read": [
+     "The lifetime value is in today's money: later margins count less, because of the discount rate and because the customer may have left.",
+     "The retention rate moves the value far more than the discount rate. Try both."
+    ]
+   }
   }
  },
  "settings_help": {
@@ -10833,6 +12768,57 @@
     "when_to_choose": "Leave empty to see the profit for the test sample itself.",
     "minimum": 1.0,
     "optional": true
+   }
+  ],
+  "lifetime_value": [
+   {
+    "key": "first_margin",
+    "label": "When the margin is earned",
+    "kind": "choice",
+    "default": "start",
+    "what_it_does": "Decides when in a period the customer pays, and so which customers pay at all. Textbooks use different conventions, and they give different values for the same customer.",
+    "when_to_choose": "Pick the option that matches how your customers pay. State the convention whenever you report a lifetime value.",
+    "options": [
+     {
+      "value": "start",
+      "label": "At the start of each period",
+      "what_it_does": "The first margin is earned now, for certain. Every later margin is earned at the start of its period, from the customers who are still there. Value = margin x (1 + d) / (1 + d - r).",
+      "when_to_choose": "Default. Customers pay in advance, as with a subscription."
+     },
+     {
+      "value": "end",
+      "label": "At the end of each period",
+      "what_it_does": "Every customer who starts a period pays at its end. The first margin comes one period from now. Value = margin / (1 + d - r).",
+      "when_to_choose": "Customers pay afterwards, for example by invoice at the end of the year."
+     },
+     {
+      "value": "end_if_retained",
+      "label": "At the end of each period, from the customers who stayed",
+      "what_it_does": "Only customers who are still there at the end of a period pay for it. Value = margin x r / (1 + d - r). Many textbooks call r / (1 + d - r) the margin multiple.",
+      "when_to_choose": "You want the cautious textbook formula, or margins are only earned when a customer renews."
+     }
+    ]
+   },
+   {
+    "key": "horizon",
+    "label": "Number of periods counted",
+    "kind": "integer",
+    "default": null,
+    "what_it_does": "Only the margins of this many periods are counted. Empty means the whole relationship, however long it lasts.",
+    "when_to_choose": "Leave empty for the usual lifetime value. Enter 3 or 5 if your company only plans that far ahead.",
+    "minimum": 1,
+    "maximum": 100000,
+    "optional": true
+   },
+   {
+    "key": "periods_shown",
+    "label": "Periods listed one by one",
+    "kind": "integer",
+    "default": 10,
+    "what_it_does": "How many periods the result lists in detail: who is still there, and what the period adds to the value.",
+    "when_to_choose": "Keep 10 for a chart. It does not change the lifetime value.",
+    "minimum": 1,
+    "maximum": 200
    }
   ]
  }
