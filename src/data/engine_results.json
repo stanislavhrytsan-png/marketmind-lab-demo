@@ -16165,6 +16165,1429 @@
      ]
     }
    ]
+  },
+  "panel": {
+   "data": {
+    "file": "store_panel.csv",
+    "unit_column": "store",
+    "period_column": "week",
+    "outcome": "sales",
+    "outcome_meaning": "units of Original 1 L sold in the store and week",
+    "predictors": [
+     {
+      "key": "price",
+      "label": "Shelf price of the week (CHF)",
+      "type": "number"
+     },
+     {
+      "key": "advertising",
+      "label": "Local advertising of the week (CHF)",
+      "type": "number"
+     },
+     {
+      "key": "promotion",
+      "label": "On a promotion display (1 = yes, 0 = no)",
+      "type": "yes_no"
+     }
+    ],
+    "carryover_variable": "advertising",
+    "price_predictor": "price",
+    "n_units": 40,
+    "n_periods": 104,
+    "n_observations": 4160,
+    "lowest_price": 1.85,
+    "highest_price": 2.7,
+    "mean_log_sales": 6.17414463,
+    "mean_log_price": 0.884092741,
+    "share_of_weeks_on_promotion": 0.131730769,
+    "stores": [
+     {
+      "unit": "S01",
+      "mean_sales": 444.721154,
+      "mean_price": 2.51682692,
+      "mean_advertising": 324.25,
+      "lowest_price": 2.05,
+      "highest_price": 2.55,
+      "mean_log_sales": 6.07490938,
+      "mean_log_price": 0.921954653,
+      "mean_log_advertising": 5.68151859,
+      "level": 0.0259048314
+     },
+     {
+      "unit": "S02",
+      "mean_sales": 364.086538,
+      "mean_price": 2.35576923,
+      "mean_advertising": 351.269231,
+      "lowest_price": 1.95,
+      "highest_price": 2.4,
+      "mean_log_sales": 5.86793781,
+      "mean_log_price": 0.855464421,
+      "mean_log_advertising": 5.70992413,
+      "level": -0.349333486
+     },
+     {
+      "unit": "S03",
+      "mean_sales": 641.855769,
+      "mean_price": 2.26778846,
+      "mean_advertising": 425.605769,
+      "lowest_price": 1.85,
+      "highest_price": 2.3,
+      "mean_log_sales": 6.44487965,
+      "mean_log_price": 0.817827479,
+      "mean_log_advertising": 5.96132796,
+      "level": 0.1192633
+     },
+     {
+      "unit": "S04",
+      "mean_sales": 503.096154,
+      "mean_price": 2.40625,
+      "mean_advertising": 310.942308,
+      "lowest_price": 1.95,
+      "highest_price": 2.45,
+      "mean_log_sales": 6.1931345,
+      "mean_log_price": 0.876629,
+      "mean_log_advertising": 5.61243262,
+      "level": 0.0399209496
+     },
+     {
+      "unit": "S05",
+      "mean_sales": 487.413462,
+      "mean_price": 2.47836538,
+      "mean_advertising": 292.759615,
+      "lowest_price": 2.05,
+      "highest_price": 2.5,
+      "mean_log_sales": 6.16641773,
+      "mean_log_price": 0.906889339,
+      "mean_log_advertising": 5.55534509,
+      "level": 0.0957961486
+     },
+     {
+      "unit": "S06",
+      "mean_sales": 536.644231,
+      "mean_price": 2.51730769,
+      "mean_advertising": 294.5,
+      "lowest_price": 2.05,
+      "highest_price": 2.55,
+      "mean_log_sales": 6.26116368,
+      "mean_log_price": 0.922171191,
+      "mean_log_advertising": 5.56644694,
+      "level": 0.199982559
+     },
+     {
+      "unit": "S07",
+      "mean_sales": 355.230769,
+      "mean_price": 2.40721154,
+      "mean_advertising": 447.528846,
+      "lowest_price": 2.0,
+      "highest_price": 2.45,
+      "mean_log_sales": 5.84085593,
+      "mean_log_price": 0.877211936,
+      "mean_log_advertising": 6.01064518,
+      "level": -0.392505049
+     },
+     {
+      "unit": "S08",
+      "mean_sales": 376.865385,
+      "mean_price": 2.22259615,
+      "mean_advertising": 331.653846,
+      "lowest_price": 1.85,
+      "highest_price": 2.25,
+      "mean_log_sales": 5.90298346,
+      "mean_log_price": 0.797777888,
+      "mean_log_advertising": 5.67108363,
+      "level": -0.436246911
+     },
+     {
+      "unit": "S09",
+      "mean_sales": 669.394231,
+      "mean_price": 2.34375,
+      "mean_advertising": 450.346154,
+      "lowest_price": 1.95,
+      "highest_price": 2.4,
+      "mean_log_sales": 6.48065509,
+      "mean_log_price": 0.850057646,
+      "mean_log_advertising": 5.99345428,
+      "level": 0.199365239
+     },
+     {
+      "unit": "S10",
+      "mean_sales": 585.375,
+      "mean_price": 2.37403846,
+      "mean_advertising": 306.75,
+      "lowest_price": 1.95,
+      "highest_price": 2.4,
+      "mean_log_sales": 6.34943366,
+      "mean_log_price": 0.863789393,
+      "mean_log_advertising": 5.62291486,
+      "level": 0.174749572
+     },
+     {
+      "unit": "S11",
+      "mean_sales": 804.605769,
+      "mean_price": 2.42451923,
+      "mean_advertising": 989.25,
+      "lowest_price": 1.95,
+      "highest_price": 2.45,
+      "mean_log_sales": 6.66681846,
+      "mean_log_price": 0.884735212,
+      "mean_log_advertising": 6.77719882,
+      "level": 0.346900431
+     },
+     {
+      "unit": "S12",
+      "mean_sales": 663.538462,
+      "mean_price": 2.33269231,
+      "mean_advertising": 392.365385,
+      "lowest_price": 1.95,
+      "highest_price": 2.35,
+      "mean_log_sales": 6.47552144,
+      "mean_log_price": 0.8464126,
+      "mean_log_advertising": 5.8633058,
+      "level": 0.229266389
+     },
+     {
+      "unit": "S13",
+      "mean_sales": 368.394231,
+      "mean_price": 2.31682692,
+      "mean_advertising": 229.932692,
+      "lowest_price": 1.9,
+      "highest_price": 2.35,
+      "mean_log_sales": 5.88886436,
+      "mean_log_price": 0.839110113,
+      "mean_log_advertising": 5.334514,
+      "level": -0.285523153
+     },
+     {
+      "unit": "S14",
+      "mean_sales": 358.326923,
+      "mean_price": 2.57067308,
+      "mean_advertising": 365.576923,
+      "lowest_price": 2.2,
+      "highest_price": 2.6,
+      "mean_log_sales": 5.86053838,
+      "mean_log_price": 0.943408235,
+      "mean_log_advertising": 5.76010892,
+      "level": -0.159433896
+     },
+     {
+      "unit": "S15",
+      "mean_sales": 374.375,
+      "mean_price": 2.36826923,
+      "mean_advertising": 449.980769,
+      "lowest_price": 1.95,
+      "highest_price": 2.4,
+      "mean_log_sales": 5.90313083,
+      "mean_log_price": 0.861063388,
+      "mean_log_advertising": 5.97063302,
+      "level": -0.346619857
+     },
+     {
+      "unit": "S16",
+      "mean_sales": 413.923077,
+      "mean_price": 2.35,
+      "mean_advertising": 355.625,
+      "lowest_price": 2.0,
+      "highest_price": 2.4,
+      "mean_log_sales": 5.993672,
+      "mean_log_price": 0.853037997,
+      "mean_log_advertising": 5.74649522,
+      "level": -0.242355413
+     },
+     {
+      "unit": "S17",
+      "mean_sales": 381.538462,
+      "mean_price": 2.46778846,
+      "mean_advertising": 320.778846,
+      "lowest_price": 2.0,
+      "highest_price": 2.5,
+      "mean_log_sales": 5.91976662,
+      "mean_log_price": 0.902280426,
+      "mean_log_advertising": 5.66471168,
+      "level": -0.19321814
+     },
+     {
+      "unit": "S18",
+      "mean_sales": 634.355769,
+      "mean_price": 2.575,
+      "mean_advertising": 428.403846,
+      "lowest_price": 2.15,
+      "highest_price": 2.6,
+      "mean_log_sales": 6.4303981,
+      "mean_log_price": 0.945107576,
+      "mean_log_advertising": 5.91819848,
+      "level": 0.385140953
+     },
+     {
+      "unit": "S19",
+      "mean_sales": 412.903846,
+      "mean_price": 2.47836538,
+      "mean_advertising": 183.471154,
+      "lowest_price": 2.0,
+      "highest_price": 2.5,
+      "mean_log_sales": 6.008627,
+      "mean_log_price": 0.906732925,
+      "mean_log_advertising": 5.08301892,
+      "level": 0.020041228
+     },
+     {
+      "unit": "S20",
+      "mean_sales": 435.5,
+      "mean_price": 2.35913462,
+      "mean_advertising": 442.951923,
+      "lowest_price": 1.95,
+      "highest_price": 2.4,
+      "mean_log_sales": 6.05360916,
+      "mean_log_price": 0.856991817,
+      "mean_log_advertising": 5.98276564,
+      "level": -0.217876503
+     },
+     {
+      "unit": "S21",
+      "mean_sales": 610.548077,
+      "mean_price": 2.31105769,
+      "mean_advertising": 432.615385,
+      "lowest_price": 1.9,
+      "highest_price": 2.35,
+      "mean_log_sales": 6.38883654,
+      "mean_log_price": 0.836477939,
+      "mean_log_advertising": 5.94909605,
+      "level": 0.0905084425
+     },
+     {
+      "unit": "S22",
+      "mean_sales": 530.259615,
+      "mean_price": 2.35288462,
+      "mean_advertising": 284.836538,
+      "lowest_price": 1.95,
+      "highest_price": 2.4,
+      "mean_log_sales": 6.24335316,
+      "mean_log_price": 0.854175302,
+      "mean_log_advertising": 5.53543565,
+      "level": 0.0447525658
+     },
+     {
+      "unit": "S23",
+      "mean_sales": 507.913462,
+      "mean_price": 2.67115385,
+      "mean_advertising": 292.182692,
+      "lowest_price": 2.15,
+      "highest_price": 2.7,
+      "mean_log_sales": 6.21064909,
+      "mean_log_price": 0.981590579,
+      "mean_log_advertising": 5.54519413,
+      "level": 0.316889284
+     },
+     {
+      "unit": "S24",
+      "mean_sales": 347.307692,
+      "mean_price": 2.36298077,
+      "mean_advertising": 310.509615,
+      "lowest_price": 1.95,
+      "highest_price": 2.4,
+      "mean_log_sales": 5.82314761,
+      "mean_log_price": 0.858609163,
+      "mean_log_advertising": 5.59725764,
+      "level": -0.386514095
+     },
+     {
+      "unit": "S25",
+      "mean_sales": 518.125,
+      "mean_price": 2.26538462,
+      "mean_advertising": 424.019231,
+      "lowest_price": 1.85,
+      "highest_price": 2.3,
+      "mean_log_sales": 6.22513144,
+      "mean_log_price": 0.816609003,
+      "mean_log_advertising": 5.90533019,
+      "level": -0.10772381
+     },
+     {
+      "unit": "S26",
+      "mean_sales": 473.740385,
+      "mean_price": 2.35288462,
+      "mean_advertising": 104.528846,
+      "lowest_price": 1.95,
+      "highest_price": 2.4,
+      "mean_log_sales": 6.13231572,
+      "mean_log_price": 0.854010638,
+      "mean_log_advertising": 4.5227642,
+      "level": 0.0875435669
+     },
+     {
+      "unit": "S27",
+      "mean_sales": 601.173077,
+      "mean_price": 2.37067308,
+      "mean_advertising": 483.009615,
+      "lowest_price": 1.95,
+      "highest_price": 2.4,
+      "mean_log_sales": 6.36819646,
+      "mean_log_price": 0.862150278,
+      "mean_log_advertising": 6.05702412,
+      "level": 0.113302287
+     },
+     {
+      "unit": "S28",
+      "mean_sales": 589.75,
+      "mean_price": 2.58028846,
+      "mean_advertising": 426.836538,
+      "lowest_price": 2.1,
+      "highest_price": 2.6,
+      "mean_log_sales": 6.35953562,
+      "mean_log_price": 0.947243808,
+      "mean_log_advertising": 5.95691304,
+      "level": 0.295218752
+     },
+     {
+      "unit": "S29",
+      "mean_sales": 367.519231,
+      "mean_price": 2.31346154,
+      "mean_advertising": 446.836538,
+      "lowest_price": 1.9,
+      "highest_price": 2.35,
+      "mean_log_sales": 5.87295149,
+      "mean_log_price": 0.837659651,
+      "mean_log_advertising": 5.99061722,
+      "level": -0.423971273
+     },
+     {
+      "unit": "S30",
+      "mean_sales": 463.038462,
+      "mean_price": 2.26009615,
+      "mean_advertising": 282.778846,
+      "lowest_price": 1.85,
+      "highest_price": 2.3,
+      "mean_log_sales": 6.11116337,
+      "mean_log_price": 0.814048273,
+      "mean_log_advertising": 5.52591029,
+      "level": -0.170484601
+     },
+     {
+      "unit": "S31",
+      "mean_sales": 594.480769,
+      "mean_price": 2.66971154,
+      "mean_advertising": 850.884615,
+      "lowest_price": 2.15,
+      "highest_price": 2.7,
+      "mean_log_sales": 6.35854054,
+      "mean_log_price": 0.980933002,
+      "mean_log_advertising": 6.62850319,
+      "level": 0.268036279
+     },
+     {
+      "unit": "S32",
+      "mean_sales": 394.884615,
+      "mean_price": 2.44807692,
+      "mean_advertising": 311.576923,
+      "lowest_price": 2.0,
+      "highest_price": 2.5,
+      "mean_log_sales": 5.94808285,
+      "mean_log_price": 0.893789755,
+      "mean_log_advertising": 5.64592011,
+      "level": -0.170133802
+     },
+     {
+      "unit": "S33",
+      "mean_sales": 277.375,
+      "mean_price": 2.41923077,
+      "mean_advertising": 427.990385,
+      "lowest_price": 2.0,
+      "highest_price": 2.45,
+      "mean_log_sales": 5.60679721,
+      "mean_log_price": 0.882488823,
+      "mean_log_advertising": 5.92423081,
+      "level": -0.576087221
+     },
+     {
+      "unit": "S34",
+      "mean_sales": 901.384615,
+      "mean_price": 2.60913462,
+      "mean_advertising": 670.355769,
+      "lowest_price": 2.15,
+      "highest_price": 2.65,
+      "mean_log_sales": 6.78155715,
+      "mean_log_price": 0.957697656,
+      "mean_log_advertising": 6.39464418,
+      "level": 0.678024965
+     },
+     {
+      "unit": "S35",
+      "mean_sales": 434.125,
+      "mean_price": 2.56538462,
+      "mean_advertising": 337.923077,
+      "lowest_price": 2.1,
+      "highest_price": 2.6,
+      "mean_log_sales": 6.05299153,
+      "mean_log_price": 0.940995837,
+      "mean_log_advertising": 5.71644178,
+      "level": 0.0250822232
+     },
+     {
+      "unit": "S36",
+      "mean_sales": 372.490385,
+      "mean_price": 2.55432692,
+      "mean_advertising": 386.221154,
+      "lowest_price": 2.1,
+      "highest_price": 2.6,
+      "mean_log_sales": 5.89462673,
+      "mean_log_price": 0.93651179,
+      "mean_log_advertising": 5.80688099,
+      "level": -0.176978652
+     },
+     {
+      "unit": "S37",
+      "mean_sales": 951.817308,
+      "mean_price": 2.41634615,
+      "mean_advertising": 616.086538,
+      "lowest_price": 2.0,
+      "highest_price": 2.45,
+      "mean_log_sales": 6.8339557,
+      "mean_log_price": 0.881211282,
+      "mean_log_advertising": 6.30446564,
+      "level": 0.57430334
+     },
+     {
+      "unit": "S38",
+      "mean_sales": 626.865385,
+      "mean_price": 2.45144231,
+      "mean_advertising": 659.798077,
+      "lowest_price": 2.0,
+      "highest_price": 2.5,
+      "mean_log_sales": 6.41019436,
+      "mean_log_price": 0.895094736,
+      "mean_log_advertising": 6.37012084,
+      "level": 0.185023734
+     },
+     {
+      "unit": "S39",
+      "mean_sales": 561.201923,
+      "mean_price": 2.50288462,
+      "mean_advertising": 881.086538,
+      "lowest_price": 2.05,
+      "highest_price": 2.55,
+      "mean_log_sales": 6.30261757,
+      "mean_log_price": 0.916025688,
+      "mean_log_advertising": 6.66535654,
+      "level": 0.0824757303
+     },
+     {
+      "unit": "S40",
+      "mean_sales": 532.509615,
+      "mean_price": 2.43125,
+      "mean_advertising": 568.269231,
+      "lowest_price": 2.0,
+      "highest_price": 2.45,
+      "mean_log_sales": 6.25782402,
+      "mean_log_price": 0.887733209,
+      "mean_log_advertising": 6.20348833,
+      "level": 0.0375130924
+     }
+    ],
+    "level_goes_with": {
+     "price": 0.45977488,
+     "advertising": 0.302256207
+    }
+   },
+   "runs": {
+    "PN-01": {
+     "function": "compare_panel_models",
+     "settings": {
+      "specification": "log_log",
+      "carryover_rate": null
+     },
+     "carryover_variable": "advertising",
+     "carryover_rate_used": 0.49,
+     "coefficients": [
+      {
+       "variable": "price",
+       "term": "log of price",
+       "pooled": {
+        "coefficient": -0.94858571,
+        "standard_error": 0.0715414409,
+        "p_value": 2.48535384e-39,
+        "lower_95": -1.08884522,
+        "upper_95": -0.808326205
+       },
+       "fixed_effects": {
+        "coefficient": -2.21986218,
+        "standard_error": 0.0492266901,
+        "p_value": 0.0,
+        "lower_95": -2.3163731,
+        "upper_95": -2.12335126
+       },
+       "random_effects": {
+        "coefficient": -2.21099455,
+        "standard_error": 0.0492068168,
+        "p_value": 0.0,
+        "lower_95": -2.30746624,
+        "upper_95": -2.11452286
+       },
+       "fixed_minus_random": -0.0088676288
+      },
+      {
+       "variable": "advertising",
+       "term": "log of advertising (with carry-over)",
+       "pooled": {
+        "coefficient": 0.272964196,
+        "standard_error": 0.0102297059,
+        "p_value": 6.36396838e-145,
+        "lower_95": 0.252908499,
+        "upper_95": 0.293019894
+       },
+       "fixed_effects": {
+        "coefficient": 0.154245192,
+        "standard_error": 0.0110155885,
+        "p_value": 1.48203431e-43,
+        "lower_95": 0.132648685,
+        "upper_95": 0.1758417
+       },
+       "random_effects": {
+        "coefficient": 0.155620395,
+        "standard_error": 0.0109606828,
+        "p_value": 1.03034124e-44,
+        "lower_95": 0.134131592,
+        "upper_95": 0.177109199
+       },
+       "fixed_minus_random": -0.00137520305
+      },
+      {
+       "variable": "promotion",
+       "term": "promotion",
+       "pooled": {
+        "coefficient": 0.286266646,
+        "standard_error": 0.0139867245,
+        "p_value": 8.84346345e-89,
+        "lower_95": 0.258845182,
+        "upper_95": 0.313688111
+       },
+       "fixed_effects": {
+        "coefficient": 0.245419192,
+        "standard_error": 0.00711019525,
+        "p_value": 1.59922537e-229,
+        "lower_95": 0.231479366,
+        "upper_95": 0.259359018
+       },
+       "random_effects": {
+        "coefficient": 0.245760276,
+        "standard_error": 0.00711745271,
+        "p_value": 6.3853586e-230,
+        "lower_95": 0.23180626,
+        "upper_95": 0.259714292
+       },
+       "fixed_minus_random": -0.000341084425
+      }
+     ],
+     "units_differ": {
+      "f": 328.03825,
+      "df1": 39,
+      "df2": 4117,
+      "p_value": 0.0,
+      "units_differ": true
+     },
+     "hausman": {
+      "statistic": 12.7377735,
+      "degrees_of_freedom": 3,
+      "p_value": 0.00523940755,
+      "random_effects_rejected": true
+     },
+     "recommended_model": "fixed_effects",
+     "recommended_model_label": "Fixed effects",
+     "reason": "The units differ, and the fixed and the random effects estimates differ by more than chance allows. So the levels of the units are related to the predictors, and random effects (and the pooled model) are biased.",
+     "models": {
+      "pooled": {
+       "kind": "pooled",
+       "label": "Pooled regression",
+       "settings": {
+        "model": "pooled",
+        "specification": "log_log",
+        "carryover_rate": null
+       },
+       "coefficients": [
+        {
+         "variable": "price",
+         "term": "log of price",
+         "logged": true,
+         "yes_no": false,
+         "coefficient": -0.94858571,
+         "standard_error": 0.0715414409,
+         "t": -13.259248,
+         "p_value": 2.48535384e-39,
+         "lower_95": -1.08884522,
+         "upper_95": -0.808326205,
+         "elasticity": -0.94858571,
+         "effect_of_yes": null,
+         "meaning": "elasticity: the % change in the outcome for 1% more of this predictor"
+        },
+        {
+         "variable": "advertising",
+         "term": "log of advertising (with carry-over)",
+         "logged": true,
+         "yes_no": false,
+         "coefficient": 0.272964196,
+         "standard_error": 0.0102297059,
+         "t": 26.6834843,
+         "p_value": 6.36396838e-145,
+         "lower_95": 0.252908499,
+         "upper_95": 0.293019894,
+         "elasticity": 0.272964196,
+         "effect_of_yes": null,
+         "meaning": "elasticity: the % change in the outcome for 1% more of this predictor"
+        },
+        {
+         "variable": "promotion",
+         "term": "promotion",
+         "logged": false,
+         "yes_no": true,
+         "coefficient": 0.286266646,
+         "standard_error": 0.0139867245,
+         "t": 20.4670254,
+         "p_value": 8.84346345e-89,
+         "lower_95": 0.258845182,
+         "upper_95": 0.313688111,
+         "elasticity": null,
+         "effect_of_yes": 0.331447434,
+         "meaning": "with a 1 instead of a 0 here, the outcome changes by +33.1%"
+        }
+       ],
+       "elasticities": {
+        "price": -0.94858571,
+        "advertising": 0.272964196
+       },
+       "constant": 5.1746206,
+       "fit": {
+        "r_squared": 0.264791445,
+        "r_squared_within": null,
+        "residual_sd": 0.299664346,
+        "degrees_of_freedom": 4155
+       },
+       "variance_components": null,
+       "warnings": []
+      },
+      "fixed_effects": {
+       "kind": "fixed_effects",
+       "label": "Fixed effects",
+       "settings": {
+        "model": "fixed_effects",
+        "specification": "log_log",
+        "carryover_rate": null
+       },
+       "coefficients": [
+        {
+         "variable": "price",
+         "term": "log of price",
+         "logged": true,
+         "yes_no": false,
+         "coefficient": -2.21986218,
+         "standard_error": 0.0492266901,
+         "t": -45.0946869,
+         "p_value": 0.0,
+         "lower_95": -2.3163731,
+         "upper_95": -2.12335126,
+         "elasticity": -2.21986218,
+         "effect_of_yes": null,
+         "meaning": "elasticity: the % change in the outcome for 1% more of this predictor"
+        },
+        {
+         "variable": "advertising",
+         "term": "log of advertising (with carry-over)",
+         "logged": true,
+         "yes_no": false,
+         "coefficient": 0.154245192,
+         "standard_error": 0.0110155885,
+         "t": 14.0024468,
+         "p_value": 1.48203431e-43,
+         "lower_95": 0.132648685,
+         "upper_95": 0.1758417,
+         "elasticity": 0.154245192,
+         "effect_of_yes": null,
+         "meaning": "elasticity: the % change in the outcome for 1% more of this predictor"
+        },
+        {
+         "variable": "promotion",
+         "term": "promotion",
+         "logged": false,
+         "yes_no": true,
+         "coefficient": 0.245419192,
+         "standard_error": 0.00711019525,
+         "t": 34.5165193,
+         "p_value": 1.59922537e-229,
+         "lower_95": 0.231479366,
+         "upper_95": 0.259359018,
+         "elasticity": null,
+         "effect_of_yes": 0.278156994,
+         "meaning": "with a 1 instead of a 0 here, the outcome changes by +27.8%"
+        }
+       ],
+       "elasticities": {
+        "price": -2.21986218,
+        "advertising": 0.154245192
+       },
+       "constant": 7.08698954,
+       "fit": {
+        "r_squared": 0.821007357,
+        "r_squared_within": 0.531638711,
+        "residual_sd": 0.148557549,
+        "degrees_of_freedom": 4116
+       },
+       "variance_components": null,
+       "warnings": []
+      },
+      "random_effects": {
+       "kind": "random_effects",
+       "label": "Random effects",
+       "settings": {
+        "model": "random_effects",
+        "specification": "log_log",
+        "carryover_rate": null
+       },
+       "coefficients": [
+        {
+         "variable": "price",
+         "term": "log of price",
+         "logged": true,
+         "yes_no": false,
+         "coefficient": -2.21099455,
+         "standard_error": 0.0492068168,
+         "t": -44.9326881,
+         "p_value": 0.0,
+         "lower_95": -2.30746624,
+         "upper_95": -2.11452286,
+         "elasticity": -2.21099455,
+         "effect_of_yes": null,
+         "meaning": "elasticity: the % change in the outcome for 1% more of this predictor"
+        },
+        {
+         "variable": "advertising",
+         "term": "log of advertising (with carry-over)",
+         "logged": true,
+         "yes_no": false,
+         "coefficient": 0.155620395,
+         "standard_error": 0.0109606828,
+         "t": 14.1980567,
+         "p_value": 1.03034124e-44,
+         "lower_95": 0.134131592,
+         "upper_95": 0.177109199,
+         "elasticity": 0.155620395,
+         "effect_of_yes": null,
+         "meaning": "elasticity: the % change in the outcome for 1% more of this predictor"
+        },
+        {
+         "variable": "promotion",
+         "term": "promotion",
+         "logged": false,
+         "yes_no": true,
+         "coefficient": 0.245760276,
+         "standard_error": 0.00711745271,
+         "t": 34.5292461,
+         "p_value": 6.3853586e-230,
+         "lower_95": 0.23180626,
+         "upper_95": 0.259714292,
+         "elasticity": null,
+         "effect_of_yes": 0.278593028,
+         "meaning": "with a 1 instead of a 0 here, the outcome changes by +27.9%"
+        }
+       ],
+       "elasticities": {
+        "price": -2.21099455,
+        "advertising": 0.155620395
+       },
+       "constant": 7.07003406,
+       "fit": {
+        "r_squared": 0.171263177,
+        "r_squared_within": 0.531631781,
+        "residual_sd": 0.148731487,
+        "degrees_of_freedom": 4155
+       },
+       "variance_components": {
+        "spread_between_units": 0.254830565,
+        "spread_within_units": 0.148557549,
+        "share_of_spread_between_units": 0.746352577,
+        "theta_lowest": 0.942928655,
+        "theta_highest": 0.942928655
+       },
+       "warnings": []
+      }
+     },
+     "how_to_read": [
+      "If the pooled estimate differs clearly from the fixed effects estimate, differences between units were mistaken for an effect.",
+      "The Hausman test asks whether random effects may be used. A p value below 0.05 says no."
+     ],
+     "warnings": []
+    },
+    "PN-02": {
+     "function": "fit_panel",
+     "kind": "fixed_effects",
+     "label": "Fixed effects",
+     "settings": {
+      "model": "fixed_effects",
+      "specification": "log_log",
+      "carryover_rate": null
+     },
+     "coefficients": [
+      {
+       "variable": "price",
+       "term": "log of price",
+       "logged": true,
+       "yes_no": false,
+       "coefficient": -2.21986218,
+       "standard_error": 0.0492266901,
+       "t": -45.0946869,
+       "p_value": 0.0,
+       "lower_95": -2.3163731,
+       "upper_95": -2.12335126,
+       "elasticity": -2.21986218,
+       "effect_of_yes": null,
+       "meaning": "elasticity: the % change in the outcome for 1% more of this predictor"
+      },
+      {
+       "variable": "advertising",
+       "term": "log of advertising (with carry-over)",
+       "logged": true,
+       "yes_no": false,
+       "coefficient": 0.154245192,
+       "standard_error": 0.0110155885,
+       "t": 14.0024468,
+       "p_value": 1.48203431e-43,
+       "lower_95": 0.132648685,
+       "upper_95": 0.1758417,
+       "elasticity": 0.154245192,
+       "effect_of_yes": null,
+       "meaning": "elasticity: the % change in the outcome for 1% more of this predictor"
+      },
+      {
+       "variable": "promotion",
+       "term": "promotion",
+       "logged": false,
+       "yes_no": true,
+       "coefficient": 0.245419192,
+       "standard_error": 0.00711019525,
+       "t": 34.5165193,
+       "p_value": 1.59922537e-229,
+       "lower_95": 0.231479366,
+       "upper_95": 0.259359018,
+       "elasticity": null,
+       "effect_of_yes": 0.278156994,
+       "meaning": "with a 1 instead of a 0 here, the outcome changes by +27.8%"
+      }
+     ],
+     "elasticities": {
+      "price": -2.21986218,
+      "advertising": 0.154245192
+     },
+     "constant": 7.08698954,
+     "fit": {
+      "r_squared": 0.821007357,
+      "r_squared_within": 0.531638711,
+      "residual_sd": 0.148557549,
+      "degrees_of_freedom": 4116
+     },
+     "variance_components": null,
+     "warnings": [],
+     "carryover_variable": "advertising",
+     "carryover": {
+      "variable": "advertising",
+      "rate": 0.49,
+      "estimated": true,
+      "rate_standard_error": 0.0394694737,
+      "rate_lower_95": 0.412618498,
+      "rate_upper_95": 0.567381502,
+      "effect_in_the_long_run": 0.154245192,
+      "effect_in_the_first_period": 0.0786650481,
+      "half_life_periods": 0.971679105,
+      "rates_tried": {
+       "rate": [
+        0.0,
+        0.05,
+        0.1,
+        0.15,
+        0.2,
+        0.25,
+        0.3,
+        0.35,
+        0.4,
+        0.45,
+        0.46,
+        0.47,
+        0.48,
+        0.49,
+        0.5,
+        0.51,
+        0.52,
+        0.53,
+        0.54,
+        0.55,
+        0.6,
+        0.65,
+        0.7,
+        0.75,
+        0.8,
+        0.85,
+        0.9,
+        0.95
+       ],
+       "squared_error": [
+        93.0171576,
+        92.5832194,
+        92.2195,
+        91.9083468,
+        91.640619,
+        91.4117051,
+        91.2198573,
+        91.0654585,
+        90.9507818,
+        90.8800749,
+        90.8717416,
+        90.8654862,
+        90.8613788,
+        90.8594948,
+        90.8599151,
+        90.8627264,
+        90.8680215,
+        90.8758997,
+        90.8864673,
+        90.8998379,
+        91.0132834,
+        91.2189151,
+        91.5423181,
+        92.0179019,
+        92.6904067,
+        93.614795,
+        94.851183,
+        96.4213753
+       ]
+      },
+      "fading": [
+       0.0786650481,
+       0.0385458736,
+       0.0188874781,
+       0.00925486425,
+       0.00453488348,
+       0.00222209291,
+       0.00108882552,
+       0.000533524507
+      ]
+     },
+     "unit_effects": [
+      {
+       "unit": "S34",
+       "effect": 7.7650145,
+       "difference_from_average": 0.678024965,
+       "n_periods": 104,
+       "sales_against_average": 0.969983101
+      },
+      {
+       "unit": "S37",
+       "effect": 7.66129288,
+       "difference_from_average": 0.57430334,
+       "n_periods": 104,
+       "sales_against_average": 0.775892902
+      },
+      {
+       "unit": "S18",
+       "effect": 7.47213049,
+       "difference_from_average": 0.385140953,
+       "n_periods": 104,
+       "sales_against_average": 0.469821483
+      },
+      {
+       "unit": "S11",
+       "effect": 7.43388997,
+       "difference_from_average": 0.346900431,
+       "n_periods": 104,
+       "sales_against_average": 0.414675861
+      },
+      {
+       "unit": "S23",
+       "effect": 7.40387882,
+       "difference_from_average": 0.316889284,
+       "n_periods": 104,
+       "sales_against_average": 0.372850567
+      },
+      {
+       "unit": "S28",
+       "effect": 7.38220829,
+       "difference_from_average": 0.295218752,
+       "n_periods": 104,
+       "sales_against_average": 0.343420202
+      },
+      {
+       "unit": "S31",
+       "effect": 7.35502582,
+       "difference_from_average": 0.268036279,
+       "n_periods": 104,
+       "sales_against_average": 0.30739457
+      },
+      {
+       "unit": "S12",
+       "effect": 7.31625593,
+       "difference_from_average": 0.229266389,
+       "n_periods": 104,
+       "sales_against_average": 0.257677026
+      },
+      {
+       "unit": "S06",
+       "effect": 7.2869721,
+       "difference_from_average": 0.199982559,
+       "n_periods": 104,
+       "sales_against_average": 0.221381456
+      },
+      {
+       "unit": "S09",
+       "effect": 7.28635478,
+       "difference_from_average": 0.199365239,
+       "n_periods": 104,
+       "sales_against_average": 0.220627705
+      },
+      {
+       "unit": "S38",
+       "effect": 7.27201327,
+       "difference_from_average": 0.185023734,
+       "n_periods": 104,
+       "sales_against_average": 0.203246998
+      },
+      {
+       "unit": "S10",
+       "effect": 7.26173911,
+       "difference_from_average": 0.174749572,
+       "n_periods": 104,
+       "sales_against_average": 0.190947932
+      },
+      {
+       "unit": "S03",
+       "effect": 7.20625284,
+       "difference_from_average": 0.1192633,
+       "n_periods": 104,
+       "sales_against_average": 0.126666531
+      },
+      {
+       "unit": "S27",
+       "effect": 7.20029182,
+       "difference_from_average": 0.113302287,
+       "n_periods": 104,
+       "sales_against_average": 0.119970435
+      },
+      {
+       "unit": "S05",
+       "effect": 7.18278569,
+       "difference_from_average": 0.0957961486,
+       "n_periods": 104,
+       "sales_against_average": 0.100534696
+      },
+      {
+       "unit": "S21",
+       "effect": 7.17749798,
+       "difference_from_average": 0.0905084425,
+       "n_periods": 104,
+       "sales_against_average": 0.0947307499
+      },
+      {
+       "unit": "S26",
+       "effect": 7.1745331,
+       "difference_from_average": 0.0875435669,
+       "n_periods": 104,
+       "sales_against_average": 0.0914898162
+      },
+      {
+       "unit": "S39",
+       "effect": 7.16946527,
+       "difference_from_average": 0.0824757303,
+       "n_periods": 104,
+       "sales_against_average": 0.0859723169
+      },
+      {
+       "unit": "S22",
+       "effect": 7.1317421,
+       "difference_from_average": 0.0447525658,
+       "n_periods": 104,
+       "sales_against_average": 0.0457690689
+      },
+      {
+       "unit": "S04",
+       "effect": 7.12691049,
+       "difference_from_average": 0.0399209496,
+       "n_periods": 104,
+       "sales_against_average": 0.0407285009
+      },
+      {
+       "unit": "S40",
+       "effect": 7.12450263,
+       "difference_from_average": 0.0375130924,
+       "n_periods": 104,
+       "sales_against_average": 0.0382255898
+      },
+      {
+       "unit": "S01",
+       "effect": 7.11289437,
+       "difference_from_average": 0.0259048314,
+       "n_periods": 104,
+       "sales_against_average": 0.0262432776
+      },
+      {
+       "unit": "S35",
+       "effect": 7.11207176,
+       "difference_from_average": 0.0250822232,
+       "n_periods": 104,
+       "sales_against_average": 0.0253994286
+      },
+      {
+       "unit": "S19",
+       "effect": 7.10703077,
+       "difference_from_average": 0.020041228,
+       "n_periods": 104,
+       "sales_against_average": 0.0202434017
+      },
+      {
+       "unit": "S25",
+       "effect": 6.97926573,
+       "difference_from_average": -0.10772381,
+       "n_periods": 104,
+       "sales_against_average": -0.102124454
+      },
+      {
+       "unit": "S14",
+       "effect": 6.92755564,
+       "difference_from_average": -0.159433896,
+       "n_periods": 104,
+       "sales_against_average": -0.147373673
+      },
+      {
+       "unit": "S32",
+       "effect": 6.91685574,
+       "difference_from_average": -0.170133802,
+       "n_periods": 104,
+       "sales_against_average": -0.15644806
+      },
+      {
+       "unit": "S30",
+       "effect": 6.91650494,
+       "difference_from_average": -0.170484601,
+       "n_periods": 104,
+       "sales_against_average": -0.156743925
+      },
+      {
+       "unit": "S36",
+       "effect": 6.91001089,
+       "difference_from_average": -0.176978652,
+       "n_periods": 104,
+       "sales_against_average": -0.16220233
+      },
+      {
+       "unit": "S17",
+       "effect": 6.8937714,
+       "difference_from_average": -0.19321814,
+       "n_periods": 104,
+       "sales_against_average": -0.175697859
+      },
+      {
+       "unit": "S20",
+       "effect": 6.86911303,
+       "difference_from_average": -0.217876503,
+       "n_periods": 104,
+       "sales_against_average": -0.195775245
+      },
+      {
+       "unit": "S16",
+       "effect": 6.84463412,
+       "difference_from_average": -0.242355413,
+       "n_periods": 104,
+       "sales_against_average": -0.215222792
+      },
+      {
+       "unit": "S13",
+       "effect": 6.80146638,
+       "difference_from_average": -0.285523153,
+       "n_periods": 104,
+       "sales_against_average": -0.248379061
+      },
+      {
+       "unit": "S15",
+       "effect": 6.74036968,
+       "difference_from_average": -0.346619857,
+       "n_periods": 104,
+       "sales_against_average": -0.292925933
+      },
+      {
+       "unit": "S02",
+       "effect": 6.73765605,
+       "difference_from_average": -0.349333486,
+       "n_periods": 104,
+       "sales_against_average": -0.294842069
+      },
+      {
+       "unit": "S24",
+       "effect": 6.70047544,
+       "difference_from_average": -0.386514095,
+       "n_periods": 104,
+       "sales_against_average": -0.320578851
+      },
+      {
+       "unit": "S07",
+       "effect": 6.69448449,
+       "difference_from_average": -0.392505049,
+       "n_periods": 104,
+       "sales_against_average": -0.324637063
+      },
+      {
+       "unit": "S29",
+       "effect": 6.66301826,
+       "difference_from_average": -0.423971273,
+       "n_periods": 104,
+       "sales_against_average": -0.345557318
+      },
+      {
+       "unit": "S08",
+       "effect": 6.65074263,
+       "difference_from_average": -0.436246911,
+       "n_periods": 104,
+       "sales_against_average": -0.353541911
+      },
+      {
+       "unit": "S33",
+       "effect": 6.51090232,
+       "difference_from_average": -0.576087221,
+       "n_periods": 104,
+       "sales_against_average": -0.437906583
+      }
+     ],
+     "periods_per_unit": {
+      "lowest": 104,
+      "highest": 104,
+      "balanced": true
+     },
+     "how_to_read": [
+      "A coefficient is usually trusted as a real effect when its p value is below 0.05.",
+      "The 95% range holds the true value in about 95 of 100 studies like this one.",
+      "With the log-log form, a coefficient of -2 means: 1% more of the predictor goes with 2% less of the outcome."
+     ]
+    }
+   },
+   "changes": [
+    {
+     "changes": {
+      "price": 0.05,
+      "advertising": 0.0,
+      "promotion": 0
+     },
+     "by_model": {
+      "pooled": {
+       "sales_change": -0.0452269899,
+       "revenue_change": 0.00251166058
+      },
+      "fixed_effects": {
+       "sales_change": -0.102648328,
+       "revenue_change": -0.0577807444
+      },
+      "random_effects": {
+       "sales_change": -0.102260002,
+       "revenue_change": -0.0573730021
+      }
+     }
+    },
+    {
+     "changes": {
+      "price": -0.1,
+      "advertising": 0.0,
+      "promotion": 0
+     },
+     "by_model": {
+      "pooled": {
+       "sales_change": 0.105108455,
+       "revenue_change": -0.00540239038
+      },
+      "fixed_effects": {
+       "sales_change": 0.263500223,
+       "revenue_change": 0.1371502
+      },
+      "random_effects": {
+       "sales_change": 0.262320288,
+       "revenue_change": 0.136088259
+      }
+     }
+    },
+    {
+     "changes": {
+      "price": 0.1,
+      "advertising": 0.5,
+      "promotion": 0
+     },
+     "by_model": {
+      "pooled": {
+       "sales_change": 0.0204743648,
+       "revenue_change": 0.122521801
+      },
+      "fixed_effects": {
+       "sales_change": -0.13846054,
+       "revenue_change": -0.0523065937
+      },
+      "random_effects": {
+       "sales_change": -0.137251148,
+       "revenue_change": -0.050976263
+      }
+     }
+    },
+    {
+     "changes": {
+      "price": 0.0,
+      "advertising": 1.0,
+      "promotion": 1
+     },
+     "by_model": {
+      "pooled": {
+       "sales_change": 0.608771766,
+       "revenue_change": 0.608771766
+      },
+      "fixed_effects": {
+       "sales_change": 0.422383253,
+       "revenue_change": 0.422383253
+      },
+      "random_effects": {
+       "sales_change": 0.424225439,
+       "revenue_change": 0.424225439
+      }
+     }
+    },
+    {
+     "changes": {
+      "price": -0.15,
+      "advertising": -0.5,
+      "promotion": 1
+     },
+     "by_model": {
+      "pooled": {
+       "sales_change": 0.285599849,
+       "revenue_change": 0.0927598713
+      },
+      "fixed_effects": {
+       "sales_change": 0.647525058,
+       "revenue_change": 0.400396299
+      },
+      "random_effects": {
+       "sales_change": 0.644145679,
+       "revenue_change": 0.397523828
+      }
+     }
+    },
+    {
+     "changes": {
+      "price": 0.0,
+      "advertising": 0.0,
+      "promotion": 1
+     },
+     "by_model": {
+      "pooled": {
+       "sales_change": 0.331447434,
+       "revenue_change": 0.331447434
+      },
+      "fixed_effects": {
+       "sales_change": 0.278156994,
+       "revenue_change": 0.278156994
+      },
+      "random_effects": {
+       "sales_change": 0.278593028,
+       "revenue_change": 0.278593028
+      }
+     }
+    }
+   ]
   }
  },
  "settings_help": {
@@ -16715,6 +18138,69 @@
     "when_to_choose": "Keep the default. Change it to see that the result does not depend on the draws.",
     "minimum": 0,
     "maximum": 4294967295
+   }
+  ],
+  "panel": [
+   {
+    "key": "model",
+    "label": "Model",
+    "kind": "choice",
+    "default": "fixed_effects",
+    "what_it_does": "Decides which differences in the data are used: those between units, those within a unit over time, or both.",
+    "when_to_choose": "Start with fixed effects. Compare all three if you are unsure: the comparison says which one to trust.",
+    "options": [
+     {
+      "value": "pooled",
+      "label": "Pooled regression",
+      "what_it_does": "Treats every row as a separate case. Differences between units and changes within a unit count the same.",
+      "when_to_choose": "The units are alike, or you want the simple benchmark. If units differ for reasons that are not in the data, this model is biased."
+     },
+     {
+      "value": "fixed_effects",
+      "label": "Fixed effects",
+      "what_it_does": "Gives every unit its own level. Only changes within a unit over time are used, so anything that is fixed for a unit, such as its location, cannot bias the result.",
+      "when_to_choose": "Default. Units differ in ways you cannot measure, and these may be related to the predictors (a store in a rich area sells more and charges more)."
+     },
+     {
+      "value": "random_effects",
+      "label": "Random effects",
+      "what_it_does": "Treats the level of a unit as a random draw. Uses the changes within units and part of the differences between units, which makes the estimates more precise.",
+      "when_to_choose": "The levels of the units are unrelated to the predictors. The Hausman test in the comparison checks this."
+     }
+    ]
+   },
+   {
+    "key": "specification",
+    "label": "Form of the equation",
+    "kind": "choice",
+    "default": "log_log",
+    "what_it_does": "Decides whether the variables enter as they are or as logarithms.",
+    "when_to_choose": "Log-log is the usual form for sales and marketing mix: its coefficients can be read directly as elasticities.",
+    "options": [
+     {
+      "value": "log_log",
+      "label": "Log-log",
+      "what_it_does": "The outcome and every predictor with positive values enter as logarithms. A coefficient is then an elasticity: the percentage change in the outcome for a 1% change in the predictor. Yes/no predictors (0 or 1) stay as they are.",
+      "when_to_choose": "Default. Effects are proportional: a price rise of 10% costs the same share of sales in a small and a large store."
+     },
+     {
+      "value": "linear",
+      "label": "Linear",
+      "what_it_does": "All variables enter as they are. A coefficient is the change in the outcome for one more unit of the predictor.",
+      "when_to_choose": "Effects are a fixed number of units, or a variable has zeros or negative values and cannot be put in logarithms."
+     }
+    ]
+   },
+   {
+    "key": "carryover_rate",
+    "label": "Carry-over rate",
+    "kind": "number",
+    "default": null,
+    "what_it_does": "Only used when a carry-over variable is named. The share of the effect of one period that is still there in the next: with 0.6, advertising of this week counts 60% next week and 36% the week after.",
+    "when_to_choose": "Leave empty to estimate the rate from the data. Enter a number if you know it from earlier studies.",
+    "minimum": 0.0,
+    "maximum": 0.99,
+    "optional": true
    }
   ]
  }

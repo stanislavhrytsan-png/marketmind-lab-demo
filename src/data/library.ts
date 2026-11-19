@@ -12,6 +12,7 @@ import type { FurtherModuleId, ModuleId, Run, RunId } from './alpineOat'
 import { forecastingModule, forecastingRuns, forecastingSetups } from './forecasting'
 import { lifetimeValueModule, lifetimeValueRuns, lifetimeValueSetups } from './lifetimeValue'
 import type { FurtherModule, SetupInfo } from './moduleKit'
+import { panelModule, panelRuns, panelSetups } from './panel'
 import { portfolioModule, portfolioRuns, portfolioSetups } from './portfolio'
 import { pricingModule, pricingRuns, pricingSetups } from './pricing'
 import { targetingModule, targetingRuns, targetingSetups } from './targeting'
@@ -24,6 +25,7 @@ const built: { module: FurtherModule; runs: Run[]; setups: SetupInfo[] }[] = [
   { module: lifetimeValueModule, runs: lifetimeValueRuns, setups: lifetimeValueSetups },
   { module: allocationModule, runs: allocationRuns, setups: allocationSetups },
   { module: portfolioModule, runs: portfolioRuns, setups: portfolioSetups },
+  { module: panelModule, runs: panelRuns, setups: panelSetups },
 ]
 
 /** The names of the further modules that are not built yet, in the order of the concept. */

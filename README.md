@@ -169,6 +169,14 @@ Start each path with a click on the module in the sidebar.
 - **Point at** the card "Watch out". **Say:** "One weight is enough: with Market growth 6% lower, it moves to 'Hold and select'. Leave out one of two managers and it moves as well. Ratings and weights are judgments."
 - **In "What if",** drag "Market growth" a little to the left. **Say:** "The bubble crosses the border. And one more thing: the matrix sorts the units. It does not say how much to invest in each."
 
+### Panel regression
+
+- **Say:** "Forty stores, two years of weekly sales. What do price, advertising and promotion do to sales? The obvious regression over all 4,160 store weeks gives a price elasticity of −0.95: customers seem to hardly react."
+- **Point at** the card "Watch out". **Say:** "Within a store it is −2.22. Stores that sell more also charge more, and the pooled model takes that for customers who do not mind the price. For a price 5% higher it expects +0.3% revenue. Fixed effects expect −5.8%."
+- **Point at** the chart of the 40 stores. **Say:** "Every short line is one store, and each one falls steeply. The long line through all of them is nearly flat."
+- **Point at** "Advertising keeps working after its week". **Say:** "The effect of advertising does not end with the week: 49% of it is still there a week later."
+- **In "What if",** move the price slider. **Say:** "One question, three models. Two agree, and the simple one points the other way."
+
 ## Where the numbers come from
 
 The calculation engine is in the folder `engine`, next to this one. One command runs it on the Alpine Oat Co. data and writes everything the demo shows into `src/data/engine_results.json`:
@@ -177,7 +185,7 @@ The calculation engine is in the folder `engine`, next to this one. One command 
 cd ../engine && .venv/bin/python -m marketmind.export_demo
 ```
 
-- **Real runs only.** The file holds the eight runs of the assignment (SEG-01 to SEG-04, POS-01 and CJ-01 to CJ-03) and the runs of the further modules: FC-01 to FC-04 (forecasting), PR-01 to PR-04 (price optimization), TG-01 and TG-02 (predictive modeling), LV-01 and LV-02 (customer lifetime value), RA-01 and RA-02 (resource allocation) and GE-01 and GE-02 (GE McKinsey matrix). Each one is a real run of the engine with the settings the demo names.
+- **Real runs only.** The file holds the eight runs of the assignment (SEG-01 to SEG-04, POS-01 and CJ-01 to CJ-03) and the runs of the further modules: FC-01 to FC-04 (forecasting), PR-01 to PR-04 (price optimization), TG-01 and TG-02 (predictive modeling), LV-01 and LV-02 (customer lifetime value), RA-01 and RA-02 (resource allocation), GE-01 and GE-02 (GE McKinsey matrix) and PN-01 and PN-02 (panel regression). Each one is a real run of the engine with the settings the demo names.
 - **The engine's own words.** The file also holds the engine's description of every setting of the further modules (what it does, when to choose it), and the warnings and reading notes of each result. The setup screens and the notes marked "The engine says" show them word for word.
 - **Texts follow the numbers.** Sentences that quote a number are built from the file: in `src/data/alpineOat.ts` for the assignment, and in one data file per further module (for example `src/data/forecasting.ts`). This covers the tutor scripts, Lea's texts and the feedback draft. A text cannot disagree with a chart.
 - **Do not edit the file by hand.** Change the engine or its data, then run the export again.
@@ -212,6 +220,7 @@ Three checks keep the demo and the engine together:
 | Customer lifetime value | Real results of the engine, calculated before: the retention rate of each segment from six yearly cohorts, the value of 3,882 current subscribers per segment, and the same with one retention rate for everyone. The what-if view applies the engine's formula in the browser to another margin, retention rate, discount rate, acquisition cost or payment convention. | Calculated when the student presses Run, on the cohort data and the customers of the case. |
 | Resource allocation | Real results of the engine, calculated before: a response curve per region from four judgments, the best split of the budget, the best split for 17 other budgets, and the split again with one judgment changed by 2%. The what-if view values a split of your own in the browser, with the engine's curves. The search for the best split is not repeated in the browser. | The student enters the judgments, and the engine searches when Run is pressed. |
 | GE McKinsey matrix | Real results of the engine, calculated before: the two scores, the cell and the zone of six business units from the ratings of ten managers, 1,000 random sets of weights, every weight changed alone, and the matrix again without each one of the managers. The what-if view repeats only the weighted average in the browser, with weights of your own. | The student enters the units, the factors, the weights and the ratings, and the engine places the units when Run is pressed. |
+| Panel regression | Real results of the engine, calculated before: pooled regression, fixed effects and random effects on 4,160 store weeks, the two tests that choose between them, the carry-over rate of advertising found among 28 rates, and the level of each of the 40 stores. The what-if view only reads the three fitted models in the browser: what each one says about a change of price, advertising or promotion. | Estimated when the student presses Run, on the panel and with the settings the student picked. |
 | AI tutor in the further modules | One short scripted exchange per module, in Coach mode. Fixed text with the engine's numbers. | A language model, inside the limits of the mode the professor set. |
 | Modules marked "coming soon" | Names in the navigation. The engine already calculates them. | Built into the interface one by one. |
 

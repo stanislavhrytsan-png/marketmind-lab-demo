@@ -11,6 +11,7 @@ import ForecastingNew from './screens/modules/ForecastingNew'
 import GeMatrix from './screens/modules/GeMatrix'
 import LifetimeValue from './screens/modules/LifetimeValue'
 import ModuleSetup from './screens/modules/ModuleSetup'
+import PanelRegression from './screens/modules/PanelRegression'
 import PricingConjoint from './screens/modules/PricingConjoint'
 import PricingTests from './screens/modules/PricingTests'
 import Targeting from './screens/modules/Targeting'
@@ -78,6 +79,7 @@ export default function App() {
             <Route path="/lifetime-value" element={<LifetimeValue />} />
             <Route path="/allocation" element={<Allocation />} />
             <Route path="/ge-matrix" element={<GeMatrix />} />
+            <Route path="/panel" element={<PanelRegression />} />
             <Route path="/:module/setup/:runId" element={<ModuleSetup />} />
             {/* Professor */}
             <Route path="/professor" element={<Navigate to="/professor/assignment" replace />} />
