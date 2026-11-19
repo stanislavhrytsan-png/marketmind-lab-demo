@@ -162,6 +162,13 @@ Start each path with a click on the module in the sidebar.
 - **Point at** "Is the budget itself right?". **Say:** "Asked whether more money would pay, the engine stops at CHF 1,132,000 and leaves the rest."
 - **In "What if",** click "Best split (RA-01)", then drag one slider. **Say:** "At the best split, one more franc earns the same in every region. Any move away from it costs profit."
 
+### GE McKinsey matrix
+
+- **Say:** "Six business units, ten factors, ten managers who rate them. The engine averages the ratings, weights them and places every unit in a grid of three by three cells. Four units land in 'Invest and grow', two in 'Harvest or divest'."
+- **Point at** Home subscription in the matrix. **Say:** "This unit sits 0.01 points above a border. So the engine tried 1,000 sets of weights that differ a little. Home subscription keeps its cell in 64% of the 1,000 sets."
+- **Point at** the card "Watch out". **Say:** "One weight is enough: with Market growth 6% lower, it moves to 'Hold and select'. Leave out one of two managers and it moves as well. Ratings and weights are judgments."
+- **In "What if",** drag "Market growth" a little to the left. **Say:** "The bubble crosses the border. And one more thing: the matrix sorts the units. It does not say how much to invest in each."
+
 ## Where the numbers come from
 
 The calculation engine is in the folder `engine`, next to this one. One command runs it on the Alpine Oat Co. data and writes everything the demo shows into `src/data/engine_results.json`:
@@ -170,7 +177,7 @@ The calculation engine is in the folder `engine`, next to this one. One command 
 cd ../engine && .venv/bin/python -m marketmind.export_demo
 ```
 
-- **Real runs only.** The file holds the eight runs of the assignment (SEG-01 to SEG-04, POS-01 and CJ-01 to CJ-03) and the runs of the further modules: FC-01 to FC-04 (forecasting), PR-01 to PR-04 (price optimization), TG-01 and TG-02 (predictive modeling), LV-01 and LV-02 (customer lifetime value) and RA-01 and RA-02 (resource allocation). Each one is a real run of the engine with the settings the demo names.
+- **Real runs only.** The file holds the eight runs of the assignment (SEG-01 to SEG-04, POS-01 and CJ-01 to CJ-03) and the runs of the further modules: FC-01 to FC-04 (forecasting), PR-01 to PR-04 (price optimization), TG-01 and TG-02 (predictive modeling), LV-01 and LV-02 (customer lifetime value), RA-01 and RA-02 (resource allocation) and GE-01 and GE-02 (GE McKinsey matrix). Each one is a real run of the engine with the settings the demo names.
 - **The engine's own words.** The file also holds the engine's description of every setting of the further modules (what it does, when to choose it), and the warnings and reading notes of each result. The setup screens and the notes marked "The engine says" show them word for word.
 - **Texts follow the numbers.** Sentences that quote a number are built from the file: in `src/data/alpineOat.ts` for the assignment, and in one data file per further module (for example `src/data/forecasting.ts`). This covers the tutor scripts, Lea's texts and the feedback draft. A text cannot disagree with a chart.
 - **Do not edit the file by hand.** Change the engine or its data, then run the export again.
@@ -204,6 +211,7 @@ Three checks keep the demo and the engine together:
 | Predictive modeling | Real results of the engine, calculated before: a logistic regression and a decision tree, fitted on 3,500 customers of a past campaign and tested on 1,500 others, with the gains and lift table and the table of right and wrong predictions at four thresholds. The what-if view repeats only the arithmetic of the campaign in the browser: profit by depth for another cost, margin or list size. | Fitted when the student presses Run. New customers are scored with the stored model. |
 | Customer lifetime value | Real results of the engine, calculated before: the retention rate of each segment from six yearly cohorts, the value of 3,882 current subscribers per segment, and the same with one retention rate for everyone. The what-if view applies the engine's formula in the browser to another margin, retention rate, discount rate, acquisition cost or payment convention. | Calculated when the student presses Run, on the cohort data and the customers of the case. |
 | Resource allocation | Real results of the engine, calculated before: a response curve per region from four judgments, the best split of the budget, the best split for 17 other budgets, and the split again with one judgment changed by 2%. The what-if view values a split of your own in the browser, with the engine's curves. The search for the best split is not repeated in the browser. | The student enters the judgments, and the engine searches when Run is pressed. |
+| GE McKinsey matrix | Real results of the engine, calculated before: the two scores, the cell and the zone of six business units from the ratings of ten managers, 1,000 random sets of weights, every weight changed alone, and the matrix again without each one of the managers. The what-if view repeats only the weighted average in the browser, with weights of your own. | The student enters the units, the factors, the weights and the ratings, and the engine places the units when Run is pressed. |
 | AI tutor in the further modules | One short scripted exchange per module, in Coach mode. Fixed text with the engine's numbers. | A language model, inside the limits of the mode the professor set. |
 | Modules marked "coming soon" | Names in the navigation. The engine already calculates them. | Built into the interface one by one. |
 
@@ -257,5 +265,5 @@ To change a text, edit `src/data/alpineOat.ts` or the data file of the module. T
 - **The engine's variables.** The concept draws 8 basis variables on a scale from 1 to 7 and 6 descriptors. The demo shows the engine's data: 10 basis variables on a scale from 0 to 9 and 4 descriptors. The layout is the same.
 - **The engine's numbers.** All numbers differ from the concept images, because they are now calculated. Two things changed with them: in the comparison of SEG-02 and SEG-03 it is Health-focused that splits, and on the positioning map the labels sit where the calculated map leaves room.
 - **Submissions.** The student list shows all students when the screen opens. The concept highlights "To review" but lists everyone.
-- **The further modules.** The concept draws three modules and lists nine as "coming soon". Their screens are new. They reuse the patterns of the concept: run header, depth rail, guided settings, the mode plate. Three things are new: the card "Watch out", sliders, and line charts.
+- **The further modules.** The concept draws three modules and lists nine as "coming soon". Their screens are new. They reuse the patterns of the concept: run header, depth rail, guided settings, the mode plate. Three things are new: the card "Watch out", sliders, and the charts of these modules (lines, columns, and a grid with bubbles).
 - **Run history.** With more than four modules the filter is a list to pick from. The concept draws chips, which do not fit twelve modules.

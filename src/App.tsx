@@ -8,6 +8,7 @@ import { useFitToWidth } from './lib/useFitToWidth'
 import Allocation from './screens/modules/Allocation'
 import ForecastingExisting from './screens/modules/ForecastingExisting'
 import ForecastingNew from './screens/modules/ForecastingNew'
+import GeMatrix from './screens/modules/GeMatrix'
 import LifetimeValue from './screens/modules/LifetimeValue'
 import ModuleSetup from './screens/modules/ModuleSetup'
 import PricingConjoint from './screens/modules/PricingConjoint'
@@ -76,6 +77,7 @@ export default function App() {
             <Route path="/targeting" element={<Targeting />} />
             <Route path="/lifetime-value" element={<LifetimeValue />} />
             <Route path="/allocation" element={<Allocation />} />
+            <Route path="/ge-matrix" element={<GeMatrix />} />
             <Route path="/:module/setup/:runId" element={<ModuleSetup />} />
             {/* Professor */}
             <Route path="/professor" element={<Navigate to="/professor/assignment" replace />} />

@@ -14297,6 +14297,1874 @@
      "warnings": []
     }
    ]
+  },
+  "portfolio": {
+   "data": {
+    "file": "business_unit_ratings.csv",
+    "n_raters": 10,
+    "raters": [
+     "M01",
+     "M02",
+     "M03",
+     "M04",
+     "M05",
+     "M06",
+     "M07",
+     "M08",
+     "M09",
+     "M10"
+    ],
+    "rating_scale": {
+     "minimum": 1,
+     "maximum": 5
+    },
+    "revenue_unit": "million CHF per year",
+    "units": [
+     "Oat drinks (retail)",
+     "Barista line",
+     "Oat yoghurt",
+     "Oat ice cream",
+     "Snack bars",
+     "Home subscription"
+    ]
+   },
+   "runs": {
+    "GE-01": {
+     "function": "ge_matrix",
+     "settings": {
+      "scale_min": 1.0,
+      "scale_max": 5.0,
+      "cut_points": null
+     },
+     "n_units": 6,
+     "ratings_were_averaged": true,
+     "zones": {
+      "invest": [
+       "Oat drinks (retail)",
+       "Barista line",
+       "Oat yoghurt",
+       "Home subscription"
+      ],
+      "hold": [],
+      "harvest": [
+       "Oat ice cream",
+       "Snack bars"
+      ]
+     },
+     "how_to_read": [
+      "The further a unit lies towards high attractiveness and high strength, the stronger the case for investing in it.",
+      "A unit close to a cut of the grid could as well lie in the neighbouring cell. Check it with the sensitivity analysis.",
+      "The result depends on the ratings and the weights. Both are judgments."
+     ],
+     "warnings": []
+    },
+    "GE-02": {
+     "function": "ge_sensitivity",
+     "settings": {
+      "scale_min": 1.0,
+      "scale_max": 5.0,
+      "cut_points": null,
+      "change": 0.2,
+      "n_draws": 1000,
+      "seed": 2026
+     },
+     "from_least_to_most_stable": [
+      "Home subscription",
+      "Oat yoghurt",
+      "Barista line",
+      "Oat drinks (retail)",
+      "Oat ice cream",
+      "Snack bars"
+     ],
+     "how_to_read": [
+      "A unit that stays in its cell in every draw is placed safely, whatever the exact weights.",
+      "For the others, the smallest switch says which weight matters most and how much it would have to change."
+     ],
+     "warnings": [
+      "The cell of Home subscription, Oat yoghurt depends on the weights: with weights changed by up to 20%, it does not always stay where it is. Do not read too much into the exact cell."
+     ]
+    }
+   },
+   "scale": {
+    "lowest": 1.0,
+    "highest": 5.0
+   },
+   "cuts": {
+    "low_to_medium": 2.33333333,
+    "medium_to_high": 3.66666667
+   },
+   "factors": [
+    {
+     "key": "market_size",
+     "label": "Market size",
+     "dimension": "attractiveness",
+     "weight": 0.25,
+     "weight_given": 0.25
+    },
+    {
+     "key": "market_growth",
+     "label": "Market growth",
+     "dimension": "attractiveness",
+     "weight": 0.3,
+     "weight_given": 0.3
+    },
+    {
+     "key": "market_profitability",
+     "label": "Profitability of the market",
+     "dimension": "attractiveness",
+     "weight": 0.2,
+     "weight_given": 0.2
+    },
+    {
+     "key": "competitive_calm",
+     "label": "Little pressure from competitors",
+     "dimension": "attractiveness",
+     "weight": 0.15,
+     "weight_given": 0.15
+    },
+    {
+     "key": "trend_fit",
+     "label": "Fit with consumer trends",
+     "dimension": "attractiveness",
+     "weight": 0.1,
+     "weight_given": 0.1
+    },
+    {
+     "key": "market_share",
+     "label": "Market share",
+     "dimension": "strength",
+     "weight": 0.2,
+     "weight_given": 0.2
+    },
+    {
+     "key": "brand_strength",
+     "label": "Brand strength",
+     "dimension": "strength",
+     "weight": 0.25,
+     "weight_given": 0.25
+    },
+    {
+     "key": "product_quality",
+     "label": "Product quality",
+     "dimension": "strength",
+     "weight": 0.2,
+     "weight_given": 0.2
+    },
+    {
+     "key": "distribution",
+     "label": "Distribution",
+     "dimension": "strength",
+     "weight": 0.2,
+     "weight_given": 0.2
+    },
+    {
+     "key": "cost_position",
+     "label": "Cost position",
+     "dimension": "strength",
+     "weight": 0.15,
+     "weight_given": 0.15
+    }
+   ],
+   "dimension_labels": {
+    "attractiveness": "Market attractiveness",
+    "strength": "Business strength"
+   },
+   "zone_of_cell": {
+    "high attractiveness, high strength": "invest",
+    "high attractiveness, medium strength": "invest",
+    "medium attractiveness, high strength": "invest",
+    "high attractiveness, low strength": "hold",
+    "medium attractiveness, medium strength": "hold",
+    "low attractiveness, high strength": "hold",
+    "medium attractiveness, low strength": "harvest",
+    "low attractiveness, medium strength": "harvest",
+    "low attractiveness, low strength": "harvest"
+   },
+   "zone_labels": {
+    "invest": "Invest and grow",
+    "hold": "Hold and select",
+    "harvest": "Harvest or divest"
+   },
+   "zone_meanings": {
+    "invest": "An attractive market and a strong position. Put money in to grow.",
+    "hold": "A mixed picture. Invest only where it clearly pays, and protect what earns.",
+    "harvest": "A weak position in an unattractive market. Take the cash out, or sell."
+   },
+   "units": [
+    {
+     "unit": "Oat drinks (retail)",
+     "attractiveness": 3.315,
+     "strength": 4.305,
+     "attractiveness_level": "medium",
+     "strength_level": "high",
+     "cell": "medium attractiveness, high strength",
+     "zone": "invest",
+     "zone_label": "Invest and grow",
+     "zone_meaning": "An attractive market and a strong position. Put money in to grow.",
+     "size": 42.0,
+     "n_ratings": 10,
+     "distance_to_nearest_cut": 0.351666667,
+     "nearest_cut": {
+      "dimension": "attractiveness",
+      "cut": 3.66666667
+     },
+     "ratings": [
+      4.7,
+      2.5,
+      3.1,
+      2.4,
+      4.1,
+      4.1,
+      4.4,
+      4.6,
+      4.1,
+      4.3
+     ],
+     "spread_between_raters": [
+      0.483045892,
+      0.707106781,
+      0.737864787,
+      0.516397779,
+      0.316227766,
+      0.567646212,
+      0.516397779,
+      0.516397779,
+      0.316227766,
+      0.483045892
+     ],
+     "contributions": [
+      1.175,
+      0.75,
+      0.62,
+      0.36,
+      0.41,
+      0.82,
+      1.1,
+      0.92,
+      0.82,
+      0.645
+     ],
+     "share_of_draws_in_same_cell": 1.0,
+     "share_of_draws_in_same_zone": 1.0,
+     "share_of_draws_by_zone": {
+      "invest": 1.0,
+      "hold": 0.0,
+      "harvest": 0.0
+     },
+     "attractiveness_range": [
+      3.17686155,
+      3.46915632
+     ],
+     "strength_range": [
+      4.27618234,
+      4.33378665
+     ],
+     "moves_when_one_weight_changes": [],
+     "smallest_switch": {
+      "factor": "market_size",
+      "label": "Market size",
+      "dimension": "attractiveness",
+      "multiply_weight_by": 2.36129032,
+      "change_of_weight": 1.36129032,
+      "to_cell": "high attractiveness, high strength",
+      "to_zone": "invest",
+      "zone_changes": false
+     },
+     "stable": true,
+     "same_zone_without_one_manager": 10
+    },
+    {
+     "unit": "Barista line",
+     "attractiveness": 4.33,
+     "strength": 3.81,
+     "attractiveness_level": "high",
+     "strength_level": "high",
+     "cell": "high attractiveness, high strength",
+     "zone": "invest",
+     "zone_label": "Invest and grow",
+     "zone_meaning": "An attractive market and a strong position. Put money in to grow.",
+     "size": 11.0,
+     "n_ratings": 10,
+     "distance_to_nearest_cut": 0.143333333,
+     "nearest_cut": {
+      "dimension": "strength",
+      "cut": 3.66666667
+     },
+     "ratings": [
+      3.6,
+      5.0,
+      4.6,
+      3.6,
+      4.7,
+      3.5,
+      4.2,
+      4.4,
+      3.5,
+      3.2
+     ],
+     "spread_between_raters": [
+      0.516397779,
+      0.0,
+      0.516397779,
+      0.516397779,
+      0.483045892,
+      0.527046277,
+      0.421637021,
+      0.516397779,
+      0.527046277,
+      0.632455532
+     ],
+     "contributions": [
+      0.9,
+      1.5,
+      0.92,
+      0.54,
+      0.47,
+      0.7,
+      1.05,
+      0.88,
+      0.7,
+      0.48
+     ],
+     "share_of_draws_in_same_cell": 1.0,
+     "share_of_draws_in_same_zone": 1.0,
+     "share_of_draws_by_zone": {
+      "invest": 1.0,
+      "hold": 0.0,
+      "harvest": 0.0
+     },
+     "attractiveness_range": [
+      4.23733969,
+      4.42157366
+     ],
+     "strength_range": [
+      3.73944214,
+      3.88159295
+     ],
+     "moves_when_one_weight_changes": [],
+     "smallest_switch": {
+      "factor": "product_quality",
+      "label": "Product quality",
+      "dimension": "strength",
+      "multiply_weight_by": 0.0227272727,
+      "change_of_weight": -0.977272727,
+      "to_cell": "high attractiveness, medium strength",
+      "to_zone": "invest",
+      "zone_changes": false
+     },
+     "stable": true,
+     "same_zone_without_one_manager": 10
+    },
+    {
+     "unit": "Oat yoghurt",
+     "attractiveness": 4.225,
+     "strength": 2.425,
+     "attractiveness_level": "high",
+     "strength_level": "medium",
+     "cell": "high attractiveness, medium strength",
+     "zone": "invest",
+     "zone_label": "Invest and grow",
+     "zone_meaning": "An attractive market and a strong position. Put money in to grow.",
+     "size": 4.0,
+     "n_ratings": 10,
+     "distance_to_nearest_cut": 0.0916666667,
+     "nearest_cut": {
+      "dimension": "strength",
+      "cut": 2.33333333
+     },
+     "ratings": [
+      4.0,
+      4.7,
+      3.7,
+      4.1,
+      4.6,
+      1.7,
+      3.4,
+      3.1,
+      1.8,
+      1.7
+     ],
+     "spread_between_raters": [
+      0.666666667,
+      0.483045892,
+      0.674948558,
+      0.567646212,
+      0.516397779,
+      0.674948558,
+      0.699205899,
+      0.567646212,
+      0.788810638,
+      0.483045892
+     ],
+     "contributions": [
+      1.0,
+      1.41,
+      0.74,
+      0.615,
+      0.46,
+      0.34,
+      0.85,
+      0.62,
+      0.36,
+      0.255
+     ],
+     "share_of_draws_in_same_cell": 0.991,
+     "share_of_draws_in_same_zone": 0.991,
+     "share_of_draws_by_zone": {
+      "invest": 0.991,
+      "hold": 0.009,
+      "harvest": 0.0
+     },
+     "attractiveness_range": [
+      4.17277364,
+      4.28805904
+     ],
+     "strength_range": [
+      2.29947267,
+      2.55387725
+     ],
+     "moves_when_one_weight_changes": [],
+     "smallest_switch": {
+      "factor": "brand_strength",
+      "label": "Brand strength",
+      "dimension": "strength",
+      "multiply_weight_by": 0.65625,
+      "change_of_weight": -0.34375,
+      "to_cell": "high attractiveness, low strength",
+      "to_zone": "hold",
+      "zone_changes": true
+     },
+     "stable": false,
+     "same_zone_without_one_manager": 10
+    },
+    {
+     "unit": "Oat ice cream",
+     "attractiveness": 2.755,
+     "strength": 2.015,
+     "attractiveness_level": "medium",
+     "strength_level": "low",
+     "cell": "medium attractiveness, low strength",
+     "zone": "harvest",
+     "zone_label": "Harvest or divest",
+     "zone_meaning": "A weak position in an unattractive market. Take the cash out, or sell.",
+     "size": 2.5,
+     "n_ratings": 10,
+     "distance_to_nearest_cut": 0.318333333,
+     "nearest_cut": {
+      "dimension": "strength",
+      "cut": 2.33333333
+     },
+     "ratings": [
+      2.4,
+      2.7,
+      3.3,
+      2.5,
+      3.1,
+      1.8,
+      2.8,
+      2.0,
+      1.2,
+      2.1
+     ],
+     "spread_between_raters": [
+      0.516397779,
+      0.483045892,
+      0.483045892,
+      0.527046277,
+      0.316227766,
+      0.421637021,
+      0.421637021,
+      0.471404521,
+      0.421637021,
+      0.567646212
+     ],
+     "contributions": [
+      0.6,
+      0.81,
+      0.66,
+      0.375,
+      0.31,
+      0.36,
+      0.7,
+      0.4,
+      0.24,
+      0.315
+     ],
+     "share_of_draws_in_same_cell": 1.0,
+     "share_of_draws_in_same_zone": 1.0,
+     "share_of_draws_by_zone": {
+      "invest": 0.0,
+      "hold": 0.0,
+      "harvest": 1.0
+     },
+     "attractiveness_range": [
+      2.70923219,
+      2.80084766
+     ],
+     "strength_range": [
+      1.94080995,
+      2.08896198
+     ],
+     "moves_when_one_weight_changes": [],
+     "smallest_switch": {
+      "factor": "brand_strength",
+      "label": "Brand strength",
+      "dimension": "strength",
+      "multiply_weight_by": 3.72857143,
+      "change_of_weight": 2.72857143,
+      "to_cell": "medium attractiveness, medium strength",
+      "to_zone": "hold",
+      "zone_changes": true
+     },
+     "stable": true,
+     "same_zone_without_one_manager": 10
+    },
+    {
+     "unit": "Snack bars",
+     "attractiveness": 1.83,
+     "strength": 1.99,
+     "attractiveness_level": "low",
+     "strength_level": "low",
+     "cell": "low attractiveness, low strength",
+     "zone": "harvest",
+     "zone_label": "Harvest or divest",
+     "zone_meaning": "A weak position in an unattractive market. Take the cash out, or sell.",
+     "size": 3.0,
+     "n_ratings": 10,
+     "distance_to_nearest_cut": 0.343333333,
+     "nearest_cut": {
+      "dimension": "strength",
+      "cut": 2.33333333
+     },
+     "ratings": [
+      2.2,
+      1.7,
+      1.4,
+      1.4,
+      2.8,
+      1.6,
+      2.4,
+      2.3,
+      1.7,
+      1.8
+     ],
+     "spread_between_raters": [
+      0.421637021,
+      0.483045892,
+      0.516397779,
+      0.516397779,
+      0.788810638,
+      0.699205899,
+      0.699205899,
+      0.483045892,
+      0.483045892,
+      0.632455532
+     ],
+     "contributions": [
+      0.55,
+      0.51,
+      0.28,
+      0.21,
+      0.28,
+      0.32,
+      0.6,
+      0.46,
+      0.34,
+      0.27
+     ],
+     "share_of_draws_in_same_cell": 1.0,
+     "share_of_draws_in_same_zone": 1.0,
+     "share_of_draws_by_zone": {
+      "invest": 0.0,
+      "hold": 0.0,
+      "harvest": 1.0
+     },
+     "attractiveness_range": [
+      1.77161899,
+      1.90245509
+     ],
+     "strength_range": [
+      1.93435597,
+      2.04679274
+     ],
+     "moves_when_one_weight_changes": [],
+     "smallest_switch": {
+      "factor": "trend_fit",
+      "label": "Fit with consumer trends",
+      "dimension": "attractiveness",
+      "multiply_weight_by": 11.7857143,
+      "change_of_weight": 10.7857143,
+      "to_cell": "medium attractiveness, low strength",
+      "to_zone": "harvest",
+      "zone_changes": false
+     },
+     "stable": true,
+     "same_zone_without_one_manager": 10
+    },
+    {
+     "unit": "Home subscription",
+     "attractiveness": 3.68,
+     "strength": 3.055,
+     "attractiveness_level": "high",
+     "strength_level": "medium",
+     "cell": "high attractiveness, medium strength",
+     "zone": "invest",
+     "zone_label": "Invest and grow",
+     "zone_meaning": "An attractive market and a strong position. Put money in to grow.",
+     "size": 6.0,
+     "n_ratings": 10,
+     "distance_to_nearest_cut": 0.0133333333,
+     "nearest_cut": {
+      "dimension": "attractiveness",
+      "cut": 3.66666667
+     },
+     "ratings": [
+      2.9,
+      4.4,
+      4.1,
+      3.1,
+      3.5,
+      2.0,
+      3.4,
+      4.0,
+      3.0,
+      2.7
+     ],
+     "spread_between_raters": [
+      0.316227766,
+      0.516397779,
+      0.316227766,
+      0.567646212,
+      0.527046277,
+      0.666666667,
+      0.516397779,
+      0.471404521,
+      0.666666667,
+      0.483045892
+     ],
+     "contributions": [
+      0.725,
+      1.32,
+      0.82,
+      0.465,
+      0.35,
+      0.4,
+      0.85,
+      0.8,
+      0.6,
+      0.405
+     ],
+     "share_of_draws_in_same_cell": 0.637,
+     "share_of_draws_in_same_zone": 0.637,
+     "share_of_draws_by_zone": {
+      "invest": 0.637,
+      "hold": 0.363,
+      "harvest": 0.0
+     },
+     "attractiveness_range": [
+      3.58468575,
+      3.77715142
+     ],
+     "strength_range": [
+      2.95700444,
+      3.14994585
+     ],
+     "moves_when_one_weight_changes": [
+      "Little pressure from competitors",
+      "Market growth",
+      "Market size",
+      "Profitability of the market"
+     ],
+     "smallest_switch": {
+      "factor": "market_growth",
+      "label": "Market growth",
+      "dimension": "attractiveness",
+      "multiply_weight_by": 0.939393939,
+      "change_of_weight": -0.0606060606,
+      "to_cell": "medium attractiveness, medium strength",
+      "to_zone": "hold",
+      "zone_changes": true
+     },
+     "stable": false,
+     "same_zone_without_one_manager": 8
+    }
+   ],
+   "one_at_a_time": [
+    {
+     "factor": "market_size",
+     "label": "Market size",
+     "dimension": "attractiveness",
+     "direction": "up",
+     "weight_before": 0.25,
+     "weight_after": 0.285714286,
+     "units_that_change_cell": [
+      {
+       "unit": "Home subscription",
+       "from_cell": "high attractiveness, medium strength",
+       "to_cell": "medium attractiveness, medium strength",
+       "from_zone": "invest",
+       "to_zone": "hold"
+      }
+     ]
+    },
+    {
+     "factor": "market_size",
+     "label": "Market size",
+     "dimension": "attractiveness",
+     "direction": "down",
+     "weight_before": 0.25,
+     "weight_after": 0.210526316,
+     "units_that_change_cell": []
+    },
+    {
+     "factor": "market_growth",
+     "label": "Market growth",
+     "dimension": "attractiveness",
+     "direction": "up",
+     "weight_before": 0.3,
+     "weight_after": 0.339622642,
+     "units_that_change_cell": []
+    },
+    {
+     "factor": "market_growth",
+     "label": "Market growth",
+     "dimension": "attractiveness",
+     "direction": "down",
+     "weight_before": 0.3,
+     "weight_after": 0.255319149,
+     "units_that_change_cell": [
+      {
+       "unit": "Home subscription",
+       "from_cell": "high attractiveness, medium strength",
+       "to_cell": "medium attractiveness, medium strength",
+       "from_zone": "invest",
+       "to_zone": "hold"
+      }
+     ]
+    },
+    {
+     "factor": "market_profitability",
+     "label": "Profitability of the market",
+     "dimension": "attractiveness",
+     "direction": "up",
+     "weight_before": 0.2,
+     "weight_after": 0.230769231,
+     "units_that_change_cell": []
+    },
+    {
+     "factor": "market_profitability",
+     "label": "Profitability of the market",
+     "dimension": "attractiveness",
+     "direction": "down",
+     "weight_before": 0.2,
+     "weight_after": 0.166666667,
+     "units_that_change_cell": [
+      {
+       "unit": "Home subscription",
+       "from_cell": "high attractiveness, medium strength",
+       "to_cell": "medium attractiveness, medium strength",
+       "from_zone": "invest",
+       "to_zone": "hold"
+      }
+     ]
+    },
+    {
+     "factor": "competitive_calm",
+     "label": "Little pressure from competitors",
+     "dimension": "attractiveness",
+     "direction": "up",
+     "weight_before": 0.15,
+     "weight_after": 0.174757282,
+     "units_that_change_cell": [
+      {
+       "unit": "Home subscription",
+       "from_cell": "high attractiveness, medium strength",
+       "to_cell": "medium attractiveness, medium strength",
+       "from_zone": "invest",
+       "to_zone": "hold"
+      }
+     ]
+    },
+    {
+     "factor": "competitive_calm",
+     "label": "Little pressure from competitors",
+     "dimension": "attractiveness",
+     "direction": "down",
+     "weight_before": 0.15,
+     "weight_after": 0.12371134,
+     "units_that_change_cell": []
+    },
+    {
+     "factor": "trend_fit",
+     "label": "Fit with consumer trends",
+     "dimension": "attractiveness",
+     "direction": "up",
+     "weight_before": 0.1,
+     "weight_after": 0.117647059,
+     "units_that_change_cell": []
+    },
+    {
+     "factor": "trend_fit",
+     "label": "Fit with consumer trends",
+     "dimension": "attractiveness",
+     "direction": "down",
+     "weight_before": 0.1,
+     "weight_after": 0.0816326531,
+     "units_that_change_cell": []
+    },
+    {
+     "factor": "market_share",
+     "label": "Market share",
+     "dimension": "strength",
+     "direction": "up",
+     "weight_before": 0.2,
+     "weight_after": 0.230769231,
+     "units_that_change_cell": []
+    },
+    {
+     "factor": "market_share",
+     "label": "Market share",
+     "dimension": "strength",
+     "direction": "down",
+     "weight_before": 0.2,
+     "weight_after": 0.166666667,
+     "units_that_change_cell": []
+    },
+    {
+     "factor": "brand_strength",
+     "label": "Brand strength",
+     "dimension": "strength",
+     "direction": "up",
+     "weight_before": 0.25,
+     "weight_after": 0.285714286,
+     "units_that_change_cell": []
+    },
+    {
+     "factor": "brand_strength",
+     "label": "Brand strength",
+     "dimension": "strength",
+     "direction": "down",
+     "weight_before": 0.25,
+     "weight_after": 0.210526316,
+     "units_that_change_cell": []
+    },
+    {
+     "factor": "product_quality",
+     "label": "Product quality",
+     "dimension": "strength",
+     "direction": "up",
+     "weight_before": 0.2,
+     "weight_after": 0.230769231,
+     "units_that_change_cell": []
+    },
+    {
+     "factor": "product_quality",
+     "label": "Product quality",
+     "dimension": "strength",
+     "direction": "down",
+     "weight_before": 0.2,
+     "weight_after": 0.166666667,
+     "units_that_change_cell": []
+    },
+    {
+     "factor": "distribution",
+     "label": "Distribution",
+     "dimension": "strength",
+     "direction": "up",
+     "weight_before": 0.2,
+     "weight_after": 0.230769231,
+     "units_that_change_cell": []
+    },
+    {
+     "factor": "distribution",
+     "label": "Distribution",
+     "dimension": "strength",
+     "direction": "down",
+     "weight_before": 0.2,
+     "weight_after": 0.166666667,
+     "units_that_change_cell": []
+    },
+    {
+     "factor": "cost_position",
+     "label": "Cost position",
+     "dimension": "strength",
+     "direction": "up",
+     "weight_before": 0.15,
+     "weight_after": 0.174757282,
+     "units_that_change_cell": []
+    },
+    {
+     "factor": "cost_position",
+     "label": "Cost position",
+     "dimension": "strength",
+     "direction": "down",
+     "weight_before": 0.15,
+     "weight_after": 0.12371134,
+     "units_that_change_cell": []
+    }
+   ],
+   "without_one_manager": [
+    {
+     "manager": "M01",
+     "units": [
+      {
+       "unit": "Oat drinks (retail)",
+       "attractiveness": 3.33333333,
+       "strength": 4.28888889,
+       "attractiveness_level": "medium",
+       "strength_level": "high",
+       "cell": "medium attractiveness, high strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      },
+      {
+       "unit": "Barista line",
+       "attractiveness": 4.36111111,
+       "strength": 3.83333333,
+       "attractiveness_level": "high",
+       "strength_level": "high",
+       "cell": "high attractiveness, high strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      },
+      {
+       "unit": "Oat yoghurt",
+       "attractiveness": 4.18333333,
+       "strength": 2.43888889,
+       "attractiveness_level": "high",
+       "strength_level": "medium",
+       "cell": "high attractiveness, medium strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      },
+      {
+       "unit": "Oat ice cream",
+       "attractiveness": 2.72777778,
+       "strength": 1.99444444,
+       "attractiveness_level": "medium",
+       "strength_level": "low",
+       "cell": "medium attractiveness, low strength",
+       "zone": "harvest",
+       "zone_label": "Harvest or divest"
+      },
+      {
+       "unit": "Snack bars",
+       "attractiveness": 1.82777778,
+       "strength": 1.95,
+       "attractiveness_level": "low",
+       "strength_level": "low",
+       "cell": "low attractiveness, low strength",
+       "zone": "harvest",
+       "zone_label": "Harvest or divest"
+      },
+      {
+       "unit": "Home subscription",
+       "attractiveness": 3.68888889,
+       "strength": 3.07777778,
+       "attractiveness_level": "high",
+       "strength_level": "medium",
+       "cell": "high attractiveness, medium strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      }
+     ]
+    },
+    {
+     "manager": "M02",
+     "units": [
+      {
+       "unit": "Oat drinks (retail)",
+       "attractiveness": 3.30555556,
+       "strength": 4.29444444,
+       "attractiveness_level": "medium",
+       "strength_level": "high",
+       "cell": "medium attractiveness, high strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      },
+      {
+       "unit": "Barista line",
+       "attractiveness": 4.35,
+       "strength": 3.81111111,
+       "attractiveness_level": "high",
+       "strength_level": "high",
+       "cell": "high attractiveness, high strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      },
+      {
+       "unit": "Oat yoghurt",
+       "attractiveness": 4.21666667,
+       "strength": 2.37222222,
+       "attractiveness_level": "high",
+       "strength_level": "medium",
+       "cell": "high attractiveness, medium strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      },
+      {
+       "unit": "Oat ice cream",
+       "attractiveness": 2.75555556,
+       "strength": 2.03888889,
+       "attractiveness_level": "medium",
+       "strength_level": "low",
+       "cell": "medium attractiveness, low strength",
+       "zone": "harvest",
+       "zone_label": "Harvest or divest"
+      },
+      {
+       "unit": "Snack bars",
+       "attractiveness": 1.85,
+       "strength": 1.96111111,
+       "attractiveness_level": "low",
+       "strength_level": "low",
+       "cell": "low attractiveness, low strength",
+       "zone": "harvest",
+       "zone_label": "Harvest or divest"
+      },
+      {
+       "unit": "Home subscription",
+       "attractiveness": 3.68333333,
+       "strength": 3.07777778,
+       "attractiveness_level": "high",
+       "strength_level": "medium",
+       "cell": "high attractiveness, medium strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      }
+     ]
+    },
+    {
+     "manager": "M03",
+     "units": [
+      {
+       "unit": "Oat drinks (retail)",
+       "attractiveness": 3.27777778,
+       "strength": 4.32222222,
+       "attractiveness_level": "medium",
+       "strength_level": "high",
+       "cell": "medium attractiveness, high strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      },
+      {
+       "unit": "Barista line",
+       "attractiveness": 4.34444444,
+       "strength": 3.77777778,
+       "attractiveness_level": "high",
+       "strength_level": "high",
+       "cell": "high attractiveness, high strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      },
+      {
+       "unit": "Oat yoghurt",
+       "attractiveness": 4.2,
+       "strength": 2.41666667,
+       "attractiveness_level": "high",
+       "strength_level": "medium",
+       "cell": "high attractiveness, medium strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      },
+      {
+       "unit": "Oat ice cream",
+       "attractiveness": 2.76666667,
+       "strength": 2.01111111,
+       "attractiveness_level": "medium",
+       "strength_level": "low",
+       "cell": "medium attractiveness, low strength",
+       "zone": "harvest",
+       "zone_label": "Harvest or divest"
+      },
+      {
+       "unit": "Snack bars",
+       "attractiveness": 1.85555556,
+       "strength": 2.02777778,
+       "attractiveness_level": "low",
+       "strength_level": "low",
+       "cell": "low attractiveness, low strength",
+       "zone": "harvest",
+       "zone_label": "Harvest or divest"
+      },
+      {
+       "unit": "Home subscription",
+       "attractiveness": 3.65555556,
+       "strength": 3.01111111,
+       "attractiveness_level": "medium",
+       "strength_level": "medium",
+       "cell": "medium attractiveness, medium strength",
+       "zone": "hold",
+       "zone_label": "Hold and select"
+      }
+     ]
+    },
+    {
+     "manager": "M04",
+     "units": [
+      {
+       "unit": "Oat drinks (retail)",
+       "attractiveness": 3.28888889,
+       "strength": 4.31666667,
+       "attractiveness_level": "medium",
+       "strength_level": "high",
+       "cell": "medium attractiveness, high strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      },
+      {
+       "unit": "Barista line",
+       "attractiveness": 4.32222222,
+       "strength": 3.80555556,
+       "attractiveness_level": "high",
+       "strength_level": "high",
+       "cell": "high attractiveness, high strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      },
+      {
+       "unit": "Oat yoghurt",
+       "attractiveness": 4.22777778,
+       "strength": 2.45,
+       "attractiveness_level": "high",
+       "strength_level": "medium",
+       "cell": "high attractiveness, medium strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      },
+      {
+       "unit": "Oat ice cream",
+       "attractiveness": 2.77222222,
+       "strength": 1.98888889,
+       "attractiveness_level": "medium",
+       "strength_level": "low",
+       "cell": "medium attractiveness, low strength",
+       "zone": "harvest",
+       "zone_label": "Harvest or divest"
+      },
+      {
+       "unit": "Snack bars",
+       "attractiveness": 1.85555556,
+       "strength": 1.98888889,
+       "attractiveness_level": "low",
+       "strength_level": "low",
+       "cell": "low attractiveness, low strength",
+       "zone": "harvest",
+       "zone_label": "Harvest or divest"
+      },
+      {
+       "unit": "Home subscription",
+       "attractiveness": 3.68333333,
+       "strength": 3.03888889,
+       "attractiveness_level": "high",
+       "strength_level": "medium",
+       "cell": "high attractiveness, medium strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      }
+     ]
+    },
+    {
+     "manager": "M05",
+     "units": [
+      {
+       "unit": "Oat drinks (retail)",
+       "attractiveness": 3.28333333,
+       "strength": 4.28888889,
+       "attractiveness_level": "medium",
+       "strength_level": "high",
+       "cell": "medium attractiveness, high strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      },
+      {
+       "unit": "Barista line",
+       "attractiveness": 4.32222222,
+       "strength": 3.85,
+       "attractiveness_level": "high",
+       "strength_level": "high",
+       "cell": "high attractiveness, high strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      },
+      {
+       "unit": "Oat yoghurt",
+       "attractiveness": 4.23333333,
+       "strength": 2.41111111,
+       "attractiveness_level": "high",
+       "strength_level": "medium",
+       "cell": "high attractiveness, medium strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      },
+      {
+       "unit": "Oat ice cream",
+       "attractiveness": 2.74444444,
+       "strength": 1.99444444,
+       "attractiveness_level": "medium",
+       "strength_level": "low",
+       "cell": "medium attractiveness, low strength",
+       "zone": "harvest",
+       "zone_label": "Harvest or divest"
+      },
+      {
+       "unit": "Snack bars",
+       "attractiveness": 1.81666667,
+       "strength": 1.95,
+       "attractiveness_level": "low",
+       "strength_level": "low",
+       "cell": "low attractiveness, low strength",
+       "zone": "harvest",
+       "zone_label": "Harvest or divest"
+      },
+      {
+       "unit": "Home subscription",
+       "attractiveness": 3.66666667,
+       "strength": 3.08333333,
+       "attractiveness_level": "high",
+       "strength_level": "medium",
+       "cell": "high attractiveness, medium strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      }
+     ]
+    },
+    {
+     "manager": "M06",
+     "units": [
+      {
+       "unit": "Oat drinks (retail)",
+       "attractiveness": 3.28333333,
+       "strength": 4.33888889,
+       "attractiveness_level": "medium",
+       "strength_level": "high",
+       "cell": "medium attractiveness, high strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      },
+      {
+       "unit": "Barista line",
+       "attractiveness": 4.31111111,
+       "strength": 3.8,
+       "attractiveness_level": "high",
+       "strength_level": "high",
+       "cell": "high attractiveness, high strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      },
+      {
+       "unit": "Oat yoghurt",
+       "attractiveness": 4.23333333,
+       "strength": 2.43888889,
+       "attractiveness_level": "high",
+       "strength_level": "medium",
+       "cell": "high attractiveness, medium strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      },
+      {
+       "unit": "Oat ice cream",
+       "attractiveness": 2.75555556,
+       "strength": 1.98888889,
+       "attractiveness_level": "medium",
+       "strength_level": "low",
+       "cell": "medium attractiveness, low strength",
+       "zone": "harvest",
+       "zone_label": "Harvest or divest"
+      },
+      {
+       "unit": "Snack bars",
+       "attractiveness": 1.84444444,
+       "strength": 1.97777778,
+       "attractiveness_level": "low",
+       "strength_level": "low",
+       "cell": "low attractiveness, low strength",
+       "zone": "harvest",
+       "zone_label": "Harvest or divest"
+      },
+      {
+       "unit": "Home subscription",
+       "attractiveness": 3.68888889,
+       "strength": 3.01111111,
+       "attractiveness_level": "high",
+       "strength_level": "medium",
+       "cell": "high attractiveness, medium strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      }
+     ]
+    },
+    {
+     "manager": "M07",
+     "units": [
+      {
+       "unit": "Oat drinks (retail)",
+       "attractiveness": 3.36666667,
+       "strength": 4.29444444,
+       "attractiveness_level": "medium",
+       "strength_level": "high",
+       "cell": "medium attractiveness, high strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      },
+      {
+       "unit": "Barista line",
+       "attractiveness": 4.35555556,
+       "strength": 3.81111111,
+       "attractiveness_level": "high",
+       "strength_level": "high",
+       "cell": "high attractiveness, high strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      },
+      {
+       "unit": "Oat yoghurt",
+       "attractiveness": 4.25555556,
+       "strength": 2.39444444,
+       "attractiveness_level": "high",
+       "strength_level": "medium",
+       "cell": "high attractiveness, medium strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      },
+      {
+       "unit": "Oat ice cream",
+       "attractiveness": 2.80555556,
+       "strength": 2.05555556,
+       "attractiveness_level": "medium",
+       "strength_level": "low",
+       "cell": "medium attractiveness, low strength",
+       "zone": "harvest",
+       "zone_label": "Harvest or divest"
+      },
+      {
+       "unit": "Snack bars",
+       "attractiveness": 1.82777778,
+       "strength": 2.01111111,
+       "attractiveness_level": "low",
+       "strength_level": "low",
+       "cell": "low attractiveness, low strength",
+       "zone": "harvest",
+       "zone_label": "Harvest or divest"
+      },
+      {
+       "unit": "Home subscription",
+       "attractiveness": 3.63333333,
+       "strength": 3.08333333,
+       "attractiveness_level": "medium",
+       "strength_level": "medium",
+       "cell": "medium attractiveness, medium strength",
+       "zone": "hold",
+       "zone_label": "Hold and select"
+      }
+     ]
+    },
+    {
+     "manager": "M08",
+     "units": [
+      {
+       "unit": "Oat drinks (retail)",
+       "attractiveness": 3.33888889,
+       "strength": 4.27222222,
+       "attractiveness_level": "medium",
+       "strength_level": "high",
+       "cell": "medium attractiveness, high strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      },
+      {
+       "unit": "Barista line",
+       "attractiveness": 4.31666667,
+       "strength": 3.82777778,
+       "attractiveness_level": "high",
+       "strength_level": "high",
+       "cell": "high attractiveness, high strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      },
+      {
+       "unit": "Oat yoghurt",
+       "attractiveness": 4.23333333,
+       "strength": 2.41666667,
+       "attractiveness_level": "high",
+       "strength_level": "medium",
+       "cell": "high attractiveness, medium strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      },
+      {
+       "unit": "Oat ice cream",
+       "attractiveness": 2.74444444,
+       "strength": 2.01111111,
+       "attractiveness_level": "medium",
+       "strength_level": "low",
+       "cell": "medium attractiveness, low strength",
+       "zone": "harvest",
+       "zone_label": "Harvest or divest"
+      },
+      {
+       "unit": "Snack bars",
+       "attractiveness": 1.79444444,
+       "strength": 2.01111111,
+       "attractiveness_level": "low",
+       "strength_level": "low",
+       "cell": "low attractiveness, low strength",
+       "zone": "harvest",
+       "zone_label": "Harvest or divest"
+      },
+      {
+       "unit": "Home subscription",
+       "attractiveness": 3.7,
+       "strength": 3.05555556,
+       "attractiveness_level": "high",
+       "strength_level": "medium",
+       "cell": "high attractiveness, medium strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      }
+     ]
+    },
+    {
+     "manager": "M09",
+     "units": [
+      {
+       "unit": "Oat drinks (retail)",
+       "attractiveness": 3.37222222,
+       "strength": 4.29444444,
+       "attractiveness_level": "medium",
+       "strength_level": "high",
+       "cell": "medium attractiveness, high strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      },
+      {
+       "unit": "Barista line",
+       "attractiveness": 4.3,
+       "strength": 3.82777778,
+       "attractiveness_level": "high",
+       "strength_level": "high",
+       "cell": "high attractiveness, high strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      },
+      {
+       "unit": "Oat yoghurt",
+       "attractiveness": 4.22777778,
+       "strength": 2.46666667,
+       "attractiveness_level": "high",
+       "strength_level": "medium",
+       "cell": "high attractiveness, medium strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      },
+      {
+       "unit": "Oat ice cream",
+       "attractiveness": 2.72222222,
+       "strength": 2.01111111,
+       "attractiveness_level": "medium",
+       "strength_level": "low",
+       "cell": "medium attractiveness, low strength",
+       "zone": "harvest",
+       "zone_label": "Harvest or divest"
+      },
+      {
+       "unit": "Snack bars",
+       "attractiveness": 1.81111111,
+       "strength": 2.01111111,
+       "attractiveness_level": "low",
+       "strength_level": "low",
+       "cell": "low attractiveness, low strength",
+       "zone": "harvest",
+       "zone_label": "Harvest or divest"
+      },
+      {
+       "unit": "Home subscription",
+       "attractiveness": 3.71666667,
+       "strength": 3.05555556,
+       "attractiveness_level": "high",
+       "strength_level": "medium",
+       "cell": "high attractiveness, medium strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      }
+     ]
+    },
+    {
+     "manager": "M10",
+     "units": [
+      {
+       "unit": "Oat drinks (retail)",
+       "attractiveness": 3.3,
+       "strength": 4.33888889,
+       "attractiveness_level": "medium",
+       "strength_level": "high",
+       "cell": "medium attractiveness, high strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      },
+      {
+       "unit": "Barista line",
+       "attractiveness": 4.31666667,
+       "strength": 3.75555556,
+       "attractiveness_level": "high",
+       "strength_level": "high",
+       "cell": "high attractiveness, high strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      },
+      {
+       "unit": "Oat yoghurt",
+       "attractiveness": 4.23888889,
+       "strength": 2.44444444,
+       "attractiveness_level": "high",
+       "strength_level": "medium",
+       "cell": "high attractiveness, medium strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      },
+      {
+       "unit": "Oat ice cream",
+       "attractiveness": 2.75555556,
+       "strength": 2.05555556,
+       "attractiveness_level": "medium",
+       "strength_level": "low",
+       "cell": "medium attractiveness, low strength",
+       "zone": "harvest",
+       "zone_label": "Harvest or divest"
+      },
+      {
+       "unit": "Snack bars",
+       "attractiveness": 1.81666667,
+       "strength": 2.01111111,
+       "attractiveness_level": "low",
+       "strength_level": "low",
+       "cell": "low attractiveness, low strength",
+       "zone": "harvest",
+       "zone_label": "Harvest or divest"
+      },
+      {
+       "unit": "Home subscription",
+       "attractiveness": 3.68333333,
+       "strength": 3.05555556,
+       "attractiveness_level": "high",
+       "strength_level": "medium",
+       "cell": "high attractiveness, medium strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      }
+     ]
+    }
+   ],
+   "other_weights": [
+    {
+     "name": "Every factor counts the same",
+     "weights": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+     ],
+     "units": [
+      {
+       "unit": "Oat drinks (retail)",
+       "attractiveness": 3.36,
+       "strength": 4.3,
+       "attractiveness_level": "medium",
+       "strength_level": "high",
+       "cell": "medium attractiveness, high strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      },
+      {
+       "unit": "Barista line",
+       "attractiveness": 4.3,
+       "strength": 3.76,
+       "attractiveness_level": "high",
+       "strength_level": "high",
+       "cell": "high attractiveness, high strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      },
+      {
+       "unit": "Oat yoghurt",
+       "attractiveness": 4.22,
+       "strength": 2.34,
+       "attractiveness_level": "high",
+       "strength_level": "medium",
+       "cell": "high attractiveness, medium strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      },
+      {
+       "unit": "Oat ice cream",
+       "attractiveness": 2.8,
+       "strength": 1.98,
+       "attractiveness_level": "medium",
+       "strength_level": "low",
+       "cell": "medium attractiveness, low strength",
+       "zone": "harvest",
+       "zone_label": "Harvest or divest"
+      },
+      {
+       "unit": "Snack bars",
+       "attractiveness": 1.9,
+       "strength": 1.96,
+       "attractiveness_level": "low",
+       "strength_level": "low",
+       "cell": "low attractiveness, low strength",
+       "zone": "harvest",
+       "zone_label": "Harvest or divest"
+      },
+      {
+       "unit": "Home subscription",
+       "attractiveness": 3.6,
+       "strength": 3.02,
+       "attractiveness_level": "medium",
+       "strength_level": "medium",
+       "cell": "medium attractiveness, medium strength",
+       "zone": "hold",
+       "zone_label": "Hold and select"
+      }
+     ]
+    },
+    {
+     "name": "Growth first",
+     "weights": [
+      0.1,
+      0.6,
+      0.1,
+      0.1,
+      0.1,
+      0.2,
+      0.25,
+      0.2,
+      0.2,
+      0.15
+     ],
+     "units": [
+      {
+       "unit": "Oat drinks (retail)",
+       "attractiveness": 2.93,
+       "strength": 4.305,
+       "attractiveness_level": "medium",
+       "strength_level": "high",
+       "cell": "medium attractiveness, high strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      },
+      {
+       "unit": "Barista line",
+       "attractiveness": 4.65,
+       "strength": 3.81,
+       "attractiveness_level": "high",
+       "strength_level": "high",
+       "cell": "high attractiveness, high strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      },
+      {
+       "unit": "Oat yoghurt",
+       "attractiveness": 4.46,
+       "strength": 2.425,
+       "attractiveness_level": "high",
+       "strength_level": "medium",
+       "cell": "high attractiveness, medium strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      },
+      {
+       "unit": "Oat ice cream",
+       "attractiveness": 2.75,
+       "strength": 2.015,
+       "attractiveness_level": "medium",
+       "strength_level": "low",
+       "cell": "medium attractiveness, low strength",
+       "zone": "harvest",
+       "zone_label": "Harvest or divest"
+      },
+      {
+       "unit": "Snack bars",
+       "attractiveness": 1.8,
+       "strength": 1.99,
+       "attractiveness_level": "low",
+       "strength_level": "low",
+       "cell": "low attractiveness, low strength",
+       "zone": "harvest",
+       "zone_label": "Harvest or divest"
+      },
+      {
+       "unit": "Home subscription",
+       "attractiveness": 4.0,
+       "strength": 3.055,
+       "attractiveness_level": "high",
+       "strength_level": "medium",
+       "cell": "high attractiveness, medium strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      }
+     ]
+    },
+    {
+     "name": "Size and share first",
+     "weights": [
+      0.5,
+      0.1,
+      0.2,
+      0.1,
+      0.1,
+      0.5,
+      0.1,
+      0.1,
+      0.2,
+      0.1
+     ],
+     "units": [
+      {
+       "unit": "Oat drinks (retail)",
+       "attractiveness": 3.87,
+       "strength": 4.2,
+       "attractiveness_level": "high",
+       "strength_level": "high",
+       "cell": "high attractiveness, high strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      },
+      {
+       "unit": "Barista line",
+       "attractiveness": 4.05,
+       "strength": 3.63,
+       "attractiveness_level": "high",
+       "strength_level": "medium",
+       "cell": "high attractiveness, medium strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      },
+      {
+       "unit": "Oat yoghurt",
+       "attractiveness": 4.08,
+       "strength": 2.03,
+       "attractiveness_level": "high",
+       "strength_level": "low",
+       "cell": "high attractiveness, low strength",
+       "zone": "hold",
+       "zone_label": "Hold and select"
+      },
+      {
+       "unit": "Oat ice cream",
+       "attractiveness": 2.69,
+       "strength": 1.83,
+       "attractiveness_level": "medium",
+       "strength_level": "low",
+       "cell": "medium attractiveness, low strength",
+       "zone": "harvest",
+       "zone_label": "Harvest or divest"
+      },
+      {
+       "unit": "Snack bars",
+       "attractiveness": 1.97,
+       "strength": 1.79,
+       "attractiveness_level": "low",
+       "strength_level": "low",
+       "cell": "low attractiveness, low strength",
+       "zone": "harvest",
+       "zone_label": "Harvest or divest"
+      },
+      {
+       "unit": "Home subscription",
+       "attractiveness": 3.37,
+       "strength": 2.61,
+       "attractiveness_level": "medium",
+       "strength_level": "medium",
+       "cell": "medium attractiveness, medium strength",
+       "zone": "hold",
+       "zone_label": "Hold and select"
+      }
+     ]
+    },
+    {
+     "name": "Only two factors",
+     "weights": [
+      0.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      0.0,
+      0.0
+     ],
+     "units": [
+      {
+       "unit": "Oat drinks (retail)",
+       "attractiveness": 2.5,
+       "strength": 4.6,
+       "attractiveness_level": "medium",
+       "strength_level": "high",
+       "cell": "medium attractiveness, high strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      },
+      {
+       "unit": "Barista line",
+       "attractiveness": 5.0,
+       "strength": 4.4,
+       "attractiveness_level": "high",
+       "strength_level": "high",
+       "cell": "high attractiveness, high strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      },
+      {
+       "unit": "Oat yoghurt",
+       "attractiveness": 4.7,
+       "strength": 3.1,
+       "attractiveness_level": "high",
+       "strength_level": "medium",
+       "cell": "high attractiveness, medium strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      },
+      {
+       "unit": "Oat ice cream",
+       "attractiveness": 2.7,
+       "strength": 2.0,
+       "attractiveness_level": "medium",
+       "strength_level": "low",
+       "cell": "medium attractiveness, low strength",
+       "zone": "harvest",
+       "zone_label": "Harvest or divest"
+      },
+      {
+       "unit": "Snack bars",
+       "attractiveness": 1.7,
+       "strength": 2.3,
+       "attractiveness_level": "low",
+       "strength_level": "low",
+       "cell": "low attractiveness, low strength",
+       "zone": "harvest",
+       "zone_label": "Harvest or divest"
+      },
+      {
+       "unit": "Home subscription",
+       "attractiveness": 4.4,
+       "strength": 4.0,
+       "attractiveness_level": "high",
+       "strength_level": "high",
+       "cell": "high attractiveness, high strength",
+       "zone": "invest",
+       "zone_label": "Invest and grow"
+      }
+     ]
+    }
+   ]
   }
  },
  "settings_help": {
@@ -14790,6 +16658,63 @@
     "when_to_choose": "Keep 1000. Raise it only if two runs with different values give clearly different splits.",
     "minimum": 10,
     "maximum": 5000
+   }
+  ],
+  "portfolio": [
+   {
+    "key": "scale_min",
+    "label": "Lowest rating of the scale",
+    "kind": "number",
+    "default": 1.0,
+    "what_it_does": "The lowest rating a factor can get. Together with the highest rating it defines where the grid is cut.",
+    "when_to_choose": "Keep 1 for the usual scale from 1 to 5. Change it if your ratings use another scale, for example 0 to 10."
+   },
+   {
+    "key": "scale_max",
+    "label": "Highest rating of the scale",
+    "kind": "number",
+    "default": 5.0,
+    "what_it_does": "The highest rating a factor can get.",
+    "when_to_choose": "Keep 5 for the usual scale from 1 to 5."
+   },
+   {
+    "key": "cut_points",
+    "label": "Where the grid is cut",
+    "kind": "list",
+    "default": null,
+    "what_it_does": "Two scores that separate low from medium and medium from high, the same for both axes. A score exactly on a cut counts as the higher level.",
+    "when_to_choose": "Leave empty to cut the scale into three equal parts (2.33 and 3.67 on a scale from 1 to 5). Enter two numbers if your company uses other limits.",
+    "optional": true
+   },
+   {
+    "key": "change",
+    "label": "Size of the change in the weights",
+    "kind": "number",
+    "default": 0.2,
+    "what_it_does": "In the sensitivity analysis every weight is raised and lowered by up to this share. 0.2 means that a weight of 25% is tried between 20% and 30%. The weights are then scaled so that they add up to 100% again.",
+    "when_to_choose": "Keep 0.2 for the usual doubt about weights. Choose more if the managers disagree strongly about what matters.",
+    "minimum": 0.0,
+    "maximum": 0.95
+   },
+   {
+    "key": "n_draws",
+    "label": "Number of random sets of weights",
+    "kind": "integer",
+    "default": 1000,
+    "what_it_does": "How many sets of weights are drawn at random. For each, every unit is placed in the grid again.",
+    "when_to_choose": "Keep 1000. More draws make the shares a little more precise.",
+    "minimum": 1,
+    "maximum": 100000
+   },
+   {
+    "key": "seed",
+    "label": "Seed",
+    "kind": "integer",
+    "default": 2026,
+    "what_it_does": "The starting number for the random sets of weights. The same seed gives the same result.",
+    "when_to_choose": "Keep the default. Change it to see that the result does not depend on the draws.",
+    "minimum": 0,
+    "maximum": 4294967295
    }
   ]
  }
