@@ -272,6 +272,8 @@ demo/
     screens/modules/       the screens of the further modules, and one setup screen for all of them
   scripts/
     check-engine-numbers.mjs  what `npm run check` runs
+  brand/
+    logo-options.html      six logo directions to choose from. Open it in a browser. It is not part of the app.
 ```
 
 Built with React, Vite, TypeScript, Tailwind CSS and Recharts. The colours, type sizes and spacing in `src/index.css` are the tokens of the concept's style guide.
