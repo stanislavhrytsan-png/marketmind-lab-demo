@@ -272,7 +272,7 @@ export const caseBrief = {
   text: 'Alpine Oat is a Swiss oat-drink brand with one product, Original, sold in supermarkets. Growth has slowed as Valloat, Lumo and supermarket own brands widen their ranges. Management can fund one launch next year and wants to know which buyers to aim for and which product would win them.',
   /** Shown on the case brief, because the demo names two real brands next to invented numbers. */
   fictionNote:
-    'Alpine Oat Co. is a fictional teaching case. All numbers are invented example data, also those shown for the brands Valloat and Lumo.',
+    'Alpine Oat Co. is a fictional teaching case. All companies and brands in the case are fictional, and all numbers are invented example data.',
   steps: [
     {
       label: 'Step 1, Segmentation',
