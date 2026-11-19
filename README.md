@@ -140,6 +140,13 @@ Start each path with a click on the module in the sidebar.
 - **In "What if",** drag "Unit cost" to the right: the best price rises. Then drag "Your price" away from the best price: the last number says how much profit that costs.
 - **Optional:** click "From the conjoint study" at the top. The same question, answered with the market simulator of the conjoint study: CHF 3.16. Two sources, two answers, and the screen says what each one measures.
 
+### Predictive modeling
+
+- **Say:** "Last year 5,000 customers got a letter about the subscription. The engine learned from 3,500 of them who responds, and tested the model on the other 1,500. The best-rated tenth responds 3.2 times as often as the average."
+- **Point at** the card "Watch out". **Say:** "This is the classic trap. The model is right about 86.0% of the customers, which sounds good. But saying 'nobody responds' is right about 85.7%. The table shows what happens when the threshold moves: the more responders the model finds, the worse its hit rate looks."
+- **In "What if",** drag "Cost per contact" to the right. Fewer customers are worth a letter. **Say:** "The question for a manager is not the hit rate. It is how many letters to send. At CHF 2.50 a letter and CHF 30 per new subscriber, the best half of a list of 50,000 earns CHF 107,500."
+- **Optional:** click "Decision tree" at the top: the second model on the same customers, with its rules in the details.
+
 ## Where the numbers come from
 
 The calculation engine is in the folder `engine`, next to this one. One command runs it on the Alpine Oat Co. data and writes everything the demo shows into `src/data/engine_results.json`:
@@ -148,7 +155,7 @@ The calculation engine is in the folder `engine`, next to this one. One command 
 cd ../engine && .venv/bin/python -m marketmind.export_demo
 ```
 
-- **Real runs only.** The file holds the eight runs of the assignment (SEG-01 to SEG-04, POS-01 and CJ-01 to CJ-03) and the runs of the further modules: FC-01 to FC-04 (forecasting) and PR-01 to PR-04 (price optimization). Each one is a real run of the engine with the settings the demo names.
+- **Real runs only.** The file holds the eight runs of the assignment (SEG-01 to SEG-04, POS-01 and CJ-01 to CJ-03) and the runs of the further modules: FC-01 to FC-04 (forecasting), PR-01 to PR-04 (price optimization) and TG-01 and TG-02 (predictive modeling). Each one is a real run of the engine with the settings the demo names.
 - **The engine's own words.** The file also holds the engine's description of every setting of the further modules (what it does, when to choose it), and the warnings and reading notes of each result. The setup screens and the notes marked "The engine says" show them word for word.
 - **Texts follow the numbers.** Sentences that quote a number are built from the file: in `src/data/alpineOat.ts` for the assignment, and in one data file per further module (for example `src/data/forecasting.ts`). This covers the tutor scripts, Lea's texts and the feedback draft. A text cannot disagree with a chart.
 - **Do not edit the file by hand.** Change the engine or its data, then run the export again.
@@ -179,6 +186,7 @@ Three checks keep the demo and the engine together:
 | Accounts | No login. The name block at the bottom left switches between student and professor. | Accounts and roles. |
 | Forecasting | Real results of the engine, calculated before: the Bass model on 12 quarters of sales, the same model from the first 4, 6 and 8 quarters, and four methods compared on three sales series. The what-if view draws the Bass curve for other values in the browser, with the engine's formula. The setup screens are view-only. | Estimated when the student presses Run, on the data and with the settings the student picked. |
 | Price optimization | Real results of the engine, calculated before: three forms of demand curve fitted to the price tests of three products, the best price of each, and a demand curve from the conjoint study. The what-if view moves along the engine's curves in the browser: another unit cost, another form, another price. | Fitted when the student presses Run, on the data and with the settings the student picked. |
+| Predictive modeling | Real results of the engine, calculated before: a logistic regression and a decision tree, fitted on 3,500 customers of a past campaign and tested on 1,500 others, with the gains and lift table and the table of right and wrong predictions at four thresholds. The what-if view repeats only the arithmetic of the campaign in the browser: profit by depth for another cost, margin or list size. | Fitted when the student presses Run. New customers are scored with the stored model. |
 | AI tutor in the further modules | One short scripted exchange per module, in Coach mode. Fixed text with the engine's numbers. | A language model, inside the limits of the mode the professor set. |
 | Modules marked "coming soon" | Names in the navigation. The engine already calculates them. | Built into the interface one by one. |
 

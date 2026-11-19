@@ -8307,6 +8307,2134 @@
      ]
     }
    }
+  },
+  "targeting": {
+   "data": {
+    "file": "campaign_customers.csv",
+    "n_customers": 5000,
+    "n_responders": 631,
+    "response_rate": 0.1262,
+    "target": "responded",
+    "target_meaning": "1 if the customer subscribed after the letter, 0 if not",
+    "predictors": [
+     {
+      "key": "age",
+      "label": "Age in years",
+      "type": "number"
+     },
+     {
+      "key": "orders_last_year",
+      "label": "Orders in the year before the campaign",
+      "type": "number"
+     },
+     {
+      "key": "months_since_last_order",
+      "label": "Months since the last order",
+      "type": "number"
+     },
+     {
+      "key": "average_basket",
+      "label": "Average value of an order (CHF)",
+      "type": "number"
+     },
+     {
+      "key": "newsletter",
+      "label": "Receives the newsletter",
+      "type": "category",
+      "categories": [
+       "no",
+       "yes"
+      ]
+     },
+     {
+      "key": "region",
+      "label": "Language region",
+      "type": "category",
+      "categories": [
+       "German-speaking",
+       "French-speaking",
+       "Italian-speaking"
+      ]
+     }
+    ],
+    "cost_per_contact": 2.5,
+    "margin_per_response": 30.0,
+    "currency": "CHF",
+    "list_size": 50000
+   },
+   "runs": {
+    "TG-01": {
+     "function": "fit_response_model, campaign_profit",
+     "kind": "logistic",
+     "kind_label": "Logistic regression",
+     "settings": {
+      "model": "logistic",
+      "test_share": 0.3,
+      "seed": 2026,
+      "threshold": 0.5,
+      "n_groups": 10,
+      "max_depth": 4,
+      "min_leaf": 50,
+      "n_customers": 50000.0
+     },
+     "n_customers": 5000,
+     "n_training": 3500,
+     "n_test": 1500,
+     "importance": [
+      {
+       "rank": 1,
+       "variable": "months_since_last_order",
+       "importance": 0.368758944,
+       "label": "Months since the last order"
+      },
+      {
+       "rank": 2,
+       "variable": "orders_last_year",
+       "importance": 0.265823394,
+       "label": "Orders in the year before the campaign"
+      },
+      {
+       "rank": 3,
+       "variable": "newsletter",
+       "importance": 0.212694829,
+       "label": "Receives the newsletter"
+      },
+      {
+       "rank": 4,
+       "variable": "average_basket",
+       "importance": 0.126440424,
+       "label": "Average value of an order (CHF)"
+      },
+      {
+       "rank": 5,
+       "variable": "region",
+       "importance": 0.0164401086,
+       "label": "Language region"
+      },
+      {
+       "rank": 6,
+       "variable": "age",
+       "importance": 0.00984230057,
+       "label": "Age in years"
+      }
+     ],
+     "importance_method": "How much the score differs between customers because of this predictor (standard deviation of its contribution), as a share of the total.",
+     "performance": {
+      "training": {
+       "n": 3500,
+       "n_responders": 417,
+       "response_rate": 0.119142857,
+       "confusion_matrix": {
+        "predicted_yes_responded": 24,
+        "predicted_yes_did_not_respond": 13,
+        "predicted_no_responded": 393,
+        "predicted_no_did_not_respond": 3070
+       },
+       "hit_rate": 0.884,
+       "hit_rate_by_guessing": 0.880857143,
+       "share_of_responders_found": 0.0575539568,
+       "share_of_predicted_responders_who_respond": 0.648648649,
+       "area_under_curve": 0.763473555
+      },
+      "test": {
+       "n": 1500,
+       "n_responders": 214,
+       "response_rate": 0.142666667,
+       "confusion_matrix": {
+        "predicted_yes_responded": 9,
+        "predicted_yes_did_not_respond": 5,
+        "predicted_no_responded": 205,
+        "predicted_no_did_not_respond": 1281
+       },
+       "hit_rate": 0.86,
+       "hit_rate_by_guessing": 0.857333333,
+       "share_of_responders_found": 0.0420560748,
+       "share_of_predicted_responders_who_respond": 0.642857143,
+       "area_under_curve": 0.754196887
+      }
+     },
+     "by_threshold": [
+      {
+       "threshold": 0.5,
+       "predicted_responders": 14,
+       "responders_found": 9,
+       "share_of_responders_found": 0.0420560748,
+       "share_of_predicted_responders_who_respond": 0.642857143,
+       "hit_rate": 0.86,
+       "hit_rate_by_guessing": 0.857333333
+      },
+      {
+       "threshold": 0.3,
+       "predicted_responders": 112,
+       "responders_found": 56,
+       "share_of_responders_found": 0.261682243,
+       "share_of_predicted_responders_who_respond": 0.5,
+       "hit_rate": 0.857333333,
+       "hit_rate_by_guessing": 0.857333333
+      },
+      {
+       "threshold": 0.2,
+       "predicted_responders": 267,
+       "responders_found": 100,
+       "share_of_responders_found": 0.46728972,
+       "share_of_predicted_responders_who_respond": 0.374531835,
+       "hit_rate": 0.812666667,
+       "hit_rate_by_guessing": 0.857333333
+      },
+      {
+       "threshold": 0.1,
+       "predicted_responders": 653,
+       "responders_found": 159,
+       "share_of_responders_found": 0.742990654,
+       "share_of_predicted_responders_who_respond": 0.243491577,
+       "hit_rate": 0.634,
+       "hit_rate_by_guessing": 0.857333333
+      }
+     ],
+     "lift": {
+      "sample": "test",
+      "n": 1500,
+      "n_responders": 214,
+      "response_rate": 0.142666667,
+      "n_groups": 10,
+      "top_group_lift": 3.22429907,
+      "groups": {
+       "group": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+       ],
+       "n": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+       ],
+       "lowest_probability": [
+        0.26432352,
+        0.186054145,
+        0.139271224,
+        0.1092523,
+        0.0866201769,
+        0.0658750419,
+        0.050293551,
+        0.0351313556,
+        0.0215843154,
+        0.000678858551
+       ],
+       "highest_probability": [
+        0.808568485,
+        0.263578282,
+        0.185539485,
+        0.139210241,
+        0.108471477,
+        0.0865053789,
+        0.0658714011,
+        0.0499935324,
+        0.0350813684,
+        0.0215357547
+       ],
+       "responders": [
+        69.0,
+        41.0,
+        27.0,
+        19.0,
+        14.0,
+        9.0,
+        13.0,
+        12.0,
+        3.0,
+        7.0
+       ],
+       "response_rate": [
+        0.46,
+        0.273333333,
+        0.18,
+        0.126666667,
+        0.0933333333,
+        0.06,
+        0.0866666667,
+        0.08,
+        0.02,
+        0.0466666667
+       ],
+       "lift": [
+        3.22429907,
+        1.91588785,
+        1.26168224,
+        0.887850467,
+        0.654205607,
+        0.420560748,
+        0.607476636,
+        0.560747664,
+        0.140186916,
+        0.327102804
+       ],
+       "cumulative_n": [
+        150,
+        300,
+        450,
+        600,
+        750,
+        900,
+        1050,
+        1200,
+        1350,
+        1500
+       ],
+       "cumulative_share_of_customers": [
+        0.1,
+        0.2,
+        0.3,
+        0.4,
+        0.5,
+        0.6,
+        0.7,
+        0.8,
+        0.9,
+        1.0
+       ],
+       "cumulative_responders": [
+        69.0,
+        110.0,
+        137.0,
+        156.0,
+        170.0,
+        179.0,
+        192.0,
+        204.0,
+        207.0,
+        214.0
+       ],
+       "cumulative_share_of_responders": [
+        0.322429907,
+        0.514018692,
+        0.640186916,
+        0.728971963,
+        0.794392523,
+        0.836448598,
+        0.897196262,
+        0.953271028,
+        0.96728972,
+        1.0
+       ],
+       "cumulative_lift": [
+        3.22429907,
+        2.57009346,
+        2.13395639,
+        1.82242991,
+        1.58878505,
+        1.394081,
+        1.28170895,
+        1.19158879,
+        1.07476636,
+        1.0
+       ]
+      }
+     },
+     "campaign": {
+      "cost_per_contact": 2.5,
+      "margin_per_response": 30.0,
+      "break_even_response_rate": 0.0833333333,
+      "n_scored": 1500,
+      "scaled_to": 50000.0,
+      "depths": {
+       "groups_contacted": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+       ],
+       "share_of_customers": [
+        0.0,
+        0.1,
+        0.2,
+        0.3,
+        0.4,
+        0.5,
+        0.6,
+        0.7,
+        0.8,
+        0.9,
+        1.0
+       ],
+       "customers_contacted": [
+        0.0,
+        5000.0,
+        10000.0,
+        15000.0,
+        20000.0,
+        25000.0,
+        30000.0,
+        35000.0,
+        40000.0,
+        45000.0,
+        50000.0
+       ],
+       "responders": [
+        0.0,
+        2300.0,
+        3666.66667,
+        4566.66667,
+        5200.0,
+        5666.66667,
+        5966.66667,
+        6400.0,
+        6800.0,
+        6900.0,
+        7133.33333
+       ],
+       "cost": [
+        0.0,
+        12500.0,
+        25000.0,
+        37500.0,
+        50000.0,
+        62500.0,
+        75000.0,
+        87500.0,
+        100000.0,
+        112500.0,
+        125000.0
+       ],
+       "margin": [
+        0.0,
+        69000.0,
+        110000.0,
+        137000.0,
+        156000.0,
+        170000.0,
+        179000.0,
+        192000.0,
+        204000.0,
+        207000.0,
+        214000.0
+       ],
+       "profit": [
+        0.0,
+        56500.0,
+        85000.0,
+        99500.0,
+        106000.0,
+        107500.0,
+        104000.0,
+        104500.0,
+        104000.0,
+        94500.0,
+        89000.0
+       ]
+      },
+      "best_depth": {
+       "groups_contacted": 5,
+       "share_of_customers": 0.5,
+       "customers_contacted": 25000.0,
+       "responders": 5666.66667,
+       "cost": 62500.0,
+       "margin": 170000.0,
+       "profit": 107500.0
+      },
+      "contact_everyone": {
+       "groups_contacted": 10,
+       "share_of_customers": 1.0,
+       "customers_contacted": 50000.0,
+       "responders": 7133.33333,
+       "cost": 125000.0,
+       "margin": 214000.0,
+       "profit": 89000.0
+      },
+      "gain_over_contacting_everyone": 18500.0,
+      "by_break_even_rule": {
+       "customers_contacted": 25766.6667,
+       "share_of_customers": 0.515333333,
+       "responders": 5733.33333,
+       "profit": 107583.333
+      },
+      "how_to_read": [
+       "Each row adds one more group of customers to the campaign, best group first.",
+       "Profit rises as long as the group added responds more often than the break-even rate, then it falls."
+      ],
+      "warnings": []
+     },
+     "other_campaigns": [
+      {
+       "cost_per_contact": 1.0,
+       "margin_per_response": 30.0,
+       "break_even_response_rate": 0.0333333333,
+       "n_scored": 1500,
+       "scaled_to": 50000.0,
+       "depths": {
+        "groups_contacted": [
+         0,
+         1,
+         2,
+         3,
+         4,
+         5,
+         6,
+         7,
+         8,
+         9,
+         10
+        ],
+        "share_of_customers": [
+         0.0,
+         0.1,
+         0.2,
+         0.3,
+         0.4,
+         0.5,
+         0.6,
+         0.7,
+         0.8,
+         0.9,
+         1.0
+        ],
+        "customers_contacted": [
+         0.0,
+         5000.0,
+         10000.0,
+         15000.0,
+         20000.0,
+         25000.0,
+         30000.0,
+         35000.0,
+         40000.0,
+         45000.0,
+         50000.0
+        ],
+        "responders": [
+         0.0,
+         2300.0,
+         3666.66667,
+         4566.66667,
+         5200.0,
+         5666.66667,
+         5966.66667,
+         6400.0,
+         6800.0,
+         6900.0,
+         7133.33333
+        ],
+        "cost": [
+         0.0,
+         5000.0,
+         10000.0,
+         15000.0,
+         20000.0,
+         25000.0,
+         30000.0,
+         35000.0,
+         40000.0,
+         45000.0,
+         50000.0
+        ],
+        "margin": [
+         0.0,
+         69000.0,
+         110000.0,
+         137000.0,
+         156000.0,
+         170000.0,
+         179000.0,
+         192000.0,
+         204000.0,
+         207000.0,
+         214000.0
+        ],
+        "profit": [
+         0.0,
+         64000.0,
+         100000.0,
+         122000.0,
+         136000.0,
+         145000.0,
+         149000.0,
+         157000.0,
+         164000.0,
+         162000.0,
+         164000.0
+        ]
+       },
+       "best_depth": {
+        "groups_contacted": 8,
+        "share_of_customers": 0.8,
+        "customers_contacted": 40000.0,
+        "responders": 6800.0,
+        "cost": 40000.0,
+        "margin": 204000.0,
+        "profit": 164000.0
+       },
+       "contact_everyone": {
+        "groups_contacted": 10,
+        "share_of_customers": 1.0,
+        "customers_contacted": 50000.0,
+        "responders": 7133.33333,
+        "cost": 50000.0,
+        "margin": 214000.0,
+        "profit": 164000.0
+       },
+       "gain_over_contacting_everyone": 0.0,
+       "by_break_even_rule": {
+        "customers_contacted": 40566.6667,
+        "share_of_customers": 0.811333333,
+        "responders": 6833.33333,
+        "profit": 164433.333
+       }
+      },
+      {
+       "cost_per_contact": 5.0,
+       "margin_per_response": 30.0,
+       "break_even_response_rate": 0.166666667,
+       "n_scored": 1500,
+       "scaled_to": 20000.0,
+       "depths": {
+        "groups_contacted": [
+         0,
+         1,
+         2,
+         3,
+         4,
+         5,
+         6,
+         7,
+         8,
+         9,
+         10
+        ],
+        "share_of_customers": [
+         0.0,
+         0.1,
+         0.2,
+         0.3,
+         0.4,
+         0.5,
+         0.6,
+         0.7,
+         0.8,
+         0.9,
+         1.0
+        ],
+        "customers_contacted": [
+         0.0,
+         2000.0,
+         4000.0,
+         6000.0,
+         8000.0,
+         10000.0,
+         12000.0,
+         14000.0,
+         16000.0,
+         18000.0,
+         20000.0
+        ],
+        "responders": [
+         0.0,
+         920.0,
+         1466.66667,
+         1826.66667,
+         2080.0,
+         2266.66667,
+         2386.66667,
+         2560.0,
+         2720.0,
+         2760.0,
+         2853.33333
+        ],
+        "cost": [
+         0.0,
+         10000.0,
+         20000.0,
+         30000.0,
+         40000.0,
+         50000.0,
+         60000.0,
+         70000.0,
+         80000.0,
+         90000.0,
+         100000.0
+        ],
+        "margin": [
+         0.0,
+         27600.0,
+         44000.0,
+         54800.0,
+         62400.0,
+         68000.0,
+         71600.0,
+         76800.0,
+         81600.0,
+         82800.0,
+         85600.0
+        ],
+        "profit": [
+         0.0,
+         17600.0,
+         24000.0,
+         24800.0,
+         22400.0,
+         18000.0,
+         11600.0,
+         6800.0,
+         1600.0,
+         -7200.0,
+         -14400.0
+        ]
+       },
+       "best_depth": {
+        "groups_contacted": 3,
+        "share_of_customers": 0.3,
+        "customers_contacted": 6000.0,
+        "responders": 1826.66667,
+        "cost": 30000.0,
+        "margin": 54800.0,
+        "profit": 24800.0
+       },
+       "contact_everyone": {
+        "groups_contacted": 10,
+        "share_of_customers": 1.0,
+        "customers_contacted": 20000.0,
+        "responders": 2853.33333,
+        "cost": 100000.0,
+        "margin": 85600.0,
+        "profit": -14400.0
+       },
+       "gain_over_contacting_everyone": 39200.0,
+       "by_break_even_rule": {
+        "customers_contacted": 4546.66667,
+        "share_of_customers": 0.227333333,
+        "responders": 1533.33333,
+        "profit": 23266.6667
+       }
+      },
+      {
+       "cost_per_contact": 2.5,
+       "margin_per_response": 60.0,
+       "break_even_response_rate": 0.0416666667,
+       "n_scored": 1500,
+       "scaled_to": 50000.0,
+       "depths": {
+        "groups_contacted": [
+         0,
+         1,
+         2,
+         3,
+         4,
+         5,
+         6,
+         7,
+         8,
+         9,
+         10
+        ],
+        "share_of_customers": [
+         0.0,
+         0.1,
+         0.2,
+         0.3,
+         0.4,
+         0.5,
+         0.6,
+         0.7,
+         0.8,
+         0.9,
+         1.0
+        ],
+        "customers_contacted": [
+         0.0,
+         5000.0,
+         10000.0,
+         15000.0,
+         20000.0,
+         25000.0,
+         30000.0,
+         35000.0,
+         40000.0,
+         45000.0,
+         50000.0
+        ],
+        "responders": [
+         0.0,
+         2300.0,
+         3666.66667,
+         4566.66667,
+         5200.0,
+         5666.66667,
+         5966.66667,
+         6400.0,
+         6800.0,
+         6900.0,
+         7133.33333
+        ],
+        "cost": [
+         0.0,
+         12500.0,
+         25000.0,
+         37500.0,
+         50000.0,
+         62500.0,
+         75000.0,
+         87500.0,
+         100000.0,
+         112500.0,
+         125000.0
+        ],
+        "margin": [
+         0.0,
+         138000.0,
+         220000.0,
+         274000.0,
+         312000.0,
+         340000.0,
+         358000.0,
+         384000.0,
+         408000.0,
+         414000.0,
+         428000.0
+        ],
+        "profit": [
+         0.0,
+         125500.0,
+         195000.0,
+         236500.0,
+         262000.0,
+         277500.0,
+         283000.0,
+         296500.0,
+         308000.0,
+         301500.0,
+         303000.0
+        ]
+       },
+       "best_depth": {
+        "groups_contacted": 8,
+        "share_of_customers": 0.8,
+        "customers_contacted": 40000.0,
+        "responders": 6800.0,
+        "cost": 100000.0,
+        "margin": 408000.0,
+        "profit": 308000.0
+       },
+       "contact_everyone": {
+        "groups_contacted": 10,
+        "share_of_customers": 1.0,
+        "customers_contacted": 50000.0,
+        "responders": 7133.33333,
+        "cost": 125000.0,
+        "margin": 428000.0,
+        "profit": 303000.0
+       },
+       "gain_over_contacting_everyone": 5000.0,
+       "by_break_even_rule": {
+        "customers_contacted": 37966.6667,
+        "share_of_customers": 0.759333333,
+        "responders": 6633.33333,
+        "profit": 303083.333
+       }
+      },
+      {
+       "cost_per_contact": 4.0,
+       "margin_per_response": 20.0,
+       "break_even_response_rate": 0.2,
+       "n_scored": 1500,
+       "scaled_to": 8000.0,
+       "depths": {
+        "groups_contacted": [
+         0,
+         1,
+         2,
+         3,
+         4,
+         5,
+         6,
+         7,
+         8,
+         9,
+         10
+        ],
+        "share_of_customers": [
+         0.0,
+         0.1,
+         0.2,
+         0.3,
+         0.4,
+         0.5,
+         0.6,
+         0.7,
+         0.8,
+         0.9,
+         1.0
+        ],
+        "customers_contacted": [
+         0.0,
+         800.0,
+         1600.0,
+         2400.0,
+         3200.0,
+         4000.0,
+         4800.0,
+         5600.0,
+         6400.0,
+         7200.0,
+         8000.0
+        ],
+        "responders": [
+         0.0,
+         368.0,
+         586.666667,
+         730.666667,
+         832.0,
+         906.666667,
+         954.666667,
+         1024.0,
+         1088.0,
+         1104.0,
+         1141.33333
+        ],
+        "cost": [
+         0.0,
+         3200.0,
+         6400.0,
+         9600.0,
+         12800.0,
+         16000.0,
+         19200.0,
+         22400.0,
+         25600.0,
+         28800.0,
+         32000.0
+        ],
+        "margin": [
+         0.0,
+         7360.0,
+         11733.3333,
+         14613.3333,
+         16640.0,
+         18133.3333,
+         19093.3333,
+         20480.0,
+         21760.0,
+         22080.0,
+         22826.6667
+        ],
+        "profit": [
+         0.0,
+         4160.0,
+         5333.33333,
+         5013.33333,
+         3840.0,
+         2133.33333,
+         -106.666667,
+         -1920.0,
+         -3840.0,
+         -6720.0,
+         -9173.33333
+        ]
+       },
+       "best_depth": {
+        "groups_contacted": 2,
+        "share_of_customers": 0.2,
+        "customers_contacted": 1600.0,
+        "responders": 586.666667,
+        "cost": 6400.0,
+        "margin": 11733.3333,
+        "profit": 5333.33333
+       },
+       "contact_everyone": {
+        "groups_contacted": 10,
+        "share_of_customers": 1.0,
+        "customers_contacted": 8000.0,
+        "responders": 1141.33333,
+        "cost": 32000.0,
+        "margin": 22826.6667,
+        "profit": -9173.33333
+       },
+       "gain_over_contacting_everyone": 14506.6667,
+       "by_break_even_rule": {
+        "customers_contacted": 1424.0,
+        "share_of_customers": 0.178,
+        "responders": 533.333333,
+        "profit": 4970.66667
+       }
+      }
+     ],
+     "how_to_read": [
+      "The test sample is the fair judge: the model never saw these customers.",
+      "The hit rate must be compared with the hit rate by guessing. If few respond, guessing 'no' for everyone is already right most of the time.",
+      "Lift says how much more often the best-rated customers respond than the average customer."
+     ],
+     "warnings": [],
+     "coefficients": [
+      {
+       "term": "Constant",
+       "variable": null,
+       "category": null,
+       "coefficient": -3.78533689,
+       "standard_error": 0.320460179,
+       "z": -11.8121911,
+       "p_value": 3.37645732e-32,
+       "odds_ratio": null,
+       "label": null
+      },
+      {
+       "term": "age",
+       "variable": "age",
+       "category": null,
+       "coefficient": -0.00139389773,
+       "standard_error": 0.00349034157,
+       "z": -0.399358545,
+       "p_value": 0.689629035,
+       "odds_ratio": 0.998607073,
+       "label": "Age in years"
+      },
+      {
+       "term": "orders_last_year",
+       "variable": "orders_last_year",
+       "category": null,
+       "coefficient": 0.299908742,
+       "standard_error": 0.0274955329,
+       "z": 10.9075443,
+       "p_value": 1.06083366e-27,
+       "odds_ratio": 1.34973563,
+       "label": "Orders in the year before the campaign"
+      },
+      {
+       "term": "months_since_last_order",
+       "variable": "months_since_last_order",
+       "category": null,
+       "coefficient": -0.232882601,
+       "standard_error": 0.0228868636,
+       "z": -10.1753829,
+       "p_value": 2.55393496e-24,
+       "odds_ratio": 0.792246577,
+       "label": "Months since the last order"
+      },
+      {
+       "term": "average_basket",
+       "variable": "average_basket",
+       "category": null,
+       "coefficient": 0.0292109736,
+       "standard_error": 0.00546667445,
+       "z": 5.34346318,
+       "p_value": 9.1187359e-08,
+       "odds_ratio": 1.0296418,
+       "label": "Average value of an order (CHF)"
+      },
+      {
+       "term": "newsletter = yes",
+       "variable": "newsletter",
+       "category": "yes",
+       "coefficient": 0.970221756,
+       "standard_error": 0.112749125,
+       "z": 8.60513778,
+       "p_value": 7.62251428e-18,
+       "odds_ratio": 2.63852951,
+       "label": "Receives the newsletter"
+      },
+      {
+       "term": "region = German-speaking",
+       "variable": "region",
+       "category": "German-speaking",
+       "coefficient": 0.0692685675,
+       "standard_error": 0.130333214,
+       "z": 0.531472872,
+       "p_value": 0.595091136,
+       "odds_ratio": 1.071724,
+       "label": "Language region"
+      },
+      {
+       "term": "region = Italian-speaking",
+       "variable": "region",
+       "category": "Italian-speaking",
+       "coefficient": -0.0256405202,
+       "standard_error": 0.215170385,
+       "z": -0.119163798,
+       "p_value": 0.905145588,
+       "odds_ratio": 0.974685406,
+       "label": "Language region"
+      }
+     ],
+     "fit": {
+      "log_likelihood": -1098.51165,
+      "log_likelihood_without_predictors": -1278.24798,
+      "pseudo_r_squared": 0.140611473,
+      "held_back": false
+     }
+    },
+    "TG-02": {
+     "function": "fit_response_model, campaign_profit",
+     "kind": "tree",
+     "kind_label": "Decision tree",
+     "settings": {
+      "model": "tree",
+      "test_share": 0.3,
+      "seed": 2026,
+      "threshold": 0.5,
+      "n_groups": 10,
+      "max_depth": 4,
+      "min_leaf": 50,
+      "n_customers": 50000.0
+     },
+     "n_customers": 5000,
+     "n_training": 3500,
+     "n_test": 1500,
+     "importance": [
+      {
+       "rank": 1,
+       "variable": "months_since_last_order",
+       "importance": 0.33619655,
+       "label": "Months since the last order"
+      },
+      {
+       "rank": 2,
+       "variable": "orders_last_year",
+       "importance": 0.334134881,
+       "label": "Orders in the year before the campaign"
+      },
+      {
+       "rank": 3,
+       "variable": "newsletter",
+       "importance": 0.277511698,
+       "label": "Receives the newsletter"
+      },
+      {
+       "rank": 4,
+       "variable": "average_basket",
+       "importance": 0.0521568715,
+       "label": "Average value of an order (CHF)"
+      },
+      {
+       "rank": 5,
+       "variable": "age",
+       "importance": 0.0,
+       "label": "Age in years"
+      },
+      {
+       "rank": 6,
+       "variable": "region",
+       "importance": 0.0,
+       "label": "Language region"
+      }
+     ],
+     "importance_method": "How much the splits on this predictor improve the purity of the groups, as a share of the total.",
+     "performance": {
+      "training": {
+       "n": 3500,
+       "n_responders": 417,
+       "response_rate": 0.119142857,
+       "confusion_matrix": {
+        "predicted_yes_responded": 0,
+        "predicted_yes_did_not_respond": 0,
+        "predicted_no_responded": 417,
+        "predicted_no_did_not_respond": 3083
+       },
+       "hit_rate": 0.880857143,
+       "hit_rate_by_guessing": 0.880857143,
+       "share_of_responders_found": 0.0,
+       "share_of_predicted_responders_who_respond": null,
+       "area_under_curve": 0.752926041
+      },
+      "test": {
+       "n": 1500,
+       "n_responders": 214,
+       "response_rate": 0.142666667,
+       "confusion_matrix": {
+        "predicted_yes_responded": 0,
+        "predicted_yes_did_not_respond": 0,
+        "predicted_no_responded": 214,
+        "predicted_no_did_not_respond": 1286
+       },
+       "hit_rate": 0.857333333,
+       "hit_rate_by_guessing": 0.857333333,
+       "share_of_responders_found": 0.0,
+       "share_of_predicted_responders_who_respond": null,
+       "area_under_curve": 0.714039403
+      }
+     },
+     "by_threshold": [
+      {
+       "threshold": 0.5,
+       "predicted_responders": 0,
+       "responders_found": 0,
+       "share_of_responders_found": 0.0,
+       "share_of_predicted_responders_who_respond": null,
+       "hit_rate": 0.857333333,
+       "hit_rate_by_guessing": 0.857333333
+      },
+      {
+       "threshold": 0.3,
+       "predicted_responders": 121,
+       "responders_found": 47,
+       "share_of_responders_found": 0.219626168,
+       "share_of_predicted_responders_who_respond": 0.388429752,
+       "hit_rate": 0.839333333,
+       "hit_rate_by_guessing": 0.857333333
+      },
+      {
+       "threshold": 0.2,
+       "predicted_responders": 265,
+       "responders_found": 94,
+       "share_of_responders_found": 0.439252336,
+       "share_of_predicted_responders_who_respond": 0.354716981,
+       "hit_rate": 0.806,
+       "hit_rate_by_guessing": 0.857333333
+      },
+      {
+       "threshold": 0.1,
+       "predicted_responders": 826,
+       "responders_found": 171,
+       "share_of_responders_found": 0.799065421,
+       "share_of_predicted_responders_who_respond": 0.207021792,
+       "hit_rate": 0.534666667,
+       "hit_rate_by_guessing": 0.857333333
+      }
+     ],
+     "lift": {
+      "sample": "test",
+      "n": 1500,
+      "n_responders": 214,
+      "response_rate": 0.142666667,
+      "n_groups": 10,
+      "top_group_lift": 2.63856438,
+      "groups": {
+       "group": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+       ],
+       "n": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+       ],
+       "lowest_probability": [
+        0.279863481,
+        0.15625,
+        0.131672598,
+        0.113573407,
+        0.113573407,
+        0.0686695279,
+        0.0460251046,
+        0.0209205021,
+        0.0209205021,
+        0.0209205021
+       ],
+       "highest_probability": [
+        0.43442623,
+        0.279863481,
+        0.15625,
+        0.131672598,
+        0.113573407,
+        0.113573407,
+        0.0686695279,
+        0.0460251046,
+        0.0209205021,
+        0.0209205021
+       ],
+       "responders": [
+        56.4652778,
+        40.9347222,
+        21.9799127,
+        22.8923386,
+        20.4188482,
+        14.6744919,
+        11.2431043,
+        9.85732377,
+        7.76699029,
+        7.76699029
+       ],
+       "response_rate": [
+        0.376435185,
+        0.272898148,
+        0.146532751,
+        0.152615591,
+        0.136125654,
+        0.0978299461,
+        0.0749540284,
+        0.0657154918,
+        0.0517799353,
+        0.0517799353
+       ],
+       "lift": [
+        2.63856438,
+        1.91283749,
+        1.02709872,
+        1.06973545,
+        0.954151784,
+        0.685723922,
+        0.525378703,
+        0.460622606,
+        0.362943472,
+        0.362943472
+       ],
+       "cumulative_n": [
+        150,
+        300,
+        450,
+        600,
+        750,
+        900,
+        1050,
+        1200,
+        1350,
+        1500
+       ],
+       "cumulative_share_of_customers": [
+        0.1,
+        0.2,
+        0.3,
+        0.4,
+        0.5,
+        0.6,
+        0.7,
+        0.8,
+        0.9,
+        1.0
+       ],
+       "cumulative_responders": [
+        56.4652778,
+        97.4,
+        119.379913,
+        142.272251,
+        162.691099,
+        177.365591,
+        188.608696,
+        198.466019,
+        206.23301,
+        214.0
+       ],
+       "cumulative_share_of_responders": [
+        0.263856438,
+        0.455140187,
+        0.557850059,
+        0.664823604,
+        0.760238783,
+        0.828811175,
+        0.881349045,
+        0.927411306,
+        0.963705653,
+        1.0
+       ],
+       "cumulative_lift": [
+        2.63856438,
+        2.27570093,
+        1.8595002,
+        1.66205901,
+        1.52047757,
+        1.38135196,
+        1.25907006,
+        1.15926413,
+        1.07078406,
+        1.0
+       ]
+      }
+     },
+     "campaign": {
+      "cost_per_contact": 2.5,
+      "margin_per_response": 30.0,
+      "break_even_response_rate": 0.0833333333,
+      "n_scored": 1500,
+      "scaled_to": 50000.0,
+      "depths": {
+       "groups_contacted": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+       ],
+       "share_of_customers": [
+        0.0,
+        0.1,
+        0.2,
+        0.3,
+        0.4,
+        0.5,
+        0.6,
+        0.7,
+        0.8,
+        0.9,
+        1.0
+       ],
+       "customers_contacted": [
+        0.0,
+        5000.0,
+        10000.0,
+        15000.0,
+        20000.0,
+        25000.0,
+        30000.0,
+        35000.0,
+        40000.0,
+        45000.0,
+        50000.0
+       ],
+       "responders": [
+        0.0,
+        1882.17593,
+        3246.66667,
+        3979.33042,
+        4742.40838,
+        5423.03665,
+        5912.18638,
+        6286.95652,
+        6615.53398,
+        6874.43366,
+        7133.33333
+       ],
+       "cost": [
+        0.0,
+        12500.0,
+        25000.0,
+        37500.0,
+        50000.0,
+        62500.0,
+        75000.0,
+        87500.0,
+        100000.0,
+        112500.0,
+        125000.0
+       ],
+       "margin": [
+        0.0,
+        56465.2778,
+        97400.0,
+        119379.913,
+        142272.251,
+        162691.099,
+        177365.591,
+        188608.696,
+        198466.019,
+        206233.01,
+        214000.0
+       ],
+       "profit": [
+        0.0,
+        43965.2778,
+        72400.0,
+        81879.9127,
+        92272.2513,
+        100191.099,
+        102365.591,
+        101108.696,
+        98466.0194,
+        93733.0097,
+        89000.0
+       ]
+      },
+      "best_depth": {
+       "groups_contacted": 6,
+       "share_of_customers": 0.6,
+       "customers_contacted": 30000.0,
+       "responders": 5912.18638,
+       "cost": 75000.0,
+       "margin": 177365.591,
+       "profit": 102365.591
+      },
+      "contact_everyone": {
+       "groups_contacted": 10,
+       "share_of_customers": 1.0,
+       "customers_contacted": 50000.0,
+       "responders": 7133.33333,
+       "cost": 125000.0,
+       "margin": 214000.0,
+       "profit": 89000.0
+      },
+      "gain_over_contacting_everyone": 13365.5914,
+      "by_break_even_rule": {
+       "customers_contacted": 27533.3333,
+       "share_of_customers": 0.550666667,
+       "responders": 5700.0,
+       "profit": 102166.667
+      },
+      "how_to_read": [
+       "Each row adds one more group of customers to the campaign, best group first.",
+       "Profit rises as long as the group added responds more often than the break-even rate, then it falls."
+      ],
+      "warnings": []
+     },
+     "other_campaigns": [
+      {
+       "cost_per_contact": 1.0,
+       "margin_per_response": 30.0,
+       "break_even_response_rate": 0.0333333333,
+       "n_scored": 1500,
+       "scaled_to": 50000.0,
+       "depths": {
+        "groups_contacted": [
+         0,
+         1,
+         2,
+         3,
+         4,
+         5,
+         6,
+         7,
+         8,
+         9,
+         10
+        ],
+        "share_of_customers": [
+         0.0,
+         0.1,
+         0.2,
+         0.3,
+         0.4,
+         0.5,
+         0.6,
+         0.7,
+         0.8,
+         0.9,
+         1.0
+        ],
+        "customers_contacted": [
+         0.0,
+         5000.0,
+         10000.0,
+         15000.0,
+         20000.0,
+         25000.0,
+         30000.0,
+         35000.0,
+         40000.0,
+         45000.0,
+         50000.0
+        ],
+        "responders": [
+         0.0,
+         1882.17593,
+         3246.66667,
+         3979.33042,
+         4742.40838,
+         5423.03665,
+         5912.18638,
+         6286.95652,
+         6615.53398,
+         6874.43366,
+         7133.33333
+        ],
+        "cost": [
+         0.0,
+         5000.0,
+         10000.0,
+         15000.0,
+         20000.0,
+         25000.0,
+         30000.0,
+         35000.0,
+         40000.0,
+         45000.0,
+         50000.0
+        ],
+        "margin": [
+         0.0,
+         56465.2778,
+         97400.0,
+         119379.913,
+         142272.251,
+         162691.099,
+         177365.591,
+         188608.696,
+         198466.019,
+         206233.01,
+         214000.0
+        ],
+        "profit": [
+         0.0,
+         51465.2778,
+         87400.0,
+         104379.913,
+         122272.251,
+         137691.099,
+         147365.591,
+         153608.696,
+         158466.019,
+         161233.01,
+         164000.0
+        ]
+       },
+       "best_depth": {
+        "groups_contacted": 10,
+        "share_of_customers": 1.0,
+        "customers_contacted": 50000.0,
+        "responders": 7133.33333,
+        "cost": 50000.0,
+        "margin": 214000.0,
+        "profit": 164000.0
+       },
+       "contact_everyone": {
+        "groups_contacted": 10,
+        "share_of_customers": 1.0,
+        "customers_contacted": 50000.0,
+        "responders": 7133.33333,
+        "cost": 50000.0,
+        "margin": 214000.0,
+        "profit": 164000.0
+       },
+       "gain_over_contacting_everyone": 0.0,
+       "by_break_even_rule": {
+        "customers_contacted": 37833.3333,
+        "share_of_customers": 0.756666667,
+        "responders": 6533.33333,
+        "profit": 158166.667
+       }
+      },
+      {
+       "cost_per_contact": 5.0,
+       "margin_per_response": 30.0,
+       "break_even_response_rate": 0.166666667,
+       "n_scored": 1500,
+       "scaled_to": 20000.0,
+       "depths": {
+        "groups_contacted": [
+         0,
+         1,
+         2,
+         3,
+         4,
+         5,
+         6,
+         7,
+         8,
+         9,
+         10
+        ],
+        "share_of_customers": [
+         0.0,
+         0.1,
+         0.2,
+         0.3,
+         0.4,
+         0.5,
+         0.6,
+         0.7,
+         0.8,
+         0.9,
+         1.0
+        ],
+        "customers_contacted": [
+         0.0,
+         2000.0,
+         4000.0,
+         6000.0,
+         8000.0,
+         10000.0,
+         12000.0,
+         14000.0,
+         16000.0,
+         18000.0,
+         20000.0
+        ],
+        "responders": [
+         0.0,
+         752.87037,
+         1298.66667,
+         1591.73217,
+         1896.96335,
+         2169.21466,
+         2364.87455,
+         2514.78261,
+         2646.21359,
+         2749.77346,
+         2853.33333
+        ],
+        "cost": [
+         0.0,
+         10000.0,
+         20000.0,
+         30000.0,
+         40000.0,
+         50000.0,
+         60000.0,
+         70000.0,
+         80000.0,
+         90000.0,
+         100000.0
+        ],
+        "margin": [
+         0.0,
+         22586.1111,
+         38960.0,
+         47751.9651,
+         56908.9005,
+         65076.4398,
+         70946.2366,
+         75443.4783,
+         79386.4078,
+         82493.2039,
+         85600.0
+        ],
+        "profit": [
+         0.0,
+         12586.1111,
+         18960.0,
+         17751.9651,
+         16908.9005,
+         15076.4398,
+         10946.2366,
+         5443.47826,
+         -613.592233,
+         -7506.79612,
+         -14400.0
+        ]
+       },
+       "best_depth": {
+        "groups_contacted": 2,
+        "share_of_customers": 0.2,
+        "customers_contacted": 4000.0,
+        "responders": 1298.66667,
+        "cost": 20000.0,
+        "margin": 38960.0,
+        "profit": 18960.0
+       },
+       "contact_everyone": {
+        "groups_contacted": 10,
+        "share_of_customers": 1.0,
+        "customers_contacted": 20000.0,
+        "responders": 2853.33333,
+        "cost": 100000.0,
+        "margin": 85600.0,
+        "profit": -14400.0
+       },
+       "gain_over_contacting_everyone": 33360.0,
+       "by_break_even_rule": {
+        "customers_contacted": 3533.33333,
+        "share_of_customers": 0.176666667,
+        "responders": 1253.33333,
+        "profit": 19933.3333
+       }
+      },
+      {
+       "cost_per_contact": 2.5,
+       "margin_per_response": 60.0,
+       "break_even_response_rate": 0.0416666667,
+       "n_scored": 1500,
+       "scaled_to": 50000.0,
+       "depths": {
+        "groups_contacted": [
+         0,
+         1,
+         2,
+         3,
+         4,
+         5,
+         6,
+         7,
+         8,
+         9,
+         10
+        ],
+        "share_of_customers": [
+         0.0,
+         0.1,
+         0.2,
+         0.3,
+         0.4,
+         0.5,
+         0.6,
+         0.7,
+         0.8,
+         0.9,
+         1.0
+        ],
+        "customers_contacted": [
+         0.0,
+         5000.0,
+         10000.0,
+         15000.0,
+         20000.0,
+         25000.0,
+         30000.0,
+         35000.0,
+         40000.0,
+         45000.0,
+         50000.0
+        ],
+        "responders": [
+         0.0,
+         1882.17593,
+         3246.66667,
+         3979.33042,
+         4742.40838,
+         5423.03665,
+         5912.18638,
+         6286.95652,
+         6615.53398,
+         6874.43366,
+         7133.33333
+        ],
+        "cost": [
+         0.0,
+         12500.0,
+         25000.0,
+         37500.0,
+         50000.0,
+         62500.0,
+         75000.0,
+         87500.0,
+         100000.0,
+         112500.0,
+         125000.0
+        ],
+        "margin": [
+         0.0,
+         112930.556,
+         194800.0,
+         238759.825,
+         284544.503,
+         325382.199,
+         354731.183,
+         377217.391,
+         396932.039,
+         412466.019,
+         428000.0
+        ],
+        "profit": [
+         0.0,
+         100430.556,
+         169800.0,
+         201259.825,
+         234544.503,
+         262882.199,
+         279731.183,
+         289717.391,
+         296932.039,
+         299966.019,
+         303000.0
+        ]
+       },
+       "best_depth": {
+        "groups_contacted": 10,
+        "share_of_customers": 1.0,
+        "customers_contacted": 50000.0,
+        "responders": 7133.33333,
+        "cost": 125000.0,
+        "margin": 428000.0,
+        "profit": 303000.0
+       },
+       "contact_everyone": {
+        "groups_contacted": 10,
+        "share_of_customers": 1.0,
+        "customers_contacted": 50000.0,
+        "responders": 7133.33333,
+        "cost": 125000.0,
+        "margin": 428000.0,
+        "profit": 303000.0
+       },
+       "gain_over_contacting_everyone": 0.0,
+       "by_break_even_rule": {
+        "customers_contacted": 37833.3333,
+        "share_of_customers": 0.756666667,
+        "responders": 6533.33333,
+        "profit": 297416.667
+       }
+      },
+      {
+       "cost_per_contact": 4.0,
+       "margin_per_response": 20.0,
+       "break_even_response_rate": 0.2,
+       "n_scored": 1500,
+       "scaled_to": 8000.0,
+       "depths": {
+        "groups_contacted": [
+         0,
+         1,
+         2,
+         3,
+         4,
+         5,
+         6,
+         7,
+         8,
+         9,
+         10
+        ],
+        "share_of_customers": [
+         0.0,
+         0.1,
+         0.2,
+         0.3,
+         0.4,
+         0.5,
+         0.6,
+         0.7,
+         0.8,
+         0.9,
+         1.0
+        ],
+        "customers_contacted": [
+         0.0,
+         800.0,
+         1600.0,
+         2400.0,
+         3200.0,
+         4000.0,
+         4800.0,
+         5600.0,
+         6400.0,
+         7200.0,
+         8000.0
+        ],
+        "responders": [
+         0.0,
+         301.148148,
+         519.466667,
+         636.692868,
+         758.78534,
+         867.685864,
+         945.949821,
+         1005.91304,
+         1058.48544,
+         1099.90939,
+         1141.33333
+        ],
+        "cost": [
+         0.0,
+         3200.0,
+         6400.0,
+         9600.0,
+         12800.0,
+         16000.0,
+         19200.0,
+         22400.0,
+         25600.0,
+         28800.0,
+         32000.0
+        ],
+        "margin": [
+         0.0,
+         6022.96296,
+         10389.3333,
+         12733.8574,
+         15175.7068,
+         17353.7173,
+         18918.9964,
+         20118.2609,
+         21169.7087,
+         21998.1877,
+         22826.6667
+        ],
+        "profit": [
+         0.0,
+         2822.96296,
+         3989.33333,
+         3133.85735,
+         2375.70681,
+         1353.71728,
+         -281.003584,
+         -2281.73913,
+         -4430.29126,
+         -6801.8123,
+         -9173.33333
+        ]
+       },
+       "best_depth": {
+        "groups_contacted": 2,
+        "share_of_customers": 0.2,
+        "customers_contacted": 1600.0,
+        "responders": 519.466667,
+        "cost": 6400.0,
+        "margin": 10389.3333,
+        "profit": 3989.33333
+       },
+       "contact_everyone": {
+        "groups_contacted": 10,
+        "share_of_customers": 1.0,
+        "customers_contacted": 8000.0,
+        "responders": 1141.33333,
+        "cost": 32000.0,
+        "margin": 22826.6667,
+        "profit": -9173.33333
+       },
+       "gain_over_contacting_everyone": 13162.6667,
+       "by_break_even_rule": {
+        "customers_contacted": 1413.33333,
+        "share_of_customers": 0.176666667,
+        "responders": 501.333333,
+        "profit": 4373.33333
+       }
+      }
+     ],
+     "how_to_read": [
+      "The test sample is the fair judge: the model never saw these customers.",
+      "The hit rate must be compared with the hit rate by guessing. If few respond, guessing 'no' for everyone is already right most of the time.",
+      "Lift says how much more often the best-rated customers respond than the average customer."
+     ],
+     "warnings": [
+      "No customer reaches a probability of 0.5, so the model predicts 'no response' for everyone. This is normal when few customers respond. Lower the threshold, or judge the model by its lift."
+     ],
+     "tree": {
+      "n_final_groups": 15,
+      "depth": 4
+     },
+     "rules": [
+      {
+       "node": 25,
+       "rule": "orders_last_year above 4.5 and newsletter is yes and months_since_last_order at most 6.5 and orders_last_year above 6.5",
+       "n": 122,
+       "response_rate": 0.43442623
+      },
+      {
+       "node": 6,
+       "rule": "orders_last_year at most 4.5 and months_since_last_order at most 1.5 and orders_last_year above 2.5 and newsletter is yes",
+       "n": 65,
+       "response_rate": 0.338461538
+      },
+      {
+       "node": 18,
+       "rule": "orders_last_year above 4.5 and newsletter is not yes and months_since_last_order at most 2.5 and average_basket above 29.59",
+       "n": 100,
+       "response_rate": 0.3
+      },
+      {
+       "node": 24,
+       "rule": "orders_last_year above 4.5 and newsletter is yes and months_since_last_order at most 6.5 and orders_last_year at most 6.5",
+       "n": 293,
+       "response_rate": 0.279863481
+      },
+      {
+       "node": 27,
+       "rule": "orders_last_year above 4.5 and newsletter is yes and months_since_last_order above 6.5 and months_since_last_order at most 8.5",
+       "n": 63,
+       "response_rate": 0.158730159
+      },
+      {
+       "node": 5,
+       "rule": "orders_last_year at most 4.5 and months_since_last_order at most 1.5 and orders_last_year above 2.5 and newsletter is not yes",
+       "n": 96,
+       "response_rate": 0.15625
+      },
+      {
+       "node": 17,
+       "rule": "orders_last_year above 4.5 and newsletter is not yes and months_since_last_order at most 2.5 and average_basket at most 29.59",
+       "n": 101,
+       "response_rate": 0.138613861
+      },
+      {
+       "node": 12,
+       "rule": "orders_last_year at most 4.5 and months_since_last_order above 1.5 and newsletter is yes and months_since_last_order at most 6.5",
+       "n": 562,
+       "response_rate": 0.131672598
+      },
+      {
+       "node": 20,
+       "rule": "orders_last_year above 4.5 and newsletter is not yes and months_since_last_order above 2.5 and months_since_last_order at most 7.5",
+       "n": 361,
+       "response_rate": 0.113573407
+      },
+      {
+       "node": 3,
+       "rule": "orders_last_year at most 4.5 and months_since_last_order at most 1.5 and orders_last_year at most 2.5",
+       "n": 94,
+       "response_rate": 0.106382979
+      },
+      {
+       "node": 10,
+       "rule": "orders_last_year at most 4.5 and months_since_last_order above 1.5 and newsletter is not yes and average_basket above 32.9",
+       "n": 466,
+       "response_rate": 0.0686695279
+      },
+      {
+       "node": 28,
+       "rule": "orders_last_year above 4.5 and newsletter is yes and months_since_last_order above 6.5 and months_since_last_order above 8.5",
+       "n": 65,
+       "response_rate": 0.0615384615
+      },
+      {
+       "node": 13,
+       "rule": "orders_last_year at most 4.5 and months_since_last_order above 1.5 and newsletter is yes and months_since_last_order above 6.5",
+       "n": 239,
+       "response_rate": 0.0460251046
+      },
+      {
+       "node": 21,
+       "rule": "orders_last_year above 4.5 and newsletter is not yes and months_since_last_order above 2.5 and months_since_last_order above 7.5",
+       "n": 156,
+       "response_rate": 0.0256410256
+      },
+      {
+       "node": 9,
+       "rule": "orders_last_year at most 4.5 and months_since_last_order above 1.5 and newsletter is not yes and average_basket at most 32.9",
+       "n": 717,
+       "response_rate": 0.0209205021
+      }
+     ]
+    }
+   },
+   "comparison": {
+    "ranked_by": "area under the curve on the test sample",
+    "models": [
+     {
+      "kind": "logistic",
+      "label": "Logistic regression",
+      "judged_on": "test",
+      "area_under_curve": 0.754196887,
+      "area_under_curve_training": 0.763473555,
+      "hit_rate": 0.86,
+      "hit_rate_by_guessing": 0.857333333,
+      "top_group_lift": 3.22429907,
+      "share_of_responders_in_top_two_groups": 0.514018692,
+      "most_important_predictor": "months_since_last_order",
+      "rank": 1
+     },
+     {
+      "kind": "tree",
+      "label": "Decision tree",
+      "judged_on": "test",
+      "area_under_curve": 0.714039403,
+      "area_under_curve_training": 0.752926041,
+      "hit_rate": 0.857333333,
+      "hit_rate_by_guessing": 0.857333333,
+      "top_group_lift": 2.63856438,
+      "share_of_responders_in_top_two_groups": 0.455140187,
+      "most_important_predictor": "months_since_last_order",
+      "rank": 2
+     }
+    ],
+    "best_model": "logistic",
+    "warnings": [
+     "Decision tree: No customer reaches a probability of 0.5, so the model predicts 'no response' for everyone. This is normal when few customers respond. Lower the threshold, or judge the model by its lift."
+    ]
+   }
   }
  },
  "settings_help": {
@@ -8610,6 +10738,100 @@
     "default": null,
     "what_it_does": "Ranks the products by their predicted share in this one segment. Empty means all respondents.",
     "when_to_choose": "You have chosen a target segment and want the product that wins there.",
+    "optional": true
+   }
+  ],
+  "targeting": [
+   {
+    "key": "model",
+    "label": "Model",
+    "kind": "choice",
+    "default": "logistic",
+    "what_it_does": "The method that learns from the past campaign who responds.",
+    "when_to_choose": "Start with the logistic regression. Try the tree to get rules you can read aloud, and compare the two on the test sample.",
+    "options": [
+     {
+      "value": "logistic",
+      "label": "Logistic regression",
+      "what_it_does": "Gives every predictor one weight. The weights add up to a score, and the score becomes a probability of response between 0 and 1.",
+      "when_to_choose": "Default. Each predictor pushes the chance of response steadily up or down. Usually the better ranking of customers."
+     },
+     {
+      "value": "tree",
+      "label": "Decision tree",
+      "what_it_does": "Splits the customers again and again by one yes-or-no question about a predictor, such as 'more than 3 orders last year?'. Each final group gets its own response rate.",
+      "when_to_choose": "You want simple rules, or you expect that predictors only matter in combination."
+     }
+    ]
+   },
+   {
+    "key": "test_share",
+    "label": "Share of customers kept aside for testing",
+    "kind": "number",
+    "default": 0.3,
+    "what_it_does": "This share of the customers, picked at random, is hidden from the model. The model is then judged on them. The rest is the training sample.",
+    "when_to_choose": "Keep 0.3. With few customers use less, but never judge a model only on the data it learned from.",
+    "minimum": 0.0,
+    "maximum": 0.9
+   },
+   {
+    "key": "seed",
+    "label": "Seed",
+    "kind": "integer",
+    "default": 2026,
+    "what_it_does": "The starting number for the random split into training and test sample. The same seed gives the same split.",
+    "when_to_choose": "Keep the default. Change it to see how much the results depend on the split.",
+    "minimum": 0,
+    "maximum": 4294967295
+   },
+   {
+    "key": "threshold",
+    "label": "Probability from which a customer counts as a responder",
+    "kind": "number",
+    "default": 0.5,
+    "what_it_does": "Used for the table of right and wrong predictions (confusion matrix) and the hit rate. A customer with a probability at or above this value is predicted to respond.",
+    "when_to_choose": "0.5 is the usual value. If few customers respond, almost nobody reaches 0.5: lower the value, or judge the model by its lift instead of its hit rate.",
+    "minimum": 0.0,
+    "maximum": 1.0
+   },
+   {
+    "key": "n_groups",
+    "label": "Number of groups in the gains and lift table",
+    "kind": "integer",
+    "default": 10,
+    "what_it_does": "Customers are sorted from the highest to the lowest probability and cut into this many groups of equal size.",
+    "when_to_choose": "Keep 10 (deciles). Use 20 for a finer view of a large list, 5 for a small one.",
+    "minimum": 2,
+    "maximum": 100
+   },
+   {
+    "key": "max_depth",
+    "label": "Depth of the tree",
+    "kind": "integer",
+    "default": 4,
+    "what_it_does": "How many questions in a row the tree may ask before it stops.",
+    "when_to_choose": "Keep 4 for a tree that fits on a page. A deeper tree follows the training sample more closely and often does worse on the test sample.",
+    "minimum": 1,
+    "maximum": 12
+   },
+   {
+    "key": "min_leaf",
+    "label": "Smallest group of the tree",
+    "kind": "integer",
+    "default": 50,
+    "what_it_does": "No final group of the tree may hold fewer training customers than this.",
+    "when_to_choose": "Keep 50, so that every response rate rests on enough customers. Lower it only for small data sets.",
+    "minimum": 1,
+    "maximum": 1000000
+   },
+   {
+    "key": "n_customers",
+    "label": "Size of the list you plan to contact from",
+    "kind": "number",
+    "default": null,
+    "what_it_does": "The profit is measured on the test sample. With this number it is scaled up to the size of your real list.",
+    "when_to_choose": "Leave empty to see the profit for the test sample itself.",
+    "minimum": 1.0,
     "optional": true
    }
   ]

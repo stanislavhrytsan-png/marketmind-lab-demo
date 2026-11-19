@@ -10,16 +10,19 @@
 import { readmeNumbers } from '../data/alpineOat'
 import { forecastingReadme } from '../data/forecasting'
 import { pricingReadme } from '../data/pricing'
+import { targetingReadme } from '../data/targeting'
 import { engineDisagreements as conjoint } from './conjoint'
 import { engineDisagreements as forecasting } from './forecasting'
 import { engineDisagreements as pricing } from './pricing'
+import { engineDisagreements as targeting } from './targeting'
 
 /** The calculations of the browser that are compared with the engine. */
 export const browserChecks: { name: string; run: () => string[] }[] = [
   { name: 'Conjoint: market simulator and best-product search', run: conjoint },
   { name: 'Forecasting: Bass curve', run: forecasting },
   { name: 'Price optimization: demand curves, profit and the best price', run: pricing },
+  { name: 'Predictive modeling: campaign profit by depth', run: targeting },
 ]
 
 /** Phrases the README must contain, because the presenter reads them out. */
-export const readmePhrases: string[] = [...readmeNumbers, ...forecastingReadme, ...pricingReadme]
+export const readmePhrases: string[] = [...readmeNumbers, ...forecastingReadme, ...pricingReadme, ...targetingReadme]
