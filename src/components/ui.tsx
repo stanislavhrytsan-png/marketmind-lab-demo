@@ -98,13 +98,14 @@ export function Hr({ className }: { className?: string }) {
 
 // ---------------------------------------------------------------- tags
 
-type TagTone = 'neutral' | 'warn' | 'primary' | 'ok' | 'outline'
+type TagTone = 'neutral' | 'warn' | 'primary' | 'ok' | 'bad' | 'outline'
 
 const tagTones: Record<TagTone, string> = {
   neutral: 'bg-fill text-ink2',
   warn: 'bg-warn-t text-warn',
   primary: 'bg-primary-t text-primary-d',
   ok: 'bg-ok-t text-ok',
+  bad: 'bg-[#FBE7E5] text-danger',
   outline: 'border border-line bg-white text-ink2',
 }
 

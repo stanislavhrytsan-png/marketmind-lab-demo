@@ -14,6 +14,7 @@ import { lifetimeValueReadme } from '../data/lifetimeValue'
 import { panelReadme } from '../data/panel'
 import { portfolioReadme } from '../data/portfolio'
 import { pricingReadme } from '../data/pricing'
+import { sentimentReadme } from '../data/sentiment'
 import { targetingReadme } from '../data/targeting'
 import { engineDisagreements as allocation } from './allocation'
 import { engineDisagreements as conjoint } from './conjoint'
@@ -46,4 +47,5 @@ export const readmePhrases: string[] = [
   ...allocationReadme,
   ...portfolioReadme,
   ...panelReadme,
+  ...sentimentReadme,
 ]

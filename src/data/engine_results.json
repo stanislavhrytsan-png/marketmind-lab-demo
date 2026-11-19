@@ -17588,6 +17588,3720 @@
      }
     }
    ]
+  },
+  "sentiment": {
+   "data": {
+    "file": "reviews.csv",
+    "n_reviews": 1500,
+    "text_column": "text",
+    "group_columns": [
+     "brand",
+     "segment"
+    ],
+    "rating_column": "stars",
+    "rating_scale": {
+     "minimum": 1,
+     "maximum": 5
+    },
+    "language": "English",
+    "brands": [
+     "Alpine Oat",
+     "Valloat",
+     "Lumo",
+     "Supermarket own brand"
+    ],
+    "segments": [
+     "Health-focused",
+     "Taste-driven",
+     "Price-sensitive"
+    ],
+    "reviews_by_stars": {
+     "1": 308,
+     "2": 276,
+     "3": 289,
+     "4": 272,
+     "5": 355
+    }
+   },
+   "word_list": {
+    "n_positive": 77,
+    "n_negative": 78,
+    "n_negations": 22,
+    "negation_reach": 3,
+    "language": "English",
+    "note": "This word list is small and English, and was made for teaching. It illustrates the method and is not a tested dictionary. It does not understand irony, and it knows no words of your industry unless you add them."
+   },
+   "runs": {
+    "SE-01": {
+     "settings": {
+      "negation": "flip",
+      "neutral_band": 0.0,
+      "top_n": 50,
+      "min_length": 3,
+      "stopwords": "remove",
+      "min_reviews": 10,
+      "n_drivers": 30,
+      "positive_from": 4.0,
+      "negative_up_to": 2.0
+     },
+     "own_words": {
+      "positive": [],
+      "negative": []
+     },
+     "scoring": {
+      "n_reviews": 1500,
+      "mean_score": 0.0136666667,
+      "shares": {
+       "positive": 0.357333333,
+       "neutral": 0.296,
+       "negative": 0.346666667
+      },
+      "net_sentiment": 0.0106666667,
+      "n_without_sentiment_words": 353,
+      "n_with_a_negated_word": 170,
+      "most_used_sentiment_words": {
+       "positive": [
+        {
+         "word": "great",
+         "count": 87
+        },
+        {
+         "word": "good",
+         "count": 86
+        },
+        {
+         "word": "perfect",
+         "count": 82
+        },
+        {
+         "word": "nice",
+         "count": 65
+        },
+        {
+         "word": "wonderful",
+         "count": 60
+        },
+        {
+         "word": "amazing",
+         "count": 58
+        },
+        {
+         "word": "fantastic",
+         "count": 53
+        },
+        {
+         "word": "excellent",
+         "count": 48
+        }
+       ],
+       "negative": [
+        {
+         "word": "poor",
+         "count": 112
+        },
+        {
+         "word": "bad",
+         "count": 109
+        },
+        {
+         "word": "disappointing",
+         "count": 83
+        },
+        {
+         "word": "terrible",
+         "count": 79
+        },
+        {
+         "word": "unpleasant",
+         "count": 77
+        },
+        {
+         "word": "horrible",
+         "count": 72
+        },
+        {
+         "word": "awful",
+         "count": 65
+        },
+        {
+         "word": "mediocre",
+         "count": 63
+        }
+       ]
+      },
+      "how_to_read": [
+       "A score of +1 means that all sentiment words of the review are positive, -1 that all are negative.",
+       "A review without any word of the list gets 0 and counts as neutral. That is a gap of the list, not a finding."
+      ],
+      "warnings": []
+     },
+     "by_group": {
+      "brand": {
+       "levels": [
+        {
+         "group": "Alpine Oat",
+         "n_reviews": 404,
+         "mean_score": 0.239273927,
+         "standard_error": 0.038794709,
+         "lower_95": 0.163008653,
+         "upper_95": 0.315539202,
+         "share_positive": 0.475247525,
+         "share_neutral": 0.29950495,
+         "share_negative": 0.225247525,
+         "net_sentiment": 0.25,
+         "difference_from_all": 0.225607261
+        },
+        {
+         "group": "Valloat",
+         "n_reviews": 389,
+         "mean_score": 0.102827763,
+         "standard_error": 0.0418796358,
+         "lower_95": 0.0204883423,
+         "upper_95": 0.185167185,
+         "share_positive": 0.419023136,
+         "share_neutral": 0.269922879,
+         "share_negative": 0.311053985,
+         "net_sentiment": 0.107969152,
+         "difference_from_all": 0.0891610968
+        },
+        {
+         "group": "Lumo",
+         "n_reviews": 345,
+         "mean_score": -0.0188405797,
+         "standard_error": 0.0439496226,
+         "lower_95": -0.105284391,
+         "upper_95": 0.0676032313,
+         "share_positive": 0.330434783,
+         "share_neutral": 0.307246377,
+         "share_negative": 0.362318841,
+         "net_sentiment": -0.031884058,
+         "difference_from_all": -0.0325072464
+        },
+        {
+         "group": "Supermarket own brand",
+         "n_reviews": 362,
+         "mean_score": -0.302946593,
+         "standard_error": 0.0394507026,
+         "lower_95": -0.380528652,
+         "upper_95": -0.225364534,
+         "share_positive": 0.185082873,
+         "share_neutral": 0.309392265,
+         "share_negative": 0.505524862,
+         "net_sentiment": -0.320441989,
+         "difference_from_all": -0.31661326
+        }
+       ],
+       "from_most_positive": [
+        "Alpine Oat",
+        "Valloat",
+        "Lumo",
+        "Supermarket own brand"
+       ],
+       "test": {
+        "f": 31.9124481,
+        "df1": 3,
+        "df2": 1496,
+        "p_value": 5.40394045e-20,
+        "groups_differ": true
+       }
+      },
+      "segment": {
+       "levels": [
+        {
+         "group": "Health-focused",
+         "n_reviews": 607,
+         "mean_score": 0.135365184,
+         "standard_error": 0.0323198875,
+         "lower_95": 0.0718925989,
+         "upper_95": 0.198837769,
+         "share_positive": 0.408566722,
+         "share_neutral": 0.314662273,
+         "share_negative": 0.276771005,
+         "net_sentiment": 0.131795717,
+         "difference_from_all": 0.121698517
+        },
+        {
+         "group": "Taste-driven",
+         "n_reviews": 516,
+         "mean_score": 0.0523255814,
+         "standard_error": 0.0363967321,
+         "lower_95": -0.0191787469,
+         "upper_95": 0.12382991,
+         "share_positive": 0.387596899,
+         "share_neutral": 0.281007752,
+         "share_negative": 0.331395349,
+         "net_sentiment": 0.0562015504,
+         "difference_from_all": 0.0386589147
+        },
+        {
+         "group": "Price-sensitive",
+         "n_reviews": 377,
+         "mean_score": -0.235190097,
+         "standard_error": 0.0405699999,
+         "lower_95": -0.314962613,
+         "upper_95": -0.155417581,
+         "share_positive": 0.233421751,
+         "share_neutral": 0.286472149,
+         "share_negative": 0.480106101,
+         "net_sentiment": -0.24668435,
+         "difference_from_all": -0.248856764
+        }
+       ],
+       "from_most_positive": [
+        "Health-focused",
+        "Taste-driven",
+        "Price-sensitive"
+       ],
+       "test": {
+        "f": 25.5592514,
+        "df1": 2,
+        "df2": 1497,
+        "p_value": 1.21639017e-11,
+        "groups_differ": true
+       }
+      }
+     },
+     "cross": [
+      {
+       "brand": "Alpine Oat",
+       "segment": "Health-focused",
+       "n_reviews": 152,
+       "mean_score": 0.271929825,
+       "share_positive": 0.493421053,
+       "share_negative": 0.217105263
+      },
+      {
+       "brand": "Alpine Oat",
+       "segment": "Taste-driven",
+       "n_reviews": 151,
+       "mean_score": 0.326710817,
+       "share_positive": 0.536423841,
+       "share_negative": 0.185430464
+      },
+      {
+       "brand": "Alpine Oat",
+       "segment": "Price-sensitive",
+       "n_reviews": 101,
+       "mean_score": 0.0594059406,
+       "share_positive": 0.356435644,
+       "share_negative": 0.297029703
+      },
+      {
+       "brand": "Valloat",
+       "segment": "Health-focused",
+       "n_reviews": 162,
+       "mean_score": 0.324074074,
+       "share_positive": 0.537037037,
+       "share_negative": 0.203703704
+      },
+      {
+       "brand": "Valloat",
+       "segment": "Taste-driven",
+       "n_reviews": 127,
+       "mean_score": 0.166666667,
+       "share_positive": 0.433070866,
+       "share_negative": 0.267716535
+      },
+      {
+       "brand": "Valloat",
+       "segment": "Price-sensitive",
+       "n_reviews": 100,
+       "mean_score": -0.336666667,
+       "share_positive": 0.21,
+       "share_negative": 0.54
+      },
+      {
+       "brand": "Lumo",
+       "segment": "Health-focused",
+       "n_reviews": 150,
+       "mean_score": 0.102222222,
+       "share_positive": 0.346666667,
+       "share_negative": 0.266666667
+      },
+      {
+       "brand": "Lumo",
+       "segment": "Taste-driven",
+       "n_reviews": 108,
+       "mean_score": -0.0231481481,
+       "share_positive": 0.37037037,
+       "share_negative": 0.398148148
+      },
+      {
+       "brand": "Lumo",
+       "segment": "Price-sensitive",
+       "n_reviews": 87,
+       "mean_score": -0.222222222,
+       "share_positive": 0.252873563,
+       "share_negative": 0.482758621
+      },
+      {
+       "brand": "Supermarket own brand",
+       "segment": "Health-focused",
+       "n_reviews": 143,
+       "mean_score": -0.188811189,
+       "share_positive": 0.237762238,
+       "share_negative": 0.433566434
+      },
+      {
+       "brand": "Supermarket own brand",
+       "segment": "Taste-driven",
+       "n_reviews": 130,
+       "mean_score": -0.315384615,
+       "share_positive": 0.184615385,
+       "share_negative": 0.507692308
+      },
+      {
+       "brand": "Supermarket own brand",
+       "segment": "Price-sensitive",
+       "n_reviews": 89,
+       "mean_score": -0.468164794,
+       "share_positive": 0.101123596,
+       "share_negative": 0.617977528
+      }
+     ],
+     "by_group_how_to_read": [
+      "Compare the mean scores with their 95% ranges. Two groups whose ranges overlap widely may not differ at all.",
+      "The test says whether the groups of a column differ by more than chance allows (p value below 0.05)."
+     ],
+     "stars_by_label": [
+      {
+       "stars": 1,
+       "negative": 277,
+       "neutral": 24,
+       "positive": 7
+      },
+      {
+       "stars": 2,
+       "negative": 176,
+       "neutral": 96,
+       "positive": 4
+      },
+      {
+       "stars": 3,
+       "negative": 50,
+       "neutral": 201,
+       "positive": 38
+      },
+      {
+       "stars": 4,
+       "negative": 6,
+       "neutral": 98,
+       "positive": 168
+      },
+      {
+       "stars": 5,
+       "negative": 11,
+       "neutral": 25,
+       "positive": 319
+      }
+     ],
+     "neutral_with_clear_stars": 243,
+     "drivers": {
+      "by": "stars",
+      "positive_and_negative_by": "the column 'stars'",
+      "n_positive_reviews": 627,
+      "n_negative_reviews": 584,
+      "n_reviews_left_out": 289,
+      "share_positive": 0.517753922,
+      "n_words_examined": 95,
+      "n_clear": 43,
+      "n_clear_by_chance_expected": 4.75,
+      "positive_drivers": [
+       {
+        "word": "taste",
+        "n_reviews": 543,
+        "n_positive_reviews": 359,
+        "n_negative_reviews": 184,
+        "share_of_positive_reviews": 0.572567783,
+        "share_of_negative_reviews": 0.315068493,
+        "share_positive_when_used": 0.661141805,
+        "z": 9.00326753,
+        "p_value": 2.19097616e-19,
+        "clear": true,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "foam",
+        "n_reviews": 330,
+        "n_positive_reviews": 238,
+        "n_negative_reviews": 92,
+        "share_of_positive_reviews": 0.379585327,
+        "share_of_negative_reviews": 0.157534247,
+        "share_positive_when_used": 0.721212121,
+        "z": 8.67201922,
+        "p_value": 4.24523964e-18,
+        "clear": true,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "perfect",
+        "n_reviews": 77,
+        "n_positive_reviews": 64,
+        "n_negative_reviews": 13,
+        "share_of_positive_reviews": 0.102073365,
+        "share_of_negative_reviews": 0.022260274,
+        "share_positive_when_used": 0.831168831,
+        "z": 5.68767153,
+        "p_value": 1.28783223e-08,
+        "clear": true,
+        "in_word_list": true,
+        "own_word": false
+       },
+       {
+        "word": "good",
+        "n_reviews": 85,
+        "n_positive_reviews": 69,
+        "n_negative_reviews": 16,
+        "share_of_positive_reviews": 0.110047847,
+        "share_of_negative_reviews": 0.0273972603,
+        "share_positive_when_used": 0.811764706,
+        "z": 5.62573859,
+        "p_value": 1.84715902e-08,
+        "clear": true,
+        "in_word_list": true,
+        "own_word": false
+       },
+       {
+        "word": "lovely",
+        "n_reviews": 39,
+        "n_positive_reviews": 37,
+        "n_negative_reviews": 2,
+        "share_of_positive_reviews": 0.0590111643,
+        "share_of_negative_reviews": 0.00342465753,
+        "share_positive_when_used": 0.948717949,
+        "z": 5.47501784,
+        "p_value": 4.37467543e-08,
+        "clear": true,
+        "in_word_list": true,
+        "own_word": false
+       },
+       {
+        "word": "great",
+        "n_reviews": 86,
+        "n_positive_reviews": 68,
+        "n_negative_reviews": 18,
+        "share_of_positive_reviews": 0.108452951,
+        "share_of_negative_reviews": 0.0308219178,
+        "share_positive_when_used": 0.790697674,
+        "z": 5.25559805,
+        "p_value": 1.47544223e-07,
+        "clear": true,
+        "in_word_list": true,
+        "own_word": false
+       },
+       {
+        "word": "fantastic",
+        "n_reviews": 50,
+        "n_positive_reviews": 44,
+        "n_negative_reviews": 6,
+        "share_of_positive_reviews": 0.0701754386,
+        "share_of_negative_reviews": 0.0102739726,
+        "share_positive_when_used": 0.88,
+        "z": 5.23538476,
+        "p_value": 1.64641522e-07,
+        "clear": true,
+        "in_word_list": true,
+        "own_word": false
+       },
+       {
+        "word": "excellent",
+        "n_reviews": 45,
+        "n_positive_reviews": 40,
+        "n_negative_reviews": 5,
+        "share_of_positive_reviews": 0.0637958533,
+        "share_of_negative_reviews": 0.00856164384,
+        "share_positive_when_used": 0.888888889,
+        "z": 5.07767472,
+        "p_value": 3.82082105e-07,
+        "clear": true,
+        "in_word_list": true,
+        "own_word": false
+       },
+       {
+        "word": "wonderful",
+        "n_reviews": 54,
+        "n_positive_reviews": 45,
+        "n_negative_reviews": 9,
+        "share_of_positive_reviews": 0.0717703349,
+        "share_of_negative_reviews": 0.0154109589,
+        "share_positive_when_used": 0.833333333,
+        "z": 4.74804561,
+        "p_value": 2.05391722e-06,
+        "clear": true,
+        "in_word_list": true,
+        "own_word": false
+       },
+       {
+        "word": "amazing",
+        "n_reviews": 59,
+        "n_positive_reviews": 48,
+        "n_negative_reviews": 11,
+        "share_of_positive_reviews": 0.0765550239,
+        "share_of_negative_reviews": 0.0188356164,
+        "share_positive_when_used": 0.813559322,
+        "z": 4.66210322,
+        "p_value": 3.12994134e-06,
+        "clear": true,
+        "in_word_list": true,
+        "own_word": false
+       },
+       {
+        "word": "smooth",
+        "n_reviews": 22,
+        "n_positive_reviews": 22,
+        "n_negative_reviews": 0,
+        "share_of_positive_reviews": 0.0350877193,
+        "share_of_negative_reviews": 0.0,
+        "share_positive_when_used": 1.0,
+        "z": 4.56841068,
+        "p_value": 4.9143642e-06,
+        "clear": true,
+        "in_word_list": true,
+        "own_word": false
+       },
+       {
+        "word": "moreish",
+        "n_reviews": 32,
+        "n_positive_reviews": 28,
+        "n_negative_reviews": 4,
+        "share_of_positive_reviews": 0.0446570973,
+        "share_of_negative_reviews": 0.00684931507,
+        "share_positive_when_used": 0.875,
+        "z": 4.09884576,
+        "p_value": 4.15215601e-05,
+        "clear": true,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "nice",
+        "n_reviews": 64,
+        "n_positive_reviews": 49,
+        "n_negative_reviews": 15,
+        "share_of_positive_reviews": 0.0781499203,
+        "share_of_negative_reviews": 0.0256849315,
+        "share_positive_when_used": 0.765625,
+        "z": 4.07765195,
+        "p_value": 4.54927985e-05,
+        "clear": true,
+        "in_word_list": true,
+        "own_word": false
+       },
+       {
+        "word": "pleasant",
+        "n_reviews": 36,
+        "n_positive_reviews": 30,
+        "n_negative_reviews": 6,
+        "share_of_positive_reviews": 0.04784689,
+        "share_of_negative_reviews": 0.0102739726,
+        "share_positive_when_used": 0.833333333,
+        "z": 3.84695405,
+        "p_value": 0.000119595388,
+        "clear": true,
+        "in_word_list": true,
+        "own_word": false
+       },
+       {
+        "word": "fresh",
+        "n_reviews": 19,
+        "n_positive_reviews": 18,
+        "n_negative_reviews": 1,
+        "share_of_positive_reviews": 0.028708134,
+        "share_of_negative_reviews": 0.00171232877,
+        "share_positive_when_used": 0.947368421,
+        "z": 3.77740563,
+        "p_value": 0.000158470522,
+        "clear": true,
+        "in_word_list": true,
+        "own_word": false
+       },
+       {
+        "word": "creamy",
+        "n_reviews": 28,
+        "n_positive_reviews": 24,
+        "n_negative_reviews": 4,
+        "share_of_positive_reviews": 0.038277512,
+        "share_of_negative_reviews": 0.00684931507,
+        "share_positive_when_used": 0.857142857,
+        "z": 3.63630533,
+        "p_value": 0.000276576478,
+        "clear": true,
+        "in_word_list": true,
+        "own_word": false
+       },
+       {
+        "word": "delicious",
+        "n_reviews": 20,
+        "n_positive_reviews": 18,
+        "n_negative_reviews": 2,
+        "share_of_positive_reviews": 0.028708134,
+        "share_of_negative_reviews": 0.00342465753,
+        "share_positive_when_used": 0.9,
+        "z": 3.44967495,
+        "p_value": 0.000561261912,
+        "clear": true,
+        "in_word_list": true,
+        "own_word": false
+       },
+       {
+        "word": "lush",
+        "n_reviews": 22,
+        "n_positive_reviews": 19,
+        "n_negative_reviews": 3,
+        "share_of_positive_reviews": 0.0303030303,
+        "share_of_negative_reviews": 0.0051369863,
+        "share_positive_when_used": 0.863636364,
+        "z": 3.27661149,
+        "p_value": 0.00105060826,
+        "clear": true,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "stable",
+        "n_reviews": 11,
+        "n_positive_reviews": 11,
+        "n_negative_reviews": 0,
+        "share_of_positive_reviews": 0.0175438596,
+        "share_of_negative_reviews": 0.0,
+        "share_positive_when_used": 1.0,
+        "z": 3.21551429,
+        "p_value": 0.00130211011,
+        "clear": true,
+        "in_word_list": true,
+        "own_word": false
+       },
+       {
+        "word": "tasty",
+        "n_reviews": 18,
+        "n_positive_reviews": 16,
+        "n_negative_reviews": 2,
+        "share_of_positive_reviews": 0.0255183413,
+        "share_of_negative_reviews": 0.00342465753,
+        "share_positive_when_used": 0.888888889,
+        "z": 3.17485522,
+        "p_value": 0.0014991128,
+        "clear": true,
+        "in_word_list": true,
+        "own_word": false
+       },
+       {
+        "word": "yummy",
+        "n_reviews": 17,
+        "n_positive_reviews": 15,
+        "n_negative_reviews": 2,
+        "share_of_positive_reviews": 0.023923445,
+        "share_of_negative_reviews": 0.00342465753,
+        "share_positive_when_used": 0.882352941,
+        "z": 3.02979897,
+        "p_value": 0.00244716566,
+        "clear": true,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "cappuccino",
+        "n_reviews": 12,
+        "n_positive_reviews": 11,
+        "n_negative_reviews": 1,
+        "share_of_positive_reviews": 0.0175438596,
+        "share_of_negative_reviews": 0.00171232877,
+        "share_positive_when_used": 0.916666667,
+        "z": 2.77929703,
+        "p_value": 0.00544766862,
+        "clear": true,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "rich",
+        "n_reviews": 18,
+        "n_positive_reviews": 15,
+        "n_negative_reviews": 3,
+        "share_of_positive_reviews": 0.023923445,
+        "share_of_negative_reviews": 0.0051369863,
+        "share_positive_when_used": 0.833333333,
+        "z": 2.69960804,
+        "p_value": 0.00694212114,
+        "clear": true,
+        "in_word_list": true,
+        "own_word": false
+       },
+       {
+        "word": "stellar",
+        "n_reviews": 18,
+        "n_positive_reviews": 14,
+        "n_negative_reviews": 4,
+        "share_of_positive_reviews": 0.0223285486,
+        "share_of_negative_reviews": 0.00684931507,
+        "share_positive_when_used": 0.777777778,
+        "z": 2.22436086,
+        "p_value": 0.0261241749,
+        "clear": true,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "practical",
+        "n_reviews": 11,
+        "n_positive_reviews": 8,
+        "n_negative_reviews": 3,
+        "share_of_positive_reviews": 0.0127591707,
+        "share_of_negative_reviews": 0.0051369863,
+        "share_positive_when_used": 0.727272727,
+        "z": 1.39702684,
+        "p_value": 0.162405502,
+        "clear": false,
+        "in_word_list": true,
+        "own_word": false
+       },
+       {
+        "word": "cartons",
+        "n_reviews": 116,
+        "n_positive_reviews": 67,
+        "n_negative_reviews": 49,
+        "share_of_positive_reviews": 0.106858054,
+        "share_of_negative_reviews": 0.0839041096,
+        "share_positive_when_used": 0.577586207,
+        "z": 1.35623061,
+        "p_value": 0.175025807,
+        "clear": false,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "ordered",
+        "n_reviews": 116,
+        "n_positive_reviews": 67,
+        "n_negative_reviews": 49,
+        "share_of_positive_reviews": 0.106858054,
+        "share_of_negative_reviews": 0.0839041096,
+        "share_positive_when_used": 0.577586207,
+        "z": 1.35623061,
+        "p_value": 0.175025807,
+        "clear": false,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "week",
+        "n_reviews": 116,
+        "n_positive_reviews": 67,
+        "n_negative_reviews": 49,
+        "share_of_positive_reviews": 0.106858054,
+        "share_of_negative_reviews": 0.0839041096,
+        "share_positive_when_used": 0.577586207,
+        "z": 1.35623061,
+        "p_value": 0.175025807,
+        "clear": false,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "bought",
+        "n_reviews": 139,
+        "n_positive_reviews": 79,
+        "n_negative_reviews": 60,
+        "share_of_positive_reviews": 0.12599681,
+        "share_of_negative_reviews": 0.102739726,
+        "share_positive_when_used": 0.568345324,
+        "z": 1.26871109,
+        "p_value": 0.204544124,
+        "clear": false,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "supermarket",
+        "n_reviews": 139,
+        "n_positive_reviews": 79,
+        "n_negative_reviews": 60,
+        "share_of_positive_reviews": 0.12599681,
+        "share_of_negative_reviews": 0.102739726,
+        "share_positive_when_used": 0.568345324,
+        "z": 1.26871109,
+        "p_value": 0.204544124,
+        "clear": false,
+        "in_word_list": false,
+        "own_word": false
+       }
+      ],
+      "negative_drivers": [
+       {
+        "word": "price",
+        "n_reviews": 393,
+        "n_positive_reviews": 102,
+        "n_negative_reviews": 291,
+        "share_of_positive_reviews": 0.162679426,
+        "share_of_negative_reviews": 0.498287671,
+        "share_positive_when_used": 0.259541985,
+        "z": -12.4644167,
+        "p_value": 1.16722663e-35,
+        "clear": true,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "bad",
+        "n_reviews": 97,
+        "n_positive_reviews": 13,
+        "n_negative_reviews": 84,
+        "share_of_positive_reviews": 0.0207336523,
+        "share_of_negative_reviews": 0.143835616,
+        "share_positive_when_used": 0.134020619,
+        "z": -7.88585496,
+        "p_value": 3.12389267e-15,
+        "clear": true,
+        "in_word_list": true,
+        "own_word": false
+       },
+       {
+        "word": "poor",
+        "n_reviews": 109,
+        "n_positive_reviews": 20,
+        "n_negative_reviews": 89,
+        "share_of_positive_reviews": 0.0318979266,
+        "share_of_negative_reviews": 0.15239726,
+        "share_positive_when_used": 0.183486239,
+        "z": -7.32137858,
+        "p_value": 2.45436331e-13,
+        "clear": true,
+        "in_word_list": true,
+        "own_word": false
+       },
+       {
+        "word": "terrible",
+        "n_reviews": 76,
+        "n_positive_reviews": 11,
+        "n_negative_reviews": 65,
+        "share_of_positive_reviews": 0.0175438596,
+        "share_of_negative_reviews": 0.11130137,
+        "share_positive_when_used": 0.144736842,
+        "z": -6.72223367,
+        "p_value": 1.78959655e-11,
+        "clear": true,
+        "in_word_list": true,
+        "own_word": false
+       },
+       {
+        "word": "disappointing",
+        "n_reviews": 79,
+        "n_positive_reviews": 13,
+        "n_negative_reviews": 66,
+        "share_of_positive_reviews": 0.0207336523,
+        "share_of_negative_reviews": 0.113013699,
+        "share_positive_when_used": 0.164556962,
+        "z": -6.49805391,
+        "p_value": 8.13656482e-11,
+        "clear": true,
+        "in_word_list": true,
+        "own_word": false
+       },
+       {
+        "word": "packaging",
+        "n_reviews": 283,
+        "n_positive_reviews": 100,
+        "n_negative_reviews": 183,
+        "share_of_positive_reviews": 0.159489633,
+        "share_of_negative_reviews": 0.313356164,
+        "share_positive_when_used": 0.35335689,
+        "z": -6.3225056,
+        "p_value": 2.57355692e-10,
+        "clear": true,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "unpleasant",
+        "n_reviews": 67,
+        "n_positive_reviews": 11,
+        "n_negative_reviews": 56,
+        "share_of_positive_reviews": 0.0175438596,
+        "share_of_negative_reviews": 0.095890411,
+        "share_positive_when_used": 0.164179104,
+        "z": -5.95911458,
+        "p_value": 2.53608236e-09,
+        "clear": true,
+        "in_word_list": true,
+        "own_word": false
+       },
+       {
+        "word": "horrible",
+        "n_reviews": 68,
+        "n_positive_reviews": 12,
+        "n_negative_reviews": 56,
+        "share_of_positive_reviews": 0.019138756,
+        "share_of_negative_reviews": 0.095890411,
+        "share_positive_when_used": 0.176470588,
+        "z": -5.79725552,
+        "p_value": 6.74089449e-09,
+        "clear": true,
+        "in_word_list": true,
+        "own_word": false
+       },
+       {
+        "word": "awful",
+        "n_reviews": 57,
+        "n_positive_reviews": 9,
+        "n_negative_reviews": 48,
+        "share_of_positive_reviews": 0.014354067,
+        "share_of_negative_reviews": 0.0821917808,
+        "share_positive_when_used": 0.157894737,
+        "z": -5.56984535,
+        "p_value": 2.54965543e-08,
+        "clear": true,
+        "in_word_list": true,
+        "own_word": false
+       },
+       {
+        "word": "meh",
+        "n_reviews": 16,
+        "n_positive_reviews": 1,
+        "n_negative_reviews": 15,
+        "share_of_positive_reviews": 0.00159489633,
+        "share_of_negative_reviews": 0.0256849315,
+        "share_positive_when_used": 0.0625,
+        "z": -3.66864556,
+        "p_value": 0.000243838847,
+        "clear": true,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "mediocre",
+        "n_reviews": 63,
+        "n_positive_reviews": 19,
+        "n_negative_reviews": 44,
+        "share_of_positive_reviews": 0.0303030303,
+        "share_of_negative_reviews": 0.0753424658,
+        "share_positive_when_used": 0.301587302,
+        "z": -3.52666319,
+        "p_value": 0.000420831733,
+        "clear": true,
+        "in_word_list": true,
+        "own_word": false
+       },
+       {
+        "word": "naff",
+        "n_reviews": 18,
+        "n_positive_reviews": 2,
+        "n_negative_reviews": 16,
+        "share_of_positive_reviews": 0.00318979266,
+        "share_of_negative_reviews": 0.0273972603,
+        "share_positive_when_used": 0.111111111,
+        "z": -3.47860527,
+        "p_value": 0.000504030425,
+        "clear": true,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "yucky",
+        "n_reviews": 24,
+        "n_positive_reviews": 4,
+        "n_negative_reviews": 20,
+        "share_of_positive_reviews": 0.00637958533,
+        "share_of_negative_reviews": 0.0342465753,
+        "share_positive_when_used": 0.166666667,
+        "z": -3.47673306,
+        "p_value": 0.000507562884,
+        "clear": true,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "expensive",
+        "n_reviews": 16,
+        "n_positive_reviews": 2,
+        "n_negative_reviews": 14,
+        "share_of_positive_reviews": 0.00318979266,
+        "share_of_negative_reviews": 0.0239726027,
+        "share_positive_when_used": 0.125,
+        "z": -3.16499181,
+        "p_value": 0.00155087317,
+        "clear": true,
+        "in_word_list": true,
+        "own_word": false
+       },
+       {
+        "word": "watery",
+        "n_reviews": 12,
+        "n_positive_reviews": 1,
+        "n_negative_reviews": 11,
+        "share_of_positive_reviews": 0.00159489633,
+        "share_of_negative_reviews": 0.0188356164,
+        "share_positive_when_used": 0.0833333333,
+        "z": -3.02668659,
+        "p_value": 0.00247250171,
+        "clear": true,
+        "in_word_list": true,
+        "own_word": false
+       },
+       {
+        "word": "overpriced",
+        "n_reviews": 20,
+        "n_positive_reviews": 4,
+        "n_negative_reviews": 16,
+        "share_of_positive_reviews": 0.00637958533,
+        "share_of_negative_reviews": 0.0273972603,
+        "share_positive_when_used": 0.2,
+        "z": -2.86764943,
+        "p_value": 0.00413533467,
+        "clear": true,
+        "in_word_list": true,
+        "own_word": false
+       },
+       {
+        "word": "oat",
+        "n_reviews": 45,
+        "n_positive_reviews": 14,
+        "n_negative_reviews": 31,
+        "share_of_positive_reviews": 0.0223285486,
+        "share_of_negative_reviews": 0.0530821918,
+        "share_positive_when_used": 0.311111111,
+        "z": -2.82717898,
+        "p_value": 0.00469600723,
+        "clear": true,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "drink",
+        "n_reviews": 264,
+        "n_positive_reviews": 120,
+        "n_negative_reviews": 144,
+        "share_of_positive_reviews": 0.19138756,
+        "share_of_negative_reviews": 0.246575342,
+        "share_positive_when_used": 0.454545455,
+        "z": -2.32422548,
+        "p_value": 0.0201134124,
+        "clear": true,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "bitter",
+        "n_reviews": 10,
+        "n_positive_reviews": 2,
+        "n_negative_reviews": 8,
+        "share_of_positive_reviews": 0.00318979266,
+        "share_of_negative_reviews": 0.0136986301,
+        "share_positive_when_used": 0.2,
+        "z": -2.01927486,
+        "p_value": 0.0434586599,
+        "clear": true,
+        "in_word_list": true,
+        "own_word": false
+       },
+       {
+        "word": "leaky",
+        "n_reviews": 15,
+        "n_positive_reviews": 4,
+        "n_negative_reviews": 11,
+        "share_of_positive_reviews": 0.00637958533,
+        "share_of_negative_reviews": 0.0188356164,
+        "share_positive_when_used": 0.266666667,
+        "z": -1.95830679,
+        "p_value": 0.0501940241,
+        "clear": false,
+        "in_word_list": true,
+        "own_word": false
+       },
+       {
+        "word": "flimsy",
+        "n_reviews": 14,
+        "n_positive_reviews": 4,
+        "n_negative_reviews": 10,
+        "share_of_positive_reviews": 0.00637958533,
+        "share_of_negative_reviews": 0.0171232877,
+        "share_positive_when_used": 0.285714286,
+        "z": -1.74765273,
+        "p_value": 0.0805241784,
+        "clear": false,
+        "in_word_list": true,
+        "own_word": false
+       },
+       {
+        "word": "day",
+        "n_reviews": 117,
+        "n_positive_reviews": 52,
+        "n_negative_reviews": 65,
+        "share_of_positive_reviews": 0.0829346093,
+        "share_of_negative_reviews": 0.11130137,
+        "share_positive_when_used": 0.444444444,
+        "z": -1.66963068,
+        "p_value": 0.0949924558,
+        "clear": false,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "glass",
+        "n_reviews": 117,
+        "n_positive_reviews": 52,
+        "n_negative_reviews": 65,
+        "share_of_positive_reviews": 0.0829346093,
+        "share_of_negative_reviews": 0.11130137,
+        "share_positive_when_used": 0.444444444,
+        "z": -1.66963068,
+        "p_value": 0.0949924558,
+        "clear": false,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "cap",
+        "n_reviews": 11,
+        "n_positive_reviews": 3,
+        "n_negative_reviews": 8,
+        "share_of_positive_reviews": 0.004784689,
+        "share_of_negative_reviews": 0.0136986301,
+        "share_positive_when_used": 0.272727273,
+        "z": -1.63378559,
+        "p_value": 0.102303878,
+        "clear": false,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "screw",
+        "n_reviews": 11,
+        "n_positive_reviews": 3,
+        "n_negative_reviews": 8,
+        "share_of_positive_reviews": 0.004784689,
+        "share_of_negative_reviews": 0.0136986301,
+        "share_positive_when_used": 0.272727273,
+        "z": -1.63378559,
+        "p_value": 0.102303878,
+        "clear": false,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "think",
+        "n_reviews": 76,
+        "n_positive_reviews": 33,
+        "n_negative_reviews": 43,
+        "share_of_positive_reviews": 0.0526315789,
+        "share_of_negative_reviews": 0.073630137,
+        "share_positive_when_used": 0.434210526,
+        "z": -1.50555634,
+        "p_value": 0.132181104,
+        "clear": false,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "baking",
+        "n_reviews": 123,
+        "n_positive_reviews": 56,
+        "n_negative_reviews": 67,
+        "share_of_positive_reviews": 0.0893141946,
+        "share_of_negative_reviews": 0.114726027,
+        "share_positive_when_used": 0.455284553,
+        "z": -1.46278754,
+        "p_value": 0.143525524,
+        "clear": false,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "mostly",
+        "n_reviews": 123,
+        "n_positive_reviews": 56,
+        "n_negative_reviews": 67,
+        "share_of_positive_reviews": 0.0893141946,
+        "share_of_negative_reviews": 0.114726027,
+        "share_positive_when_used": 0.455284553,
+        "z": -1.46278754,
+        "p_value": 0.143525524,
+        "clear": false,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "bland",
+        "n_reviews": 12,
+        "n_positive_reviews": 4,
+        "n_negative_reviews": 8,
+        "share_of_positive_reviews": 0.00637958533,
+        "share_of_negative_reviews": 0.0136986301,
+        "share_positive_when_used": 0.333333333,
+        "z": -1.2848915,
+        "p_value": 0.198830201,
+        "clear": false,
+        "in_word_list": true,
+        "own_word": false
+       },
+       {
+        "word": "blah",
+        "n_reviews": 14,
+        "n_positive_reviews": 5,
+        "n_negative_reviews": 9,
+        "share_of_positive_reviews": 0.00797448166,
+        "share_of_negative_reviews": 0.0154109589,
+        "share_positive_when_used": 0.357142857,
+        "z": -1.20967422,
+        "p_value": 0.226403925,
+        "clear": false,
+        "in_word_list": false,
+        "own_word": false
+       }
+      ],
+      "how_to_read": [
+       "A positive driver appears in a larger share of the positive reviews than of the negative ones. It need not be a positive word: it is what satisfied customers write about.",
+       "Compare 'share_positive_when_used' with 'share_positive': the further apart, the stronger the link.",
+       "A word goes with a mood. That does not prove that it causes it."
+      ],
+      "warnings": []
+     },
+     "unknown_clear_drivers": [
+      {
+       "word": "taste",
+       "n_reviews": 543,
+       "n_positive_reviews": 359,
+       "n_negative_reviews": 184,
+       "share_of_positive_reviews": 0.572567783,
+       "share_of_negative_reviews": 0.315068493,
+       "share_positive_when_used": 0.661141805,
+       "z": 9.00326753,
+       "p_value": 2.19097616e-19,
+       "clear": true,
+       "in_word_list": false,
+       "own_word": false,
+       "side": "positive",
+       "added": false
+      },
+      {
+       "word": "foam",
+       "n_reviews": 330,
+       "n_positive_reviews": 238,
+       "n_negative_reviews": 92,
+       "share_of_positive_reviews": 0.379585327,
+       "share_of_negative_reviews": 0.157534247,
+       "share_positive_when_used": 0.721212121,
+       "z": 8.67201922,
+       "p_value": 4.24523964e-18,
+       "clear": true,
+       "in_word_list": false,
+       "own_word": false,
+       "side": "positive",
+       "added": false
+      },
+      {
+       "word": "moreish",
+       "n_reviews": 32,
+       "n_positive_reviews": 28,
+       "n_negative_reviews": 4,
+       "share_of_positive_reviews": 0.0446570973,
+       "share_of_negative_reviews": 0.00684931507,
+       "share_positive_when_used": 0.875,
+       "z": 4.09884576,
+       "p_value": 4.15215601e-05,
+       "clear": true,
+       "in_word_list": false,
+       "own_word": false,
+       "side": "positive",
+       "added": true
+      },
+      {
+       "word": "lush",
+       "n_reviews": 22,
+       "n_positive_reviews": 19,
+       "n_negative_reviews": 3,
+       "share_of_positive_reviews": 0.0303030303,
+       "share_of_negative_reviews": 0.0051369863,
+       "share_positive_when_used": 0.863636364,
+       "z": 3.27661149,
+       "p_value": 0.00105060826,
+       "clear": true,
+       "in_word_list": false,
+       "own_word": false,
+       "side": "positive",
+       "added": true
+      },
+      {
+       "word": "yummy",
+       "n_reviews": 17,
+       "n_positive_reviews": 15,
+       "n_negative_reviews": 2,
+       "share_of_positive_reviews": 0.023923445,
+       "share_of_negative_reviews": 0.00342465753,
+       "share_positive_when_used": 0.882352941,
+       "z": 3.02979897,
+       "p_value": 0.00244716566,
+       "clear": true,
+       "in_word_list": false,
+       "own_word": false,
+       "side": "positive",
+       "added": true
+      },
+      {
+       "word": "cappuccino",
+       "n_reviews": 12,
+       "n_positive_reviews": 11,
+       "n_negative_reviews": 1,
+       "share_of_positive_reviews": 0.0175438596,
+       "share_of_negative_reviews": 0.00171232877,
+       "share_positive_when_used": 0.916666667,
+       "z": 2.77929703,
+       "p_value": 0.00544766862,
+       "clear": true,
+       "in_word_list": false,
+       "own_word": false,
+       "side": "positive",
+       "added": false
+      },
+      {
+       "word": "stellar",
+       "n_reviews": 18,
+       "n_positive_reviews": 14,
+       "n_negative_reviews": 4,
+       "share_of_positive_reviews": 0.0223285486,
+       "share_of_negative_reviews": 0.00684931507,
+       "share_positive_when_used": 0.777777778,
+       "z": 2.22436086,
+       "p_value": 0.0261241749,
+       "clear": true,
+       "in_word_list": false,
+       "own_word": false,
+       "side": "positive",
+       "added": true
+      },
+      {
+       "word": "price",
+       "n_reviews": 393,
+       "n_positive_reviews": 102,
+       "n_negative_reviews": 291,
+       "share_of_positive_reviews": 0.162679426,
+       "share_of_negative_reviews": 0.498287671,
+       "share_positive_when_used": 0.259541985,
+       "z": -12.4644167,
+       "p_value": 1.16722663e-35,
+       "clear": true,
+       "in_word_list": false,
+       "own_word": false,
+       "side": "negative",
+       "added": false
+      },
+      {
+       "word": "packaging",
+       "n_reviews": 283,
+       "n_positive_reviews": 100,
+       "n_negative_reviews": 183,
+       "share_of_positive_reviews": 0.159489633,
+       "share_of_negative_reviews": 0.313356164,
+       "share_positive_when_used": 0.35335689,
+       "z": -6.3225056,
+       "p_value": 2.57355692e-10,
+       "clear": true,
+       "in_word_list": false,
+       "own_word": false,
+       "side": "negative",
+       "added": false
+      },
+      {
+       "word": "meh",
+       "n_reviews": 16,
+       "n_positive_reviews": 1,
+       "n_negative_reviews": 15,
+       "share_of_positive_reviews": 0.00159489633,
+       "share_of_negative_reviews": 0.0256849315,
+       "share_positive_when_used": 0.0625,
+       "z": -3.66864556,
+       "p_value": 0.000243838847,
+       "clear": true,
+       "in_word_list": false,
+       "own_word": false,
+       "side": "negative",
+       "added": true
+      },
+      {
+       "word": "naff",
+       "n_reviews": 18,
+       "n_positive_reviews": 2,
+       "n_negative_reviews": 16,
+       "share_of_positive_reviews": 0.00318979266,
+       "share_of_negative_reviews": 0.0273972603,
+       "share_positive_when_used": 0.111111111,
+       "z": -3.47860527,
+       "p_value": 0.000504030425,
+       "clear": true,
+       "in_word_list": false,
+       "own_word": false,
+       "side": "negative",
+       "added": true
+      },
+      {
+       "word": "yucky",
+       "n_reviews": 24,
+       "n_positive_reviews": 4,
+       "n_negative_reviews": 20,
+       "share_of_positive_reviews": 0.00637958533,
+       "share_of_negative_reviews": 0.0342465753,
+       "share_positive_when_used": 0.166666667,
+       "z": -3.47673306,
+       "p_value": 0.000507562884,
+       "clear": true,
+       "in_word_list": false,
+       "own_word": false,
+       "side": "negative",
+       "added": true
+      },
+      {
+       "word": "oat",
+       "n_reviews": 45,
+       "n_positive_reviews": 14,
+       "n_negative_reviews": 31,
+       "share_of_positive_reviews": 0.0223285486,
+       "share_of_negative_reviews": 0.0530821918,
+       "share_positive_when_used": 0.311111111,
+       "z": -2.82717898,
+       "p_value": 0.00469600723,
+       "clear": true,
+       "in_word_list": false,
+       "own_word": false,
+       "side": "negative",
+       "added": false
+      },
+      {
+       "word": "drink",
+       "n_reviews": 264,
+       "n_positive_reviews": 120,
+       "n_negative_reviews": 144,
+       "share_of_positive_reviews": 0.19138756,
+       "share_of_negative_reviews": 0.246575342,
+       "share_positive_when_used": 0.454545455,
+       "z": -2.32422548,
+       "p_value": 0.0201134124,
+       "clear": true,
+       "in_word_list": false,
+       "own_word": false,
+       "side": "negative",
+       "added": false
+      }
+     ]
+    },
+    "SE-02": {
+     "settings": {
+      "negation": "flip",
+      "neutral_band": 0.0,
+      "top_n": 50,
+      "min_length": 3,
+      "stopwords": "remove",
+      "min_reviews": 10,
+      "n_drivers": 30,
+      "positive_from": 4.0,
+      "negative_up_to": 2.0
+     },
+     "own_words": {
+      "positive": [
+       "moreish",
+       "lush",
+       "yummy",
+       "stellar"
+      ],
+      "negative": [
+       "meh",
+       "naff",
+       "yucky"
+      ]
+     },
+     "scoring": {
+      "n_reviews": 1500,
+      "mean_score": 0.0188888889,
+      "shares": {
+       "positive": 0.378666667,
+       "neutral": 0.257333333,
+       "negative": 0.364
+      },
+      "net_sentiment": 0.0146666667,
+      "n_without_sentiment_words": 291,
+      "n_with_a_negated_word": 183,
+      "most_used_sentiment_words": {
+       "positive": [
+        {
+         "word": "great",
+         "count": 87
+        },
+        {
+         "word": "good",
+         "count": 86
+        },
+        {
+         "word": "perfect",
+         "count": 82
+        },
+        {
+         "word": "nice",
+         "count": 65
+        },
+        {
+         "word": "wonderful",
+         "count": 60
+        },
+        {
+         "word": "amazing",
+         "count": 58
+        },
+        {
+         "word": "fantastic",
+         "count": 53
+        },
+        {
+         "word": "excellent",
+         "count": 48
+        }
+       ],
+       "negative": [
+        {
+         "word": "poor",
+         "count": 112
+        },
+        {
+         "word": "bad",
+         "count": 109
+        },
+        {
+         "word": "disappointing",
+         "count": 83
+        },
+        {
+         "word": "terrible",
+         "count": 79
+        },
+        {
+         "word": "unpleasant",
+         "count": 77
+        },
+        {
+         "word": "horrible",
+         "count": 72
+        },
+        {
+         "word": "awful",
+         "count": 65
+        },
+        {
+         "word": "mediocre",
+         "count": 63
+        }
+       ]
+      },
+      "how_to_read": [
+       "A score of +1 means that all sentiment words of the review are positive, -1 that all are negative.",
+       "A review without any word of the list gets 0 and counts as neutral. That is a gap of the list, not a finding."
+      ],
+      "warnings": []
+     },
+     "by_group": {
+      "brand": {
+       "levels": [
+        {
+         "group": "Alpine Oat",
+         "n_reviews": 404,
+         "mean_score": 0.257838284,
+         "standard_error": 0.0390899547,
+         "lower_95": 0.180992595,
+         "upper_95": 0.334683972,
+         "share_positive": 0.497524752,
+         "share_neutral": 0.274752475,
+         "share_negative": 0.227722772,
+         "net_sentiment": 0.26980198,
+         "difference_from_all": 0.238949395
+        },
+        {
+         "group": "Valloat",
+         "n_reviews": 389,
+         "mean_score": 0.112682091,
+         "standard_error": 0.0425667101,
+         "lower_95": 0.028991815,
+         "upper_95": 0.196372367,
+         "share_positive": 0.442159383,
+         "share_neutral": 0.236503856,
+         "share_negative": 0.321336761,
+         "net_sentiment": 0.120822622,
+         "difference_from_all": 0.0937932019
+        },
+        {
+         "group": "Lumo",
+         "n_reviews": 345,
+         "mean_score": -0.0149758454,
+         "standard_error": 0.0451724614,
+         "lower_95": -0.103824839,
+         "upper_95": 0.0738731478,
+         "share_positive": 0.353623188,
+         "share_neutral": 0.263768116,
+         "share_negative": 0.382608696,
+         "net_sentiment": -0.0289855072,
+         "difference_from_all": -0.0338647343
+        },
+        {
+         "group": "Supermarket own brand",
+         "n_reviews": 362,
+         "mean_score": -0.316298343,
+         "standard_error": 0.0406638824,
+         "lower_95": -0.396266189,
+         "upper_95": -0.236330496,
+         "share_positive": 0.201657459,
+         "share_neutral": 0.254143646,
+         "share_negative": 0.544198895,
+         "net_sentiment": -0.342541436,
+         "difference_from_all": -0.335187231
+        }
+       ],
+       "from_most_positive": [
+        "Alpine Oat",
+        "Valloat",
+        "Lumo",
+        "Supermarket own brand"
+       ],
+       "test": {
+        "f": 34.357063,
+        "df1": 3,
+        "df2": 1496,
+        "p_value": 1.79525173e-21,
+        "groups_differ": true
+       }
+      },
+      "segment": {
+       "levels": [
+        {
+         "group": "Health-focused",
+         "n_reviews": 607,
+         "mean_score": 0.149917628,
+         "standard_error": 0.0332666505,
+         "lower_95": 0.0845857079,
+         "upper_95": 0.215249547,
+         "share_positive": 0.441515651,
+         "share_neutral": 0.26523888,
+         "share_negative": 0.29324547,
+         "net_sentiment": 0.148270181,
+         "difference_from_all": 0.131028739
+        },
+        {
+         "group": "Taste-driven",
+         "n_reviews": 516,
+         "mean_score": 0.0668604651,
+         "standard_error": 0.0370017362,
+         "lower_95": -0.00583244269,
+         "upper_95": 0.139553373,
+         "share_positive": 0.410852713,
+         "share_neutral": 0.248062016,
+         "share_negative": 0.341085271,
+         "net_sentiment": 0.0697674419,
+         "difference_from_all": 0.0479715762
+        },
+        {
+         "group": "Price-sensitive",
+         "n_reviews": 377,
+         "mean_score": -0.257736516,
+         "standard_error": 0.0408639729,
+         "lower_95": -0.33808707,
+         "upper_95": -0.177385963,
+         "share_positive": 0.233421751,
+         "share_neutral": 0.25729443,
+         "share_negative": 0.50928382,
+         "net_sentiment": -0.275862069,
+         "difference_from_all": -0.276625405
+        }
+       ],
+       "from_most_positive": [
+        "Health-focused",
+        "Taste-driven",
+        "Price-sensitive"
+       ],
+       "test": {
+        "f": 30.0534037,
+        "df1": 2,
+        "df2": 1497,
+        "p_value": 1.59658715e-13,
+        "groups_differ": true
+       }
+      }
+     },
+     "cross": [
+      {
+       "brand": "Alpine Oat",
+       "segment": "Health-focused",
+       "n_reviews": 152,
+       "mean_score": 0.301535088,
+       "share_positive": 0.532894737,
+       "share_negative": 0.223684211
+      },
+      {
+       "brand": "Alpine Oat",
+       "segment": "Taste-driven",
+       "n_reviews": 151,
+       "mean_score": 0.355408389,
+       "share_positive": 0.556291391,
+       "share_negative": 0.17218543
+      },
+      {
+       "brand": "Alpine Oat",
+       "segment": "Price-sensitive",
+       "n_reviews": 101,
+       "mean_score": 0.0462046205,
+       "share_positive": 0.356435644,
+       "share_negative": 0.316831683
+      },
+      {
+       "brand": "Valloat",
+       "segment": "Health-focused",
+       "n_reviews": 162,
+       "mean_score": 0.335390947,
+       "share_positive": 0.561728395,
+       "share_negative": 0.209876543
+      },
+      {
+       "brand": "Valloat",
+       "segment": "Taste-driven",
+       "n_reviews": 127,
+       "mean_score": 0.177165354,
+       "share_positive": 0.464566929,
+       "share_negative": 0.283464567
+      },
+      {
+       "brand": "Valloat",
+       "segment": "Price-sensitive",
+       "n_reviews": 100,
+       "mean_score": -0.33,
+       "share_positive": 0.22,
+       "share_negative": 0.55
+      },
+      {
+       "brand": "Lumo",
+       "segment": "Health-focused",
+       "n_reviews": 150,
+       "mean_score": 0.115555556,
+       "share_positive": 0.386666667,
+       "share_negative": 0.293333333
+      },
+      {
+       "brand": "Lumo",
+       "segment": "Taste-driven",
+       "n_reviews": 108,
+       "mean_score": 0.0,
+       "share_positive": 0.398148148,
+       "share_negative": 0.407407407
+      },
+      {
+       "brand": "Lumo",
+       "segment": "Price-sensitive",
+       "n_reviews": 87,
+       "mean_score": -0.25862069,
+       "share_positive": 0.24137931,
+       "share_negative": 0.505747126
+      },
+      {
+       "brand": "Supermarket own brand",
+       "segment": "Health-focused",
+       "n_reviews": 143,
+       "mean_score": -0.185314685,
+       "share_positive": 0.265734266,
+       "share_negative": 0.461538462
+      },
+      {
+       "brand": "Supermarket own brand",
+       "segment": "Taste-driven",
+       "n_reviews": 130,
+       "mean_score": -0.320512821,
+       "share_positive": 0.2,
+       "share_negative": 0.538461538
+      },
+      {
+       "brand": "Supermarket own brand",
+       "segment": "Price-sensitive",
+       "n_reviews": 89,
+       "mean_score": -0.520599251,
+       "share_positive": 0.101123596,
+       "share_negative": 0.685393258
+      }
+     ],
+     "by_group_how_to_read": [
+      "Compare the mean scores with their 95% ranges. Two groups whose ranges overlap widely may not differ at all.",
+      "The test says whether the groups of a column differ by more than chance allows (p value below 0.05)."
+     ],
+     "stars_by_label": [
+      {
+       "stars": 1,
+       "negative": 288,
+       "neutral": 12,
+       "positive": 8
+      },
+      {
+       "stars": 2,
+       "negative": 196,
+       "neutral": 77,
+       "positive": 3
+      },
+      {
+       "stars": 3,
+       "negative": 47,
+       "neutral": 205,
+       "positive": 37
+      },
+      {
+       "stars": 4,
+       "negative": 5,
+       "neutral": 86,
+       "positive": 181
+      },
+      {
+       "stars": 5,
+       "negative": 10,
+       "neutral": 6,
+       "positive": 339
+      }
+     ],
+     "neutral_with_clear_stars": 181,
+     "drivers": {
+      "by": "word_list",
+      "positive_and_negative_by": "the sentiment found with the word list",
+      "n_positive_reviews": 568,
+      "n_negative_reviews": 546,
+      "n_reviews_left_out": 386,
+      "share_positive": 0.509874327,
+      "n_words_examined": 37,
+      "n_clear": 8,
+      "n_clear_by_chance_expected": 1.85,
+      "positive_drivers": [
+       {
+        "word": "taste",
+        "n_reviews": 509,
+        "n_positive_reviews": 337,
+        "n_negative_reviews": 172,
+        "share_of_positive_reviews": 0.593309859,
+        "share_of_negative_reviews": 0.315018315,
+        "share_positive_when_used": 0.662082515,
+        "z": 9.32130066,
+        "p_value": 1.14922729e-20,
+        "clear": true,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "foam",
+        "n_reviews": 307,
+        "n_positive_reviews": 222,
+        "n_negative_reviews": 85,
+        "share_of_positive_reviews": 0.39084507,
+        "share_of_negative_reviews": 0.155677656,
+        "share_positive_when_used": 0.723127036,
+        "z": 8.78181481,
+        "p_value": 1.60857791e-18,
+        "clear": true,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "overall",
+        "n_reviews": 40,
+        "n_positive_reviews": 25,
+        "n_negative_reviews": 15,
+        "share_of_positive_reviews": 0.0440140845,
+        "share_of_negative_reviews": 0.0274725275,
+        "share_positive_when_used": 0.625,
+        "z": 1.48339679,
+        "p_value": 0.13796902,
+        "clear": false,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "first",
+        "n_reviews": 125,
+        "n_positive_reviews": 70,
+        "n_negative_reviews": 55,
+        "share_of_positive_reviews": 0.123239437,
+        "share_of_negative_reviews": 0.100732601,
+        "share_positive_when_used": 0.56,
+        "z": 1.18980113,
+        "p_value": 0.234124566,
+        "clear": false,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "order",
+        "n_reviews": 125,
+        "n_positive_reviews": 70,
+        "n_negative_reviews": 55,
+        "share_of_positive_reviews": 0.123239437,
+        "share_of_negative_reviews": 0.100732601,
+        "share_positive_when_used": 0.56,
+        "z": 1.18980113,
+        "p_value": 0.234124566,
+        "clear": false,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "product",
+        "n_reviews": 42,
+        "n_positive_reviews": 25,
+        "n_negative_reviews": 17,
+        "share_of_positive_reviews": 0.0440140845,
+        "share_of_negative_reviews": 0.0311355311,
+        "share_positive_when_used": 0.595238095,
+        "z": 1.12812735,
+        "p_value": 0.259266139,
+        "clear": false,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "buying",
+        "n_reviews": 123,
+        "n_positive_reviews": 67,
+        "n_negative_reviews": 56,
+        "share_of_positive_reviews": 0.117957746,
+        "share_of_negative_reviews": 0.102564103,
+        "share_positive_when_used": 0.544715447,
+        "z": 0.819530532,
+        "p_value": 0.41248379,
+        "clear": false,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "months",
+        "n_reviews": 123,
+        "n_positive_reviews": 67,
+        "n_negative_reviews": 56,
+        "share_of_positive_reviews": 0.117957746,
+        "share_of_negative_reviews": 0.102564103,
+        "share_positive_when_used": 0.544715447,
+        "z": 0.819530532,
+        "p_value": 0.41248379,
+        "clear": false,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "find",
+        "n_reviews": 240,
+        "n_positive_reviews": 127,
+        "n_negative_reviews": 113,
+        "share_of_positive_reviews": 0.223591549,
+        "share_of_negative_reviews": 0.206959707,
+        "share_positive_when_used": 0.529166667,
+        "z": 0.674981868,
+        "p_value": 0.499687285,
+        "clear": false,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "cow",
+        "n_reviews": 110,
+        "n_positive_reviews": 59,
+        "n_negative_reviews": 51,
+        "share_of_positive_reviews": 0.103873239,
+        "share_of_negative_reviews": 0.0934065934,
+        "share_positive_when_used": 0.536363636,
+        "z": 0.585406342,
+        "p_value": 0.558274526,
+        "clear": false,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "milk",
+        "n_reviews": 110,
+        "n_positive_reviews": 59,
+        "n_negative_reviews": 51,
+        "share_of_positive_reviews": 0.103873239,
+        "share_of_negative_reviews": 0.0934065934,
+        "share_positive_when_used": 0.536363636,
+        "z": 0.585406342,
+        "p_value": 0.558274526,
+        "clear": false,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "spring",
+        "n_reviews": 110,
+        "n_positive_reviews": 59,
+        "n_negative_reviews": 51,
+        "share_of_positive_reviews": 0.103873239,
+        "share_of_negative_reviews": 0.0934065934,
+        "share_positive_when_used": 0.536363636,
+        "z": 0.585406342,
+        "p_value": 0.558274526,
+        "clear": false,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "switched",
+        "n_reviews": 110,
+        "n_positive_reviews": 59,
+        "n_negative_reviews": 51,
+        "share_of_positive_reviews": 0.103873239,
+        "share_of_negative_reviews": 0.0934065934,
+        "share_positive_when_used": 0.536363636,
+        "z": 0.585406342,
+        "p_value": 0.558274526,
+        "clear": false,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "bought",
+        "n_reviews": 122,
+        "n_positive_reviews": 64,
+        "n_negative_reviews": 58,
+        "share_of_positive_reviews": 0.112676056,
+        "share_of_negative_reviews": 0.106227106,
+        "share_positive_when_used": 0.524590164,
+        "z": 0.344561183,
+        "p_value": 0.730424292,
+        "clear": false,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "supermarket",
+        "n_reviews": 122,
+        "n_positive_reviews": 64,
+        "n_negative_reviews": 58,
+        "share_of_positive_reviews": 0.112676056,
+        "share_of_negative_reviews": 0.106227106,
+        "share_positive_when_used": 0.524590164,
+        "z": 0.344561183,
+        "p_value": 0.730424292,
+        "clear": false,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "cartons",
+        "n_reviews": 117,
+        "n_positive_reviews": 61,
+        "n_negative_reviews": 56,
+        "share_of_positive_reviews": 0.107394366,
+        "share_of_negative_reviews": 0.102564103,
+        "share_positive_when_used": 0.521367521,
+        "z": 0.262871443,
+        "p_value": 0.792649667,
+        "clear": false,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "ordered",
+        "n_reviews": 117,
+        "n_positive_reviews": 61,
+        "n_negative_reviews": 56,
+        "share_of_positive_reviews": 0.107394366,
+        "share_of_negative_reviews": 0.102564103,
+        "share_positive_when_used": 0.521367521,
+        "z": 0.262871443,
+        "p_value": 0.792649667,
+        "clear": false,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "week",
+        "n_reviews": 117,
+        "n_positive_reviews": 61,
+        "n_negative_reviews": 56,
+        "share_of_positive_reviews": 0.107394366,
+        "share_of_negative_reviews": 0.102564103,
+        "share_positive_when_used": 0.521367521,
+        "z": 0.262871443,
+        "p_value": 0.792649667,
+        "clear": false,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "time",
+        "n_reviews": 265,
+        "n_positive_reviews": 136,
+        "n_negative_reviews": 129,
+        "share_of_positive_reviews": 0.23943662,
+        "share_of_negative_reviews": 0.236263736,
+        "share_positive_when_used": 0.513207547,
+        "z": 0.124334148,
+        "p_value": 0.901050711,
+        "clear": false,
+        "in_word_list": false,
+        "own_word": false
+       }
+      ],
+      "negative_drivers": [
+       {
+        "word": "price",
+        "n_reviews": 366,
+        "n_positive_reviews": 85,
+        "n_negative_reviews": 281,
+        "share_of_positive_reviews": 0.149647887,
+        "share_of_negative_reviews": 0.514652015,
+        "share_positive_when_used": 0.232240437,
+        "z": -12.9664031,
+        "p_value": 1.89726649e-38,
+        "clear": true,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "packaging",
+        "n_reviews": 271,
+        "n_positive_reviews": 94,
+        "n_negative_reviews": 177,
+        "share_of_positive_reviews": 0.165492958,
+        "share_of_negative_reviews": 0.324175824,
+        "share_positive_when_used": 0.346863469,
+        "z": -6.17084572,
+        "p_value": 6.79256761e-10,
+        "clear": true,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "day",
+        "n_reviews": 105,
+        "n_positive_reviews": 39,
+        "n_negative_reviews": 66,
+        "share_of_positive_reviews": 0.0686619718,
+        "share_of_negative_reviews": 0.120879121,
+        "share_positive_when_used": 0.371428571,
+        "z": -2.98185148,
+        "p_value": 0.00286510954,
+        "clear": true,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "glass",
+        "n_reviews": 105,
+        "n_positive_reviews": 39,
+        "n_negative_reviews": 66,
+        "share_of_positive_reviews": 0.0686619718,
+        "share_of_negative_reviews": 0.120879121,
+        "share_positive_when_used": 0.371428571,
+        "z": -2.98185148,
+        "p_value": 0.00286510954,
+        "clear": true,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "drink",
+        "n_reviews": 243,
+        "n_positive_reviews": 105,
+        "n_negative_reviews": 138,
+        "share_of_positive_reviews": 0.184859155,
+        "share_of_negative_reviews": 0.252747253,
+        "share_positive_when_used": 0.432098765,
+        "z": -2.74280233,
+        "p_value": 0.00609173428,
+        "clear": true,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "oat",
+        "n_reviews": 47,
+        "n_positive_reviews": 16,
+        "n_negative_reviews": 31,
+        "share_of_positive_reviews": 0.0281690141,
+        "share_of_negative_reviews": 0.0567765568,
+        "share_positive_when_used": 0.340425532,
+        "z": -2.37444711,
+        "p_value": 0.0175752538,
+        "clear": true,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "say",
+        "n_reviews": 21,
+        "n_positive_reviews": 8,
+        "n_negative_reviews": 13,
+        "share_of_positive_reviews": 0.014084507,
+        "share_of_negative_reviews": 0.0238095238,
+        "share_positive_when_used": 0.380952381,
+        "z": -1.19311887,
+        "p_value": 0.232822822,
+        "clear": false,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "think",
+        "n_reviews": 65,
+        "n_positive_reviews": 30,
+        "n_negative_reviews": 35,
+        "share_of_positive_reviews": 0.0528169014,
+        "share_of_negative_reviews": 0.0641025641,
+        "share_positive_when_used": 0.461538462,
+        "z": -0.803333223,
+        "p_value": 0.42178216,
+        "clear": false,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "use",
+        "n_reviews": 210,
+        "n_positive_reviews": 104,
+        "n_negative_reviews": 106,
+        "share_of_positive_reviews": 0.183098592,
+        "share_of_negative_reviews": 0.194139194,
+        "share_positive_when_used": 0.495238095,
+        "z": -0.47099034,
+        "p_value": 0.637647633,
+        "clear": false,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "cereal",
+        "n_reviews": 119,
+        "n_positive_reviews": 59,
+        "n_negative_reviews": 60,
+        "share_of_positive_reviews": 0.103873239,
+        "share_of_negative_reviews": 0.10989011,
+        "share_positive_when_used": 0.495798319,
+        "z": -0.325011497,
+        "p_value": 0.74517237,
+        "clear": false,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "drinks",
+        "n_reviews": 119,
+        "n_positive_reviews": 59,
+        "n_negative_reviews": 60,
+        "share_of_positive_reviews": 0.103873239,
+        "share_of_negative_reviews": 0.10989011,
+        "share_positive_when_used": 0.495798319,
+        "z": -0.325011497,
+        "p_value": 0.74517237,
+        "clear": false,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "family",
+        "n_reviews": 119,
+        "n_positive_reviews": 59,
+        "n_negative_reviews": 60,
+        "share_of_positive_reviews": 0.103873239,
+        "share_of_negative_reviews": 0.10989011,
+        "share_positive_when_used": 0.495798319,
+        "z": -0.325011497,
+        "p_value": 0.74517237,
+        "clear": false,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "baking",
+        "n_reviews": 103,
+        "n_positive_reviews": 51,
+        "n_negative_reviews": 52,
+        "share_of_positive_reviews": 0.0897887324,
+        "share_of_negative_reviews": 0.0952380952,
+        "share_positive_when_used": 0.495145631,
+        "z": -0.313880706,
+        "p_value": 0.753611645,
+        "clear": false,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "mostly",
+        "n_reviews": 103,
+        "n_positive_reviews": 51,
+        "n_negative_reviews": 52,
+        "share_of_positive_reviews": 0.0897887324,
+        "share_of_negative_reviews": 0.0952380952,
+        "share_positive_when_used": 0.495145631,
+        "z": -0.313880706,
+        "p_value": 0.753611645,
+        "clear": false,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "kids",
+        "n_reviews": 106,
+        "n_positive_reviews": 53,
+        "n_negative_reviews": 53,
+        "share_of_positive_reviews": 0.0933098592,
+        "share_of_negative_reviews": 0.0970695971,
+        "share_positive_when_used": 0.5,
+        "z": -0.213790035,
+        "p_value": 0.830710796,
+        "clear": false,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "delivery",
+        "n_reviews": 185,
+        "n_positive_reviews": 93,
+        "n_negative_reviews": 92,
+        "share_of_positive_reviews": 0.163732394,
+        "share_of_negative_reviews": 0.168498168,
+        "share_positive_when_used": 0.502702703,
+        "z": -0.21367456,
+        "p_value": 0.830800851,
+        "clear": false,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "coffee",
+        "n_reviews": 111,
+        "n_positive_reviews": 56,
+        "n_negative_reviews": 55,
+        "share_of_positive_reviews": 0.0985915493,
+        "share_of_negative_reviews": 0.100732601,
+        "share_positive_when_used": 0.504504505,
+        "z": -0.119269179,
+        "p_value": 0.905062101,
+        "clear": false,
+        "in_word_list": false,
+        "own_word": false
+       },
+       {
+        "word": "morning",
+        "n_reviews": 111,
+        "n_positive_reviews": 56,
+        "n_negative_reviews": 55,
+        "share_of_positive_reviews": 0.0985915493,
+        "share_of_negative_reviews": 0.100732601,
+        "share_positive_when_used": 0.504504505,
+        "z": -0.119269179,
+        "p_value": 0.905062101,
+        "clear": false,
+        "in_word_list": false,
+        "own_word": false
+       }
+      ],
+      "how_to_read": [
+       "A positive driver appears in a larger share of the positive reviews than of the negative ones. It need not be a positive word: it is what satisfied customers write about.",
+       "Compare 'share_positive_when_used' with 'share_positive': the further apart, the stronger the link.",
+       "A word goes with a mood. That does not prove that it causes it."
+      ],
+      "warnings": []
+     }
+    },
+    "SE-03": {
+     "settings": {
+      "negation": "ignore",
+      "neutral_band": 0.0,
+      "top_n": 50,
+      "min_length": 3,
+      "stopwords": "remove",
+      "min_reviews": 10,
+      "n_drivers": 30,
+      "positive_from": 4.0,
+      "negative_up_to": 2.0
+     },
+     "own_words": {
+      "positive": [
+       "moreish",
+       "lush",
+       "yummy",
+       "stellar"
+      ],
+      "negative": [
+       "meh",
+       "naff",
+       "yucky"
+      ]
+     },
+     "scoring": {
+      "n_reviews": 1500,
+      "mean_score": -0.000222222222,
+      "shares": {
+       "positive": 0.354,
+       "neutral": 0.29,
+       "negative": 0.356
+      },
+      "net_sentiment": -0.002,
+      "n_without_sentiment_words": 291,
+      "n_with_a_negated_word": 0,
+      "most_used_sentiment_words": {
+       "positive": [
+        {
+         "word": "great",
+         "count": 103
+        },
+        {
+         "word": "good",
+         "count": 101
+        },
+        {
+         "word": "perfect",
+         "count": 88
+        },
+        {
+         "word": "nice",
+         "count": 72
+        },
+        {
+         "word": "amazing",
+         "count": 66
+        },
+        {
+         "word": "wonderful",
+         "count": 63
+        },
+        {
+         "word": "fantastic",
+         "count": 56
+        },
+        {
+         "word": "excellent",
+         "count": 52
+        }
+       ],
+       "negative": [
+        {
+         "word": "poor",
+         "count": 127
+        },
+        {
+         "word": "bad",
+         "count": 116
+        },
+        {
+         "word": "disappointing",
+         "count": 91
+        },
+        {
+         "word": "terrible",
+         "count": 85
+        },
+        {
+         "word": "unpleasant",
+         "count": 83
+        },
+        {
+         "word": "horrible",
+         "count": 82
+        },
+        {
+         "word": "mediocre",
+         "count": 75
+        },
+        {
+         "word": "awful",
+         "count": 71
+        }
+       ]
+      },
+      "how_to_read": [
+       "A score of +1 means that all sentiment words of the review are positive, -1 that all are negative.",
+       "A review without any word of the list gets 0 and counts as neutral. That is a gap of the list, not a finding."
+      ],
+      "warnings": []
+     },
+     "by_group": {
+      "brand": {
+       "levels": [
+        {
+         "group": "Alpine Oat",
+         "n_reviews": 404,
+         "mean_score": 0.190181518,
+         "standard_error": 0.0382892524,
+         "lower_95": 0.114909905,
+         "upper_95": 0.265453132,
+         "share_positive": 0.443069307,
+         "share_neutral": 0.316831683,
+         "share_negative": 0.24009901,
+         "net_sentiment": 0.202970297,
+         "difference_from_all": 0.19040374
+        },
+        {
+         "group": "Valloat",
+         "n_reviews": 389,
+         "mean_score": 0.0509854327,
+         "standard_error": 0.041470413,
+         "lower_95": -0.0305494168,
+         "upper_95": 0.132520282,
+         "share_positive": 0.395886889,
+         "share_neutral": 0.272493573,
+         "share_negative": 0.331619537,
+         "net_sentiment": 0.0642673522,
+         "difference_from_all": 0.051207655
+        },
+        {
+         "group": "Lumo",
+         "n_reviews": 345,
+         "mean_score": -0.0487922705,
+         "standard_error": 0.0436579878,
+         "lower_95": -0.13466247,
+         "upper_95": 0.0370779287,
+         "share_positive": 0.324637681,
+         "share_neutral": 0.289855072,
+         "share_negative": 0.385507246,
+         "net_sentiment": -0.0608695652,
+         "difference_from_all": -0.0485700483
+        },
+        {
+         "group": "Supermarket own brand",
+         "n_reviews": 362,
+         "mean_score": -0.22145488,
+         "standard_error": 0.0414114666,
+         "lower_95": -0.302892893,
+         "upper_95": -0.140016867,
+         "share_positive": 0.237569061,
+         "share_neutral": 0.279005525,
+         "share_negative": 0.483425414,
+         "net_sentiment": -0.245856354,
+         "difference_from_all": -0.221232658
+        }
+       ],
+       "from_most_positive": [
+        "Alpine Oat",
+        "Valloat",
+        "Lumo",
+        "Supermarket own brand"
+       ],
+       "test": {
+        "f": 17.9778568,
+        "df1": 3,
+        "df2": 1496,
+        "p_value": 1.83176812e-11,
+        "groups_differ": true
+       }
+      },
+      "segment": {
+       "levels": [
+        {
+         "group": "Health-focused",
+         "n_reviews": 607,
+         "mean_score": 0.0878638111,
+         "standard_error": 0.0327570253,
+         "lower_95": 0.0235327371,
+         "upper_95": 0.152194885,
+         "share_positive": 0.398682043,
+         "share_neutral": 0.296540362,
+         "share_negative": 0.304777595,
+         "net_sentiment": 0.0939044481,
+         "difference_from_all": 0.0880860333
+        },
+        {
+         "group": "Taste-driven",
+         "n_reviews": 516,
+         "mean_score": 0.0607235142,
+         "standard_error": 0.0358591002,
+         "lower_95": -0.00972459268,
+         "upper_95": 0.131171621,
+         "share_positive": 0.393410853,
+         "share_neutral": 0.277131783,
+         "share_negative": 0.329457364,
+         "net_sentiment": 0.0639534884,
+         "difference_from_all": 0.0609457364
+        },
+        {
+         "group": "Price-sensitive",
+         "n_reviews": 377,
+         "mean_score": -0.225464191,
+         "standard_error": 0.0394503871,
+         "lower_95": -0.30303522,
+         "upper_95": -0.147893162,
+         "share_positive": 0.228116711,
+         "share_neutral": 0.297082228,
+         "share_negative": 0.474801061,
+         "net_sentiment": -0.24668435,
+         "difference_from_all": -0.225241969
+        }
+       ],
+       "from_most_positive": [
+        "Health-focused",
+        "Taste-driven",
+        "Price-sensitive"
+       ],
+       "test": {
+        "f": 20.1418149,
+        "df1": 2,
+        "df2": 1497,
+        "p_value": 2.33424637e-09,
+        "groups_differ": true
+       }
+      }
+     },
+     "cross": [
+      {
+       "brand": "Alpine Oat",
+       "segment": "Health-focused",
+       "n_reviews": 152,
+       "mean_score": 0.223684211,
+       "share_positive": 0.480263158,
+       "share_negative": 0.243421053
+      },
+      {
+       "brand": "Alpine Oat",
+       "segment": "Taste-driven",
+       "n_reviews": 151,
+       "mean_score": 0.27593819,
+       "share_positive": 0.496688742,
+       "share_negative": 0.19205298
+      },
+      {
+       "brand": "Alpine Oat",
+       "segment": "Price-sensitive",
+       "n_reviews": 101,
+       "mean_score": 0.0115511551,
+       "share_positive": 0.306930693,
+       "share_negative": 0.306930693
+      },
+      {
+       "brand": "Valloat",
+       "segment": "Health-focused",
+       "n_reviews": 162,
+       "mean_score": 0.229423868,
+       "share_positive": 0.487654321,
+       "share_negative": 0.228395062
+      },
+      {
+       "brand": "Valloat",
+       "segment": "Taste-driven",
+       "n_reviews": 127,
+       "mean_score": 0.0918635171,
+       "share_positive": 0.409448819,
+       "share_negative": 0.31496063
+      },
+      {
+       "brand": "Valloat",
+       "segment": "Price-sensitive",
+       "n_reviews": 100,
+       "mean_score": -0.29,
+       "share_positive": 0.23,
+       "share_negative": 0.52
+      },
+      {
+       "brand": "Lumo",
+       "segment": "Health-focused",
+       "n_reviews": 150,
+       "mean_score": -0.00666666667,
+       "share_positive": 0.32,
+       "share_negative": 0.34
+      },
+      {
+       "brand": "Lumo",
+       "segment": "Taste-driven",
+       "n_reviews": 108,
+       "mean_score": 0.0385802469,
+       "share_positive": 0.407407407,
+       "share_negative": 0.37962963
+      },
+      {
+       "brand": "Lumo",
+       "segment": "Price-sensitive",
+       "n_reviews": 87,
+       "mean_score": -0.229885057,
+       "share_positive": 0.229885057,
+       "share_negative": 0.471264368
+      },
+      {
+       "brand": "Supermarket own brand",
+       "segment": "Health-focused",
+       "n_reviews": 143,
+       "mean_score": -0.117715618,
+       "share_positive": 0.293706294,
+       "share_negative": 0.41958042
+      },
+      {
+       "brand": "Supermarket own brand",
+       "segment": "Taste-driven",
+       "n_reviews": 130,
+       "mean_score": -0.201282051,
+       "share_positive": 0.246153846,
+       "share_negative": 0.461538462
+      },
+      {
+       "brand": "Supermarket own brand",
+       "segment": "Price-sensitive",
+       "n_reviews": 89,
+       "mean_score": -0.417602996,
+       "share_positive": 0.134831461,
+       "share_negative": 0.617977528
+      }
+     ],
+     "by_group_how_to_read": [
+      "Compare the mean scores with their 95% ranges. Two groups whose ranges overlap widely may not differ at all.",
+      "The test says whether the groups of a column differ by more than chance allows (p value below 0.05)."
+     ],
+     "stars_by_label": [
+      {
+       "stars": 1,
+       "negative": 257,
+       "neutral": 28,
+       "positive": 23
+      },
+      {
+       "stars": 2,
+       "negative": 181,
+       "neutral": 81,
+       "positive": 14
+      },
+      {
+       "stars": 3,
+       "negative": 46,
+       "neutral": 204,
+       "positive": 39
+      },
+      {
+       "stars": 4,
+       "negative": 16,
+       "neutral": 95,
+       "positive": 161
+      },
+      {
+       "stars": 5,
+       "negative": 34,
+       "neutral": 27,
+       "positive": 294
+      }
+     ],
+     "neutral_with_clear_stars": 231,
+     "drivers": {
+      "by": "word_list",
+      "positive_and_negative_by": "the sentiment found with the word list",
+      "n_positive_reviews": 531,
+      "n_negative_reviews": 534,
+      "n_reviews_left_out": 435,
+      "share_positive": 0.498591549,
+      "n_words_examined": 37,
+      "n_clear": 8,
+      "n_clear_by_chance_expected": 1.85,
+      "how_to_read": [
+       "A positive driver appears in a larger share of the positive reviews than of the negative ones. It need not be a positive word: it is what satisfied customers write about.",
+       "Compare 'share_positive_when_used' with 'share_positive': the further apart, the stronger the link.",
+       "A word goes with a mood. That does not prove that it causes it."
+      ],
+      "warnings": []
+     },
+     "labels_changed": {
+      "n_changed": 145,
+      "from_to": {
+       "negative to neutral": 31,
+       "negative to positive": 26,
+       "neutral to negative": 9,
+       "neutral to positive": 8,
+       "positive to negative": 36,
+       "positive to neutral": 35
+      }
+     }
+    }
+   },
+   "words": {
+    "settings": {
+     "top_n": 50,
+     "min_length": 3,
+     "stopwords": "remove"
+    },
+    "n_words": 10096,
+    "n_different_words": 112,
+    "most_frequent": [
+     {
+      "word": "taste",
+      "count": 676,
+      "n_reviews": 676,
+      "share_of_reviews": 0.450666667
+     },
+     {
+      "word": "price",
+      "count": 511,
+      "n_reviews": 511,
+      "share_of_reviews": 0.340666667
+     },
+     {
+      "word": "foam",
+      "count": 401,
+      "n_reviews": 401,
+      "share_of_reviews": 0.267333333
+     },
+     {
+      "word": "packaging",
+      "count": 366,
+      "n_reviews": 366,
+      "share_of_reviews": 0.244
+     },
+     {
+      "word": "drink",
+      "count": 350,
+      "n_reviews": 332,
+      "share_of_reviews": 0.221333333
+     },
+     {
+      "word": "use",
+      "count": 331,
+      "n_reviews": 316,
+      "share_of_reviews": 0.210666667
+     },
+     {
+      "word": "time",
+      "count": 325,
+      "n_reviews": 286,
+      "share_of_reviews": 0.190666667
+     },
+     {
+      "word": "find",
+      "count": 292,
+      "n_reviews": 267,
+      "share_of_reviews": 0.178
+     },
+     {
+      "word": "delivery",
+      "count": 253,
+      "n_reviews": 253,
+      "share_of_reviews": 0.168666667
+     },
+     {
+      "word": "buying",
+      "count": 172,
+      "n_reviews": 172,
+      "share_of_reviews": 0.114666667
+     },
+     {
+      "word": "months",
+      "count": 172,
+      "n_reviews": 172,
+      "share_of_reviews": 0.114666667
+     },
+     {
+      "word": "cereal",
+      "count": 170,
+      "n_reviews": 170,
+      "share_of_reviews": 0.113333333
+     },
+     {
+      "word": "drinks",
+      "count": 170,
+      "n_reviews": 170,
+      "share_of_reviews": 0.113333333
+     },
+     {
+      "word": "family",
+      "count": 170,
+      "n_reviews": 170,
+      "share_of_reviews": 0.113333333
+     },
+     {
+      "word": "bought",
+      "count": 168,
+      "n_reviews": 168,
+      "share_of_reviews": 0.112
+     },
+     {
+      "word": "supermarket",
+      "count": 168,
+      "n_reviews": 168,
+      "share_of_reviews": 0.112
+     },
+     {
+      "word": "first",
+      "count": 161,
+      "n_reviews": 161,
+      "share_of_reviews": 0.107333333
+     },
+     {
+      "word": "order",
+      "count": 161,
+      "n_reviews": 161,
+      "share_of_reviews": 0.107333333
+     },
+     {
+      "word": "cartons",
+      "count": 158,
+      "n_reviews": 158,
+      "share_of_reviews": 0.105333333
+     },
+     {
+      "word": "kids",
+      "count": 158,
+      "n_reviews": 158,
+      "share_of_reviews": 0.105333333
+     }
+    ],
+    "groups": [
+     {
+      "group": "Alpine Oat",
+      "n_reviews": 404,
+      "most_frequent": [
+       {
+        "word": "foam",
+        "count": 190,
+        "n_reviews": 190,
+        "share_of_reviews": 0.47029703
+       },
+       {
+        "word": "taste",
+        "count": 178,
+        "n_reviews": 178,
+        "share_of_reviews": 0.440594059
+       },
+       {
+        "word": "use",
+        "count": 104,
+        "n_reviews": 100,
+        "share_of_reviews": 0.247524752
+       },
+       {
+        "word": "drink",
+        "count": 97,
+        "n_reviews": 93,
+        "share_of_reviews": 0.23019802
+       },
+       {
+        "word": "price",
+        "count": 93,
+        "n_reviews": 93,
+        "share_of_reviews": 0.23019802
+       },
+       {
+        "word": "find",
+        "count": 82,
+        "n_reviews": 72,
+        "share_of_reviews": 0.178217822
+       },
+       {
+        "word": "time",
+        "count": 82,
+        "n_reviews": 69,
+        "share_of_reviews": 0.170792079
+       },
+       {
+        "word": "delivery",
+        "count": 71,
+        "n_reviews": 71,
+        "share_of_reviews": 0.175742574
+       }
+      ],
+      "typical_words": [
+       {
+        "word": "foam",
+        "count": 190,
+        "n_reviews": 190,
+        "share_of_reviews": 0.47029703,
+        "share_of_other_reviews": 0.192518248,
+        "times_as_often": 2.44286988,
+        "z": 10.7837454,
+        "clear": true
+       },
+       {
+        "word": "make",
+        "count": 14,
+        "n_reviews": 14,
+        "share_of_reviews": 0.0346534653,
+        "share_of_other_reviews": 0.0127737226,
+        "times_as_often": 2.71287129,
+        "z": 2.77747961,
+        "clear": true
+       },
+       {
+        "word": "minute",
+        "count": 14,
+        "n_reviews": 14,
+        "share_of_reviews": 0.0346534653,
+        "share_of_other_reviews": 0.0127737226,
+        "times_as_often": 2.71287129,
+        "z": 2.77747961,
+        "clear": true
+       },
+       {
+        "word": "takes",
+        "count": 14,
+        "n_reviews": 14,
+        "share_of_reviews": 0.0346534653,
+        "share_of_other_reviews": 0.0127737226,
+        "times_as_often": 2.71287129,
+        "z": 2.77747961,
+        "clear": true
+       },
+       {
+        "word": "silky",
+        "count": 6,
+        "n_reviews": 6,
+        "share_of_reviews": 0.0148514851,
+        "share_of_other_reviews": 0.00273722628,
+        "times_as_often": 5.42574257,
+        "z": 2.69512159,
+        "clear": true
+       }
+      ]
+     },
+     {
+      "group": "Valloat",
+      "n_reviews": 389,
+      "most_frequent": [
+       {
+        "word": "packaging",
+        "count": 159,
+        "n_reviews": 159,
+        "share_of_reviews": 0.40874036
+       },
+       {
+        "word": "taste",
+        "count": 152,
+        "n_reviews": 152,
+        "share_of_reviews": 0.390745501
+       },
+       {
+        "word": "price",
+        "count": 101,
+        "n_reviews": 101,
+        "share_of_reviews": 0.259640103
+       },
+       {
+        "word": "time",
+        "count": 91,
+        "n_reviews": 80,
+        "share_of_reviews": 0.205655527
+       },
+       {
+        "word": "foam",
+        "count": 89,
+        "n_reviews": 89,
+        "share_of_reviews": 0.228791774
+       },
+       {
+        "word": "drink",
+        "count": 85,
+        "n_reviews": 80,
+        "share_of_reviews": 0.205655527
+       },
+       {
+        "word": "find",
+        "count": 80,
+        "n_reviews": 75,
+        "share_of_reviews": 0.192802057
+       },
+       {
+        "word": "use",
+        "count": 75,
+        "n_reviews": 69,
+        "share_of_reviews": 0.177377892
+       }
+      ],
+      "typical_words": [
+       {
+        "word": "packaging",
+        "count": 159,
+        "n_reviews": 159,
+        "share_of_reviews": 0.40874036,
+        "share_of_other_reviews": 0.186318632,
+        "times_as_often": 2.19377072,
+        "z": 8.790379,
+        "clear": true
+       },
+       {
+        "word": "flimsy",
+        "count": 10,
+        "n_reviews": 10,
+        "share_of_reviews": 0.0257069409,
+        "share_of_other_reviews": 0.00360036004,
+        "times_as_often": 7.14010283,
+        "z": 3.90234457,
+        "clear": true
+       },
+       {
+        "word": "carton",
+        "count": 18,
+        "n_reviews": 18,
+        "share_of_reviews": 0.0462724936,
+        "share_of_other_reviews": 0.0189018902,
+        "times_as_often": 2.44803526,
+        "z": 2.91947271,
+        "clear": true
+       },
+       {
+        "word": "litre",
+        "count": 18,
+        "n_reviews": 18,
+        "share_of_reviews": 0.0462724936,
+        "share_of_other_reviews": 0.0189018902,
+        "times_as_often": 2.44803526,
+        "z": 2.91947271,
+        "clear": true
+       },
+       {
+        "word": "handy",
+        "count": 5,
+        "n_reviews": 5,
+        "share_of_reviews": 0.0128534704,
+        "share_of_other_reviews": 0.00450045005,
+        "times_as_often": 2.85604113,
+        "z": 1.74231978,
+        "clear": false
+       }
+      ]
+     },
+     {
+      "group": "Lumo",
+      "n_reviews": 345,
+      "most_frequent": [
+       {
+        "word": "taste",
+        "count": 230,
+        "n_reviews": 230,
+        "share_of_reviews": 0.666666667
+       },
+       {
+        "word": "price",
+        "count": 115,
+        "n_reviews": 115,
+        "share_of_reviews": 0.333333333
+       },
+       {
+        "word": "drink",
+        "count": 82,
+        "n_reviews": 78,
+        "share_of_reviews": 0.226086957
+       },
+       {
+        "word": "time",
+        "count": 71,
+        "n_reviews": 65,
+        "share_of_reviews": 0.188405797
+       },
+       {
+        "word": "find",
+        "count": 69,
+        "n_reviews": 64,
+        "share_of_reviews": 0.185507246
+       },
+       {
+        "word": "foam",
+        "count": 67,
+        "n_reviews": 67,
+        "share_of_reviews": 0.194202899
+       },
+       {
+        "word": "packaging",
+        "count": 65,
+        "n_reviews": 65,
+        "share_of_reviews": 0.188405797
+       },
+       {
+        "word": "use",
+        "count": 62,
+        "n_reviews": 60,
+        "share_of_reviews": 0.173913043
+       }
+      ],
+      "typical_words": [
+       {
+        "word": "taste",
+        "count": 230,
+        "n_reviews": 230,
+        "share_of_reviews": 0.666666667,
+        "share_of_other_reviews": 0.386147186,
+        "times_as_often": 1.7264574,
+        "z": 9.18908442,
+        "clear": true
+       },
+       {
+        "word": "porridge",
+        "count": 28,
+        "n_reviews": 28,
+        "share_of_reviews": 0.0811594203,
+        "share_of_other_reviews": 0.0251082251,
+        "times_as_often": 3.23238381,
+        "z": 4.77815741,
+        "clear": true
+       },
+       {
+        "word": "reminds",
+        "count": 28,
+        "n_reviews": 28,
+        "share_of_reviews": 0.0811594203,
+        "share_of_other_reviews": 0.0251082251,
+        "times_as_often": 3.23238381,
+        "z": 4.77815741,
+        "clear": true
+       },
+       {
+        "word": "terrible",
+        "count": 28,
+        "n_reviews": 27,
+        "share_of_reviews": 0.0782608696,
+        "share_of_other_reviews": 0.0476190476,
+        "times_as_often": 1.64347826,
+        "z": 2.19692743,
+        "clear": true
+       },
+       {
+        "word": "left",
+        "count": 9,
+        "n_reviews": 9,
+        "share_of_reviews": 0.0260869565,
+        "share_of_other_reviews": 0.0103896104,
+        "times_as_often": 2.51086957,
+        "z": 2.17760282,
+        "clear": true
+       }
+      ]
+     },
+     {
+      "group": "Supermarket own brand",
+      "n_reviews": 362,
+      "most_frequent": [
+       {
+        "word": "price",
+        "count": 202,
+        "n_reviews": 202,
+        "share_of_reviews": 0.55801105
+       },
+       {
+        "word": "taste",
+        "count": 116,
+        "n_reviews": 116,
+        "share_of_reviews": 0.320441989
+       },
+       {
+        "word": "use",
+        "count": 90,
+        "n_reviews": 87,
+        "share_of_reviews": 0.240331492
+       },
+       {
+        "word": "drink",
+        "count": 86,
+        "n_reviews": 81,
+        "share_of_reviews": 0.223756906
+       },
+       {
+        "word": "packaging",
+        "count": 84,
+        "n_reviews": 84,
+        "share_of_reviews": 0.232044199
+       },
+       {
+        "word": "time",
+        "count": 81,
+        "n_reviews": 72,
+        "share_of_reviews": 0.198895028
+       },
+       {
+        "word": "find",
+        "count": 61,
+        "n_reviews": 56,
+        "share_of_reviews": 0.154696133
+       },
+       {
+        "word": "delivery",
+        "count": 57,
+        "n_reviews": 57,
+        "share_of_reviews": 0.157458564
+       }
+      ],
+      "typical_words": [
+       {
+        "word": "price",
+        "count": 202,
+        "n_reviews": 202,
+        "share_of_reviews": 0.55801105,
+        "share_of_other_reviews": 0.271528998,
+        "times_as_often": 2.05506982,
+        "z": 10.0175119,
+        "clear": true
+       },
+       {
+        "word": "terrible",
+        "count": 35,
+        "n_reviews": 33,
+        "share_of_reviews": 0.091160221,
+        "share_of_other_reviews": 0.0430579965,
+        "times_as_often": 2.11714962,
+        "z": 3.50663986,
+        "clear": true
+       },
+       {
+        "word": "reasonable",
+        "count": 6,
+        "n_reviews": 6,
+        "share_of_reviews": 0.0165745856,
+        "share_of_other_reviews": 0.00175746924,
+        "times_as_often": 9.43093923,
+        "z": 3.37136158,
+        "clear": true
+       },
+       {
+        "word": "poor",
+        "count": 44,
+        "n_reviews": 43,
+        "share_of_reviews": 0.11878453,
+        "share_of_other_reviews": 0.0676625659,
+        "times_as_often": 1.7555428,
+        "z": 3.12283051,
+        "clear": true
+       },
+       {
+        "word": "meh",
+        "count": 10,
+        "n_reviews": 10,
+        "share_of_reviews": 0.0276243094,
+        "share_of_other_reviews": 0.00878734622,
+        "times_as_often": 3.14364641,
+        "z": 2.72167384,
+        "clear": true
+       }
+      ]
+     }
+    ],
+    "how_to_read": [
+     "For a word cloud, draw each word with a size that follows its count.",
+     "A word that many reviews use says more than a word that one review repeats: compare count and n_reviews."
+    ]
+   },
+   "examples": [
+    {
+     "kind": "unknown_word",
+     "id": "R0070",
+     "brand": "Lumo",
+     "segment": "Taste-driven",
+     "stars": 4,
+     "text": "I bought it at the supermarket. I drink about one glass a day. Lush taste.",
+     "by_run": {
+      "SE-01": {
+       "score": 0.0,
+       "label": "neutral",
+       "n_positive": 0,
+       "n_negative": 0,
+       "positive_words": [],
+       "negative_words": []
+      },
+      "SE-02": {
+       "score": 1.0,
+       "label": "positive",
+       "n_positive": 1,
+       "n_negative": 0,
+       "positive_words": [
+        "lush"
+       ],
+       "negative_words": []
+      },
+      "SE-03": {
+       "score": 1.0,
+       "label": "positive",
+       "n_positive": 1,
+       "n_negative": 0,
+       "positive_words": [
+        "lush"
+       ],
+       "negative_words": []
+      }
+     }
+    },
+    {
+     "kind": "distant_negation",
+     "id": "R0018",
+     "brand": "Valloat",
+     "segment": "Price-sensitive",
+     "stars": 5,
+     "text": "I would not say that the foam was bad.",
+     "by_run": {
+      "SE-01": {
+       "score": -1.0,
+       "label": "negative",
+       "n_positive": 0,
+       "n_negative": 1,
+       "positive_words": [],
+       "negative_words": [
+        "bad"
+       ]
+      },
+      "SE-02": {
+       "score": -1.0,
+       "label": "negative",
+       "n_positive": 0,
+       "n_negative": 1,
+       "positive_words": [],
+       "negative_words": [
+        "bad"
+       ]
+      },
+      "SE-03": {
+       "score": -1.0,
+       "label": "negative",
+       "n_positive": 0,
+       "n_negative": 1,
+       "positive_words": [],
+       "negative_words": [
+        "bad"
+       ]
+      }
+     }
+    },
+    {
+     "kind": "nothing_found",
+     "id": "R0223",
+     "brand": "Lumo",
+     "segment": "Health-focused",
+     "stars": 1,
+     "text": "I find the price blah.",
+     "by_run": {
+      "SE-01": {
+       "score": 0.0,
+       "label": "neutral",
+       "n_positive": 0,
+       "n_negative": 0,
+       "positive_words": [],
+       "negative_words": []
+      },
+      "SE-02": {
+       "score": 0.0,
+       "label": "neutral",
+       "n_positive": 0,
+       "n_negative": 0,
+       "positive_words": [],
+       "negative_words": []
+      },
+      "SE-03": {
+       "score": 0.0,
+       "label": "neutral",
+       "n_positive": 0,
+       "n_negative": 0,
+       "positive_words": [],
+       "negative_words": []
+      }
+     }
+    },
+    {
+     "kind": "negation_read",
+     "id": "R0043",
+     "brand": "Valloat",
+     "segment": "Taste-driven",
+     "stars": 5,
+     "text": "The taste is great. The packaging was never mediocre.",
+     "by_run": {
+      "SE-01": {
+       "score": 1.0,
+       "label": "positive",
+       "n_positive": 2,
+       "n_negative": 0,
+       "positive_words": [
+        "great",
+        "never mediocre"
+       ],
+       "negative_words": []
+      },
+      "SE-02": {
+       "score": 1.0,
+       "label": "positive",
+       "n_positive": 2,
+       "n_negative": 0,
+       "positive_words": [
+        "great",
+        "never mediocre"
+       ],
+       "negative_words": []
+      },
+      "SE-03": {
+       "score": 0.0,
+       "label": "neutral",
+       "n_positive": 1,
+       "n_negative": 1,
+       "positive_words": [
+        "great"
+       ],
+       "negative_words": [
+        "mediocre"
+       ]
+      }
+     }
+    }
+   ],
+   "sample": [
+    {
+     "id": "R0001",
+     "brand": "Valloat",
+     "segment": "Health-focused",
+     "stars": 2,
+     "text": "The packaging is a one litre carton. I bought it at the supermarket.",
+     "score": 0.0,
+     "label": "neutral",
+     "n_positive": 0,
+     "n_negative": 0,
+     "positive_words": [],
+     "negative_words": []
+    },
+    {
+     "id": "R0002",
+     "brand": "Lumo",
+     "segment": "Price-sensitive",
+     "stars": 1,
+     "text": "I find the taste watery. The price is awful.",
+     "score": -1.0,
+     "label": "negative",
+     "n_positive": 0,
+     "n_negative": 2,
+     "positive_words": [],
+     "negative_words": [
+      "watery",
+      "awful"
+     ]
+    },
+    {
+     "id": "R0003",
+     "brand": "Lumo",
+     "segment": "Health-focused",
+     "stars": 5,
+     "text": "Really fresh taste.",
+     "score": 1.0,
+     "label": "positive",
+     "n_positive": 1,
+     "n_negative": 0,
+     "positive_words": [
+      "fresh"
+     ],
+     "negative_words": []
+    },
+    {
+     "id": "R0004",
+     "brand": "Lumo",
+     "segment": "Health-focused",
+     "stars": 1,
+     "text": "The price was awful this time.",
+     "score": -1.0,
+     "label": "negative",
+     "n_positive": 0,
+     "n_negative": 1,
+     "positive_words": [],
+     "negative_words": [
+      "awful"
+     ]
+    },
+    {
+     "id": "R0005",
+     "brand": "Valloat",
+     "segment": "Price-sensitive",
+     "stars": 4,
+     "text": "The packaging is a one litre carton. This was my first order. I use it mostly for baking.",
+     "score": 0.0,
+     "label": "neutral",
+     "n_positive": 0,
+     "n_negative": 0,
+     "positive_words": [],
+     "negative_words": []
+    },
+    {
+     "id": "R0006",
+     "brand": "Alpine Oat",
+     "segment": "Health-focused",
+     "stars": 2,
+     "text": "The taste is hard to describe. My family drinks it with cereal.",
+     "score": 0.0,
+     "label": "neutral",
+     "n_positive": 0,
+     "n_negative": 0,
+     "positive_words": [],
+     "negative_words": []
+    },
+    {
+     "id": "R0007",
+     "brand": "Supermarket own brand",
+     "segment": "Health-focused",
+     "stars": 1,
+     "text": "We use it for coffee every morning. My family drinks it with cereal. The taste was sour this time. Poor foam. I find the price bad.",
+     "score": -1.0,
+     "label": "negative",
+     "n_positive": 0,
+     "n_negative": 3,
+     "positive_words": [],
+     "negative_words": [
+      "sour",
+      "poor",
+      "bad"
+     ]
+    },
+    {
+     "id": "R0008",
+     "brand": "Lumo",
+     "segment": "Price-sensitive",
+     "stars": 3,
+     "text": "The price is mediocre. I use it mostly for baking. My family drinks it with cereal. The packaging is not pleasant.",
+     "score": -1.0,
+     "label": "negative",
+     "n_positive": 0,
+     "n_negative": 2,
+     "positive_words": [],
+     "negative_words": [
+      "mediocre",
+      "not pleasant"
+     ]
+    },
+    {
+     "id": "R0009",
+     "brand": "Alpine Oat",
+     "segment": "Health-focused",
+     "stars": 4,
+     "text": "Perfect taste.",
+     "score": 1.0,
+     "label": "positive",
+     "n_positive": 1,
+     "n_negative": 0,
+     "positive_words": [
+      "perfect"
+     ],
+     "negative_words": []
+    },
+    {
+     "id": "R0010",
+     "brand": "Valloat",
+     "segment": "Health-focused",
+     "stars": 2,
+     "text": "I find the foam poor. I bought it at the supermarket.",
+     "score": -1.0,
+     "label": "negative",
+     "n_positive": 0,
+     "n_negative": 1,
+     "positive_words": [],
+     "negative_words": [
+      "poor"
+     ]
+    },
+    {
+     "id": "R0011",
+     "brand": "Lumo",
+     "segment": "Price-sensitive",
+     "stars": 3,
+     "text": "My family drinks it with cereal. I have been buying it for months. The taste was unpleasant this time. Unpleasant price.",
+     "score": -1.0,
+     "label": "negative",
+     "n_positive": 0,
+     "n_negative": 2,
+     "positive_words": [],
+     "negative_words": [
+      "unpleasant",
+      "unpleasant"
+     ]
+    },
+    {
+     "id": "R0012",
+     "brand": "Valloat",
+     "segment": "Taste-driven",
+     "stars": 1,
+     "text": "Really poor price. I drink about one glass a day. I would not say that the packaging was excellent.",
+     "score": 0.0,
+     "label": "neutral",
+     "n_positive": 1,
+     "n_negative": 1,
+     "positive_words": [
+      "excellent"
+     ],
+     "negative_words": [
+      "poor"
+     ]
+    }
+   ]
   }
  },
  "settings_help": {
@@ -18201,6 +21915,118 @@
     "minimum": 0.0,
     "maximum": 0.99,
     "optional": true
+   }
+  ],
+  "sentiment": [
+   {
+    "key": "negation",
+    "label": "Words like \"not\" in front of a sentiment word",
+    "kind": "choice",
+    "default": "flip",
+    "what_it_does": "Decides what happens to a positive or negative word that follows a negation such as \"not\", \"never\" or \"isn't\".",
+    "when_to_choose": "Keep the default. Switch it off to see how many reviews change, which shows how much a simple word count can miss.",
+    "options": [
+     {
+      "value": "flip",
+      "label": "Turn the meaning around",
+      "what_it_does": "\"Not good\" counts as negative and \"not bad\" as positive. A negation reaches the next three words, but not beyond the next comma or full stop.",
+      "when_to_choose": "Default. Negations are common in reviews, and ignoring them gives wrong labels."
+     },
+     {
+      "value": "ignore",
+      "label": "Ignore negations",
+      "what_it_does": "Every word counts as it stands: \"not good\" counts as positive.",
+      "when_to_choose": "Only to show the difference, or for texts in which negations are written in a way the engine does not know."
+     }
+    ]
+   },
+   {
+    "key": "neutral_band",
+    "label": "Width of \"neutral\"",
+    "kind": "number",
+    "default": 0.0,
+    "what_it_does": "The score of a review runs from -1 (only negative words) to +1 (only positive words). Reviews with a score between minus and plus this value are called neutral.",
+    "when_to_choose": "Keep 0 to call a review positive as soon as positive words are in the majority. Raise it, for example to 0.2, if mixed reviews should count as neutral.",
+    "minimum": 0.0,
+    "maximum": 0.99
+   },
+   {
+    "key": "stopwords",
+    "label": "Very common words",
+    "kind": "choice",
+    "default": "remove",
+    "what_it_does": "Decides whether words such as \"the\", \"and\" or \"is\" are counted.",
+    "when_to_choose": "Remove them: they are the most frequent words in any text and say nothing about its content.",
+    "options": [
+     {
+      "value": "remove",
+      "label": "Leave them out",
+      "what_it_does": "A built-in list of about 180 very common English words is left out of the counts.",
+      "when_to_choose": "Default, for English texts."
+     },
+     {
+      "value": "keep",
+      "label": "Count them",
+      "what_it_does": "Every word is counted.",
+      "when_to_choose": "Texts in another language (the built-in list is English), or when you want to see everything."
+     }
+    ]
+   },
+   {
+    "key": "min_length",
+    "label": "Shortest word that is counted",
+    "kind": "integer",
+    "default": 3,
+    "what_it_does": "Words with fewer letters than this are left out of the counts.",
+    "when_to_choose": "Keep 3. Short words are mostly fillers. Lower it if short words matter in your texts (\"ok\", brand names).",
+    "minimum": 1,
+    "maximum": 15
+   },
+   {
+    "key": "top_n",
+    "label": "Number of words listed",
+    "kind": "integer",
+    "default": 50,
+    "what_it_does": "How many of the most frequent words are returned.",
+    "when_to_choose": "50 fill a word cloud well. Take fewer for a bar chart.",
+    "minimum": 1,
+    "maximum": 1000
+   },
+   {
+    "key": "min_reviews",
+    "label": "Fewest reviews a word must appear in",
+    "kind": "integer",
+    "default": 20,
+    "what_it_does": "A word is only examined as a driver if at least this many positive and negative reviews together contain it.",
+    "when_to_choose": "Keep 20. With fewer reviews behind it, what a word seems to do is mostly chance. Lower it for small data sets.",
+    "minimum": 2,
+    "maximum": 100000
+   },
+   {
+    "key": "n_drivers",
+    "label": "Number of drivers listed",
+    "kind": "integer",
+    "default": 10,
+    "what_it_does": "How many words are listed on the positive side and on the negative side.",
+    "when_to_choose": "10 on each side are easy to read. All examined words are counted in the result either way.",
+    "minimum": 1,
+    "maximum": 200
+   },
+   {
+    "key": "positive_from",
+    "label": "Rating from which a review counts as positive",
+    "kind": "number",
+    "default": 4.0,
+    "what_it_does": "Only used when a rating column is given. Reviews with this rating or more are the positive ones.",
+    "when_to_choose": "4 for ratings from 1 to 5 stars. Change it for another scale."
+   },
+   {
+    "key": "negative_up_to",
+    "label": "Rating up to which a review counts as negative",
+    "kind": "number",
+    "default": 2.0,
+    "what_it_does": "Only used when a rating column is given. Reviews with this rating or less are the negative ones. Ratings in between are left out.",
+    "when_to_choose": "2 for ratings from 1 to 5 stars. Change it for another scale."
    }
   ]
  }

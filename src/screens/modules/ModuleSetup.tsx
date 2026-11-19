@@ -174,7 +174,7 @@ export default function ModuleSetup() {
             </LinkButton>
           </div>
           <p className="mt-2 text-[13px] text-ink3">
-            Calculated by the engine function <span className="num font-semibold text-ink2">{info.calls}</span>.
+            Calculated by the engine {info.calls.includes(',') ? 'functions' : 'function'} <span className="num font-semibold text-ink2">{info.calls}</span>.
           </p>
         </ThisRunCard>
       </div>

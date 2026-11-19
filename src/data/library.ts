@@ -15,6 +15,7 @@ import type { FurtherModule, SetupInfo } from './moduleKit'
 import { panelModule, panelRuns, panelSetups } from './panel'
 import { portfolioModule, portfolioRuns, portfolioSetups } from './portfolio'
 import { pricingModule, pricingRuns, pricingSetups } from './pricing'
+import { sentimentModule, sentimentRuns, sentimentSetups } from './sentiment'
 import { targetingModule, targetingRuns, targetingSetups } from './targeting'
 
 /** The further modules that are built, in the order of the navigation. */
@@ -26,6 +27,7 @@ const built: { module: FurtherModule; runs: Run[]; setups: SetupInfo[] }[] = [
   { module: allocationModule, runs: allocationRuns, setups: allocationSetups },
   { module: portfolioModule, runs: portfolioRuns, setups: portfolioSetups },
   { module: panelModule, runs: panelRuns, setups: panelSetups },
+  { module: sentimentModule, runs: sentimentRuns, setups: sentimentSetups },
 ]
 
 /** The names of the further modules that are not built yet, in the order of the concept. */

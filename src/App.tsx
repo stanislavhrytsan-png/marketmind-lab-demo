@@ -14,6 +14,7 @@ import ModuleSetup from './screens/modules/ModuleSetup'
 import PanelRegression from './screens/modules/PanelRegression'
 import PricingConjoint from './screens/modules/PricingConjoint'
 import PricingTests from './screens/modules/PricingTests'
+import Sentiment from './screens/modules/Sentiment'
 import Targeting from './screens/modules/Targeting'
 import AssignmentSetup from './screens/professor/AssignmentSetup'
 import SubmissionsReview from './screens/professor/SubmissionsReview'
@@ -80,6 +81,7 @@ export default function App() {
             <Route path="/allocation" element={<Allocation />} />
             <Route path="/ge-matrix" element={<GeMatrix />} />
             <Route path="/panel" element={<PanelRegression />} />
+            <Route path="/sentiment" element={<Sentiment />} />
             <Route path="/:module/setup/:runId" element={<ModuleSetup />} />
             {/* Professor */}
             <Route path="/professor" element={<Navigate to="/professor/assignment" replace />} />
